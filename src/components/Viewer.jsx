@@ -95,6 +95,7 @@ function Viewer() {
                 style={{
                   display:"flex",
                   flexDirection:'column'
+                  flex-wrap:'wrap'
                   }}
                 >
                 <Divider />
