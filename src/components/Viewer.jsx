@@ -8,7 +8,7 @@ import Divider from '@material-ui/core/Divider';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Drawer from '@material/drawer';
+import Drawer from '@material/core/Drawer';
 import styled from 'styled-components';
 
 function Viewer() {
