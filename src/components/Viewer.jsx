@@ -108,11 +108,13 @@ export default function Viewer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {images.map((group, index) => (
-          <ListItem button key={group}>
-            <ListItemText primary={group} />
+        {images.map((group, index) => {
+          <Typography>key={index}>{group.name}</Typography>
+          {group.slides.map((slide, index) => {
+            <ListItem button key={slide.name}>
+            <ListItemText primary={slide.name} />
           </ListItem>
-        ))}
+          }}
       </List>
     </div>
   );
