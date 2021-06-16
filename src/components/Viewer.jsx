@@ -102,7 +102,7 @@ function Viewer() {
               </ListItem>
             </List>
           </Collapse>
-        </<Drawer>
+        </Drawer>
       
     <div className="viewer"
          style={{
