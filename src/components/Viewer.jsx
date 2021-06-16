@@ -113,8 +113,8 @@ export default function Viewer() {
           {group.slides.map((slide, index) => {
             <ListItem button key={slide.name}>
             <ListItemText primary={slide.name} />
+              }}
           </ListItem>
-          }}
       </List>
     </div>
   );
