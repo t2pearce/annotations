@@ -78,12 +78,7 @@ function Viewer() {
 
 
   return ( 
-    <div className="viewer"
-         style={{
-       display: "flex",
-       justifyContent:'space-between'
-       }}
-    >
+    <div className="viewer">
         <Accordion>
             <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
