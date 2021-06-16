@@ -108,6 +108,7 @@ export default function Viewer() {
     >
       <List>
         {images.map((group, index) => {
+          <Divider />
           <h3 key={index}>{group.name}</h3>
           {group.slides.map((slide, index) => {
                       <ListItem>
@@ -121,7 +122,7 @@ export default function Viewer() {
                         {slide.name}
                     </ButtonToggle>
                     </ListItem>
-        ))}
+        }}
       </List>
     </div>
   );
