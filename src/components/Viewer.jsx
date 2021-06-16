@@ -122,7 +122,7 @@ function Viewer() {
             })}
       </div>
         </AccordionDetails>
-    </Accordian>
+    </Accordion>
       <div>
           <Box m={3}>
               <Typography align="left">
