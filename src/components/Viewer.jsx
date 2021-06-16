@@ -8,10 +8,7 @@ import Divider from '@material-ui/core/Divider';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Drawer from '@material/drawer';
 import styled from 'styled-components';
 
 function Viewer() {
@@ -19,6 +16,7 @@ function Viewer() {
     const [manifest, setManifest] = useState();
     const [active, setActive] = useState();
     const [title, setTitle] = useState();
+    const [open, setOpen] = useState(false);
   
     setUserInfo();
 
@@ -79,15 +77,11 @@ function Viewer() {
 
   return ( 
     <div className="viewer">
-        <Accordion>
-            <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panella-header"
-            >
-               <Typography>Photo List</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
+      <Drawer modal open={open}
+        onClose={() => setOpen(false)}>
+            <DrawerHeader>
+            <DrawerTitle>Image List</DrawerTitle>
+            <DrawerContent>
       <div>
           {images.map((group, index) => {
               return (
@@ -117,8 +111,7 @@ function Viewer() {
               );
             })}
       </div>
-        </AccordionDetails>
-    </Accordion>
+
       <div>
           <Box m={3}>
               <Typography align="left">
