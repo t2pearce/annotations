@@ -15,7 +15,8 @@ function Viewer() {
     const [images, setImages] = useState([]);
     const [manifest, setManifest] = useState();
     const [active, setActive] = useState();
-
+    const [title, setTitle] = useState();
+    
     setUserInfo();
 
   useEffect(() => {
@@ -31,6 +32,7 @@ function Viewer() {
 
   const previewImage = async (slide) => {
     setManifest(slide.slide);
+    setTitle(slide.name);
   };
 
     async function getUserInfo() {
@@ -109,6 +111,9 @@ function Viewer() {
       </div>
       <div>
           <Box m={3}>
+              <Typography align="left">
+                  Image: <b>{title}</b>
+                </Typography>
           <Typography align="right">
             User:{' '}<b><span id="user"></span> </b>
             <span id='consolelog'></span>
