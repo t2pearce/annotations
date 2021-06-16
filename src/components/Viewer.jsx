@@ -1,22 +1,85 @@
 import React, { useState, useEffect } from 'react';
+import clsx from 'clsx';
+import { makeStyles } from '@material-ui/core/styles';
 import './App.css';
 import { OpenSeaDragonViewer } from './OpenSeaDragonViewer';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import Button from '@material-ui/core/Button';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
 import Toolbar from '@material-ui/core/Toolbar';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Divider from '@material-ui/core/Divider';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Drawer from '@material/core/Drawer';
 import styled from 'styled-components';
 
+const useStyles= makeStyles({
+    list: {
+        width: 250,
+    },
+    fullList: {
+        width: 'auto',
+    },
+});
+
 function Viewer() {
+    const classes = useStyles();
     const [images, setImages] = useState([]);
     const [manifest, setManifest] = useState();
     const [active, setActive] = useState();
     const [title, setTitle] = useState();
-    const [open, setOpen] = useState(false);
+    const [state, setState] = useState({
+        left: false
+    });
+    
+    const toggleDrawer = (anchor, open) => (event) => {
+    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
+  };
+    
+    const list = (anhor) => (
+        <div
+            className={clasx(classes.list, {
+                [classes.fullList]: anchor == 'top' || anchor ==='bottom',
+            })}
+            role="presentation"
+            onClick={toggleDrawer(anchor, false)}
+            onKeyDown={toggleDrawer(anchor, false)}
+         >
+             <div>
+          {images.map((group, index) => {
+              return (
+                <div
+                style={{
+                  display:"flex",
+                  flexDirection:'column',
+                  flexWrap:'wrap'
+                  }}
+                >
+                <Divider />
+                <h3 key={index}>{group.name}</h3>
+                  {group.slides.map((slide, index) => {
+                    return (
+                      <ButtonToggle
+                        key={index}
+                        active={active === slide}
+                        onClick={() => { setActive(slide);
+                          return previewImage(slide);
+                        }}
+                      >
+                        {slide.name}
+                    </ButtonToggle>
+                    );
+                  })}
+                </div>
+          </div>
   
     setUserInfo();
 
@@ -77,41 +140,21 @@ function Viewer() {
 
   return ( 
     <div className="viewer">
-      <Drawer modal open={open}
-        onClose={() => setOpen(false)}>
-            <DrawerHeader>
-            <DrawerTitle>Image List</DrawerTitle>
-            <DrawerContent>
-      <div>
-          {images.map((group, index) => {
-              return (
-                <div
-                style={{
-                  display:"flex",
-                  flexDirection:'column',
-                  flexWrap:'wrap'
-                  }}
-                >
-                <Divider />
-                <h3 key={index}>{group.name}</h3>
-                  {group.slides.map((slide, index) => {
-                    return (
-                      <ButtonToggle
-                        key={index}
-                        active={active === slide}
-                        onClick={() => { setActive(slide);
-                          return previewImage(slide);
-                        }}
-                      >
-                        {slide.name}
-                    </ButtonToggle>
-                    );
-                  })}
-                </div>
-              );
-            })}
-      </div>
-
+        <div>
+      {['left'].map((anchor) => (
+        <React.Fragment key={anchor}>
+            <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+            <SwipeableDrawer
+                anchor={anchor}
+                open={state[anchor]}
+                onClose={toggleDrawer(anchor, false)}
+                onOpen={toggleDrawer(anchor, true)}
+            >
+                {list(anchor)}
+            </SwipeableDrawer>
+           </React.Fragment>
+         ))}
+         </div>
       <div>
           <Box m={3}>
               <Typography align="left">
