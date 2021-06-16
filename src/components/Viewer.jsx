@@ -84,7 +84,15 @@ function Viewer() {
 
 
   return (
-      <Drawer>
+     
+      
+    <div className="viewer"
+         style={{
+       display: "flex",
+       justifyContent:'space-between'
+       }}
+    >
+         <Drawer>
         <ListItem button on Click={handleOpenSetings}>
             <ListItemIcon>
                 <Settings />
@@ -103,13 +111,7 @@ function Viewer() {
             </List>
           </Collapse>
         </Drawer>
-      
-    <div className="viewer"
-         style={{
-       display: "flex",
-       justifyContent:'space-between'
-       }}
-    >
+        
       <div>
           {images.map((group, index) => {
               return (
