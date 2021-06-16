@@ -45,8 +45,8 @@ function Viewer() {
     
     const list = (anhor) => (
         <div
-            className={clasx(classes.list, {
-                [classes.fullList]: anchor == 'top' || anchor ==='bottom',
+            className={clsx(classes.list, {
+                [classes.fullList]: anchor == 'top' || anchor === 'bottom',
             })}
             role="presentation"
             onClick={toggleDrawer(anchor, false)}
