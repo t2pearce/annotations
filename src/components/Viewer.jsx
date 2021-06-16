@@ -92,7 +92,7 @@ function Viewer() {
             >
                <Typography>Photo List</Typography>
             </AccordionSummary>
-            <AccordianDetails>
+            <AccordionDetails>
       <div>
           {images.map((group, index) => {
               return (
