@@ -41,9 +41,9 @@ function Viewer() {
     }
 
     setState({ ...state, [anchor]: open });
-  };
+    };
     
-    const list = (anhor) => (
+    const list = (anchor) => (
         <div
             className={clsx(classes.list, {
                 [classes.fullList]: anchor == 'top' || anchor === 'bottom',
@@ -80,6 +80,7 @@ function Viewer() {
                 </div>
             </div>
           </div>
+        );
   
     setUserInfo();
 
