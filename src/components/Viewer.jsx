@@ -94,7 +94,7 @@ function Viewer() {
                 <div
                 style={{
                   display:"flex",
-                  flexDirection:'column'
+                  flexDirection:'column',
                   flex-wrap:'wrap'
                   }}
                 >
