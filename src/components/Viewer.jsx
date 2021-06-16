@@ -109,7 +109,7 @@ export default function Viewer() {
     >
       <List>
         {images.map((group, index) => (
-          <ListItem button key={grouup}>
+          <ListItem button key={group}>
             <ListItemText primary={group} />
           </ListItem>
         ))}
