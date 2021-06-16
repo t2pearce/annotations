@@ -28,6 +28,66 @@ export default function Viewer() {
     bottom: false,
     right: false,
   });
+  const [images, setImages] = useState([]);
+  const [manifest, setManifest] = useState();
+  const [active, setActive] = useState();
+  const [title, setTitle] = useState();
+  
+  setUserInfo();
+
+  useEffect(() => {
+    getImages();
+  }, []);
+
+  const getImages = async () => {
+    const response = await fetch("api/deepzoom/pictures3.json") //"https://miradortest.z13.web.core.windows.net/pictures3.json"
+    let image = await response.json();
+    console.log('image', image)
+    setImages(image.groups)
+  };
+
+  const previewImage = async (slide) => {
+    setManifest(slide.slide);
+    setTitle(slide.name);
+  };
+
+    async function getUserInfo() {
+        const response = await fetch('/.auth/me');
+        const payload = await response.json();
+        const { clientPrincipal } = payload;
+        return clientPrincipal;
+      }
+
+      async function setUserInfo() {
+        let  clientPrincipal =  await getUserInfo();
+
+        document.getElementById("user").innerHTML = clientPrincipal.userDetails;
+        console.log(clientPrincipal);
+      }
+
+      const Button = styled.button`
+        background-color: black;
+        color: white;
+        font-size: 20px;
+        padding: 10px 60px;
+        border-radius: 0px;
+        margin: 0px 0px;
+        cursor: pointer;
+        &:disabled {
+          color: grey;
+          opacity: 0.7;
+          cursor: default;
+        }
+      `;
+
+      const ButtonToggle = styled(Button)`
+        opacity: 0.6;
+        ${({ active }) =>
+          active &&
+          `
+          opacity: 1;
+        `}
+      `;
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -47,20 +107,24 @@ export default function Viewer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
+        {images.map((group, index) => (
+          return (
+          <h3 key={index}>{group.name}</h3>
+          {group.slides.map((slide, index) => {
+                    return (
+                      <ListItem>
+                      <ButtonToggle
+                        key={index}
+                        active={active === slide}
+                        onClick={() => { setActive(slide);
+                          return previewImage(slide);
+                        }}
+                      >
+                        {slide.name}
+                    </ButtonToggle>
+                    </ListItem>
+                    );
+      );
         ))}
       </List>
     </div>
