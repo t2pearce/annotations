@@ -8,6 +8,9 @@ import Divider from '@material-ui/core/Divider';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Collapse from '@material-ui/core/Collapse';
+import List from '@material-ui/core/List';
+import Drawer from '@material-ui/core/Drawer';
 //import ToggleButton from '@material-ui/core/ToggleButton';
 import styled from 'styled-components';
 
@@ -16,7 +19,7 @@ function Viewer() {
     const [manifest, setManifest] = useState();
     const [active, setActive] = useState();
     const [title, setTitle] = useState();
-    
+  
     setUserInfo();
 
   useEffect(() => {
@@ -72,9 +75,35 @@ function Viewer() {
           opacity: 1;
         `}
       `;
+    
+    const [openCollapse, setOpenCollapse] = useState(false);
+    
+    function handleOpenSettings(){
+        setOpenCollapse(!openCollapse);
+    }
 
 
   return (
+      <Drawer>
+        <ListItem button on Click={handleOpenSetings}>
+            <ListItemIcon>
+                <Settings />
+              </ListItemIcon>
+              <ListItemText primary="Settings" />
+              {openCollapse ? <ExpandLess /> : <ExpandMore />}
+            </ListItem>
+            <Collapse in={openCollapse} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItem button className={classes.nested}>
+                <ListItemIcon>
+                  <Settings />
+                </ListItemIcon>
+                <ListItemText inset primary="Starred" />
+              </ListItem>
+            </List>
+          </Collapse>
+        </<Drawer>
+      
     <div className="viewer"
          style={{
        display: "flex",
