@@ -78,6 +78,7 @@ function Viewer() {
                     );
                   })}
                 </div>
+            </div>
           </div>
   
     setUserInfo();
