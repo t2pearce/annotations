@@ -260,7 +260,7 @@ export default function Viewer() {
                   Image: <b>{title}</b>
 <p></p>
                 </Typography>
-<Box m={3}>
+<Box pr={6}>
             <OpenSeaDragonViewer image={manifest} />
               </Box>
                </Container>
