@@ -25,6 +25,8 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
 import { OpenSeaDragonViewer } from './OpenSeaDragonViewer';
 import styled from 'styled-components';
+import PhotoIcon from '@material-ui/icons/Photo';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
 
 const drawerWidth = 240;
 
@@ -236,6 +238,9 @@ export default function Viewer() {
                           return previewImage(slide);
                         }}
                       >
+                        <ListItemIcon>
+                        <PhotoIcon />
+                        </ListItemIcon>
                         <ListItemText
                           disableTypography
                           primary={<Typography align="center">{slide.name}</Typography>} />
