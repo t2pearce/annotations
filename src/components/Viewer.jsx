@@ -217,42 +217,7 @@ export default function Viewer() {
           </IconButton>
         </div>
         <Divider />
-        <div className="viewer"
-         style={{
-       display: "flex",
-       justifyContent:'space-between'
-       }}
-    >
-      <div>
-          {images.map((group, index) => {
-              return (
-                <div
-                style={{
-                  display:"flex",
-                  flexDirection:'column'
-                  }}
-                >
-                <Divider />
-                <h3 key={index}>{group.name}</h3>
-                  {group.slides.map((slide, index) => {
-                    return (
-                      <ButtonToggle
-                        key={index}
-                        active={active === slide}
-                        onClick={() => { setActive(slide);
-                          return previewImage(slide);
-                        }}
-                      >
-                        {slide.name}
-                    </ButtonToggle>
-                    );
-                  })}
-                </div>
-</div>
-</div>
-              );
-            })}
-      </div>
+       
       </Drawer>
     <Box m={3} pt={2}>
             <OpenSeaDragonViewer image={manifest} />
