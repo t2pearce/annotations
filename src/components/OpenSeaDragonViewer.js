@@ -40,7 +40,7 @@ const OpenSeaDragonViewer = ({ image }) => {
   id="openSeaDragon"
   style={{
     height: "65vh",
-    width: "90vw"
+    width: "65vw"
   }}
   >
   </div>
