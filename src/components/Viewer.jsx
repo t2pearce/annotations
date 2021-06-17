@@ -217,7 +217,35 @@ export default function Viewer() {
           </IconButton>
         </div>
         <Divider />
-       
+       <div>
+          {images.map((group, index) => {
+              return (
+                <div
+                style={{
+                  display:"flex",
+                  flexDirection:'column'
+                  }}
+                >
+                  <Divider />
+                  <ListSubheader> {group.name} </ListSubheader>
+                  {group.slides.map((slide, index) => {
+                    return (
+                      <ListItem button
+                        key={index}
+                        onClick={() => {
+                          return previewImage(slide);
+                        }}
+                      >
+                        <ListItemText
+                          disableTypography
+                          primary={<Typography align="center">{slide.name}</Typography>} />
+                      </ListItem>
+                    );
+                  })}
+                </div>
+              );
+            })}
+      </div>
       </Drawer>
     <Box m={3} pt={6}>
       <Typography align="left">
