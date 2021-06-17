@@ -258,11 +258,11 @@ export default function Viewer() {
            <Grid container spacing={3}>
             <Grid item xs={12} md={12} lg={12}>
               <Paper className={fixedHeightPaper}>
-            <Typography align="left">
+            <Typography align="center">
                Image: <b>{title}</b>
                 <p></p>
              </Typography>
-            <OpenSeaDragonViewer align="center" image={manifest} />
+            <OpenSeaDragonViewer image={manifest} />
               </Paper>
               </Grid>
               </Grid>
