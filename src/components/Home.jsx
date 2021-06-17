@@ -1,4 +1,4 @@
-eimport React from "react";
+import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import './Home.css';
 import { Button, Box } from "@material-ui/core";
