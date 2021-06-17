@@ -255,7 +255,7 @@ export default function Viewer() {
       </Drawer>
 <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
+        <Container maxWidth="lg" className={classes.container} pr={6}>
       <Typography align="left">
                   Image: <b>{title}</b>
 <p></p>
