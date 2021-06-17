@@ -255,14 +255,14 @@ export default function Viewer() {
         <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-           <Grid container justify="center">
+           <Grid container spacing={3}>
             <Grid item xs={12} md={12} lg={12}>
               <Paper className={fixedHeightPaper}>
             <Typography align="left">
                Image: <b>{title}</b>
                 <p></p>
              </Typography>
-            <OpenSeaDragonViewer image={manifest} />
+            <OpenSeaDragonViewer align="center" image={manifest} />
               </Paper>
               </Grid>
               </Grid>
