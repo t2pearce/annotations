@@ -216,6 +216,7 @@ export default function Viewer() {
             <ChevronLeftIcon />
           </IconButton>
         </div>
+<List>
        <div>
           {images.map((group, index) => {
               return (
@@ -245,6 +246,7 @@ export default function Viewer() {
               );
             })}
       </div>
+</List>
       </Drawer>
     <Box m={3} pt={6}>
       <Typography align="left">
