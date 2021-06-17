@@ -129,11 +129,10 @@ export default function Dashboard() {
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             Breast Tissue Clinical Study
           </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
+          <Typography align="right">
+            User:{' '}<b><span id="user"></span> </b>
+            <span id='consolelog'></span>
+            </Typography>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -153,6 +152,9 @@ export default function Dashboard() {
         <Divider />
         <List>{secondaryListItems}</List>
       </Drawer>
+    <Box m={3} pt={2}>
+            <OpenSeaDragonViewer image={manifest} />
+          </Box>
     </div>
 );
 }
