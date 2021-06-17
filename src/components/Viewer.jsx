@@ -243,7 +243,7 @@ export default function Viewer() {
                         </ListItemIcon>
                         <ListItemText
                           disableTypography
-                          primary={<Typography align="center">{slide.name}</Typography>} />
+                          primary={slide.name} />
                       </ListItem>
                     );
                   })}
