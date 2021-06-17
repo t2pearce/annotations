@@ -28,7 +28,7 @@ import styled from 'styled-components';
 import PhotoIcon from '@material-ui/icons/Photo';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 const useStyles = makeStyles((theme) => ({
   root: {
