@@ -170,3 +170,5 @@ export default function Dashboard() {
         <List>{secondaryListItems}</List>
       </Drawer>
     </div>
+);
+}
