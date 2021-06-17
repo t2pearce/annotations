@@ -220,7 +220,7 @@ export default function Viewer() {
        
       </Drawer>
 
-<Box m={3}>
+<Box m={3}, pt={4}>
   <Typography align="left">
                   Image: <b>{title}</b>
                 </Typography>
