@@ -253,16 +253,20 @@ export default function Viewer() {
       </div>
 </List>
       </Drawer>
-<main className={classes.content}>
+        <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container} pr={6}>
-      <Typography align="left">
-                  Image: <b>{title}</b>
-<p></p>
-                </Typography>
-<Box pr={3} >
+           <Grid container spacing={3}>
+            <Grid item xs={12} md={8} lg={9}>
+              <Paper className={fixedHeightPaper}>
+            <Typography align="left">
+               Image: <b>{title}</b>
+                <p></p>
+             </Typography>
             <OpenSeaDragonViewer image={manifest} />
-              </Box>
+              </Paper>
+              </Grid>
+              </Grid>
                </Container>
       </main>
     </div>
