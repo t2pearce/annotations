@@ -107,7 +107,70 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Dashboard() {
+export default function Viewer() {
+  
+  const [images, setImages] = useState([]);
+    const [manifest, setManifest] = useState();
+    const [active, setActive] = useState();
+    const [title, setTitle] = useState();
+    
+    setUserInfo();
+
+  useEffect(() => {
+    getImages();
+  }, []);
+
+  const getImages = async () => {
+    const response = await fetch("api/deepzoom/pictures3.json") //"https://miradortest.z13.web.core.windows.net/pictures3.json"
+    let image = await response.json();
+    console.log('image', image)
+    setImages(image.groups)
+  };
+
+  const previewImage = async (slide) => {
+    setManifest(slide.slide);
+    setTitle(slide.name);
+  };
+
+    async function getUserInfo() {
+        const response = await fetch('/.auth/me');
+        const payload = await response.json();
+        const { clientPrincipal } = payload;
+        return clientPrincipal;
+      }
+
+      async function setUserInfo() {
+        let  clientPrincipal =  await getUserInfo();
+
+        document.getElementById("user").innerHTML = clientPrincipal.userDetails;
+        console.log(clientPrincipal);
+      }
+
+      const Button = styled.button`
+        background-color: black;
+        color: white;
+        font-size: 20px;
+        padding: 10px 60px;
+        border-radius: 0px;
+        margin: 0px 0px;
+        cursor: pointer;
+        &:disabled {
+          color: grey;
+          opacity: 0.7;
+          cursor: default;
+        }
+      `;
+
+      const ButtonToggle = styled(Button)`
+        opacity: 0.6;
+        ${({ active }) =>
+          active &&
+          `
+          opacity: 1;
+        `}
+      `;
+
+  
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -154,9 +217,40 @@ export default function Dashboard() {
           </IconButton>
         </div>
         <Divider />
-        <List>{mainListItems}</List>
-        <Divider />
-        <List>{secondaryListItems}</List>
+        <div className="viewer"
+         style={{
+       display: "flex",
+       justifyContent:'space-between'
+       }}
+    >
+      <div>
+          {images.map((group, index) => {
+              return (
+                <div
+                style={{
+                  display:"flex",
+                  flexDirection:'column'
+                  }}
+                >
+                <Divider />
+                <h3 key={index}>{group.name}</h3>
+                  {group.slides.map((slide, index) => {
+                    return (
+                      <ButtonToggle
+                        key={index}
+                        active={active === slide}
+                        onClick={() => { setActive(slide);
+                          return previewImage(slide);
+                        }}
+                      >
+                        {slide.name}
+                    </ButtonToggle>
+                    );
+                  })}
+                </div>
+              );
+            })}
+      </div>
       </Drawer>
     <Box m={3} pt={2}>
             <OpenSeaDragonViewer image={manifest} />
