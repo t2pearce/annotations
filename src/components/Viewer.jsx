@@ -219,7 +219,7 @@ export default function Viewer() {
         <Divider />
        
       </Drawer>
-    <Box m={3} pt={2}>
+    <Box m={3} pt={6}>
       <Typography align="left">
                   Image: <b>{title}</b>
 <p></p>
