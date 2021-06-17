@@ -216,7 +216,6 @@ export default function Viewer() {
             <ChevronLeftIcon />
           </IconButton>
         </div>
-        <Divider />
        <div>
           {images.map((group, index) => {
               return (
