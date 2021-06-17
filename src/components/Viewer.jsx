@@ -219,10 +219,13 @@ export default function Viewer() {
         <Divider />
        
       </Drawer>
-    <Box m={3} pt={2}>
-      <Typography align="left">
+
+<Box m={3}>
+  <Typography align="left">
                   Image: <b>{title}</b>
                 </Typography>
+</Box>
+    <Box m={3} pt={2}>
             <OpenSeaDragonViewer image={manifest} />
           </Box>
     </div>
