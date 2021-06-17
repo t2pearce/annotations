@@ -103,9 +103,6 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'auto',
     flexDirection: 'column',
   },
-  fixedHeight: {
-    height: 600,
-  },
 }));
 
 export default function Viewer() {
@@ -257,7 +254,7 @@ export default function Viewer() {
         <Container maxWidth="lg" className={classes.container}>
            <Grid container spacing={3}>
             <Grid item xs={12} md={12} lg={12}>
-              <Paper className={fixedHeightPaper}>
+              <Paper className={paper}>
             <Typography align="left">
                Image: <b>{title}</b>
                 <p></p>
