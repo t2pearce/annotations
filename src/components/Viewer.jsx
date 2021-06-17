@@ -23,7 +23,7 @@ const styles = {
   }
 };
   
-export default class MarerialUIDrawer 
+export default class Viewer 
     extends React.Component {
   constructor(props) {
     super(props);
