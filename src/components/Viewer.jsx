@@ -66,6 +66,8 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
   },
   drawerPaper: {
     position: 'relative',
