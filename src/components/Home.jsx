@@ -1,8 +1,9 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import './Home.css';
-import { Button, Box } from "@material-ui/core";
+import { Button, Grid, Paper } from "@material-ui/core";
 import logo from './login.png';
+import { ResponsiveContainer } from 'recharts';
 
 function Home() {
   return (
