@@ -254,7 +254,7 @@ export default function Viewer() {
       </Drawer>
         <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <ResponsiveContainer maxWidth="lg" className={classes.container}>
+        <Container maxWidth="lg" className={classes.container}>
            <Grid container spacing={3}>
             <Grid item xs={12} md={12} lg={12}>
               <Paper className={fixedHeightPaper}>
@@ -266,7 +266,7 @@ export default function Viewer() {
               </Paper>
               </Grid>
               </Grid>
-               </ResponsiveContainer>
+               </Container>
       </main>
     </div>
 );
