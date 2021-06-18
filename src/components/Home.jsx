@@ -6,8 +6,10 @@ import logo from './login.png';
 
 function Home() {
   return (
-    <Box pt={4}>
-    <div class ="container">
+    <ResponsiveContainer maxWidth="lg">
+    <Grid container spacing={3}>
+    <Grid item xs={12} md={12} lg={12}>
+      <Paper>
     <div class="center">
       <p> [INSERT TEXT HERE] </p>
       <p></p>
@@ -21,8 +23,10 @@ function Home() {
           <p>Try to open this <a href="viewer">View OpenSeaDragon</a></p>
             </p>
     </div>
-    </div>
-</Box>
+    </Paper>
+    </Grid>
+    </Grid>
+    </ResponsiveContainer>
   );
 }
 
