@@ -255,7 +255,7 @@ export default function Viewer() {
         <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-           <Grid container spacing={3}>
+           <Grid container display= "flex" alignItems= "center" justifyContent= "center">
             <Grid item display= "flex" alignItems= "center" justifyContent= "center">
               <Paper className={fixedHeightPaper}>
             <Typography align="left">
