@@ -26,6 +26,7 @@ import { OpenSeaDragonViewer } from './OpenSeaDragonViewer';
 import styled from 'styled-components';
 import PhotoIcon from '@material-ui/icons/Photo';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ReactiveContainer from 'react-responsive-container';
 
 const drawerWidth = 200;
 
