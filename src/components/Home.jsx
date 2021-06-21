@@ -40,6 +40,10 @@ function Home() {
     <Grid container spacing={3}>
     <Grid item xs={12} md={12} lg={12}>
       <Paper className={fixedHeightPaper}>
+        <Grid 
+          item 
+          xs
+          style={{displau: "flex", justifyContent: "center"}}>
     <Typography align="center" verticalAlign="middle">
       <p> [INSERT TEXT HERE] </p>
       <p></p>
@@ -53,6 +57,7 @@ function Home() {
           <p>Try to open this <a href="viewer">View OpenSeaDragon</a></p>
             </p>
     </Typography>
+</Grid>
     </Paper>
     </Grid>
     </Grid>
