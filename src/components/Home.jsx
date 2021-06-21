@@ -38,7 +38,7 @@ function Home() {
   return (
     <ResponsiveContainer maxWidth="lg" className={classes.container}>
     <Grid container spacing={3}>
-    <Grid item xs={12} md={12} lg={12}>
+    <Grid item xs={12} md={12} lg={12} justify="center">
       <Paper className={fixedHeightPaper}>
     <Typography align="center">
       <p> [INSERT TEXT HERE] </p>
