@@ -38,9 +38,9 @@ function Home() {
   return (
     <ResponsiveContainer maxWidth="lg" className={classes.container}>
     <Grid container spacing={3}>
-    <Grid item xs={12} md={12} lg={12} justify="center">
+    <Grid item xs={12} md={12} lg={12}>
       <Paper className={fixedHeightPaper}>
-    <Typography align="center">
+    <Typography align="center" verticalAlign="middle">
       <p> [INSERT TEXT HERE] </p>
       <p></p>
       <p><b>Please Login to Your Microsoft Azure Account Below:</b></p>
