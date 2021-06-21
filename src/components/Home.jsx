@@ -4,13 +4,35 @@ import './Home.css';
 import { Button, Grid, Paper } from "@material-ui/core";
 import logo from './login.png';
 import { ResponsiveContainer } from 'recharts';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+  },
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+  },
+  paper: {
+    padding: theme.spacing(2),
+    display: 'flex',
+    overflow: 'auto',
+    flexDirection: 'column',
+  },
+  fixedHeight: {
+    height: "50vh",
+  },
+}));
 
 function Home() {
+  const classes = useStyles();
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   return (
-    <ResponsiveContainer maxWidth="lg">
+    <ResponsiveContainer maxWidth="lg" className={classes.container}>
     <Grid container spacing={3}>
     <Grid item xs={12} md={12} lg={12}>
-      <Paper>
+      <Paper className={fixedHeightPaper}>
     <div class="center">
       <p> [INSERT TEXT HERE] </p>
       <p></p>
