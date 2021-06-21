@@ -103,6 +103,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     overflow: 'auto',
     flexDirection: 'column',
+    textAlign: 'center'
   },
   fixedHeight: {
     height: '75vh'
