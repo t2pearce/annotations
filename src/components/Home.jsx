@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
   fixedHeight: {
     height: "50vh",
+    width: "50vw"
   },
 }));
 
