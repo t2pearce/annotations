@@ -37,13 +37,9 @@ function Home() {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   return (
     <ResponsiveContainer maxWidth="lg" className={classes.container}>
-    <Grid container spacing={3}>
+    <Grid container spacing={3} alignItems="center">
     <Grid item xs={12} md={12} lg={12}>
       <Paper className={fixedHeightPaper}>
-        <Grid 
-          item 
-          xs
-          style={{displau: "flex", justifyContent: "center"}}>
     <Typography align="center" verticalAlign="middle">
       <p> [INSERT TEXT HERE] </p>
       <p></p>
@@ -57,7 +53,6 @@ function Home() {
           <p>Try to open this <a href="viewer">View OpenSeaDragon</a></p>
             </p>
     </Typography>
-</Grid>
     </Paper>
     </Grid>
     </Grid>
