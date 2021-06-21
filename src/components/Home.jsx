@@ -24,7 +24,12 @@ const useStyles = makeStyles((theme) => ({
   },
   fixedHeight: {
     height: "50vh",
-    width: "50vw"
+    width: "50vw",
+     position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   },
 }));
 
