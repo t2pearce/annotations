@@ -34,7 +34,7 @@ function Home() {
     <Grid container spacing={3}>
     <Grid item xs={12} md={12} lg={12}>
       <Paper className={fixedHeightPaper}>
-    <div class="center">
+    <Typography align="center">
       <p> [INSERT TEXT HERE] </p>
       <p></p>
       <p><b>Please Login to Your Microsoft Azure Account Below:</b></p>
@@ -46,7 +46,7 @@ function Home() {
           <p></p>
           <p>Try to open this <a href="viewer">View OpenSeaDragon</a></p>
             </p>
-    </div>
+    </Typography>
     </Paper>
     </Grid>
     </Grid>
