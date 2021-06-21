@@ -24,8 +24,6 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center'
   },
   fixedHeight: {
-    height: "50vh",
-    width: "50vw",
     position: "absolute",
     top: "50%",
     left: "50%",
