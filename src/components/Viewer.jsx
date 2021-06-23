@@ -106,7 +106,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center'
   },
   fixedHeight: {
-    position: "absolute",
+    position: "relative",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)"
