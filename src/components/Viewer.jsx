@@ -209,7 +209,7 @@ export default function Viewer() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Breast Tissue Clinical Study
+            <b>Breast Tissue Clinical Study</b>
           </Typography>
           <Typography align="right">
             User: t2pearce@uwaterloo.ca<b><span id="user"></span> </b>
