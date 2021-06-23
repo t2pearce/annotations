@@ -97,6 +97,7 @@ const useStyles = makeStyles((theme) => ({
   container: {
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
+    paddingRight: 24
   },
   paper: {
     padding: theme.spacing(2),
