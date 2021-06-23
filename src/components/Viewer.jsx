@@ -186,7 +186,7 @@ export default function Viewer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight, open && classes.appBarShift);
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   
   return (
     <div className={classes.root}>
@@ -260,7 +260,7 @@ export default function Viewer() {
       </Drawer>
         <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <ResponsiveContainer maxWidth="lg" className={classes.container}>
+        <ResponsiveContainer maxWidth="lg" className={clsx(classes.container, open && classes.appBarShift)}>
            <Grid container spacing={3} alignItems="center">
             <Grid item xs={12} md={12} lg={12}>
               <Paper className={fixedHeightPaper}>
