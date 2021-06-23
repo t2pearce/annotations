@@ -208,7 +208,7 @@ export default function Viewer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+          <Typography flexGrow={1} component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             <b>Breast Tissue Clinical Study</b>
           </Typography>
           <Typography align="right">
