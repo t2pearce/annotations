@@ -195,7 +195,7 @@ export default function Viewer() {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight, open && classes.paperShift);
   
   return (
-    <div className={classes.root}>
+   <div className={classes.root}>
       <CssBaseline />
       <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
         <Toolbar className={classes.toolbar}>
@@ -209,8 +209,13 @@ export default function Viewer() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            <b>Study</b>
+            Dashboard
           </Typography>
+          <IconButton color="inherit">
+            <Badge badgeContent={4} color="secondary">
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer
