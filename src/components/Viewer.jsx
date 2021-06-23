@@ -208,10 +208,10 @@ export default function Viewer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography flexGrow={1} component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             <b>Breast Tissue Clinical Study</b>
           </Typography>
-          <Typography align="right">
+          <Typography>
             User: t2pearce@uwaterloo.ca<b><span id="user"></span> </b>
             <span id='consolelog'></span>
             </Typography>
