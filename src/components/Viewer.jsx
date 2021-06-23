@@ -258,9 +258,9 @@ export default function Viewer() {
       </div>
 </List>
       </Drawer>
-        <main className={classes.content}>
+        <main className={clsx(classes.content, open && classes.appBarShift)}>
         <div className={classes.appBarSpacer} />
-        <Container position="absolute" maxWidth="lg" className={clsx(classes.container, open && classes.appBarShift)}>
+        <Container position="absolute" maxWidth="lg" className={classes.container}>
            <Grid container spacing={3} alignItems="center">
             <Grid item xs={12} md={12} lg={12}>
               <Paper className={fixedHeightPaper}>
