@@ -113,7 +113,7 @@ const useStyles = makeStyles((theme) => ({
   },
     paperShift: {
     marginLeft: drawerWidth,
-    width: `calc(80% - ${drawerWidth}px)`,
+    width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
