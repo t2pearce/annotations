@@ -185,8 +185,8 @@ export default function Viewer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight, open && classes.appBarShift);
+  
   return (
     <div className={classes.root}>
       <CssBaseline />
