@@ -97,7 +97,6 @@ const useStyles = makeStyles((theme) => ({
   container: {
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
-    paddingRight: 24
   },
   paper: {
     padding: theme.spacing(2),
@@ -111,6 +110,14 @@ const useStyles = makeStyles((theme) => ({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)"
+  },
+    paperShift: {
+    marginLeft: drawerWidth,
+    width: `calc(80% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   },
 }));
 
@@ -186,7 +193,7 @@ export default function Viewer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight, open && classes.paperShift);
   
   return (
     <div className={classes.root}>
@@ -258,7 +265,7 @@ export default function Viewer() {
       </div>
 </List>
       </Drawer>
-        <main className={clsx(classes.content, open && classes.appBarShift)}>
+        <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container position="absolute" maxWidth="lg" className={classes.container}>
            <Grid container spacing={3} alignItems="center">
