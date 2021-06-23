@@ -208,11 +208,11 @@ export default function Viewer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title} align="left">
             <b>Breast Tissue Clinical Study</b>
           </Typography>
           <Typography>
-            User: t2pearce@uwaterloo.ca<b><span id="user"></span> </b>
+            User:{' '}<b><span id="user"></span> </b>
             <span id='consolelog'></span>
             </Typography>
         </Toolbar>
