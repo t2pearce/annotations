@@ -212,7 +212,7 @@ export default function Viewer() {
             Breast Tissue Clinical Study
           </Typography>
           <Typography align="right">
-            User:{' '}<b><span id="user"></span> </b>
+            User: t2pearce@uwaterloo.ca<b><span id="user"></span> </b>
             <span id='consolelog'></span>
             </Typography>
         </Toolbar>
