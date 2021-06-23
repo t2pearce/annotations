@@ -211,10 +211,10 @@ export default function Viewer() {
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             <b>Study</b>
           </Typography>
-          <Typography align="right">
+          /*<Typography align="right">
             User: t2pearce@uwaterloo.ca<b><span id="user"></span> </b>
             <span id='consolelog'></span>
-            </Typography>
+            </Typography>*/
         </Toolbar>
       </AppBar>
       <Drawer
