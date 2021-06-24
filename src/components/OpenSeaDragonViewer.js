@@ -83,10 +83,10 @@ const OpenSeaDragonViewer = ({ image }) => {
     const modeTool = () => {
     if (mode === 'view') {
       setMode('view');
-      anno.setDrawingEnabled('false');
+      anno.setDrawingEnabled('disable');
     } else {
       setTool('annotate');
-      anno.setDrawingEnabled('true');
+      anno.setDrawingEnabled('enable');
     }
   }
 
