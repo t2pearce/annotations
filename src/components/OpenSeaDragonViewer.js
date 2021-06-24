@@ -1,5 +1,6 @@
 import OpenSeaDragon from "openseadragon";
 import React, { useEffect, useState } from "react";
+import Annotations form "openseadragon-annotations";
 
 
 const OpenSeaDragonViewer = ({ image }) => {
