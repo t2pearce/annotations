@@ -8,6 +8,7 @@ import '@recogito/annotorious/dist/annotorious.min.css';
 const OpenSeaDragonViewer = ({ image }) => {
   const [viewer, setViewer] = useState( null);
   const [ anno, setAnno]= useState();
+  const [ mode, setMode] = useState();
   const [ tool, setTool] = useState('rect');
   const imgEl = useRef();
 
@@ -78,6 +79,16 @@ const OpenSeaDragonViewer = ({ image }) => {
       anno.setDrawingTool('rect');
     }
   }
+  
+    const modeTool = () => {
+    if (mode === 'view') {
+      setMode('view');
+      anno.setDrawingEnabled('false');
+    } else {
+      setTool('annotate');
+      anno.setDrawingEnabled('true');
+    }
+  }
 
   return (
   <div
@@ -91,6 +102,10 @@ const OpenSeaDragonViewer = ({ image }) => {
         <button
           onClick={toggleTool}>
             { tool === 'rect' ? 'RECTANGLE' : 'POLYGON' }
+        </button>
+        <button
+          onClick={modeTool}>
+            { mode === 'view' ? 'VIEW' : 'ANNOTATE' }
         </button>
       </div>
   </div>
