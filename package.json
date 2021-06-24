@@ -20,6 +20,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "styled-components": "^5.3.0",
+    "classnames": "^2.2.6",
+    "lodash": "^4.17.11",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
@@ -48,6 +50,8 @@
   },
     "devDependencies": {
     "openseadragon": "^2.4.2",
-    "openseadragon-annotations": "^1.0.5"
+    "openseadragon-annotations": "^1.0.5",
+      "prettier": "1.14.2",
+    "react-scripts": "1.1.5"
   }
 }
