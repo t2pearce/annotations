@@ -27,7 +27,7 @@ import styled from 'styled-components';
 import PhotoIcon from '@material-ui/icons/Photo';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import { ResponsiveContainer } from 'recharts';
-import Annotator from './components/Annotator';
+import Annotator from './Annotator';
 
 const drawerWidth = 200;
 
@@ -127,6 +127,7 @@ export default function Viewer() {
     const [manifest, setManifest] = useState();
     const [active, setActive] = useState();
     const [title, setTitle] = useState();
+  const { openSeadragon} = null;
     
     setUserInfo();
 
@@ -276,7 +277,7 @@ export default function Viewer() {
                 <p></p>
              </Typography>
             <OpenSeaDragonViewer image={manifest} />
-              {openSeaDragon == null? null : <Annotator openSeaDragon={openSeaDragon} />}
+              {openSeadragon == null? null : <Annotator openSeadragon={openSeadragon} />}
               </Paper>
               </Grid>
               </Grid>
