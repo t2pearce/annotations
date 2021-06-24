@@ -1,10 +1,14 @@
 import OpenSeaDragon from "openseadragon";
-import React, { useEffect, useState } from "react";
-//import Annotations from "openseadragon-annotations";
+import React, { useEffect, useRef, useState } from "react";
+import { Annotorious } from '@recogito/annotorious';
+
+import '@recogito/annotorious/dist/annotorious.min.css';
 
 
 const OpenSeaDragonViewer = ({ image }) => {
   const [viewer, setViewer] = useState( null);
+  const [ anno, setAnno]= useState();
+  const [ tool, setTool] = useState('rect');
 
   useEffect(() => {
     if (image && viewer) {
@@ -35,6 +39,44 @@ const OpenSeaDragonViewer = ({ image }) => {
         viewer && viewer.destroy();
     };
   }, []);
+  
+  useEffect(() => {
+    let annotorious = null;
+
+    if (imgEl.current) {
+      // Init
+      annotorious = new Annotorious({
+        image: imgEl.current
+      });
+
+      // Attach event handlers here
+      annotorious.on('createAnnotation', annotation => {
+        console.log('created', annotation);
+      });
+
+      annotorious.on('updateAnnotation', (annotation, previous) => {
+        console.log('updated', annotation, previous);
+      });
+
+      annotorious.on('deleteAnnotation', annotation => {
+        console.log('deleted', annotation);
+      });
+    }
+    
+    setAnno(annotorious);
+    
+    return () => annotorious.destroy();
+  }, []);
+  
+  const toggleTool = () => {
+    if (tool === 'rect') {
+      setTool('polygon');
+      anno.setDrawingTool('polygon');
+    } else {
+      setTool('rect');
+      anno.setDrawingTool('rect');
+    }
+  }
 
   return (
   <div
@@ -44,6 +86,12 @@ const OpenSeaDragonViewer = ({ image }) => {
     width: "75vw"
   }}
   >
+    <div>
+        <button
+          onClick={toggleTool}>
+            { tool === 'rect' ? 'RECTANGLE' : 'POLYGON' }
+        </button>
+      </div>
   </div>
  
   );
