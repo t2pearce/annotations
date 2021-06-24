@@ -44,6 +44,8 @@ const OpenSeaDragonViewer = ({ image }) => {
   }}
   >
   </div>
+  <script src="https://rawgit.com/fabiovalse/Hub/master/lib/openseadragon/openseadragon.min.js"></script>
+  <script src="openseadragon-svg-overlay.js"></script>
   );
 };
 
