@@ -1,4 +1,4 @@
-import OpenSeaDragon from "openseadragon";
+import OpenSeaDragon from "OpenSeadragon";
 import React, { useEffect, useState } from "react";
 import Annotations from "openseadragon-annotations";
 
