@@ -277,7 +277,6 @@ export default function Viewer() {
                 <p></p>
              </Typography>
             <OpenSeaDragonViewer image={manifest} />
-              {openSeadragon == null? null : <Annotator openSeadragon={openSeadragon} />}
               </Paper>
               </Grid>
               </Grid>
