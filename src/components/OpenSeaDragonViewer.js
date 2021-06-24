@@ -25,6 +25,11 @@ const OpenSeaDragonViewer = ({ image }) => {
         visibilityRatio: 1,
         zoomPerScroll: 2
       })
+      viewer.initializeAnnotations();
+
+      var overlay = viewer.svgOverlay();
+
+      overlay.node().parentNode.style.pointerEvents = 'none';
     );
   };
 
