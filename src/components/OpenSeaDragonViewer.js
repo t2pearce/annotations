@@ -1,6 +1,6 @@
 import OpenSeaDragon from "openseadragon";
 import React, { useEffect, useRef, useState } from "react";
-import { Annotorious } from '@recogito/annotorious';
+import { Annotorious } from '@recogito/annotorious-openseadragon';
 
 import '@recogito/annotorious/dist/annotorious.min.css';
 
@@ -108,6 +108,9 @@ const OpenSeaDragonViewer = ({ image }) => {
             { mode === 'view' ? 'VIEW' : 'ANNOTATE' }
         </button>
       </div>
+  <img
+    ref={imgEl}
+    src=image/>
   </div>
  
   );
