@@ -314,6 +314,8 @@ export default function Viewer() {
           rows={4}
           defaultValue="Notes"
         />
+            </div>
+      </form>
     </div>
 );
 }
