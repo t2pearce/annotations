@@ -118,6 +118,12 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
+  textbox: {
+    '.MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+  },
 }));
 
 export default function Viewer() {
@@ -126,6 +132,11 @@ export default function Viewer() {
     const [manifest, setManifest] = useState();
     const [active, setActive] = useState();
     const [title, setTitle] = useState();
+    const [value, setValue] = useState('Controlled');
+  
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
     
     setUserInfo();
 
@@ -280,6 +291,29 @@ export default function Viewer() {
               </Grid>
                </Container>
       </main>
+  <form className={classes.textbox} noValidate autoComplete="off">
+    <div>
+    <TextField
+      id="outlined-multiline-static"
+          label="PARS002"
+          multiline
+          rows={4}
+          defaultValue="Notes"
+        />
+            <TextField
+      id="outlined-multiline-static"
+          label="PARS003"
+          multiline
+          rows={4}
+          defaultValue="Notes"
+        />
+            <TextField
+      id="outlined-multiline-static"
+          label="PARS004"
+          multiline
+          rows={4}
+          defaultValue="Notes"
+        />
     </div>
 );
 }
