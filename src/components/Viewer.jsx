@@ -288,11 +288,9 @@ export default function Viewer() {
             <OpenSeaDragonViewer image={manifest} />
               </Paper>
               </Grid>
-              </Grid>
-               </Container>
-      </main>
-  <form className={classes.textbox} noValidate autoComplete="off">
+            <form className={classes.textbox} noValidate autoComplete="off">
     <div>
+              <Grid item xs={12} md={12} lg={12}>
     <TextField
       id="outlined-multiline-static"
           label="PARS002"
@@ -300,6 +298,8 @@ export default function Viewer() {
           rows={4}
           defaultValue="Notes"
         />
+            </Grid>
+<Grid item xs={12} md={12} lg={12}>
             <TextField
       id="outlined-multiline-static"
           label="PARS003"
@@ -307,6 +307,8 @@ export default function Viewer() {
           rows={4}
           defaultValue="Notes"
         />
+            </Grid>
+<Grid item xs={12} md={12} lg={12}>
             <TextField
       id="outlined-multiline-static"
           label="PARS004"
@@ -314,8 +316,13 @@ export default function Viewer() {
           rows={4}
           defaultValue="Notes"
         />
+            </Grid>
             </div>
       </form>
+              </Grid>
+               </Container>
+      </main>
+  
     </div>
 );
 }
