@@ -3,7 +3,7 @@ import { Annotorious } from '@recogito/annotorious';
 
 import '@recogito/annotorious/dist/annotorious.min.css';
 
-function App() {
+function Annotation() {
 
   // Ref to the image DOM element
   const imgEl = useRef();
@@ -75,4 +75,4 @@ function App() {
   );
 }
 
-export default App;
+export default Annotation;
