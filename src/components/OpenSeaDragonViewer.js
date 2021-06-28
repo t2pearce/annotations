@@ -11,6 +11,9 @@ const OpenSeaDragonViewer = ({ image }) => {
     if (image && viewer) {
       viewer.open(image.source);
     }
+    if (image && anno){
+        InitAnnotations()
+    }
   }, [image]);
 
 const InitOpenseadragon = () => {
@@ -33,6 +36,47 @@ const InitOpenseadragon = () => {
     setAnno(annotate)
   };
 
+  const [annotations, setAnnotations] = useState([])
+  
+  const InitAnnotations = async() => {
+
+    const storedAnnoatations = getLocalAnnotations
+    if (storedAnnoatations) {
+        const annotations = parseJSON(storedAnnoatations)
+        setAnnotations(annotations)
+        anno.setAnnotations(annotations);
+
+    }
+
+    anno.on('createAnnotation', (annotation) => {
+        const newAnnotations = [...annotations, annotation]
+        setAnnotations(newAnnotations)
+        setLocalAnnotation(newAnnotations)
+      });
+
+    anno.on('updateAnnotation', (annotation, previous) => {
+        const newAnnotations = annotations.map(val => {
+            if (val.id === annotation.id) return annotation
+            return val
+        })
+        setAnnotations(newAnnotations)
+        setLocalAnnotation(newAnnotations)
+    });
+
+    anno.on('deleteAnnotation', (annotation) => {
+        const newAnnotations  = annotations.filter(val => val.id !== annotation.id)
+        setAnnotations(newAnnotations)
+        setLocalAnnotation(newAnnotations)
+    });
+}
+
+const getLocalAnnotations =  () => {
+    return localStorage.getItem(image.source.Image.Url) 
+}
+
+const setLocalAnnotation = (newAnnotations) => {
+    localStorage.setItem(image.source.Image.Url, JSON.stringify(newAnnotations)) 
+}
 
   useEffect(() => {
     InitOpenseadragon();
