@@ -75,4 +75,4 @@ function Annotation() {
   );
 }
 
-export default Annotation;
+export {Annotation};
