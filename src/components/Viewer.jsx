@@ -270,7 +270,7 @@ export default function Viewer() {
            <Grid container spacing={3} alignItems="center">
             <Grid item xs={12} md={12} lg={12}>
               <Paper className={fixedHeightPaper}>
-                <Typography align "left">
+                <Typography align="left">
                   Hold the SHIFT key while clicking and dragging the mouse to create a new annotation.
                   <p></p>
                 </Typography>
