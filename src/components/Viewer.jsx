@@ -275,7 +275,7 @@ export default function Viewer() {
                 <p></p>
              </Typography>
             //<OpenSeaDragonViewer image={manifest} />
-<Annotation>
+<Annotation />
               </Paper>
               </Grid>
               </Grid>
