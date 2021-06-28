@@ -27,7 +27,7 @@ import styled from 'styled-components';
 import PhotoIcon from '@material-ui/icons/Photo';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import { ResponsiveContainer } from 'recharts';
-
+import {Annotation} from './Annotation';
 const drawerWidth = 200;
 
 const useStyles = makeStyles((theme) => ({
@@ -274,7 +274,8 @@ export default function Viewer() {
                Image: <b>{title}</b>
                 <p></p>
              </Typography>
-            <OpenSeaDragonViewer image={manifest} />
+            //<OpenSeaDragonViewer image={manifest} />
+<Annotation>
               </Paper>
               </Grid>
               </Grid>
