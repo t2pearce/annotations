@@ -15,6 +15,8 @@ const OpenSeaDragonViewer = ({ image }) => {
         InitAnnotations()
     } */
   }, [image]);
+  
+  setUserInfo();
 
 const InitOpenseadragon = () => {
     viewer && viewer.destroy();
