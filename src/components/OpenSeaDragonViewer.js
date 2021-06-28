@@ -38,7 +38,7 @@ const InitOpenseadragon = () => {
 
   const [annotations, setAnnotations] = useState([])
   
-  const InitAnnotations = async() => {
+  /* const InitAnnotations = async() => {
 
     const storedAnnoatations = getLocalAnnotations
     if (storedAnnoatations) {
@@ -77,7 +77,27 @@ const getLocalAnnotations =  () => {
 const setLocalAnnotation = (newAnnotations) => {
     localStorage.setItem(image.source.Image.Url, JSON.stringify(newAnnotations)) 
 }
+  */
 
+  const getUserInfo = async() => {
+    const response = await fetch('./auth/me');
+    const payload = await response.json();
+    const {clientPrincipal } = payload;
+    return clientPrinciapl;
+  }
+  
+  const setUserInfo = async () =>{
+    let clientPrincipal = await getUserInfo();
+    
+    anno.setAuthInto({
+      id: clientPrincipal.userId,
+          displayName: clientPrincipal.userDetails
+        });
+
+        document.getElementById("user") = clientPrincipal.userDetails + ' at ' + clientPrincipal.identityProvider;
+        console.log(clientPrincipal);
+    }
+  
   useEffect(() => {
     InitOpenseadragon();
     return () => {
