@@ -108,7 +108,7 @@ const useStyles = makeStyles((theme) => ({
   fixedHeight: {
     paddingTop: 4,
     position: "absolute",
-    top: "60%",
+    top: "55%",
     left: "50%",
     transform: "translate(-50%, -50%)"
   },
