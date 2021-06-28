@@ -99,14 +99,14 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(4),
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(4),
     display: 'flex',
     overflow: 'auto',
     flexDirection: 'column',
     textAlign: 'center'
   },
   fixedHeight: {
-    position: "relative",
+    position: "absolute",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)"
