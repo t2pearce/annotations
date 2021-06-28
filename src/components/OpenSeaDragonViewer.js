@@ -79,14 +79,14 @@ const setLocalAnnotation = (newAnnotations) => {
 }
   */
 
-  const getUserInfo = async() => {
+  async function getUserInfo() {
     const response = await fetch('./auth/me');
     const payload = await response.json();
     const {clientPrincipal } = payload;
     return clientPrinciapl;
   }
   
-  const setUserInfo = async () =>{
+  async function setUserInfo() {
     let clientPrincipal = await getUserInfo();
     
     anno.setAuthInto({
@@ -94,7 +94,7 @@ const setLocalAnnotation = (newAnnotations) => {
           displayName: clientPrincipal.userDetails
         });
 
-        document.getElementById("user") = clientPrincipal.userDetails + ' at ' + clientPrincipal.identityProvider;
+        document.getElementById("user").innerHTML = clientPrincipal.userDetails;
         console.log(clientPrincipal);
     }
   
