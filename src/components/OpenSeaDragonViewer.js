@@ -91,7 +91,7 @@ const setLocalAnnotation = (newAnnotations) => {
   async function setUserInfo() {
     let clientPrincipal = await getUserInfo();
     
-    anno.setAuthInto({
+    anno.setAuthInfo({
       id: clientPrincipal.userId,
           displayName: clientPrincipal.userDetails
         });
