@@ -106,6 +106,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center'
   },
   fixedHeight: {
+    paddingTop: {4},
     position: "absolute",
     top: "50%",
     left: "50%",
