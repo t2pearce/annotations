@@ -272,6 +272,8 @@ export default function Viewer() {
               <Paper className={fixedHeightPaper}>
                 <Typography align "left">
                   Hold the SHIFT key while clicking and dragging the mouse to create a new annotation.
+                  <p></p>
+                </Typography>
             <Typography align="left">
                Image: <b>{title}</b>
                 <p></p>
