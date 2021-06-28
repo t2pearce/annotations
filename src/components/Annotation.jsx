@@ -69,7 +69,7 @@ function Annotation() {
 
       <img 
         ref={imgEl} 
-        src="640px-Hallstatt.jpg" 
+        src="1_1_H5BXrXq1bzrAV1F9YjKw.png" 
         alt="Hallstatt Town Square" />
     </div>
   );
