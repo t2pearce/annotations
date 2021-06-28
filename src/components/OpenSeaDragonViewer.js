@@ -11,9 +11,9 @@ const OpenSeaDragonViewer = ({ image }) => {
     if (image && viewer) {
       viewer.open(image.source);
     }
-    if (image && anno){
+    /* if (image && anno){
         InitAnnotations()
-    }
+    } */
   }, [image]);
 
 const InitOpenseadragon = () => {
@@ -82,8 +82,8 @@ const setLocalAnnotation = (newAnnotations) => {
   async function getUserInfo() {
     const response = await fetch('./auth/me');
     const payload = await response.json();
-    const {clientPrincipal } = payload;
-    return clientPrinciapl;
+    const { clientPrincipal } = payload;
+    return clientPrincipal;
   }
   
   async function setUserInfo() {
