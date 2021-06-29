@@ -69,7 +69,7 @@ const InitOpenseadragon = () => {
 
     }
 
-    anno.on('createAnnotation', (annotation) => {
+    anno.on('createAnnotation', function(annotation) => {
         const newAnnotations = [...annotations, annotation]
         setAnnotations(newAnnotations)
         /*setLocalAnnotation(newAnnotations)*/
