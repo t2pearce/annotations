@@ -30,7 +30,7 @@ const InitOpenseadragon = () => {
         visibilityRatio: 1,
         zoomPerScroll: 2
       })
-    setViewer(initViewer );
+    setViewer(initViewer);
     const config = {};
     const annotate = Annotorious(initViewer, config);
     setAnno(annotate)
