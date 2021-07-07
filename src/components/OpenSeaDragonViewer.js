@@ -1,19 +1,20 @@
-import OpenSeaDragon, {parseJSON} from "openseadragon";
-import React, { useEffect, useState } from "react";
+import OpenSeaDragon, { parseJSON } from "openseadragon";
 import * as Annotorious from '@recogito/annotorious-openseadragon';
 import '@recogito/annotorious-openseadragon/dist/annotorious.min.css';
+
+import React, { useEffect, useState } from "react";
 
 const OpenSeaDragonViewer = ({ image }) => {
   const [viewer, setViewer] = useState( null);
   const [anno, setAnno] = useState(null)
-
+  
 useEffect(() => {
     if (image && viewer) {
       viewer.open(image.source);
     }
     if (image && anno){
         InitAnnotations()
-    } 
+    }
   }, [image]);
 
 const InitOpenseadragon = () => {
@@ -30,19 +31,20 @@ const InitOpenseadragon = () => {
         visibilityRatio: 1,
         zoomPerScroll: 2
       })
-    setViewer(initViewer);
+
+    setViewer(initViewer );
     const config = {};
     const annotate = Annotorious(initViewer, config);
     setAnno(annotate)
   };
 
   const [annotations, setAnnotations] = useState([])
-  
-  const InitAnnotations = async() => {
-    
-    const storedAnnotations = getLocalAnnotations
-    if (storedAnnotations) {
-        const annotations = parseJSON(storedAnnotations)
+
+const InitAnnotations = async() => {
+
+    const storedAnnoatations = getLocalAnnotations
+    if (storedAnnoatations) {
+        const annotations = parseJSON(storedAnnoatations)
         setAnnotations(annotations)
         anno.setAnnotations(annotations);
 
@@ -71,24 +73,22 @@ const InitOpenseadragon = () => {
 }
 
 const getLocalAnnotations =  () => {
-    return localStorage.getItem(image.source.Image.Url)
+    return localStorage.getItem(image.source.Image.Url) 
 }
 
 const setLocalAnnotation = (newAnnotations) => {
-    localStorage.setItem(image.source.Image.Url, JSON.stringify(newAnnotations))
+    localStorage.setItem(image.source.Image.Url, JSON.stringify(newAnnotations)) 
 }
- 
-  
-  useEffect(() => {
+
+useEffect(() => {
     InitOpenseadragon();
     return () => {
         viewer && viewer.destroy();
     };
   }, []);
-
-  return (
-  <div
-  id="openSeaDragon"
+return (
+  <div 
+  id="openSeaDragon" 
   style={{
     height: "65vh",
     width: "75vw"
@@ -97,5 +97,4 @@ const setLocalAnnotation = (newAnnotations) => {
   </div>
   );
 };
-
 export { OpenSeaDragonViewer };
