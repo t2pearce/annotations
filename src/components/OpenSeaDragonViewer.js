@@ -44,7 +44,7 @@ const InitAnnotations = async() => {
 
     const storedAnnoatations = getLocalAnnotations
     if (storedAnnoatations) {
-        const annotations = storedAnnoatations
+        const annotations = parseJSON(storedAnnoatations)
         setAnnotations(annotations)
         anno.setAnnotations(annotations);
 
