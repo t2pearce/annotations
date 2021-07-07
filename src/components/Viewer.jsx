@@ -99,15 +99,16 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(4),
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(4),
     display: 'flex',
     overflow: 'auto',
     flexDirection: 'column',
     textAlign: 'center'
   },
   fixedHeight: {
+    paddingTop: 4,
     position: "absolute",
-    top: "50%",
+    top: "55%",
     left: "50%",
     transform: "translate(-50%, -50%)"
   },
@@ -134,7 +135,10 @@ export default function Viewer() {
   }, []);
 
   const getImages = async () => {
-    const response = await fetch("https://miradortest.z13.web.core.windows.net/pictures3.json") //"api/deepzoom/pictures3.json"
+    const response = await fetch("/api/deepzoom/pictures3.json", {
+                              method: 'GET',
+                              credentials: 'include',
+                              headers: {'Access-Control-Allow-Credentials': 'true'}}); 
     let image = await response.json();
     console.log('image', image)
     setImages(image.groups)
@@ -266,10 +270,14 @@ export default function Viewer() {
       </Drawer>
         <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container position="absolute" maxWidth="lg" className={classes.container}>
+        <Container maxWidth="lg" className={classes.container}>
            <Grid container spacing={3} alignItems="center">
             <Grid item xs={12} md={12} lg={12}>
               <Paper className={fixedHeightPaper}>
+                <Typography align="left">
+                  Hold the <b>[SHIFT]</b> key while clicking and dragging the mouse to create a new annotation.
+                  <p></p>
+                </Typography>
             <Typography align="left">
                Image: <b>{title}</b>
                 <p></p>
