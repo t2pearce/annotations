@@ -7,7 +7,7 @@ const OpenSeaDragonViewer = ({ image }) => {
   const [viewer, setViewer] = useState( null);
   const[anno, setAnno] = useState(null);
 
-  useEffect(() => {
+useEffect(() => {
     if (image && viewer) {
       viewer.open(image.source);
     }
@@ -40,27 +40,6 @@ const InitOpenseadragon = () => {
   
   const InitAnnotations = async() => {
     
-    setUserInfo();
-    
-    async function getUserInfo() {
-    const response = await fetch('./auth/me');
-    const payload = await response.json();
-    const { clientPrincipal } = payload;
-    return clientPrincipal;
-  }
-  
-  async function setUserInfo() {
-    let clientPrincipal = await getUserInfo();
-    
-    anno.setAuthInfo({
-      id: clientPrincipal.userId,
-          displayName: clientPrincipal.userDetails
-        });
-
-        document.getElementById("user").innerHTML = clientPrincipal.userDetails;
-        console.log(clientPrincipal);
-    }
-
     const storedAnnoatations = getLocalAnnotations
     if (storedAnnoatations) {
         const annotations = parseJSON(storedAnnoatations)
