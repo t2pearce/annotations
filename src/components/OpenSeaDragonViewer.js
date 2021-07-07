@@ -1,4 +1,4 @@
-import OpenSeaDragon from "openseadragon";
+import OpenSeaDragon, {parseJSON} from "openseadragon";
 import React, { useEffect, useState } from "react";
 import * as Annotorious from '@recogito/annotorious-openseadragon';
 import '@recogito/annotorious-openseadragon/dist/annotorious.min.css';
