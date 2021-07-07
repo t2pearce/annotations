@@ -40,9 +40,9 @@ const InitOpenseadragon = () => {
   
   const InitAnnotations = async() => {
     
-    const storedAnnoatations = getLocalAnnotations
-    if (storedAnnoatations) {
-        const annotations = parseJSON(storedAnnoatations)
+    const storedAnnotations = getLocalAnnotations
+    if (storedAnnotations) {
+        const annotations = parseJSON(storedAnnotations)
         setAnnotations(annotations)
         anno.setAnnotations(annotations);
 
