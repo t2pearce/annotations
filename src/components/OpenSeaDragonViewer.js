@@ -71,11 +71,11 @@ const InitOpenseadragon = () => {
 }
 
 const getLocalAnnotations =  () => {
-    return localStorage.getItem(image.name)
+    return localStorage.getItem(image.source.Image.Url)
 }
 
 const setLocalAnnotation = (newAnnotations) => {
-    localStorage.setItem(image.name, JSON.stringify(newAnnotations))
+    localStorage.setItem(image.source.Image.Url, JSON.stringify(newAnnotations))
 }
  
   
