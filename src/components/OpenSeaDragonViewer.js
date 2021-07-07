@@ -5,7 +5,7 @@ import '@recogito/annotorious-openseadragon/dist/annotorious.min.css';
 
 const OpenSeaDragonViewer = ({ image }) => {
   const [viewer, setViewer] = useState( null);
-  const[anno, setAnno] = useState(null);
+  const [anno, setAnno] = useState(null)
 
 useEffect(() => {
     if (image && viewer) {
