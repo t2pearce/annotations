@@ -73,7 +73,12 @@ const InitAnnotations = async() => {
 }
 
 const getLocalAnnotations =  () => {
-    return localStorage.getItem(image.source.Image.Url) 
+    const response = await fetch("/api/annotation", {
+                              method: 'GET',
+                              credentials: 'include',
+                              headers: {'Access-Control-Allow-Credentials': 'true'}}); 
+    let item = await response.json();
+    return item.imageId
 }
 
 const setLocalAnnotation = (newAnnotations) => {
