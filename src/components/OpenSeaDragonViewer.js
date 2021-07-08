@@ -72,7 +72,7 @@ const InitAnnotations = async() => {
     });
 }
 
-const getLocalAnnotations =  () => {
+const getLocalAnnotations =  async () => {
     const response = await fetch("/api/annotation", {
                               method: 'GET',
                               credentials: 'include',
