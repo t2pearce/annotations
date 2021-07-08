@@ -14,8 +14,8 @@ namespace Microsoft.Function
     {
         public class AnnotationItem
         {
-            [JsonProperty("imageId")]
-            public string imageId { get; set; }
+            [JsonProperty("userId")]
+            public string userId { get; set; }
             [JsonProperty("annotation")]
             public object[] AnnotationJson { get; set; }
         }
@@ -55,8 +55,8 @@ namespace Microsoft.Function
                     try
                     {
                         var response = await client.ReadDocumentAsync(
-                            UriFactory.CreateDocumentUri("medimages", "Annotations", imageId),
-                            new RequestOptions { PartitionKey = new Microsoft.Azure.Documents.PartitionKey(imageId) });
+                            UriFactory.CreateDocumentUri("medimages", "Annotations", userId),
+                            new RequestOptions { PartitionKey = new Microsoft.Azure.Documents.PartitionKey(userId) });
 
                         annotationItem = (AnnotationItem)(dynamic)response.Resource;
 
