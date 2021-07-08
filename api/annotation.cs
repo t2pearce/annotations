@@ -6,7 +6,9 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Microsoft.Azure.Documents.Client;
 using Newtonsoft.Json;
+using System.Security.Claims;
 
 namespace Microsoft.Function
 {
@@ -31,10 +33,19 @@ namespace Microsoft.Function
                     ILogger log)
                 {
                     log.LogInformation("C# HTTP trigger function processed a request.");
-
-                    //
                     
-                    return new OkObjectResult(responseMessage);
+                    AnnotationItem annotationItem = new AnnotationItem(req.Query["imageId"], JSON.parse(req.Query["annotation"]));
+                    try
+                    {
+                        var response = await client.CreateDocumentAsync(
+                            UriFactory.CreateDocumentUri("medimages", "Annotations", userId),
+                            annotationItem);
+
+                    } catch (Exception e) {
+                        log.LogError($"Cant find Annotation entry for {userId} in cosmosdb");
+                    }
+                    
+                    return new OkObjectResult();
                 }
 
                 [FunctionName("getAnnotation")]
@@ -62,6 +73,11 @@ namespace Microsoft.Function
 
                     } catch (Exception e) {
                         log.LogError($"Cant find Annotation entry for {userId} in cosmosdb");
+                    }
+                    
+                    if (annotationItem == null)
+                    {
+                        //do something   
                     }
 
                     return new OkObjectResult(annotationItem.AnnotationJson[0]);
