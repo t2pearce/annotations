@@ -64,7 +64,7 @@ namespace Microsoft.Function
                         log.LogError($"Cant find Annotation entry for {userId} in cosmosdb");
                     }
 
-                    return new OkObjectResult(annotationItem.AnnotationJson[0);
+                    return new OkObjectResult(annotationItem.AnnotationJson[0]);
                 }
     }
 }
