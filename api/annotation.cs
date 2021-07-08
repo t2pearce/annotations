@@ -12,44 +12,59 @@ namespace Microsoft.Function
 {
     public static class Annotation
     {
-        [FunctionName("saveAnnotation")]
-        public static async Task<IActionResult> RunSave(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "annotation/{userId}")] HttpRequest req,
-            ILogger log)
+        public class AnnotationItem
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
-
-            string name = req.Query["name"];
-
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
-            name = name ?? data?.name;
-
-            string responseMessage = string.IsNullOrEmpty(name)
-                ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
-                : $"Hello, {name}. This HTTP triggered function executed successfully.";
-
-            return new OkObjectResult(responseMessage);
+            [JsonProperty("imageId")]
+            public string imageId { get; set; }
+            [JsonProperty("annotation")]
+            public object[] AnnotationJson { get; set; }
         }
+        
+                [FunctionName("saveAnnotation")]
+                public static async Task<IActionResult> RunSave(
+                    [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "annotation/{userId}")] HttpRequest req,
+                    [CosmosDB(
+                        databaseName: "medimages",
+                        collectionName: "Annotations",
+                        ConnectionStringSetting = "CosmosDBConnection")
+                    ]  DocumentClient client,
+                    ILogger log)
+                {
+                    log.LogInformation("C# HTTP trigger function processed a request.");
 
-        [FunctionName("getAnnotation")]
-        public static async Task<IActionResult> RunGet(
-           [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "annotation/{userId}")] HttpRequest req,
-           ILogger log)
-        {
-            log.LogInformation("C# HTTP trigger function processed a request.");
+                    //
+                    
+                    return new OkObjectResult(responseMessage);
+                }
 
-            string name = req.Query["name"];
+                [FunctionName("getAnnotation")]
+                public static async Task<IActionResult> RunGet(
+                   [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "annotation/{userId}")] HttpRequest req,
+                    [CosmosDB(
+                        databaseName: "medimages",
+                        collectionName: "Annotations",
+                        ConnectionStringSetting = "CosmosDBConnection")
+                    ]  DocumentClient client,
+                   ILogger log)
+                {
+                    log.LogInformation("C# HTTP trigger function processed a request.");
 
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
-            name = name ?? data?.name;
+                    ClaimsPrincipal principal = ClientPrincipal.Parse(req);
+                    string userId = principal.Identity.Name;
+                    AnnotationItem annotationItem = null;
+                    try
+                    {
+                        var response = await client.ReadDocumentAsync(
+                            UriFactory.CreateDocumentUri("medimages", "Annotations", imageId),
+                            new RequestOptions { PartitionKey = new Microsoft.Azure.Documents.PartitionKey(imageId) });
 
-            string responseMessage = string.IsNullOrEmpty(name)
-                ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
-                : $"Hello, {name}. This HTTP triggered function executed successfully.";
+                        annotationItem = (AnnotationItem)(dynamic)response.Resource;
 
-            return new OkObjectResult(responseMessage);
-        }
+                    } catch (Exception e) {
+                        log.LogError($"Cant find Annotation entry for {userId} in cosmosdb");
+                    }
+
+                    return new OkObjectResult(annotationItem.AnnotationJson[0);
+                }
     }
 }
