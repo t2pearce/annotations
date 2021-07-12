@@ -1,7 +1,6 @@
 import OpenSeaDragon, { parseJSON } from "openseadragon";
 import * as Annotorious from '@recogito/annotorious-openseadragon';
 import '@recogito/annotorious-openseadragon/dist/annotorious.min.css';
-
 import React, { useEffect, useState } from "react";
 
 const OpenSeaDragonViewer = ({ image }) => {
@@ -42,18 +41,12 @@ const InitOpenseadragon = () => {
 
 const InitAnnotations = async() => {
 
-    const storedAnnoatations = getLocalAnnotations
-    if (storedAnnoatations) {
-        const annotations = parseJSON(storedAnnoatations)
-        setAnnotations(annotations)
-        anno.setAnnotations(annotations);
-
-    }
+    getRemoteAnnotations();
 
     anno.on('createAnnotation', (annotation) => {
         const newAnnotations = [...annotations, annotation]
         setAnnotations(newAnnotations)
-        setLocalAnnotation(newAnnotations)
+        saveRemoteAnnotation(newAnnotations)
       });
 
     anno.on('updateAnnotation', (annotation, previous) => {
@@ -61,29 +54,96 @@ const InitAnnotations = async() => {
             if (val.id === annotation.id) return annotation
             return val
         })
-        setAnnotations(newAnnotations)
-        setLocalAnnotation(newAnnotations)
+        setAnnotations([...newAnnotations])
+        saveRemoteAnnotation(newAnnotations)
     });
 
     anno.on('deleteAnnotation', (annotation) => {
         const newAnnotations  = annotations.filter(val => val.id !== annotation.id)
-        setAnnotations(newAnnotations)
-        setLocalAnnotation(newAnnotations)
+        setAnnotations([...newAnnotations])
+        saveRemoteAnnotation(newAnnotations)
     });
+  
+  async function getUserInfo() {
+      const response = await fetch('./auth/me');
+      const payload = await response.json();
+      const { clientPrincipal } = payload;
+      return clientPrincipal;
+    }
+
+    async function setUserInfo() {
+      let clientPrincipal = await getUserInfo();
+      
+      anno.setAuthInfo({
+            id: clientPrincipal.userId,
+            displayName: clientPrincipal.userDetails
+          });
+
+          console.log(clientPrincipal);
+    }
 }
 
-const getLocalAnnotations =  async () => {
-    const response = await fetch("/api/annotation", {
-                              method: 'GET',
-                              credentials: 'include',
-                              headers: {'Access-Control-Allow-Credentials': 'true'}}); 
-    let item = await response.json();
-    return item.imageId
-}
+const getLocalAnnotations =  () => {
+      console.log(localStorage.getItem(image.source.Image.Url) )
+      return localStorage.getItem(image.source.Image.Url) 
+  }
+  const setLocalAnnotation = (newAnnotations) => {
+      localStorage.setItem(image.source.Image.Url, JSON.stringify(newAnnotations)) 
+  }
 
-const setLocalAnnotation = (newAnnotations) => {
-    localStorage.setItem(image.source.Image.Url, JSON.stringify(newAnnotations)) 
-}
+  const saveRemoteAnnotation =  (newAnnotations) => {
+    if (!newAnnotations)
+      return;
+
+    var json = JSON.stringify(newAnnotations); 
+    var encodedId = btoa(image.source.Image.Url);
+    fetch("/api/annotation/" + encodedId , { 
+          method: 'POST',
+          credentials: 'include',
+          headers: {'Access-Control-Allow-Credentials': 'true',
+                    'Content-Type': 'application/json'},
+          body: json} )
+      .then((response) => response.json())
+      .then(
+            (result) => {
+              setAnnotations([...newAnnotations]);
+            },
+            // Note: it's important to handle errors here
+            // instead of a catch() block so that we don't swallow
+            // exceptions from actual bugs in components.
+            (error) => {
+              console.log(error);
+            }
+          )
+    }
+
+  
+  const getRemoteAnnotations =  () => {
+    var encodedId = btoa(image.source.Image.Url);
+        fetch("/api/annotation/" + encodedId , { 
+                method: 'GET',
+                credentials: 'include',
+                headers: {'Access-Control-Allow-Credentials': 'true'}
+              })
+        .then((response) => response.json())
+        .then(
+              (result) => {
+                  let annotations = result;     
+                  if (annotations) {
+                    console.log(annotations)
+                    //const annotations = parseJSON(storedAnnotations)
+                    setAnnotations([...annotations]);
+                    anno.setAnnotations(annotations);
+                  }
+              },
+              // Note: it's important to handle errors here
+              // instead of a catch() block so that we don't swallow
+              // exceptions from actual bugs in components.
+              (error) => {
+                console.log(error);
+              }
+            )
+  } 
 
 useEffect(() => {
     InitOpenseadragon();
