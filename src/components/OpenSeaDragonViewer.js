@@ -1,22 +1,23 @@
-import OpenSeaDragon, { parseJSON } from "openseadragon";
+import OpenSeaDragon,  { parseJSON } from "openseadragon";
+import React, { useEffect, useState } from "react";
 import * as Annotorious from '@recogito/annotorious-openseadragon';
 import '@recogito/annotorious-openseadragon/dist/annotorious.min.css';
-import React, { useEffect, useState } from "react";
+
 
 const OpenSeaDragonViewer = ({ image }) => {
   const [viewer, setViewer] = useState( null);
-  const [anno, setAnno] = useState(null)
-  
-useEffect(() => {
+  const[anno, setAnno] = useState(null);
+
+  useEffect(() => {
     if (image && viewer) {
       viewer.open(image.source);
     }
     if (image && anno){
-        InitAnnotations()
-    }
+      InitAnnotations()
+  } 
   }, [image]);
 
-const InitOpenseadragon = () => {
+  const InitOpenseadragon = () => {
     viewer && viewer.destroy();
     
     const initViewer = OpenSeaDragon({
@@ -29,7 +30,7 @@ const InitOpenseadragon = () => {
         minZoomLevel: 1,
         visibilityRatio: 1,
         zoomPerScroll: 2
-      })
+      });
 
     setViewer(initViewer );
     const config = {};
@@ -37,34 +38,38 @@ const InitOpenseadragon = () => {
     setAnno(annotate)
   };
 
-  const [annotations, setAnnotations] = useState([])
+  
 
-const InitAnnotations = async() => {
+
+  const [annotations, setAnnotations] = useState([])
+  
+  const InitAnnotations = async () => {
+    //setUserInfo();
 
     getRemoteAnnotations();
-
+    
     anno.on('createAnnotation', (annotation) => {
-        const newAnnotations = [...annotations, annotation]
-        setAnnotations(newAnnotations)
-        saveRemoteAnnotation(newAnnotations)
-      });
+      const newAnnotations = [...annotations, annotation]
+      setAnnotations([...newAnnotations])
+      saveRemoteAnnotation(newAnnotations)
+    });
 
     anno.on('updateAnnotation', (annotation, previous) => {
-        const newAnnotations = annotations.map(val => {
-            if (val.id === annotation.id) return annotation
-            return val
-        })
-        setAnnotations([...newAnnotations])
-        saveRemoteAnnotation(newAnnotations)
-    });
-
-    anno.on('deleteAnnotation', (annotation) => {
-        const newAnnotations  = annotations.filter(val => val.id !== annotation.id)
-        setAnnotations([...newAnnotations])
-        saveRemoteAnnotation(newAnnotations)
+      const newAnnotations = annotations.map(val => {
+          if (val.id === annotation.id) return annotation
+          return val
+      })
+      setAnnotations([...newAnnotations])
+      saveRemoteAnnotation(newAnnotations)
     });
   
-  async function getUserInfo() {
+    anno.on('deleteAnnotation', (annotation) => {
+      const newAnnotations  = annotations.filter(val => val.id !== annotation.id)
+      setAnnotations([...newAnnotations])
+      saveRemoteAnnotation(newAnnotations)
+    });
+
+    async function getUserInfo() {
       const response = await fetch('./auth/me');
       const payload = await response.json();
       const { clientPrincipal } = payload;
@@ -81,9 +86,9 @@ const InitAnnotations = async() => {
 
           console.log(clientPrincipal);
     }
-}
+  }
 
-const getLocalAnnotations =  () => {
+  const getLocalAnnotations =  () => {
       console.log(localStorage.getItem(image.source.Image.Url) )
       return localStorage.getItem(image.source.Image.Url) 
   }
@@ -145,21 +150,23 @@ const getLocalAnnotations =  () => {
             )
   } 
 
-useEffect(() => {
+  useEffect(() => {
     InitOpenseadragon();
     return () => {
         viewer && viewer.destroy();
     };
   }, []);
-return (
-  <div 
-  id="openSeaDragon" 
-  style={{
-    height: "65vh",
-    width: "75vw"
-  }}
+
+  return (
+  <div
+    id="openSeaDragon"
+    style={{
+      height: "65vh",
+      width: "75vw"
+    }}
   >
   </div>
   );
 };
+
 export { OpenSeaDragonViewer };
