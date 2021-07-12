@@ -31,7 +31,7 @@ namespace Microsoft.Function
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "annotation/{imageId}")] HttpRequest req,
             [CosmosDB(
                 databaseName: "medimages",
-                collectionName: "Annotations",
+                collectionName: "Annotation",
                 ConnectionStringSetting = "CosmosDBConnection")
             ] out dynamic document,
             string imageId,
@@ -76,7 +76,7 @@ namespace Microsoft.Function
             try
             {
                 var response = await client.ReadDocumentAsync<AnnotationItem>(
-                    UriFactory.CreateDocumentUri("medimages", "Annotations", imageId),
+                    UriFactory.CreateDocumentUri("medimages", "Annotation", imageId),
                     new RequestOptions { PartitionKey = new Microsoft.Azure.Documents.PartitionKey(userId) });
 
                 annotations = (AnnotationItem)(dynamic)response;
