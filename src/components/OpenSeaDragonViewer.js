@@ -2,6 +2,7 @@ import OpenSeaDragon,  { parseJSON } from "openseadragon";
 import React, { useEffect, useState } from "react";
 import * as Annotorious from '@recogito/annotorious-openseadragon';
 import '@recogito/annotorious-openseadragon/dist/annotorious.min.css';
+import '@recogito/annotorious-shape-labels/dist/annotorioius-shape-labels.min.js';
 
 
 const OpenSeaDragonViewer = ({ image }) => {
@@ -33,7 +34,7 @@ const OpenSeaDragonViewer = ({ image }) => {
       });
 
     setViewer(initViewer );
-    const config = {};
+    const config = {formatter: Annotorious.ShapeLabelsFormatter()};
     const annotate = Annotorious(initViewer, config);
     setAnno(annotate)
   };
