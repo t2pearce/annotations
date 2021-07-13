@@ -2,7 +2,7 @@ import OpenSeaDragon,  { parseJSON } from "openseadragon";
 import React, { useEffect, useState } from "react";
 import * as Annotorious from '@recogito/annotorious-openseadragon';
 import '@recogito/annotorious-openseadragon/dist/annotorious.min.css';
-import '@recogito/annotorious-shape-labels/dist/annotorioius-shape-labels.min.js';
+import '@recogito/annotorious-shape-labels/dist/annotorious-shape-labels.min.js';
 
 
 const OpenSeaDragonViewer = ({ image }) => {
