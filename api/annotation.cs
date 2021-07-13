@@ -58,7 +58,7 @@ namespace Microsoft.Function
            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "annotation/{imageId}")] HttpRequest req,
             [CosmosDB(
                 databaseName: "medimages",  
-                collectionName: "Profiles",
+                collectionName: "Annotations",
                 ConnectionStringSetting = "CosmosDBConnection")
            ]  DocumentClient client,
             string imageId,
