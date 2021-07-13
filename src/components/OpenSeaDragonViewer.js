@@ -2,7 +2,7 @@ import OpenSeaDragon,  { parseJSON } from "openseadragon";
 import React, { useEffect, useState } from "react";
 import * as Annotorious from '@recogito/annotorious-openseadragon';
 import '@recogito/annotorious-openseadragon/dist/annotorious.min.css';
-import '@recogito/annotorious-shape-labels/dist/annotorious-shape-labels.min.js';
+import * as ShapesLabelFormatter from '@recogito/annotorious-shape-labels/dist/annotorious-shape-labels.min.js';
 import '@recogito/annotorious-selector-pack/dist/annotorious-selector-pack.min.js';
 
 
@@ -35,13 +35,13 @@ const OpenSeaDragonViewer = ({ image }) => {
       });
 
     setViewer(initViewer );
-    const config = {formatter: Annotorious.ShapeLabelsFormatter};
+    const config = {formatter: Annotorious.ShapeLabelsFormatter()};
     const annotate = Annotorious(initViewer, config);
     setAnno(annotate)
     
-    Annotorious.SelectionPack(annotate);
+    /*Annotorious.SelectionPack(annotate);
     console.log(anno.listDrawingTools());
-    anno.setDrawingTool('ellipse');
+    anno.setDrawingTool('ellipse');*/
   };
 
   
