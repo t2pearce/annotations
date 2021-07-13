@@ -2,7 +2,8 @@ import OpenSeaDragon,  { parseJSON } from "openseadragon";
 import React, { useEffect, useState } from "react";
 import * as Annotorious from '@recogito/annotorious-openseadragon';
 import '@recogito/annotorious-openseadragon/dist/annotorious.min.css';
-import * as ShapesLabelFormatter from '@recogito/annotorious-shape-labels/dist/annotorious-shape-labels.min.js';
+import * as ShapesLabelFormatter from '@recogito/annotorious-shape-labels';
+import '@recogito/annotorious-shape-labels/dist/annotorious-shape-labels.min.js'
 import '@recogito/annotorious-selector-pack/dist/annotorious-selector-pack.min.js';
 
 
