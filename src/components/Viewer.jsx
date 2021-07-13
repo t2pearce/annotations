@@ -163,31 +163,6 @@ export default function Viewer() {
         document.getElementById("user").innerHTML = clientPrincipal.userDetails;
         console.log(clientPrincipal);
       }
-
-      const Button = styled.button`
-        background-color: black;
-        color: white;
-        font-size: 20px;
-        padding: 10px 60px;
-        border-radius: 0px;
-        margin: 0px 0px;
-        cursor: pointer;
-        &:disabled {
-          color: grey;
-          opacity: 0.7;
-          cursor: default;
-        }
-      `;
-
-      const ButtonToggle = styled(Button)`
-        opacity: 0.6;
-        ${({ active }) =>
-          active &&
-          `
-          opacity: 1;
-        `}
-      `;
-
   
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
