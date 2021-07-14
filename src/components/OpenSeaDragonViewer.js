@@ -45,9 +45,6 @@ const OpenSeaDragonViewer = ({ image }) => {
     anno.setDrawingTool('ellipse');*/
   };
 
-  
-
-
   const [annotations, setAnnotations] = useState([])
   
   const InitAnnotations = async () => {
@@ -93,14 +90,6 @@ const OpenSeaDragonViewer = ({ image }) => {
 
           console.log(clientPrincipal);
     }
-  }
-
-  const getLocalAnnotations =  () => {
-      console.log(localStorage.getItem(image.source.Image.Url) )
-      return localStorage.getItem(image.source.Image.Url) 
-  }
-  const setLocalAnnotation = (newAnnotations) => {
-      localStorage.setItem(image.source.Image.Url, JSON.stringify(newAnnotations)) 
   }
 
   const saveRemoteAnnotation =  (newAnnotations) => {
