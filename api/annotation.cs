@@ -37,7 +37,6 @@ namespace Microsoft.Function
             string imageId,
             ILogger log)
         {
-            console.log("save");
             log.LogInformation($"C# save annotations for {imageId}");
             document = null;
 
