@@ -49,7 +49,7 @@ const OpenSeaDragonViewer = ({ image }) => {
 
     getRemoteAnnotations();
     
-    anno.on('createAnnotation', function(annotation) {
+    anno.on('createAnnotation', (annotation) => {
       console.log("creating");
       console.log(annotation);
       const newAnnotations = [...annotations, annotation]
