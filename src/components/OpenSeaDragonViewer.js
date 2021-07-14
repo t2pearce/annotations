@@ -149,7 +149,6 @@ const OpenSeaDragonViewer = ({ image }) => {
               }
             )
     } 
-  }
   
   useEffect(() => {
     InitOpenseadragon();
