@@ -103,7 +103,7 @@ const OpenSeaDragonViewer = ({ image }) => {
       console.log(newAnnotations)
       return;
 
-    console.log("still saving);
+    console.log("still saving");
     console.log(newAnnotations)
     var json = JSON.stringify(newAnnotations); 
     var encodedId = btoa(image.source.Image.Url);
