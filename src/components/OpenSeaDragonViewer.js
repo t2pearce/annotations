@@ -12,13 +12,13 @@ const OpenSeaDragonViewer = ({ image }) => {
   useEffect(() => {
     if (image && viewer) {
       viewer.open(image.source);
-      getRemoteAnnotations();
+      // getRemoteAnnotations();
     }
     if (image && anno) {
       console.log("re-render");
       InitAnnotations()
     } 
-  }, [image, anno]);
+  }, [image]);
 
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
@@ -43,6 +43,8 @@ const OpenSeaDragonViewer = ({ image }) => {
   
   const InitAnnotations = async () => {
     //setUserInfo();
+    
+    getRemoteAnnotations();
     
     anno.on('createAnnotation', (annotation) => {
       console.log("creating");
