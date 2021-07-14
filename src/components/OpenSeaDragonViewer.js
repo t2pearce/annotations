@@ -22,7 +22,6 @@ const OpenSeaDragonViewer = ({ image }) => {
 
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
-    anno.clearAnnotations();
     
     const initViewer = OpenSeaDragon({
         id: "openSeaDragon",
@@ -162,7 +161,6 @@ const OpenSeaDragonViewer = ({ image }) => {
     InitOpenseadragon();
     return () => {
         viewer && viewer.destroy();
-      anno.clearAnnotations();
     };
   }, []);
 
