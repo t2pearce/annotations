@@ -2,9 +2,6 @@ import OpenSeaDragon,  { parseJSON } from "openseadragon";
 import React, { useEffect, useState } from "react";
 import * as Annotorious from '@recogito/annotorious-openseadragon';
 import '@recogito/annotorious-openseadragon/dist/annotorious.min.css';
-import * as ShapesLabelFormatter from '@recogito/annotorious-shape-labels';
-import '@recogito/annotorious-shape-labels/dist/annotorious-shape-labels.min.js'
-import '@recogito/annotorious-selector-pack/dist/annotorious-selector-pack.min.js';
 
 
 const OpenSeaDragonViewer = ({ image }) => {
@@ -36,29 +33,24 @@ const OpenSeaDragonViewer = ({ image }) => {
       });
 
     setViewer(initViewer );
-    const config = {formatter: Annotorious.ShapeLabelsFormatter};
+    const config = {};
     const annotate = Annotorious(initViewer, config);
     setAnno(annotate)
-    
-    /*Annotorious.SelectionPack(annotate);
-    console.log(anno.listDrawingTools());
-    anno.setDrawingTool('ellipse');*/
   };
+
+  
+
 
   const [annotations, setAnnotations] = useState([])
   
   const InitAnnotations = async () => {
     //setUserInfo();
-    
+
     getRemoteAnnotations();
-    
-    console.log(annotations)
     
     anno.on('createAnnotation', (annotation) => {
       const newAnnotations = [...annotations, annotation]
-      console.log(newAnnotations)
       setAnnotations([...newAnnotations])
-      console.log(annotations)
       saveRemoteAnnotation(newAnnotations)
     });
 
@@ -94,16 +86,20 @@ const OpenSeaDragonViewer = ({ image }) => {
 
           console.log(clientPrincipal);
     }
+  
+
+  const getLocalAnnotations =  () => {
+      console.log(localStorage.getItem(image.source.Image.Url) )
+      return localStorage.getItem(image.source.Image.Url) 
+  }
+  const setLocalAnnotation = (newAnnotations) => {
+      localStorage.setItem(image.source.Image.Url, JSON.stringify(newAnnotations)) 
   }
 
   const saveRemoteAnnotation =  (newAnnotations) => {
     if (!newAnnotations)
-      console.log("stop saving")
-      console.log(newAnnotations)
       return;
 
-    console.log("still saving")
-    console.log(newAnnotations)
     var json = JSON.stringify(newAnnotations); 
     var encodedId = btoa(image.source.Image.Url);
     fetch("/api/annotation/" + encodedId , { 
@@ -115,7 +111,6 @@ const OpenSeaDragonViewer = ({ image }) => {
       .then((response) => response.json())
       .then(
             (result) => {
-              console.log(newAnnotations)
               setAnnotations([...newAnnotations]);
             },
             // Note: it's important to handle errors here
@@ -126,7 +121,7 @@ const OpenSeaDragonViewer = ({ image }) => {
             }
           )
     }
-
+  
   
   const getRemoteAnnotations =  () => {
     var encodedId = btoa(image.source.Image.Url);
@@ -143,7 +138,6 @@ const OpenSeaDragonViewer = ({ image }) => {
                     console.log(annotations)
                     //const annotations = parseJSON(storedAnnotations)
                     setAnnotations([...annotations]);
-                    console.log(annotations)
                     anno.setAnnotations(annotations);
                   }
               },
@@ -154,8 +148,9 @@ const OpenSeaDragonViewer = ({ image }) => {
                 console.log(error);
               }
             )
-  } 
-
+    } 
+  }
+  
   useEffect(() => {
     InitOpenseadragon();
     return () => {
