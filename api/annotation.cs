@@ -50,7 +50,7 @@ namespace Microsoft.Function
             string requestBody = new StreamReader(req.Body).ReadToEnd();
             var input = JsonConvert.DeserializeObject<AnnotationItem>(requestBody);
 
-            document = new AnnotationItem { userId = userId, id = imageId, AnnotationJson = input.AnnotationJson }; //new object[] { requestBody } };
+            document = new { userId = userId, id = imageId, AnnotationJson = input.AnnotationJson }; //new object[] { requestBody } };
         }
 
         [FunctionName("getAnnotation")]
