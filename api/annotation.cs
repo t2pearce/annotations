@@ -38,7 +38,7 @@ namespace Microsoft.Function
             ILogger log)
         {
             log.LogInformation($"C# save annotations for {imageId}");
-            AnnotationItem document = null;
+            document = null;
 
             // Verify identity
             ClaimsPrincipal principal = ClientPrincipal.Parse(req);
