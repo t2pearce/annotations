@@ -50,10 +50,13 @@ const OpenSeaDragonViewer = ({ image }) => {
   const InitAnnotations = async () => {
     //setUserInfo();
 
+    console.log(annotations)
+    
     getRemoteAnnotations();
     
     anno.on('createAnnotation', (annotation) => {
       const newAnnotations = [...annotations, annotation]
+      console.log(newAnnotations)
       setAnnotations(newAnnotations)
       saveRemoteAnnotation(newAnnotations)
     });
@@ -107,6 +110,7 @@ const OpenSeaDragonViewer = ({ image }) => {
       .then((response) => response.json())
       .then(
             (result) => {
+              console.log(newAnnotations)
               setAnnotations(newAnnotations);
             },
             // Note: it's important to handle errors here
