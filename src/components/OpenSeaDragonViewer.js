@@ -68,6 +68,7 @@ const OpenSeaDragonViewer = ({ image }) => {
       setAnnotations([...newAnnotations])
       saveRemoteAnnotation(newAnnotations)
     });
+  }
 
     async function getUserInfo() {
       const response = await fetch('./auth/me');
@@ -87,15 +88,6 @@ const OpenSeaDragonViewer = ({ image }) => {
           console.log(clientPrincipal);
     }
   
-
-  const getLocalAnnotations =  () => {
-      console.log(localStorage.getItem(image.source.Image.Url) )
-      return localStorage.getItem(image.source.Image.Url) 
-  }
-  const setLocalAnnotation = (newAnnotations) => {
-      localStorage.setItem(image.source.Image.Url, JSON.stringify(newAnnotations)) 
-  }
-
   const saveRemoteAnnotation =  (newAnnotations) => {
     if (!newAnnotations)
       return;
@@ -121,7 +113,7 @@ const OpenSeaDragonViewer = ({ image }) => {
             }
           )
     }
-  
+
   
   const getRemoteAnnotations =  () => {
     var encodedId = btoa(image.source.Image.Url);
