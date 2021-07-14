@@ -57,7 +57,7 @@ const OpenSeaDragonViewer = ({ image }) => {
     
     anno.on('createAnnotation', (annotation) => {
       const newAnnotations = [...annotations, annotation]
-      setAnnotations([...newAnnotations])
+      setAnnotations(newAnnotations)
       saveRemoteAnnotation(newAnnotations)
     });
 
@@ -66,13 +66,13 @@ const OpenSeaDragonViewer = ({ image }) => {
           if (val.id === annotation.id) return annotation
           return val
       })
-      setAnnotations([...newAnnotations])
+      setAnnotations(newAnnotations)
       saveRemoteAnnotation(newAnnotations)
     });
   
     anno.on('deleteAnnotation', (annotation) => {
       const newAnnotations  = annotations.filter(val => val.id !== annotation.id)
-      setAnnotations([...newAnnotations])
+      setAnnotations(newAnnotations)
       saveRemoteAnnotation(newAnnotations)
     });
 
