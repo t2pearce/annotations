@@ -97,13 +97,12 @@ const OpenSeaDragonViewer = ({ image }) => {
   }
 
   const saveRemoteAnnotation =  (newAnnotations) => {
-    console.log("saving");
     if (!newAnnotations)
-      console.log("stop saving");
+      console.log("stop saving")
       console.log(newAnnotations)
       return;
 
-    console.log("still saving");
+    console.log("still saving")
     console.log(newAnnotations)
     var json = JSON.stringify(newAnnotations); 
     var encodedId = btoa(image.source.Image.Url);
