@@ -13,6 +13,7 @@ const OpenSeaDragonViewer = ({ image }) => {
       viewer.open(image.source);
     }
     if (image && anno){
+      console.log("re-render");
       InitAnnotations()
   } 
   }, [image]);
