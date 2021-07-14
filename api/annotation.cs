@@ -43,7 +43,7 @@ namespace Microsoft.Function
             // Verify identity
             ClaimsPrincipal principal = ClientPrincipal.Parse(req);
             if (!principal.IsInRole("contributor"))
-                return ;
+                return new UnauthorizedResult();
 
             string userId = principal.Identity.Name;
 
