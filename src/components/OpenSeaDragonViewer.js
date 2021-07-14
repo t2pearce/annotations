@@ -121,6 +121,7 @@ const OpenSeaDragonViewer = ({ image }) => {
 
   
   const getRemoteAnnotations =  () => {
+    console.log("getting");
     var encodedId = btoa(image.source.Image.Url);
         fetch("/api/annotation/" + encodedId , { 
                 method: 'GET',
