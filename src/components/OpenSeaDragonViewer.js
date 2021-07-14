@@ -30,7 +30,7 @@ const OpenSeaDragonViewer = ({ image }) => {
         blendTime: 0.1,
         constrainDuringPan: true,
         maxZoomPixelRatio: 2,
-        minZoomLevel: 1,
+        //minZoomLevel: 1,
         visibilityRatio: 1,
         zoomPerScroll: 2
       });
@@ -47,7 +47,7 @@ const OpenSeaDragonViewer = ({ image }) => {
     anno.on('createAnnotation', (annotation) => {
       console.log("creating");
       const newAnnotations = [...annotations, annotation]
-      setAnnotations([...newAnnotations])
+      //setAnnotations([...newAnnotations])
       saveRemoteAnnotation(newAnnotations)
       console.log(newAnnotations);
     });
