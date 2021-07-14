@@ -97,6 +97,7 @@ const OpenSeaDragonViewer = ({ image }) => {
   }
 
   const saveRemoteAnnotation =  (newAnnotations) => {
+    console.log("saving");
     if (!newAnnotations)
       console.log(newAnnotations)
       return;
