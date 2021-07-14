@@ -38,7 +38,7 @@ namespace Microsoft.Function
             ILogger log)
         {
             log.LogInformation($"C# save annotations for {imageId}");
-            // document = null;
+            document = null;
 
             // Verify identity
             ClaimsPrincipal principal = ClientPrincipal.Parse(req);
@@ -50,7 +50,7 @@ namespace Microsoft.Function
             string requestBody = new StreamReader(req.Body).ReadToEnd();
             var input = JsonConvert.DeserializeObject<AnnotationItem>(requestBody);
 
-            AnnotationItem document = new AnnotationItem { userId = userId, id = imageId, AnnotationJson = input.AnnotationJson }; //new object[] { requestBody } };
+            document = new { userId = userId, id = imageId, AnnotationJson = input.AnnotationJson }; //new object[] { requestBody } };
         }
 
         [FunctionName("getAnnotation")]
