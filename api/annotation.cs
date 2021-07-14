@@ -43,14 +43,14 @@ namespace Microsoft.Function
             // Verify identity
             ClaimsPrincipal principal = ClientPrincipal.Parse(req);
             if (!principal.IsInRole("contributor"))
-                return new UnauthorizedResult();
+                return;
 
             string userId = principal.Identity.Name;
 
             string requestBody = new StreamReader(req.Body).ReadToEnd();
             var input = JsonConvert.DeserializeObject<AnnotationItem>(requestBody);
 
-            document = new { userId = userId, id = imageId, AnnotationJson = input.AnnotationJson }; //new object[] { requestBody } };
+            document = new AnnotationItem { userId = userId, id = imageId, AnnotationJson = input.AnnotationJson }; //new object[] { requestBody } };
         }
 
         [FunctionName("getAnnotation")]
