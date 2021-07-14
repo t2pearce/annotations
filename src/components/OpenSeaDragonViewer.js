@@ -14,11 +14,18 @@ const OpenSeaDragonViewer = ({ image }) => {
       viewer.open(image.source);
       getRemoteAnnotations();
     }
-    if (image && annotations) {
+ //   if (image && anno) {
+ //     console.log("re-render");
+ //     InitAnnotations()
+ //   } 
+  }, [image]);
+  
+  useEffect(() => {
+    if (image && anno) {
       console.log("re-render");
       InitAnnotations()
-    } 
-  }, [image, annotations]);
+    }
+  }, [anno]);
 
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
