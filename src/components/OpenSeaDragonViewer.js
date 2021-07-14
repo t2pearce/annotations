@@ -108,7 +108,7 @@ const OpenSeaDragonViewer = ({ image }) => {
       .then((response) => response.json())
       .then(
             (result) => {
-              console.log(newAnnotations);
+              console.log("test");
             },
             // Note: it's important to handle errors here
             // instead of a catch() block so that we don't swallow
