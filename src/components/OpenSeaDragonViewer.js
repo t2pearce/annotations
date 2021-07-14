@@ -6,7 +6,7 @@ import '@recogito/annotorious-openseadragon/dist/annotorious.min.css';
 
 const OpenSeaDragonViewer = ({ image }) => {
   const [viewer, setViewer] = useState( null);
-  const[anno, setAnno] = useState(null);
+  const [anno, setAnno] = useState(null);
   const [annotations, setAnnotations] = useState([]);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const OpenSeaDragonViewer = ({ image }) => {
       viewer.open(image.source);
       getRemoteAnnotations();
     }
-    if (anno){
+    if (image && anno){
       console.log("re-render");
       InitAnnotations()
     } 
@@ -35,7 +35,7 @@ const OpenSeaDragonViewer = ({ image }) => {
         zoomPerScroll: 2
       });
 
-    setViewer(initViewer );
+    setViewer(initViewer);
     const config = {};
     const annotate = Annotorious(initViewer, config);
     setAnno(annotate)
@@ -126,12 +126,12 @@ const OpenSeaDragonViewer = ({ image }) => {
         .then((response) => response.json())
         .then(
               (result) => {
-                  let annotations = result;     
-                  if (annotations) {
-                    console.log(annotations)
+                  let annotationsq = result;     
+                  if (annotationsq) {
+                    console.log(annotationsq)
                     //const annotations = parseJSON(storedAnnotations)
-                    setAnnotations([...annotations]);
-                    anno.setAnnotations(annotations);
+                    setAnnotations([...annotationsq]);
+                    anno.setAnnotations(annotationsq);
                   }
               },
               // Note: it's important to handle errors here
