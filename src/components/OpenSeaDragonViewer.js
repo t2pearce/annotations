@@ -14,7 +14,7 @@ const OpenSeaDragonViewer = ({ image }) => {
       viewer.open(image.source);
       getRemoteAnnotations();
     }
-    if (image || annotations) {
+    if (image && annotations) {
       console.log("re-render");
       InitAnnotations()
     } 
