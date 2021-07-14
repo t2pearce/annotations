@@ -7,6 +7,7 @@ import '@recogito/annotorious-openseadragon/dist/annotorious.min.css';
 const OpenSeaDragonViewer = ({ image }) => {
   const [viewer, setViewer] = useState( null);
   const[anno, setAnno] = useState(null);
+  const [annotations, setAnnotations] = useState([]);
 
   useEffect(() => {
     if (image && viewer) {
@@ -39,11 +40,6 @@ const OpenSeaDragonViewer = ({ image }) => {
     const annotate = Annotorious(initViewer, config);
     setAnno(annotate)
   };
-
-  
-
-
-  const [annotations, setAnnotations] = useState([])
   
   const InitAnnotations = async () => {
     //setUserInfo();
