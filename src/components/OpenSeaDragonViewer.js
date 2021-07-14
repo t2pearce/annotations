@@ -16,6 +16,11 @@ const OpenSeaDragonViewer = ({ image }) => {
       console.log("re-render");
       InitAnnotations()
   } 
+  }, [image]);
+  
+  useEffect(() => {
+    console.log("newEffect");
+    InitAnnotations()
   }, [annotations]);
 
   const InitOpenseadragon = () => {
