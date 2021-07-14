@@ -50,12 +50,14 @@ const OpenSeaDragonViewer = ({ image }) => {
     getRemoteAnnotations();
     
     anno.on('createAnnotation', (annotation) => {
+      console.log("creating");
       const newAnnotations = [...annotations, annotation]
       setAnnotations([...newAnnotations])
       saveRemoteAnnotation(newAnnotations)
     });
 
     anno.on('updateAnnotation', (annotation, previous) => {
+      console.log("updating");
       const newAnnotations = annotations.map(val => {
           if (val.id === annotation.id) return annotation
           return val
@@ -65,6 +67,7 @@ const OpenSeaDragonViewer = ({ image }) => {
     });
   
     anno.on('deleteAnnotation', (annotation) => {
+      console.log("deleting");
       const newAnnotations  = annotations.filter(val => val.id !== annotation.id)
       setAnnotations([...newAnnotations])
       saveRemoteAnnotation(newAnnotations)
