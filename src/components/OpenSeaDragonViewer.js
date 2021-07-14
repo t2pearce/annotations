@@ -57,7 +57,7 @@ const OpenSeaDragonViewer = ({ image }) => {
     anno.on('createAnnotation', (annotation) => {
       const newAnnotations = [...annotations, annotation]
       console.log(newAnnotations)
-      setAnnotations(newAnnotations)
+      setAnnotations([...newAnnotations])
       console.log(annotations)
       saveRemoteAnnotation(newAnnotations)
     });
@@ -67,13 +67,13 @@ const OpenSeaDragonViewer = ({ image }) => {
           if (val.id === annotation.id) return annotation
           return val
       })
-      setAnnotations(newAnnotations)
+      setAnnotations([...newAnnotations])
       saveRemoteAnnotation(newAnnotations)
     });
   
     anno.on('deleteAnnotation', (annotation) => {
       const newAnnotations  = annotations.filter(val => val.id !== annotation.id)
-      setAnnotations(newAnnotations)
+      setAnnotations([...newAnnotations])
       saveRemoteAnnotation(newAnnotations)
     });
 
@@ -115,7 +115,7 @@ const OpenSeaDragonViewer = ({ image }) => {
       .then(
             (result) => {
               console.log(newAnnotations)
-              setAnnotations(newAnnotations);
+              setAnnotations([...newAnnotations]);
             },
             // Note: it's important to handle errors here
             // instead of a catch() block so that we don't swallow
@@ -141,7 +141,7 @@ const OpenSeaDragonViewer = ({ image }) => {
                   if (annotations) {
                     console.log(annotations)
                     //const annotations = parseJSON(storedAnnotations)
-                    setAnnotations(annotations);
+                    setAnnotations([...annotations]);
                     console.log(annotations)
                     anno.setAnnotations(annotations);
                   }
