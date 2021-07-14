@@ -11,7 +11,7 @@ const OpenSeaDragonViewer = ({ image }) => {
   useEffect(() => {
     if (image && viewer) {
       viewer.open(image.source);
-      getRemoteAnnotations();
+     // getRemoteAnnotations();
     }
     if (image && anno){
       console.log("re-render");
