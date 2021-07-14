@@ -135,12 +135,12 @@ const OpenSeaDragonViewer = ({ image }) => {
         .then((response) => response.json())
         .then(
               (result) => {
-                  let annotations = result;     
-                  if (annotations) {
-                    console.log(annotations)
+                  let newAnnotations = result;     
+                  if (newAnnotations) {
+                    console.log(newAnnotations)
                     //const annotations = parseJSON(storedAnnotations)
-                    setAnnotations([...annotations]);
-                    anno.setAnnotations(annotations);
+                    setAnnotations([...newAnnotations]);
+                    anno.setAnnotations(newAnnotations);
                   }
               },
               // Note: it's important to handle errors here
