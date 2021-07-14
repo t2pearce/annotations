@@ -16,7 +16,7 @@ const OpenSeaDragonViewer = ({ image }) => {
       console.log("re-render");
       InitAnnotations()
   } 
-  }, [image]);
+  }, [annotations]);
 
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
