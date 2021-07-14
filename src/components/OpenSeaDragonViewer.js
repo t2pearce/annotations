@@ -92,14 +92,14 @@ const OpenSeaDragonViewer = ({ image }) => {
     if (!newAnnotations)
       return;
 
-    //var json = JSON.stringify(newAnnotations); 
+    var json = JSON.stringify(newAnnotations); 
     var encodedId = btoa(image.source.Image.Url);
     fetch("/api/annotation/" + encodedId , { 
           method: 'POST',
           credentials: 'include',
           headers: {'Access-Control-Allow-Credentials': 'true',
                     'Content-Type': 'application/json'},
-          body: JSON.stringify(newAnnotations) } )
+          body: json } )
       .then((response) => response.json())
       .then(
             (result) => {
