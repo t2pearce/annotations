@@ -58,6 +58,7 @@ const OpenSeaDragonViewer = ({ image }) => {
       const newAnnotations = [...annotations, annotation]
       console.log(newAnnotations)
       setAnnotations(newAnnotations)
+      console.log(annotations)
       saveRemoteAnnotation(newAnnotations)
     });
 
@@ -97,8 +98,10 @@ const OpenSeaDragonViewer = ({ image }) => {
 
   const saveRemoteAnnotation =  (newAnnotations) => {
     if (!newAnnotations)
+      console.log(newAnnotations)
       return;
 
+    console.log(newAnnotations)
     var json = JSON.stringify(newAnnotations); 
     var encodedId = btoa(image.source.Image.Url);
     fetch("/api/annotation/" + encodedId , { 
@@ -138,6 +141,7 @@ const OpenSeaDragonViewer = ({ image }) => {
                     console.log(annotations)
                     //const annotations = parseJSON(storedAnnotations)
                     setAnnotations(annotations);
+                    console.log(annotations)
                     anno.setAnnotations(annotations);
                   }
               },
