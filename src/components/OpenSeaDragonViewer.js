@@ -9,11 +9,14 @@ const OpenSeaDragonViewer = ({ image }) => {
   const [anno, setAnno] = useState(null);
   const [annotations, setAnnotations] = useState([]);
   var checkGet = true;
+  console.log(checkGet);
 
   useEffect(() => {
     if (image && viewer) {
       viewer.open(image.source);
       getRemoteAnnotations();
+      checkGet = !checkGet;
+      console.log(checkGet);
     }
  //   if (image && anno) {
  //     console.log("re-render");
@@ -142,8 +145,6 @@ const OpenSeaDragonViewer = ({ image }) => {
                     //const annotations = parseJSON(storedAnnotations)
                     setAnnotations([...newAnnotations]);
                     anno.setAnnotations(newAnnotations);
-                    checkGet = !checkGet;
-                    console.log(checkGet);
                   }
               },
               // Note: it's important to handle errors here
