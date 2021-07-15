@@ -1,4 +1,4 @@
-import './index.css';
+import './ShapeLabels.css';
 
 const ShapeLabelsFormatter = config => annotation => {
 
