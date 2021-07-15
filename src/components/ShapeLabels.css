@@ -17,7 +17,7 @@
 
 .a9s-annotationlayer .a9s-formatter-el foreignObject .a9s-shape-label-wrapper .a9s-shape-label {
   position:relative;
-  top:-2em;
+  top:2em;
   left:-2px;
   display:table;
   padding:3px 5px;
