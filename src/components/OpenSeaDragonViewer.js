@@ -8,11 +8,13 @@ const OpenSeaDragonViewer = ({ image }) => {
   const [viewer, setViewer] = useState( null);
   const [anno, setAnno] = useState(null);
   const [annotations, setAnnotations] = useState([]);
+  const [check, setCheck] = useState(true);
 
   useEffect(() => {
     if (image && viewer) {
       viewer.open(image.source);
       getRemoteAnnotations();
+      setCheck(!check);
     }
  //   if (image && anno) {
  //     console.log("re-render");
@@ -23,9 +25,10 @@ const OpenSeaDragonViewer = ({ image }) => {
   useEffect(() => {
     if (image && anno) {
       console.log("re-render");
+      console.log(check);
       InitAnnotations();
     }
-  }, [image]);
+  }, [check]);
 
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
