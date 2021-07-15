@@ -8,7 +8,7 @@ const OpenSeaDragonViewer = ({ image }) => {
   const [viewer, setViewer] = useState( null);
   const [anno, setAnno] = useState(null);
   const [annotations, setAnnotations] = useState([]);
-  //const [check, setCheck] = useState(true);
+  const [check, setCheck] = useState(true);
 
   useEffect(() => {
     if (image && viewer) {
