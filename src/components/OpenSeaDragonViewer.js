@@ -4,7 +4,34 @@ import * as Annotorious from '@recogito/annotorious-openseadragon';
 import '@recogito/annotorious-openseadragon/dist/annotorious.min.css';
 import './ColourSelector.css';
 
-var ColorSelectorWidget = function(args) {
+
+const OpenSeaDragonViewer = ({ image }) => {
+  const [viewer, setViewer] = useState( null);
+  const [anno, setAnno] = useState(null);
+  const [annotations, setAnnotations] = useState([]);
+  const [check, setCheck] = useState(true);
+
+  useEffect(() => {
+    if (image && viewer) {
+      viewer.open(image.source);
+      getRemoteAnnotations();
+      //setCheck(!check);
+    }
+ //   if (image && anno) {
+ //     console.log("re-render");
+ //     InitAnnotations()
+ //   } 
+  }, [image]);
+  
+  useEffect(() => {
+    if (image && anno) {
+      console.log("re-render");
+      console.log(check);
+      InitAnnotations();
+    }
+  }, [check]);
+  
+  var ColorSelectorWidget = function(args) {
 
   // 1. Find a current color setting in the annotation, if any
   var currentColorBody = args.annotation ? 
@@ -68,32 +95,6 @@ var ColorFormatter = function(annotation) {
   if (highlightBody)
     return highlightBody.value;
 }
-
-const OpenSeaDragonViewer = ({ image }) => {
-  const [viewer, setViewer] = useState( null);
-  const [anno, setAnno] = useState(null);
-  const [annotations, setAnnotations] = useState([]);
-  const [check, setCheck] = useState(true);
-
-  useEffect(() => {
-    if (image && viewer) {
-      viewer.open(image.source);
-      getRemoteAnnotations();
-      //setCheck(!check);
-    }
- //   if (image && anno) {
- //     console.log("re-render");
- //     InitAnnotations()
- //   } 
-  }, [image]);
-  
-  useEffect(() => {
-    if (image && anno) {
-      console.log("re-render");
-      console.log(check);
-      InitAnnotations();
-    }
-  }, [check]);
 
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
