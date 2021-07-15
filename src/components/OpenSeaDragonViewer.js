@@ -9,7 +9,7 @@ const OpenSeaDragonViewer = ({ image }) => {
   const [viewer, setViewer] = useState( null);
   const [anno, setAnno] = useState(null);
   const [annotations, setAnnotations] = useState([]);
-  // const [check, setCheck] = useState(true);
+  const [check, setCheck] = useState(true);
 
   useEffect(() => {
     if (image && viewer) {
@@ -26,9 +26,10 @@ const OpenSeaDragonViewer = ({ image }) => {
   useEffect(() => {
     if (image && anno) {
       console.log("re-render");
+      console.log(check);
       InitAnnotations();
     }
-  }, [annotations]);
+  }, [check]);
 
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
@@ -143,8 +144,8 @@ const OpenSeaDragonViewer = ({ image }) => {
                     console.log(newAnnotations)
                     //const annotations = parseJSON(storedAnnotations)
                     setAnnotations([...newAnnotations]);
-                    //setCheck(!check);
-                    //anno.setAnnotations(newAnnotations);
+                    setCheck(!check);
+                    anno.setAnnotations(newAnnotations);
                   }
               },
               // Note: it's important to handle errors here
