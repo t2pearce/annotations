@@ -143,6 +143,7 @@ const OpenSeaDragonViewer = ({ image }) => {
                     setAnnotations([...newAnnotations]);
                     anno.setAnnotations(newAnnotations);
                     checkGet = !checkGet;
+                    console.log(checkGet);
                   }
               },
               // Note: it's important to handle errors here
