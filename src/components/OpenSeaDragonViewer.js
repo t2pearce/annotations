@@ -47,10 +47,7 @@ const OpenSeaDragonViewer = ({ image }) => {
       });
 
     setViewer(initViewer);
-    const config = {widgets: [
-                              {widget:"TAG", vocabulary: ["Question 1", "Question 2", "Question 3"]}
-                             ],
-                    formatter: ShapeLabelsFormatter};
+    const config = {formatter: ShapeLabelsFormatter};
     const annotate = Annotorious(initViewer, config);
     setAnno(annotate)
   };
