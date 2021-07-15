@@ -23,9 +23,9 @@ const OpenSeaDragonViewer = ({ image }) => {
   useEffect(() => {
     if (image && anno) {
       console.log("re-render");
-      //InitAnnotations()
+      InitAnnotations();
     }
-  }, [annotations]);
+  }, []);
 
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
