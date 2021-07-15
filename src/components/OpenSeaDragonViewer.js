@@ -28,7 +28,7 @@ const OpenSeaDragonViewer = ({ image }) => {
       console.log(check);
       InitAnnotations();
     }
-  }, [annotations]);
+  }, [check]);
 
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
@@ -143,6 +143,7 @@ const OpenSeaDragonViewer = ({ image }) => {
                     console.log(newAnnotations)
                     //const annotations = parseJSON(storedAnnotations)
                     setAnnotations([...newAnnotations]);
+                    setCheck(!check);
                     anno.setAnnotations(newAnnotations);
                   }
               },
