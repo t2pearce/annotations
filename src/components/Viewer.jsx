@@ -21,6 +21,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { OpenSeaDragonViewer } from './OpenSeaDragonViewer'
 import PhotoIcon from '@material-ui/icons/Photo';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
+import * as styleRefs from './ViewerStyle.js';
 
 const drawerWidth = 200;
 
