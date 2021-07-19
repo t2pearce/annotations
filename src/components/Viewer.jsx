@@ -23,8 +23,6 @@ import PhotoIcon from '@material-ui/icons/Photo';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import {useStyles} from './ViewerStyle.js';
 
-const drawerWidth = 200;
-
 export default function Viewer() {
 
   const [images, setImages] = useState([]);
