@@ -49,7 +49,7 @@ namespace Microsoft.Function
 
             string requestBody = new StreamReader(req.Body).ReadToEnd();
             System.Console.WriteLine(requestBody);
-            var input = JsonConvert.DeserializeObject<AnnotationItem>(requestBody[0]);
+            var input = JsonConvert.DeserializeObject<AnnotationItem>(requestBody);
 
             document = new { userId = userId, id = imageId, AnnotationJson = input.AnnotationJson }; //new object[] { requestBody } };
         }
