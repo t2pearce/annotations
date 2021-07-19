@@ -1,5 +1,4 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
 import './Home.css';
 import { Button, Grid, Paper } from "@material-ui/core";
 import logo from './login.png';
