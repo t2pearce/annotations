@@ -90,8 +90,6 @@ namespace Microsoft.Function
             string userId = principal.Identity.Name;
 
             string requestBody = new StreamReader(req.Body).ReadToEnd();
-            // Console.WriteLine(requestBody);
-            // var input = JsonConvert.DeserializeObject<AnnotationItem>(requestBody);
             var input = JsonConvert.DeserializeObject<List<AnnotationProps>>(requestBody);
 
             document = new { userId = userId, id = imageId, AnnotationJson = input }; //new object[] { requestBody } };
