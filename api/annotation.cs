@@ -47,7 +47,7 @@ namespace Microsoft.Function
 
             string userId = principal.Identity.Name;
 
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+            string requestBody = new StreamReader(req.Body).ReadToEnd();
             Console.WriteLine(requestBody);
             dynamic input = JsonConvert.DeserializeObject<AnnotationItem>(requestBody);
 
