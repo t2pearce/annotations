@@ -51,6 +51,7 @@ const OpenSeaDragonViewer = ({ image }) => {
       saveRemoteAnnotation([...newAnnotations])
       //setAnnotations(newAnnotations)
       console.log(newAnnotations);
+      getRemoteAnnotations();
     });
 
     anno.on('updateAnnotation', (annotation, previous) => {
@@ -103,9 +104,7 @@ const OpenSeaDragonViewer = ({ image }) => {
       .then((response) => response.json())
       .then(
             (result) => {
-              setAnnotations([...newAnnotations]);
-              console.log("Returned from saved.");
-              console.log(newAnnotations);
+              console.log(result);
             },
             // Note: it's important to handle errors here
             // instead of a catch() block so that we don't swallow
