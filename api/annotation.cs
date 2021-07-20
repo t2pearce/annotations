@@ -74,9 +74,9 @@ namespace Microsoft.Function
             string requestBody = new StreamReader(req.Body).ReadToEnd();
             // Console.WriteLine(requestBody);
             // var input = JsonConvert.DeserializeObject<AnnotationItem>(requestBody);
-            var input = JsonConvert.DeserializeObject<AnnotationItem2>(requestBody);
+            var input = JsonConvert.DeserializeObject<List<AnnotationProps>>(requestBody);
 
-            document = new { userId = userId, id = imageId, AnnotationJson = requestBody }; //new object[] { requestBody } };
+            document = new { userId = userId, id = imageId, AnnotationJson = input }; //new object[] { requestBody } };
         }
 
         [FunctionName("getAnnotation")]
