@@ -53,9 +53,9 @@ namespace Microsoft.Function
         [JsonProperty("type")]
         public string type {get; set; }
         [JsonProperty("value")]
-        public string purpose {get; set; }
+        public string value {get; set; }
         [JsonProperty("purpose")]
-        public string type {get; set; }
+        public string purpose {get; set; }
     }
    
     public class AnnotationTarget
