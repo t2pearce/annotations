@@ -39,15 +39,42 @@ namespace Microsoft.Function
         [JsonProperty("type")]
         public string type {get; set; }
         [JsonProperty("body")]
-        public string body {get; set; }
+        public list<AnnotationBody> body {get; set; }
         [JsonProperty("target")]
-        public string target {get; set; }
+        public AnnotationTarget target {get; set; }
         [JsonProperty("@context")]
         public string context {get; set; }
         [JsonProperty("id")]
         public string id {get; set; }
     }
-
+    
+    public class AnnotationBody
+    {
+        [JsonProperty("type")]
+        public string type {get; set; }
+        [JsonProperty("value")]
+        public string purpose {get; set; }
+        [JsonProperty("purpose")]
+        public string type {get; set; }
+    }
+   
+    public class AnnotationTarget
+    {
+        [JsonProperty("source")]
+        public string source {get; set; }
+        [JsonProperty("selector")]
+        public AnnotationSelector selector {get; set; }
+    }
+    
+    public class AnnotationSelector
+    {
+        [JsonProperty("type")]
+        public string type {get; set; }
+        [JsonProperty("conformsTo")]
+        public string conformsTo {get; set; }
+        [JsonProperty("value")]
+        public string value {get; set; }
+    }
 
     public static class Annotation
     {
