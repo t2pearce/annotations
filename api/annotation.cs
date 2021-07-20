@@ -39,7 +39,7 @@ namespace Microsoft.Function
         [JsonProperty("type")]
         public string type {get; set; }
         [JsonProperty("body")]
-        public list<AnnotationBody> body {get; set; }
+        public List<AnnotationBody> body {get; set; }
         [JsonProperty("target")]
         public AnnotationTarget target {get; set; }
         [JsonProperty("@context")]
