@@ -51,6 +51,7 @@ const OpenSeaDragonViewer = ({ image }) => {
       saveRemoteAnnotation([...newAnnotations])
       setAnnotations(newAnnotations)
       console.log(newAnnotations);
+      return;
     });
 
     anno.on('updateAnnotation', (annotation, previous) => {
