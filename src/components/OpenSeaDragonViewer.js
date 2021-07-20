@@ -9,24 +9,16 @@ const OpenSeaDragonViewer = ({ image }) => {
   const [viewer, setViewer] = useState( null);
   const [anno, setAnno] = useState(null);
   const [annotations, setAnnotations] = useState([]);
-  // const [check, setCheck] = useState(true);
 
   useEffect(() => {
     if (image && viewer) {
       viewer.open(image.source);
       getRemoteAnnotations();
-      //setCheck(!check);
     }
- //   if (image && anno) {
- //     console.log("re-render");
- //     InitAnnotations()
- //   } 
   }, [image]);
   
   useEffect(() => {
     if (image && anno) {
-      console.log("re-render");
-      // console.log(check);
       InitAnnotations();
     }
   }, [annotations]);
@@ -41,7 +33,6 @@ const OpenSeaDragonViewer = ({ image }) => {
         blendTime: 0.1,
         constrainDuringPan: true,
         maxZoomPixelRatio: 2,
-        //minZoomLevel: 1,
         visibilityRatio: 1,
         zoomPerScroll: 2
       });
@@ -53,20 +44,14 @@ const OpenSeaDragonViewer = ({ image }) => {
   };
   
   const InitAnnotations = async () => {
-    //setUserInfo();
-    
-    //getRemoteAnnotations();
     
     anno.on('createAnnotation', (annotation) => {
-      console.log("creating");
       const newAnnotations = [...annotations, annotation]
       saveRemoteAnnotation([...newAnnotations])
       setAnnotations(newAnnotations)
-      console.log(newAnnotations);
     });
 
     anno.on('updateAnnotation', (annotation, previous) => {
-      console.log("updating");
       const newAnnotations = annotations.map(val => {
           if (val.id === annotation.id) return annotation
           return val
@@ -76,7 +61,6 @@ const OpenSeaDragonViewer = ({ image }) => {
     });
   
     anno.on('deleteAnnotation', (annotation) => {
-      console.log("deleting");
       const newAnnotations  = annotations.filter(val => val.id !== annotation.id)
       setAnnotations([...newAnnotations])
       saveRemoteAnnotation(newAnnotations)
@@ -129,7 +113,6 @@ const OpenSeaDragonViewer = ({ image }) => {
 
   
   const getRemoteAnnotations =  () => {
-    console.log("getting");
     var encodedId = btoa(image.source.Image.Url);
         fetch("/api/annotation/" + encodedId , { 
                 method: 'GET',
@@ -141,10 +124,7 @@ const OpenSeaDragonViewer = ({ image }) => {
               (result) => {
                   let newAnnotations = result;     
                   if (newAnnotations) {
-                    console.log(newAnnotations)
-                    //const annotations = parseJSON(storedAnnotations)
                     setAnnotations([...newAnnotations]);
-                    //setCheck(!check);
                     anno.setAnnotations(newAnnotations);
                   }
               },
