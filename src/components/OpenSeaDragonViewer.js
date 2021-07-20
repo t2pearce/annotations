@@ -104,6 +104,8 @@ const OpenSeaDragonViewer = ({ image }) => {
       .then(
             (result) => {
               setAnnotations([...newAnnotations]);
+              console.log("Returned from saved.");
+              console.log(newAnnotations);
             },
             // Note: it's important to handle errors here
             // instead of a catch() block so that we don't swallow
