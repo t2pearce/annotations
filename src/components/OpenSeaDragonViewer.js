@@ -18,10 +18,11 @@ const OpenSeaDragonViewer = ({ image }) => {
   }, [image]);
   
   useEffect(() => {
+    console.log("Render annotations");
     if (image && anno) {
       InitAnnotations();
     }
-  }, []);
+  }, [annotations]);
 
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
