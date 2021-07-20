@@ -24,16 +24,6 @@ namespace Microsoft.Function
         public object[] AnnotationJson { get; set; }
     }
     
-    public class AnnotationItem2
-    {
-        [JsonProperty("userId")]
-        public string userId { get; set; }
-        [JsonProperty("id")]
-        public string id { get; set; }
-        //[JsonProperty("annotations")]
-        public AnnotationProps AnnotationProps { get; set; }
-    }
-    
     public class AnnotationProps
     {
         [JsonProperty("type")]
