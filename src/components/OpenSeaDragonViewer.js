@@ -88,6 +88,7 @@ const OpenSeaDragonViewer = ({ image }) => {
     }
   
   const saveRemoteAnnotation =  (newAnnotations) => {
+    console.log("saving");
     if (!newAnnotations)
       return;
 
@@ -102,7 +103,7 @@ const OpenSeaDragonViewer = ({ image }) => {
       .then((response) => response.json())
       .then(
             (result) => {
-              console.log(result);
+              setAnnotations([...newAnnotations]);
             },
             // Note: it's important to handle errors here
             // instead of a catch() block so that we don't swallow
@@ -128,6 +129,8 @@ const OpenSeaDragonViewer = ({ image }) => {
                   if (newAnnotations) {
                     setAnnotations([...newAnnotations]);
                     anno.setAnnotations(newAnnotations);
+                    console.log("getting");
+                    console.log(newAnnotations);
                   }
               },
               // Note: it's important to handle errors here
