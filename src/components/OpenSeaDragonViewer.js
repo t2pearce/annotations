@@ -128,7 +128,7 @@ const OpenSeaDragonViewer = ({ image }) => {
               (result) => {
                   let newAnnotations = result;     
                   if (newAnnotations) {
-                    setAnnotations([...newAnnotations]);
+                    //setAnnotations([...newAnnotations]);
                     anno.setAnnotations(newAnnotations);
                     console.log("getting");
                     console.log(newAnnotations);
