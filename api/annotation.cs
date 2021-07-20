@@ -20,7 +20,21 @@ namespace Microsoft.Function
         [JsonProperty("id")]
         public string id { get; set; }
         //[JsonProperty("annotations")]
-        public object[] AnnotationJson { get; set; }
+        public AnnotationJson AnnotationJson { get; set; }
+    }
+    
+    public class AnnotationJson
+    {
+        [JsonProperty("type")]
+        public string type {get; set; }
+        [JsonProperty("body")]
+        public string body {get; set; }
+        [JsonProperty("target")]
+        public string target {get; set; }
+        [JsonProperty("@context")]
+        public string context {get; set; }
+        [JsonProperty("id")]
+        public string id {get; set; }
     }
 
 
@@ -50,6 +64,7 @@ namespace Microsoft.Function
             string requestBody = new StreamReader(req.Body).ReadToEnd();
             // Console.WriteLine(requestBody);
             // var input = JsonConvert.DeserializeObject<AnnotationItem>(requestBody);
+            var input = JsonConvert.DeserializeObject<AnnotationItem>(requestBody);
 
             document = new { userId = userId, id = imageId, AnnotationJson = requestBody }; //new object[] { requestBody } };
         }
