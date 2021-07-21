@@ -98,7 +98,7 @@ export default function Viewer2() {
         </Toolbar>
       </AppBar>
         <main className={clsx(classes.content, {
-                        [classes.contentShift]: open, })}
+                        [classes.contentShift]: open, })}>
             <OpenSeaDragonViewer2 image={manifest} />
       </main>
       <Drawer
