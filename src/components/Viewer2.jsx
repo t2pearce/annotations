@@ -18,7 +18,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import { OpenSeaDragonViewer } from './OpenSeaDragonViewer'
+import { OpenSeaDragonViewer2 } from './OpenSeaDragonViewer2'
 import PhotoIcon from '@material-ui/icons/Photo';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import {useStyles} from './ViewerStyle.js';
@@ -153,7 +153,7 @@ export default function Viewer2() {
                Image: <b>{title}</b>
                 <p></p>
              </Typography>
-            <OpenSeaDragonViewer image={manifest} />
+            <OpenSeaDragonViewer2 image={manifest} />
               </Paper>
               </Grid>
               </Grid>
