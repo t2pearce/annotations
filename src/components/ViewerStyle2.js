@@ -109,7 +109,7 @@ export const useStyles = makeStyles((theme) => ({
   },
     paperShift: {
     marginRight: 100,
-    transition: theme.transitions.create(['width', 'margin'], {
+    transition: theme.transitions.create(['margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
