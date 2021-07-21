@@ -145,10 +145,6 @@ export default function Viewer2() {
            <Grid container spacing={3} alignItems="center">
             <Grid item xs={12} md={12} lg={12}>
               <Paper className={fixedHeightPaper}>
-                <Typography align="left">
-                  Hold the <b>[SHIFT]</b> key while clicking and dragging the mouse to create a new annotation.
-                  <p></p>
-                </Typography>
             <Typography align="left">
                Image: <b>{title}</b>
                 <p></p>
