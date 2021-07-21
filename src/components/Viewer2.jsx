@@ -94,16 +94,17 @@ export default function Viewer2() {
         </Toolbar>
       </AppBar>
       <Drawer
-        variant="permanent"
+        className="{classes.drawer}
+        variant="persistent"
         anchor="right"
         classes={{
-          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+          paper: classes.drawerPaper,
         }}
         open={open}
       >
         <div className={classes.toolbarIcon}>
           <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
+            <ChevronRighttIcon />
           </IconButton>
         </div>
 <List>
