@@ -17,7 +17,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronLeft';
 import { OpenSeaDragonViewer2 } from './OpenSeaDragonViewer2'
 import PhotoIcon from '@material-ui/icons/Photo';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -104,7 +104,7 @@ export default function Viewer2() {
       >
         <div className={classes.toolbarIcon}>
           <IconButton onClick={handleDrawerClose}>
-            <ChevronRighttIcon />
+            <ChevronRightIcon />
           </IconButton>
         </div>
 <List>
