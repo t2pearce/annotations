@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -17,7 +17,8 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
-import ChevronRightIcon from '@material-ui/icons/ChevronLeft';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { OpenSeaDragonViewer2 } from './OpenSeaDragonViewer2'
 import PhotoIcon from '@material-ui/icons/Photo';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -60,6 +61,7 @@ export default function Viewer2() {
       }
 
   const classes = useStyles();
+  const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -70,11 +72,19 @@ export default function Viewer2() {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight, open && classes.paperShift);
 
   return (
-    <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="fixed" className={clsx(classes.appBar, {
-                                           [classes.appBarShift]: open,})}>
+      <AppBar position="fixed" 
+              className={clsx(classes.appBar, {
+                [classes.appBarShift]: open,
+              })}>
         <Toolbar className={classes.toolbar}>
+           <Typography variant="h6" noWrap className={classes.title}>
+            <b>Breast Tissue Clinical Study</b>
+          </Typography>
+          <Typography>
+            User:{' '}<b><span id="user"></span> </b>
+            <span id='consolelog'></span>
+            </Typography>
           <IconButton
             edge="end"
             color="inherit"
@@ -84,15 +94,12 @@ export default function Viewer2() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title} align="left">
-            <b>Breast Tissue Clinical Study</b>
-          </Typography>
-          <Typography>
-            User:{' '}<b><span id="user"></span> </b>
-            <span id='consolelog'></span>
-            </Typography>
         </Toolbar>
       </AppBar>
+        <main className={clsx(classes.content, {
+                        [classes.contentShift]: open, })}
+            <OpenSeaDragonViewer2 image={manifest} />
+      </main>
       <Drawer
         className={classes.drawer}
         variant="persistent"
@@ -102,9 +109,9 @@ export default function Viewer2() {
         }}
         open={open}
       >
-        <div className={classes.toolbarIcon}>
+        <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerClose}>
-            <ChevronRightIcon />
+            {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
 <List>
@@ -142,23 +149,6 @@ export default function Viewer2() {
       </div>
 </List>
       </Drawer>
-        <main className={clsx(classes.content, {
-                        [classes.contentShift]: open, })}>
-        <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-           <Grid container spacing={3} alignItems="center">
-            <Grid item xs={12} md={12} lg={12}>
-              <Paper className={fixedHeightPaper}>
-            <Typography align="left">
-               Image: <b>{title}</b>
-                <p></p>
-             </Typography>
-            <OpenSeaDragonViewer2 image={manifest} />
-              </Paper>
-              </Grid>
-              </Grid>
-               </Container>
-      </main>
-    </div>
+</div>
 );
 }
