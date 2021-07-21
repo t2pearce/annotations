@@ -72,6 +72,7 @@ export default function Viewer2() {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight, open && classes.paperShift);
 
   return (
+    <div className = {classes.root}>
       <CssBaseline />
       <AppBar position="fixed" 
               className={clsx(classes.appBar, {
