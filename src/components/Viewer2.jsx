@@ -100,9 +100,15 @@ export default function Viewer2() {
         <main className={clsx(classes.content, {
                           [classes.contentShift]:open, })}>
              <div className={classes.drawerHeader} />
+               <Container maxWidth="lg">
+           <Grid container spacing={3} alignItems="center">
+            <Grid item xs={12} md={12} lg={12}>
            <Paper variant="outlined" style={{width: "75vw", align:"center", justify: "center"}}>
              <OpenSeaDragonViewer2 image={manifest} />
                </Paper>
+</Grid>
+              </Grid>
+               </Container>
 </main>
       <Drawer
         className={classes.drawer}
