@@ -69,7 +69,7 @@ export default function Viewer2() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight, open && classes.paperShift);
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
     <div className = {classes.root}>
@@ -97,13 +97,15 @@ export default function Viewer2() {
           </IconButton>
         </Toolbar>
       </AppBar>
-        <main className={classes.content}>
+        <main className={clsx(classes.content, {
+                          [classes.contentShift]:open, })}>
               <div className={classes.appBarSpacer} />
            <Container maxWidth="lg" className={clsx(classes.container, {
                                                      [classes.contentShift]:open, })}>
            <Grid container spacing={3} alignItems="center">
             <Grid item xs={12} md={12} lg={12}>
-              <Paper className={fixedHeightPaper}>
+              <Paper className={clsx(fixedHeightPaper, {
+                       [classes.contentShift]:open, })}>
             <Typography align="left">
                Image: <b>{title}</b>
                 <p></p>
