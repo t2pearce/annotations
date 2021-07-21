@@ -100,7 +100,7 @@ export default function Viewer2() {
         <main className={clsx(classes.content, {
                           [classes.contentShift]:open, })}>
              <div className={classes.drawerHeader} />
-           <Paper variant="outlined" width: 75vh width: 50vw />
+           <Paper variant="outlined" />
 </main>
       <Drawer
         className={classes.drawer}
