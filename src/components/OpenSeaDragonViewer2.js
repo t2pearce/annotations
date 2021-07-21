@@ -50,7 +50,7 @@ const OpenSeaDragonViewer2 = ({ image }) => {
   };
   
   const InitAnnotations = async () => {
-  
+      anno.readOnly;
   }
 
     async function getUserInfo() {
