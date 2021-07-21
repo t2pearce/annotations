@@ -78,7 +78,7 @@ export default function Viewer2() {
               className={clsx(classes.appBar, {
                 [classes.appBarShift]: open,
               })}>
-        <Toolbar className={classes.toolbar}>
+        <Toolbar>
            <Typography variant="h6" noWrap className={classes.title} align="left">
             <b>Breast Tissue Clinical Study</b>
           </Typography>
@@ -99,7 +99,7 @@ export default function Viewer2() {
       </AppBar>
         <main className={clsx(classes.content, {
                           [classes.contentShift]:open, })}>
-             <div className={classes.appBarSpacer} />
+             <div className={classes.drawerHeader} />
            <Paper variant="outlined" width: 75vh width: 50vw />
 </main>
       <Drawer
