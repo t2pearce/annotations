@@ -60,7 +60,7 @@ export default function Viewer2() {
       }
 
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -72,14 +72,15 @@ export default function Viewer2() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+      <AppBar position="fixed" className={clsx(classes.appBar, {
+                                           [classes.appBarShift]: open,})}>
         <Toolbar className={classes.toolbar}>
           <IconButton
-            edge="start"
+            edge="end"
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
-            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
+            className={clsx(open && classes.hide)}
           >
             <MenuIcon />
           </IconButton>
@@ -140,7 +141,8 @@ export default function Viewer2() {
       </div>
 </List>
       </Drawer>
-        <main className={classes.content}>
+        <main className={clsx(classes.content, {
+                        [classes.contentShift]: open, })}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
            <Grid container spacing={3} alignItems="center">
