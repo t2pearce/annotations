@@ -79,7 +79,7 @@ export default function Viewer2() {
                 [classes.appBarShift]: open,
               })}>
         <Toolbar className={classes.toolbar}>
-           <Typography variant="h6" noWrap className={classes.title}>
+           <Typography variant="h6" noWrap className={classes.title} align="left">
             <b>Breast Tissue Clinical Study</b>
           </Typography>
           <Typography>
@@ -99,7 +99,23 @@ export default function Viewer2() {
       </AppBar>
         <main className={clsx(classes.content, {
                         [classes.contentShift]: open, })}>
-            <OpenSeaDragonViewer2 image={manifest} />
+           <Container maxWidth="lg" className={classes.container}>
+           <Grid container spacing={3} alignItems="center">
+            <Grid item xs={12} md={12} lg={12}>
+              <Paper className={fixedHeightPaper}>
+                <Typography align="left">
+                  Hold the <b>[SHIFT]</b> key while clicking and dragging the mouse to create a new annotation.
+                  <p></p>
+                </Typography>
+            <Typography align="left">
+               Image: <b>{title}</b>
+                <p></p>
+             </Typography>
+            <OpenSeaDragonViewer image={manifest} />
+              </Paper>
+              </Grid>
+              </Grid>
+               </Container>
       </main>
       <Drawer
         className={classes.drawer}
