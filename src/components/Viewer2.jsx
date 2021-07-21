@@ -100,7 +100,9 @@ export default function Viewer2() {
         <main className={clsx(classes.content, {
                           [classes.contentShift]:open, })}>
              <div className={classes.drawerHeader} />
-           <Paper variant="outlined" />
+           <Paper variant="outlined">
+             <OpenSeaDragonViewer2 image={manifest} />
+               </Paper>
 </main>
       <Drawer
         className={classes.drawer}
