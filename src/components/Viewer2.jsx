@@ -111,7 +111,7 @@ export default function Viewer2() {
                Image: <b>{title}</b>
                 <p></p>
              </Typography>
-            <OpenSeaDragonViewer image={manifest} />
+            <OpenSeaDragonViewer2 image={manifest} />
               </Paper>
               </Grid>
               </Grid>
