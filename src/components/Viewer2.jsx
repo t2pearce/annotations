@@ -99,7 +99,8 @@ export default function Viewer2() {
       </AppBar>
         <main className={classes.content}>
               <div className={classes.appBarSpacer} />
-           <Container maxWidth="lg" className={classes.container}>
+           <Container maxWidth="lg" className={clsx(classes.container, {
+                                                     [classes.contentShift]:open, })}>
            <Grid container spacing={3} alignItems="center">
             <Grid item xs={12} md={12} lg={12}>
               <Paper className={fixedHeightPaper}>
