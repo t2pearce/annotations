@@ -94,7 +94,7 @@ export default function Viewer2() {
         </Toolbar>
       </AppBar>
       <Drawer
-        className="{classes.drawer}
+        className={classes.drawer}
         variant="persistent"
         anchor="right"
         classes={{
