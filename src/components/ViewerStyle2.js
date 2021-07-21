@@ -23,7 +23,7 @@ export const useStyles = makeStyles((theme) => ({
     }),
   },
   appBarShift: {
-    marginLeft: drawerWidth,
+    marginRight: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -31,7 +31,7 @@ export const useStyles = makeStyles((theme) => ({
     }),
   },
   menuButton: {
-    marginRight: 36,
+    marginLeft: 36,
   },
   menuButtonHidden: {
     display: 'none',
@@ -84,7 +84,7 @@ export const useStyles = makeStyles((theme) => ({
     transform: "translate(-50%, -50%)"
   },
     paperShift: {
-    marginLeft: 100,
+    marginRight: 100,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
