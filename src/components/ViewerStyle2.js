@@ -48,7 +48,7 @@ export const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     marginRight: -drawerWidth,
-    justifyContent: 'center';
+    justifyContent: 'center',
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
