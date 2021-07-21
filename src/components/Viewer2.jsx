@@ -94,6 +94,7 @@ export default function Viewer2() {
       </AppBar>
       <Drawer
         variant="permanent"
+        anchor="right"
         classes={{
           paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
         }}
