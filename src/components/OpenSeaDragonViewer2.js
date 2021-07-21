@@ -22,12 +22,12 @@ const OpenSeaDragonViewer2 = ({ image }) => {
 //    }
   }, [image, check]);
   
-  useEffect(() => {
-    console.log("Render annotations");
-    if (image && anno) {
-      InitAnnotations();
-    }
-  }, [annotations]);
+  // useEffect(() => {
+  //  console.log("Render annotations");
+  //  if (image && anno) {
+  //    InitAnnotations();
+  //  }
+ // }, [annotations]);
 
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
@@ -50,34 +50,7 @@ const OpenSeaDragonViewer2 = ({ image }) => {
   };
   
   const InitAnnotations = async () => {
-    
-    anno.on('createAnnotation', (annotation) => {
-      console.log("creating");
-      const newAnnotations = [...annotations, annotation]
-      //setAnnotations(newAnnotations)
-      console.log(newAnnotations);
-      saveRemoteAnnotation([...newAnnotations])
-      setCheck(!check);
-    });
-
-    anno.on('updateAnnotation', (annotation, previous) => {
-      const newAnnotations = annotations.map(val => {
-          if (val.id === annotation.id) return annotation
-          return val
-      })
-      //setAnnotations([...newAnnotations])
-      saveRemoteAnnotation([...newAnnotations])
-      //InitOpenseadragon();
-      setCheck(!check);
-    });
   
-    anno.on('deleteAnnotation', (annotation) => {
-      const newAnnotations  = annotations.filter(val => val.id !== annotation.id)
-      //setAnnotations([...newAnnotations])
-      saveRemoteAnnotation([...newAnnotations])
-      //InitOpenseadragon();
-      setCheck(!check);
-    });
   }
 
     async function getUserInfo() {
@@ -98,32 +71,6 @@ const OpenSeaDragonViewer2 = ({ image }) => {
           console.log(clientPrincipal);
     }
   
-  const saveRemoteAnnotation =  (newAnnotations) => {
-    console.log("saving");
-    if (!newAnnotations)
-      return;
-
-    var json = JSON.stringify(newAnnotations); 
-    var encodedId = btoa(image.source.Image.Url);
-    fetch("/api/annotation/" + encodedId , { 
-          method: 'POST',
-          credentials: 'include',
-          headers: {'Access-Control-Allow-Credentials': 'true',
-                    'Content-Type': 'application/json'},
-          body: json } )
-      .then((response) => response.json())
-      .then(
-            (result) => {
-              console.log(result);
-            },
-            // Note: it's important to handle errors here
-            // instead of a catch() block so that we don't swallow
-            // exceptions from actual bugs in components.
-            (error) => {
-              console.log(error);
-            }
-          )
-    }
 
   
   const getRemoteAnnotations =  () => {
