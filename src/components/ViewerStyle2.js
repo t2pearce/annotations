@@ -2,6 +2,13 @@ import { makeStyles } from '@material-ui/core/styles';
 const drawerWidth = 300;
 
 export const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
   root: {
     display: 'flex',
   },
