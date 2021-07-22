@@ -178,7 +178,7 @@ export default function Viewer2() {
         <FormControlLabel value="no" control={<Radio />} label="No" />
         <FormControlLabel value="N/A" control={<Radio />} label="N/A" />
       </RadioGroup>
-    </FormControl>
+    </FormControl> <p></p> <p></p>
         <FormControl className={classes.formControl}>
                               <InputLabel htmlFor="age-native-simple"> Question 3</InputLabel>
                               <Select
@@ -195,7 +195,7 @@ export default function Viewer2() {
                                 <option value={20}>No</option>
                                 <option value={30}>N/A</option>
                               </Select>
-                            </FormControl>
+                            </FormControl> <p></p> <p></p>
           <Button variant="contained" color="primary" endIcon={<NextIcon />}>Next</Button>
 <List>
        <div>
