@@ -28,6 +28,10 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import NativeSelect from '@material-ui/core/NativeSelect';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormLabel from '@material-ui/core/FormLabel';
 
 export default function Viewer2() {
 
@@ -38,9 +42,8 @@ export default function Viewer2() {
     question1: '',
     question2: '',
     question3: '',
-    question4: '',
-    question5: '',
   });
+  const [value, setValue] = React.useState('female');
   
   const handleChange = (event) => {
     const name = event.target.name;
@@ -48,6 +51,10 @@ export default function Viewer2() {
       ...state,
       [name]: event.target.value,
     });
+  };
+  
+  const handleChange2 = (event) => {
+    setValue(event.target.value);
   };
 
     setUserInfo();
@@ -161,23 +168,14 @@ export default function Viewer2() {
                                 <option value={30}>N/A</option>
                               </Select>
                             </FormControl>
-          <FormControl className={classes.formControl}>
-                              <InputLabel htmlFor="age-native-simple"> Question 2</InputLabel>
-                              <Select
-                                native
-                                value={state.question2}
-                                onChange={handleChange}
-                                inputProps={{
-                                  name: 'question2',
-                                  id: 'age-native-simple',
-                                }}
-                              >
-                                <option aria-label="None" value="" />
-                                <option value={10}>Yes</option>
-                                <option value={20}>No</option>
-                                <option value={30}>N/A</option>
-                              </Select>
-                            </FormControl>
+          <FormControl component="fieldset">
+      <FormLabel component="legend">Question 2</FormLabel>
+      <RadioGroup aria-label="question2" name="question2" value={value} onChange={handleChange2}>
+        <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+        <FormControlLabel value="no" control={<Radio />} label="No" />
+        <FormControlLabel value="N/A" control={<Radio />} label="N/A" />
+      </RadioGroup>
+    </FormControl>
         <FormControl className={classes.formControl}>
                               <InputLabel htmlFor="age-native-simple"> Question 3</InputLabel>
                               <Select
