@@ -170,7 +170,7 @@ export default function Viewer2() {
                                 <option value={20}>No</option>
                                 <option value={30}>N/A</option>
                               </Select>
-                            </FormControl>
+                            </FormControl> <p></p> <p></p>
           <FormControl component="fieldset" p={3}>
       <FormLabel component="legend">Question 2</FormLabel>
       <RadioGroup aria-label="question2" name="question2" value={value} onChange={handleChange2}>
