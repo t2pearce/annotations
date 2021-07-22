@@ -172,6 +172,7 @@ export default function Viewer2() {
                           primary={slide.name} />
                       </ListItem>
                       <Divider />
+                            <ListSubheader> {group.name} </ListSubheader>
                            <FormControl className={classes.formControl}>
                               <InputLabel htmlFor="age-native-simple">Question 1</InputLabel>
                               <Select
