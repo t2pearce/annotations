@@ -3,9 +3,9 @@ const drawerWidth = 300;
 
 export const useStyles = makeStyles((theme) => ({
   formControl: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(5),
     minWidth: 120,
-    padding: theme.spacing(2),
+    padding: theme.spacing(5),
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
