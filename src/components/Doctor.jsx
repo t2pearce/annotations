@@ -15,7 +15,7 @@ function Doctor() {
         return clientPrincipal;
       }
   
-  string redirect = null;
+  const redirect = null;
   
   if (clientPrincipal.userRoles == 'operator') {
     redirect = "/viewer";
