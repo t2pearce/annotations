@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
 
-function Doctor() {
+export default function Doctor() {
   async function getUserInfo() {
         const response = await fetch('/.auth/me');
         const payload = await response.json();
