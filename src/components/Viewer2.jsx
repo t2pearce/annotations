@@ -193,6 +193,7 @@ export default function Viewer2() {
                                 <option value={30}>N/A</option>
                               </Select>
                             </FormControl>
+          <Button variant="contained" color="primary" endIcon={<Icon>arrowRight</Icon>}>Next</Button>
 <List>
        <div>
           {images.map((group, index) => {
