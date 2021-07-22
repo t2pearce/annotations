@@ -8,7 +8,7 @@ import ShapeLabelsFormatter from './ShapeLabelsFormatter.js';
 const OpenSeaDragonViewer = ({ image }) => {
   const [viewer, setViewer] = useState( null);
   const [anno, setAnno] = useState(null);
-//const [annotations, setAnnotations] = useState([]);
+  const [annotations, setAnnotations] = useState([]);
   
   useEffect(() => {
     InitOpenseadragon();
@@ -51,6 +51,7 @@ const OpenSeaDragonViewer = ({ image }) => {
     anno.on('createAnnotation', (annotation) => {
       console.log("creating");
       const newAnnotations = [...annotations, annotation]
+      setAnnotations(newAnnotations);
       console.log(newAnnotations);
       saveRemoteAnnotation([...newAnnotations])
     });
@@ -61,12 +62,14 @@ const OpenSeaDragonViewer = ({ image }) => {
           return val
       })
       console.log(newAnnotations);
+      setAnnotations(newAnnotations);
       saveRemoteAnnotation([...newAnnotations])
     });
   
     anno.on('deleteAnnotation', (annotation) => {
       const newAnnotations  = annotations.filter(val => val.id !== annotation.id)
       console.log(newAnnotations);
+      setAnnotations(newAnnotations);
       saveRemoteAnnotation([...newAnnotations])
     });
      
