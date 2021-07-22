@@ -44,7 +44,7 @@ function Doctor() {
         <p>
     <Button variant="contained" href="/viewer">Operator</Button>
           <p></p>
-          <Button variant="contained" href="/viewer">Clinician</Button>
+          <Button variant="contained" href="/viewer2">Clinician</Button>
             </p>
     </Typography>
     </Paper>
