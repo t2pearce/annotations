@@ -9,7 +9,7 @@ const OpenSeaDragonViewer = ({ image }) => {
   const [viewer, setViewer] = useState( null);
   const [anno, setAnno] = useState(null);
   const [annotations, setAnnotations] = useState([]);
-  
+  /*
   useEffect(() => {
     InitOpenseadragon();
     
@@ -77,8 +77,8 @@ const OpenSeaDragonViewer = ({ image }) => {
       saveRemoteAnnotation([...newAnnotations])
     });    
   }
-
-/*  useEffect(() => {
+*/
+  useEffect(() => {
     if (image && viewer) {
       viewer.open(image.source);
       getRemoteAnnotations();
@@ -146,7 +146,6 @@ const OpenSeaDragonViewer = ({ image }) => {
       //setCheck(!check);
     });
   }
-*/
 
     async function getUserInfo() {
       const response = await fetch('./auth/me');
@@ -220,7 +219,7 @@ const OpenSeaDragonViewer = ({ image }) => {
               }
             )
     } 
- /*
+ 
   useEffect(() => {
     InitOpenseadragon();
 
@@ -228,7 +227,7 @@ const OpenSeaDragonViewer = ({ image }) => {
         viewer && viewer.destroy();
     };
   }, []);
-*/
+
   return (
   <div
     id="openSeaDragon"
