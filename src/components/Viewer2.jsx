@@ -144,6 +144,23 @@ export default function Viewer2() {
             {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
+          <FormControl className={classes.formControl}>
+                              <InputLabel htmlFor="age-native-simple">Question 1</InputLabel>
+                              <Select
+                                native
+                                value={state.question1}
+                                onChange={handleChange}
+                                inputProps={{
+                                  name: 'question1',
+                                  id: 'age-native-simple',
+                                }}
+                              >
+                                <option aria-label="None" value="" />
+                                <option value={10}>Yes</option>
+                                <option value={20}>No</option>
+                                <option value={30}>N/A</option>
+                              </Select>
+                            </FormControl>
 <List>
        <div>
           {images.map((group, index) => {
@@ -171,25 +188,8 @@ export default function Viewer2() {
                           disableTypography
                           primary={slide.name} />
                       </ListItem>
-                      <Divider />
-                            <ListSubheader> {group.name} </ListSubheader>
-                           <FormControl className={classes.formControl}>
-                              <InputLabel htmlFor="age-native-simple">Question 1</InputLabel>
-                              <Select
-                                native
-                                value={state.question1}
-                                onChange={handleChange}
-                                inputProps={{
-                                  name: 'question1',
-                                  id: 'age-native-simple',
-                                }}
-                              >
-                                <option aria-label="None" value="" />
-                                <option value={10}>Yes</option>
-                                <option value={20}>No</option>
-                                <option value={30}>N/A</option>
-                              </Select>
-                            </FormControl>
+                      
+                         
                     );
                   })}
                 </div>
