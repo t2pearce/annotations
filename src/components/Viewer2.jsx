@@ -145,13 +145,47 @@ export default function Viewer2() {
           </IconButton>
         </div>
           <FormControl className={classes.formControl}>
-                              <InputLabel htmlFor="age-native-simple">Question 1</InputLabel>
+                              <InputLabel htmlFor="age-native-simple"> Question 1</InputLabel>
                               <Select
                                 native
                                 value={state.question1}
                                 onChange={handleChange}
                                 inputProps={{
                                   name: 'question1',
+                                  id: 'age-native-simple',
+                                }}
+                              >
+                                <option aria-label="None" value="" />
+                                <option value={10}>Yes</option>
+                                <option value={20}>No</option>
+                                <option value={30}>N/A</option>
+                              </Select>
+                            </FormControl>
+          <FormControl className={classes.formControl}>
+                              <InputLabel htmlFor="age-native-simple"> Question 2</InputLabel>
+                              <Select
+                                native
+                                value={state.question2}
+                                onChange={handleChange}
+                                inputProps={{
+                                  name: 'question2',
+                                  id: 'age-native-simple',
+                                }}
+                              >
+                                <option aria-label="None" value="" />
+                                <option value={10}>Yes</option>
+                                <option value={20}>No</option>
+                                <option value={30}>N/A</option>
+                              </Select>
+                            </FormControl>
+        <FormControl className={classes.formControl}>
+                              <InputLabel htmlFor="age-native-simple"> Question 3</InputLabel>
+                              <Select
+                                native
+                                value={state.question3}
+                                onChange={handleChange}
+                                inputProps={{
+                                  name: 'question3',
                                   id: 'age-native-simple',
                                 }}
                               >
