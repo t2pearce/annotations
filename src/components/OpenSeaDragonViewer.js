@@ -34,7 +34,7 @@ const OpenSeaDragonViewer = ({ image }) => {
   }, [image]);
  
   const InitOpenseadragon = () => {
-    //viewer && viewer.destroy();
+    viewer && viewer.destroy();
     
     const initViewer = OpenSeaDragon({
         id: "openSeaDragon",
