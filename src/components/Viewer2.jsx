@@ -151,6 +151,8 @@ export default function Viewer2() {
                           disableTypography
                           primary={slide.name} />
                       </ListItem>
+                      <Divider / >
+                           
                     );
                   })}
                 </div>
