@@ -34,7 +34,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
-import NextIcon from '@material-ui/core/ArrowRight';
+import NextIcon from '@material-ui/icons/ArrowRight';
 
 export default function Viewer2() {
 
