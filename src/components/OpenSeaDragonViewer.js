@@ -19,9 +19,8 @@ const OpenSeaDragonViewer = ({ image }) => {
   }, []);
   
   useEffect(() => {
-    InitOpenseadragon();
-    viewer.open(image.source);
     if (image && viewer) {
+      viewer.open(image.source);
       getRemoteAnnotations();
     }
     if (image && anno) {
