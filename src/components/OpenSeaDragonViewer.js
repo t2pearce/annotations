@@ -24,7 +24,7 @@ const OpenSeaDragonViewer = ({ image }) => {
     return () => {
         viewer && viewer.destroy();
     };
-  }, []);
+  }, [image]);
  
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
