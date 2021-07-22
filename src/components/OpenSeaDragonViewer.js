@@ -9,7 +9,7 @@ const OpenSeaDragonViewer = ({ image }) => {
   const [viewer, setViewer] = useState( null);
   const [anno, setAnno] = useState(null);
   const [annotations, setAnnotations] = useState([]);
-  const [check, setCheck] = useState(true);
+ // const [check, setCheck] = useState(true);
 
   useEffect(() => {
     if (image && viewer) {
@@ -20,7 +20,7 @@ const OpenSeaDragonViewer = ({ image }) => {
 //      InitAnnotations();
 //      console.log("Render");
 //    }
-  }, [image, check]);
+  }, [image]);
   
   useEffect(() => {
     console.log("Render annotations");
@@ -54,10 +54,10 @@ const OpenSeaDragonViewer = ({ image }) => {
     anno.on('createAnnotation', (annotation) => {
       console.log("creating");
       const newAnnotations = [...annotations, annotation]
-      //setAnnotations(newAnnotations)
+      setAnnotations(newAnnotations)
       console.log(newAnnotations);
       saveRemoteAnnotation([...newAnnotations])
-      setCheck(!check);
+      //setCheck(!check);
     });
 
     anno.on('updateAnnotation', (annotation, previous) => {
@@ -65,18 +65,18 @@ const OpenSeaDragonViewer = ({ image }) => {
           if (val.id === annotation.id) return annotation
           return val
       })
-      //setAnnotations([...newAnnotations])
+      setAnnotations([...newAnnotations])
       saveRemoteAnnotation([...newAnnotations])
       //InitOpenseadragon();
-      setCheck(!check);
+      //setCheck(!check);
     });
   
     anno.on('deleteAnnotation', (annotation) => {
       const newAnnotations  = annotations.filter(val => val.id !== annotation.id)
-      //setAnnotations([...newAnnotations])
+      setAnnotations([...newAnnotations])
       saveRemoteAnnotation([...newAnnotations])
       //InitOpenseadragon();
-      setCheck(!check);
+      //setCheck(!check);
     });
   }
 
