@@ -8,10 +8,73 @@ import ShapeLabelsFormatter from './ShapeLabelsFormatter.js';
 const OpenSeaDragonViewer = ({ image }) => {
   const [viewer, setViewer] = useState( null);
   const [anno, setAnno] = useState(null);
-  const [annotations, setAnnotations] = useState([]);
- // const [check, setCheck] = useState(true);
-
+//const [annotations, setAnnotations] = useState([]);
+  
   useEffect(() => {
+    InitOpenseadragon();
+    if (image && viewer) {
+      viewer.open(image.source);
+      getRemoteAnnotations();
+    }
+    if (image && anno) {
+      InitAnnotations();
+    }
+    console.log("Render");
+
+    return () => {
+        viewer && viewer.destroy();
+    };
+  }, []);
+ 
+  const InitOpenseadragon = () => {
+    viewer && viewer.destroy();
+    
+    const initViewer = OpenSeaDragon({
+        id: "openSeaDragon",
+        prefixUrl: "openseadragon-images/",
+        animationTime: 0.5,
+        blendTime: 0.1,
+        constrainDuringPan: true,
+        maxZoomPixelRatio: 2,
+        visibilityRatio: 1,
+        zoomPerScroll: 2
+      });
+
+    setViewer(initViewer);
+    const config = {formatter: ShapeLabelsFormatter};
+    const annotate = Annotorious(initViewer, config);
+    setAnno(annotate)
+  };
+  
+   const InitAnnotations = () => {
+    
+    anno.on('createAnnotation', (annotation) => {
+      console.log("creating");
+      const newAnnotations = [...annotations, annotation]
+      console.log(newAnnotations);
+      saveRemoteAnnotation([...newAnnotations])
+    });
+
+    anno.on('updateAnnotation', (annotation, previous) => {
+      const newAnnotations = annotations.map(val => {
+          if (val.id === annotation.id) return annotation
+          return val
+      })
+      console.log(newAnnotations);
+      saveRemoteAnnotation([...newAnnotations])
+    });
+  
+    anno.on('deleteAnnotation', (annotation) => {
+      const newAnnotations  = annotations.filter(val => val.id !== annotation.id)
+      console.log(newAnnotations);
+      saveRemoteAnnotation([...newAnnotations])
+    });
+     
+    setAnno(annotate);
+     
+  }
+
+/*  useEffect(() => {
     if (image && viewer) {
       viewer.open(image.source);
       getRemoteAnnotations();
@@ -79,6 +142,7 @@ const OpenSeaDragonViewer = ({ image }) => {
       //setCheck(!check);
     });
   }
+*/
 
     async function getUserInfo() {
       const response = await fetch('./auth/me');
@@ -139,7 +203,7 @@ const OpenSeaDragonViewer = ({ image }) => {
                   let newAnnotations = result;     
                   if (newAnnotations) {
                     anno.setAnnotations(newAnnotations);
-                    setAnnotations([...newAnnotations]);
+                   // setAnnotations([...newAnnotations]);
                     console.log("getting");
                     console.log(newAnnotations);
                   }
@@ -152,14 +216,15 @@ const OpenSeaDragonViewer = ({ image }) => {
               }
             )
     } 
-  
+ /*
   useEffect(() => {
     InitOpenseadragon();
+
     return () => {
         viewer && viewer.destroy();
     };
   }, []);
-
+*/
   return (
   <div
     id="openSeaDragon"
