@@ -32,6 +32,9 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
+import NextIcon from '@material-ui/core/ArrowRight';
 
 export default function Viewer2() {
 
@@ -193,7 +196,7 @@ export default function Viewer2() {
                                 <option value={30}>N/A</option>
                               </Select>
                             </FormControl>
-          <Button variant="contained" color="primary" endIcon={<Icon>arrowRight</Icon>}>Next</Button>
+          <Button variant="contained" color="primary" endIcon={<NextIcon />}>Next</Button>
 <List>
        <div>
           {images.map((group, index) => {
