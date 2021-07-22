@@ -171,7 +171,7 @@ export default function Viewer2() {
                                 <option value={30}>N/A</option>
                               </Select>
                             </FormControl>
-          <FormControl component="fieldset">
+          <FormControl component="fieldset" className={classes.formControl}>
       <FormLabel component="legend">Question 2</FormLabel>
       <RadioGroup aria-label="question2" name="question2" value={value} onChange={handleChange2}>
         <FormControlLabel value="yes" control={<Radio />} label="Yes" />
