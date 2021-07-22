@@ -23,12 +23,32 @@ import { OpenSeaDragonViewer2 } from './OpenSeaDragonViewer2'
 import PhotoIcon from '@material-ui/icons/Photo';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import {useStyles} from './ViewerStyle2.js';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import NativeSelect from '@material-ui/core/NativeSelect';
 
 export default function Viewer2() {
 
   const [images, setImages] = useState([]);
     const [manifest, setManifest] = useState();
     const [title, setTitle] = useState();
+  const [state, setState] = React.useState({
+    question1: '',
+    question2: '',
+    question3: '',
+    question4: '',
+    question5: '',
+  });
+  
+  const handleChange = (event) => {
+    const name = event.target.name;
+    setState({
+      ...state,
+      [name]: event.target.value,
+    });
+  };
 
     setUserInfo();
 
@@ -152,7 +172,23 @@ export default function Viewer2() {
                           primary={slide.name} />
                       </ListItem>
                       <Divider / >
-                           
+                           <FormControl className={classes.formControl}>
+                              <InputLabel htmlFor="age-native-simple">Question 1</InputLabel>
+                              <Select
+                                native
+                                value={state.question1}
+                                onChange={handleChange}
+                                inputProps={{
+                                  name: 'question1',
+                                  id: 'age-native-simple',
+                                }}
+                              >
+                                <option aria-label="None" value="" />
+                                <option value={10}>Yes</option>
+                                <option value={20}>No</option>
+                                <option value={30}>N/A</option>
+                              </Select>
+                            </FormControl>
                     );
                   })}
                 </div>
