@@ -29,7 +29,7 @@ const OpenSeaDragonViewer = ({ image }) => {
     console.log("Render");
 
     return () => {
-        viewer && viewer.destroy();
+        InitOpenseadragon();
     };
   }, [image]);
  
