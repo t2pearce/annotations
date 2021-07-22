@@ -154,7 +154,7 @@ export default function Viewer2() {
             {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
-          <FormControl className={classes.formControl}>
+          <FormControl className={classes.formControl} p={3}>
                               <InputLabel htmlFor="age-native-simple"> Question 1</InputLabel>
                               <Select
                                 native
@@ -171,7 +171,7 @@ export default function Viewer2() {
                                 <option value={30}>N/A</option>
                               </Select>
                             </FormControl>
-          <FormControl component="fieldset" className={classes.formControl}>
+          <FormControl component="fieldset" p={3}>
       <FormLabel component="legend">Question 2</FormLabel>
       <RadioGroup aria-label="question2" name="question2" value={value} onChange={handleChange2}>
         <FormControlLabel value="yes" control={<Radio />} label="Yes" />
