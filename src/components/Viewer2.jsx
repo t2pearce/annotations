@@ -171,7 +171,7 @@ export default function Viewer2() {
                           disableTypography
                           primary={slide.name} />
                       </ListItem>
-                      <Divider / >
+                      <Divider />
                            <FormControl className={classes.formControl}>
                               <InputLabel htmlFor="age-native-simple">Question 1</InputLabel>
                               <Select
