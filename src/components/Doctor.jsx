@@ -41,6 +41,8 @@ function Doctor() {
       return clientPrincipal;
     }
   
+  getUserInfo();
+  
   if (clientPrincipal.userRoles == 'contributor') {
     return <Redirect to="/viewer" />
   } else if (clientPrincipal.userRoles == 'reader') {
