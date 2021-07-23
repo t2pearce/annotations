@@ -6,6 +6,8 @@ import { ResponsiveContainer } from 'recharts';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
+import {Redirect} from "react-router-dom";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -31,6 +33,20 @@ const useStyles = makeStyles((theme) => ({
 function Doctor() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  
+   async function getUserInfo() {
+      const response = await fetch('./auth/me');
+      const payload = await response.json();
+      const { clientPrincipal } = payload;
+      return clientPrincipal;
+    }
+  
+  if (clientPrincipal.userRoles == 'contributor') {
+    return <Redirect to="/viewer" />
+  } else if (clientPrincipal.userRoles == 'reader') {
+    return <Redirect to="/viewer2" />
+  }
+  
   return (
     <ResponsiveContainer maxWidth="lg" className={classes.container}>
     <Grid container spacing={3} alignItems="center">
