@@ -42,8 +42,7 @@ function Doctor() {
         return clientPrincipal;
       }
       async function setUserInfo() {
-        let  clientPrincipal =  await getUserInfo();
-        userRole = clientPrincipal.userRoles;
+        let  clientPrincipal =  await getUserInfo();=
         console.log(clientPrincipal);
         return clientPrincipal.userRoles;
       }
@@ -51,11 +50,13 @@ function Doctor() {
       userRole = setUserInfo();
       console.log(userRole);
   
-  /* if (clientPrincipal.userRoles == 'contributor') {
-    return <Redirect to="/viewer" />
-  } else if (clientPrincipal.userRoles == 'reader') {
-    return <Redirect to="/viewer2" />
-  }*/
+      for (let i=0; i < userRole.length; i++) {
+        if (clientPrincipal.userRoles == 'contributor') {
+          return <Redirect to="/viewer" />
+        } else if (clientPrincipal.userRoles == 'reader') {
+          return <Redirect to="/viewer2" />
+        }
+      }
   
   return (
     <ResponsiveContainer maxWidth="lg" className={classes.container}>
