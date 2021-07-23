@@ -47,7 +47,7 @@ function Doctor() {
         console.log(clientPrincipal);
       }
   
-      setUserRole();
+      setUserInfo();
       console.log(userRole);
   
   /* if (clientPrincipal.userRoles == 'contributor') {
