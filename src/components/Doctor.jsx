@@ -42,7 +42,7 @@ function Doctor() {
       return clientPrincipal;
     }
   
-  const userPrincipal = getUserInfo();
+  getUserInfo();
   
   /* if (clientPrincipal.userRoles == 'contributor') {
     return <Redirect to="/viewer" />
