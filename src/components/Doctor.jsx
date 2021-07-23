@@ -38,16 +38,17 @@ function Doctor() {
       const response = await fetch('./auth/me');
       const payload = await response.json();
       const { clientPrincipal } = payload;
+     console.log(clientPrincipal)
       return clientPrincipal;
     }
   
   const userPrincipal = getUserInfo();
   
-  if (clientPrincipal.userRoles == 'contributor') {
+  /* if (clientPrincipal.userRoles == 'contributor') {
     return <Redirect to="/viewer" />
   } else if (clientPrincipal.userRoles == 'reader') {
     return <Redirect to="/viewer2" />
-  }
+  }*/
   
   return (
     <ResponsiveContainer maxWidth="lg" className={classes.container}>
