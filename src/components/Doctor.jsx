@@ -51,9 +51,9 @@ function Doctor() {
       console.log(userRole);
   
       for (let i=0; i < userRole.length; i++) {
-        if (clientPrincipal.userRoles == 'contributor') {
+        if (userRole[i] == 'contributor') {
           return <Redirect to="/viewer" />
-        } else if (clientPrincipal.userRoles == 'reader') {
+        } else if (userRole[i] == 'reader') {
           return <Redirect to="/viewer2" />
         }
       }
