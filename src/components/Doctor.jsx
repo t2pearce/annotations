@@ -42,7 +42,7 @@ function Doctor() {
         return clientPrincipal;
       }
       async function setUserInfo() {
-        let  clientPrincipal =  await getUserInfo();=
+        let  clientPrincipal =  await getUserInfo();
         console.log(clientPrincipal);
         return clientPrincipal.userRoles;
       }
