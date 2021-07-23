@@ -33,15 +33,22 @@ const useStyles = makeStyles((theme) => ({
 function Doctor() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  const userRole = null;
   
    async function getUserInfo() {
-      const response = await fetch('./auth/me');
-      const payload = await response.json();
-      const { clientPrincipal } = payload;
-      return clientPrincipal.userRoles;
-    }
+        const response = await fetch('/.auth/me');
+        const payload = await response.json();
+        const { clientPrincipal } = payload;
+        return clientPrincipal;
+      }
+      async function setUserInfo() {
+        let  clientPrincipal =  await getUserInfo();
+        userRole = clientPrincipal.userRoles;
+        console.log(clientPrincipal);
+      }
   
-  console.log(getUserInfo());
+      setUserRole();
+      console.log(userRole);
   
   /* if (clientPrincipal.userRoles == 'contributor') {
     return <Redirect to="/viewer" />
