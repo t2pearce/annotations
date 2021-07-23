@@ -45,9 +45,10 @@ function Doctor() {
         let  clientPrincipal =  await getUserInfo();
         userRole = clientPrincipal.userRoles;
         console.log(clientPrincipal);
+        return clientPrincipal.userRoles;
       }
   
-      setUserInfo();
+      userRole = setUserInfo();
       console.log(userRole);
   
   /* if (clientPrincipal.userRoles == 'contributor') {
