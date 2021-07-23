@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 function Doctor() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-  var userRole = null;
+  var[] userRole = null;
   
    async function getUserInfo() {
         const response = await fetch('/.auth/me');
