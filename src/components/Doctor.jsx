@@ -50,15 +50,15 @@ function Doctor() {
       userRole = setUserInfo();
       console.log(userRole);
   
-      for (let i=0; i < userRole.length; i++) {
+      /*for (let i=0; i < userRole.length; i++) {
         if (userRole[i] == 'contributor') {
           return <Redirect to="/viewer" />
         } else if (userRole[i] == 'reader') {
           return <Redirect to="/viewer2" />
         }
-      }
+      }*/
   
-/*  return (
+  return (
     <ResponsiveContainer maxWidth="lg" className={classes.container}>
     <Grid container spacing={3} alignItems="center">
     <Grid item xs={12} md={12} lg={12}>
@@ -76,6 +76,6 @@ function Doctor() {
     </Grid>
     </Grid>
     </ResponsiveContainer>
-  );*/
+  );
 }
 export default Doctor;
