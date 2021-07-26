@@ -35,7 +35,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import NextIcon from '@material-ui/icons/ArrowRight';
-import {Questions} from './Questions';
+import Questions from './Questions';
 
 export default function Viewer2() {
 
