@@ -50,13 +50,13 @@ namespace Microsoft.Function
                     UriFactory.CreateDocumentUri("medimages", "Questions", imageId),
                     new RequestOptions { PartitionKey = new Microsoft.Azure.Documents.PartitionKey(imageId) });
 
-                questionsItem = (QuestioinsItem)(dynamic)response.Resource;
+                questionsItem = (QuestionsItem)(dynamic)response;
 
-            } catch (Exception e) {
+            } catch (Exception ) {
                 log.LogError($"Cant find Profile entry for {userId} in cosmosdb");
             }
 
-            if ( questionsItem != null && questionItem.QuestionsJson != null && questionsItem.QuestionsJson.Length > 0)
+            if ( questionsItem != null && questionsItem.QuestionsJson != null && questionsItem.QuestionsJson.Length > 0)
               return new OkObjectResult(questionsItem.QuestionsJson);
             else
               return new NotFoundResult();
