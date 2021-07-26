@@ -155,7 +155,7 @@ export default function Viewer2() {
             {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
-          <Question />
+          <Questions />
 <List>
        <div>
           {images.map((group, index) => {
