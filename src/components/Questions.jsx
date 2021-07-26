@@ -13,8 +13,14 @@ import './Questions.css';
 
 export default function Questions({imageId}) {
 
+const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [showProgress, setShowProgress] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [questions, setQuestions] = useState();
+	
   useEffect(() => {
 	getQuestions();
+	  console.log(questions);
   }, []);
 	
   const getQuestions = async () => {
@@ -25,11 +31,6 @@ export default function Questions({imageId}) {
     let questionList = await response.json();
     setQuestions(questionList)
   };
-  
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [showProgress, setShowProgress] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [questions, setQuestions] = useState();
   
   const handleAnswerOptionClick = (isCorrect) => {
     if(isCorrect) {
