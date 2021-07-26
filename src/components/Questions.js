@@ -9,6 +9,7 @@
   }; */
 
 import React, {useState} from 'react';
+import './Question.css';
 
 export default function Questions() {
   const questions = [
