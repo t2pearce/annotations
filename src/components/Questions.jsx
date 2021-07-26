@@ -29,13 +29,10 @@ const [currentQuestion, setCurrentQuestion] = useState(0);
                               credentials: 'include',
                               headers: {'Access-Control-Allow-Credentials': 'true'}}); 
     let questionList = await response.json();
-    setQuestions(questionList)
+    setQuestions(questionList);
   };
   
-  const handleAnswerOptionClick = (isCorrect) => {
-    if(isCorrect) {
-      setProgress(progress +1);
-    }
+  const handleAnswerOptionClick = () => {
     const nextQuestion = currentQuestion + 1
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
@@ -47,19 +44,19 @@ const [currentQuestion, setCurrentQuestion] = useState(0);
 		<div className='app'>
 			{showProgress ? (
 				<div className='score-section'>
-					You scored {progress} out of {questions.length}
+					You scored {progress} out of 4
 				</div>
 			) : (
 				<>
 					<div className='question-section'>
 						<div className='question-count'>
-							<span>Question {currentQuestion + 1}</span>/{questions.length}
+							<span>Question {currentQuestion + 1}</span>/4
 						</div>
 						<div className='question-text'>{questions[currentQuestion].questionText}</div>
 					</div>
 					<div className='answer-section'>
 						{questions[currentQuestion].answerOptions.map((answerOption) => (
-							<button className='question-button' onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
+							<button className='question-button' onClick={() => handleAnswerOptionClick()}>{answerOption.answerText}</button>
 						))}
 					</div>
 				</>
