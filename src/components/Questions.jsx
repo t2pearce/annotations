@@ -11,14 +11,14 @@
 import React, {useState, useEffect} from 'react';
 import './Questions.css';
 
-export default function Questions() {
+export default function Questions({imageId}) {
 
   useEffect(() => {
 	getQuestions();
   }, []);
 	
   const getQuestions = async () => {
-    const response = await fetch("/api/questions", {
+    const response = await fetch("/api/questions" + imageId, {
                               method: 'GET',
                               credentials: 'include',
                               headers: {'Access-Control-Allow-Credentials': 'true'}}); 
