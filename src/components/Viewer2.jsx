@@ -39,6 +39,7 @@ import Questions from './Questions';
 
 export default function Viewer2() {
 
+  var encodedId = null;
   const [images, setImages] = useState([]);
     const [manifest, setManifest] = useState();
   const [imageId, setImageId] = useState();
@@ -79,7 +80,7 @@ export default function Viewer2() {
   const previewImage = async (slide) => {
     setManifest(slide.slide);
     setTitle(slide.name);
-    var endcodedId = btoa(slide.slide.source.Image.Url);
+    endcodedId = btoa(slide.slide.source.Image.Url);
     setImageId(encodedId);
   };
     async function getUserInfo() {
