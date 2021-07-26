@@ -68,9 +68,9 @@ export default function Questions() {
   };
   return (
 		<div className='app'>
-			{showScore ? (
+			{showProgress ? (
 				<div className='score-section'>
-					You scored {score} out of {questions.length}
+					You scored {progress} out of {questions.length}
 				</div>
 			) : (
 				<>
