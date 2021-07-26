@@ -8,11 +8,11 @@ body {
 }
 * {
   font-family: "Verdana", cursive, sans-serif;
-  color: #ffffff;
+  color: #000000;
 }
 
 body {
-  background-color: #7cc6fe;
+  background-color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,7 +20,7 @@ body {
 }
 
 .app {
-  background-color: #252d4a;
+  background-color: #ffffff;
   width: 450px;
   min-height: 200px;
   height: min-content;
