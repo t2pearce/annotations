@@ -8,7 +8,7 @@
           let questions = response.json();
   }; */
 
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './Questions.css';
 
 export default function Questions() {
@@ -23,7 +23,7 @@ export default function Questions() {
                               credentials: 'include',
                               headers: {'Access-Control-Allow-Credentials': 'true'}}); 
     let questionList = await response.json();
-    setQuestions(image.questionList)
+    setQuestions(questionList)
   };
   
   const [currentQuestion, setCurrentQuestion] = useState(0);
