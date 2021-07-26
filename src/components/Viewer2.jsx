@@ -35,6 +35,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import NextIcon from '@material-ui/icons/ArrowRight';
+import {Questions} from './Questions';
 
 export default function Viewer2() {
 
@@ -154,49 +155,7 @@ export default function Viewer2() {
             {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
-          <FormControl className={classes.formControl} p={3}>
-                              <InputLabel htmlFor="age-native-simple"> Question 1</InputLabel>
-                              <Select
-                                native
-                                value={state.question1}
-                                onChange={handleChange}
-                                inputProps={{
-                                  name: 'question1',
-                                  id: 'age-native-simple',
-                                }}
-                              >
-                                <option aria-label="None" value="" />
-                                <option value={10}>Yes</option>
-                                <option value={20}>No</option>
-                                <option value={30}>N/A</option>
-                              </Select>
-                            </FormControl> <p></p> <p></p>
-          <FormControl component="fieldset" p={3}>
-      <FormLabel component="legend">Question 2</FormLabel>
-      <RadioGroup aria-label="question2" name="question2" value={value} onChange={handleChange2}>
-        <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-        <FormControlLabel value="no" control={<Radio />} label="No" />
-        <FormControlLabel value="N/A" control={<Radio />} label="N/A" />
-      </RadioGroup>
-    </FormControl> <p></p> <p></p>
-        <FormControl className={classes.formControl}>
-                              <InputLabel htmlFor="age-native-simple"> Question 3</InputLabel>
-                              <Select
-                                native
-                                value={state.question3}
-                                onChange={handleChange}
-                                inputProps={{
-                                  name: 'question3',
-                                  id: 'age-native-simple',
-                                }}
-                              >
-                                <option aria-label="None" value="" />
-                                <option value={10}>Yes</option>
-                                <option value={20}>No</option>
-                                <option value={30}>N/A</option>
-                              </Select>
-                            </FormControl> <p></p> <p></p>
-          <Button variant="contained" color="primary" endIcon={<NextIcon />}>Next</Button>
+          <Question />
 <List>
        <div>
           {images.map((group, index) => {
