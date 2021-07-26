@@ -80,8 +80,7 @@ export default function Viewer2() {
   const previewImage = async (slide) => {
     setManifest(slide.slide);
     setTitle(slide.name);
-    endcodedId = btoa(slide.slide.source.Image.Url);
-    setImageId(encodedId);
+    setImageId(btoa(slide.slide.source.Image.Url));
   };
     async function getUserInfo() {
         const response = await fetch('/.auth/me');
