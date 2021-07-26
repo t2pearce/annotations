@@ -63,7 +63,7 @@ export default function Questions() {
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
     } else {
-      set ShowProgress(true);
+      setShowProgress(true);
     }
   };
   return (
