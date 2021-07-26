@@ -19,13 +19,13 @@ namespace Microsoft.Function
         {
             [JsonProperty("id")]
             public string UserId { get; set; }
-            [JsonProperty("questionList")]
+            //[JsonProperty("questionList")]
             public object[] QuestionsJson { get; set; }
         }
 
 
-        [FunctionName("questions")]
-        public static async Task<IActionResult> RunGetQuestions(
+        [FunctionName("getQuestions")]
+        public static async Task<IActionResult> RunGet(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "questions/{imageId}")] HttpRequest req,
             [CosmosDB(
                 databaseName: "medimages",
@@ -35,7 +35,7 @@ namespace Microsoft.Function
             string imageId,
             ILogger log)
         {
-            log.LogInformation($"C# HTTP trigger Profile function processed a request for ");
+            log.LogInformation($"function GetQuestions {imageId}");
             
             // Verify identity
             ClaimsPrincipal principal = ClientPrincipal.Parse(req);
@@ -43,21 +43,23 @@ namespace Microsoft.Function
                 return new UnauthorizedResult();
             
             string userId = principal.Identity.Name;
-            QuestionsItem questionsItem = null;
+            QuestionsItem questions = null;
             try
             {
                 var response = await client.ReadDocumentAsync<QuestionsItem>(
                     UriFactory.CreateDocumentUri("medimages", "Questions", imageId),
                     new RequestOptions { PartitionKey = new Microsoft.Azure.Documents.PartitionKey(imageId) });
 
-                questionsItem = (QuestionsItem)(dynamic)response;
+                questions = (QuestionsItem)(dynamic)response;
+                log.LogInformation($"function GetQuestions invoked {imageId} {questions}");
 
             } catch (Exception ) {
-                log.LogError($"Cant find Profile entry for {userId} in cosmosdb");
+                log.LogError($"Cant find Questions entry for {imageId} in cosmosdb");
+                return new NotFoundResult();
             }
-
-            if ( questionsItem != null && questionsItem.QuestionsJson != null && questionsItem.QuestionsJson.Length > 0)
-              return new OkObjectResult(questionsItem.QuestionsJson);
+            log.LogInformation($"Retrieved questions {questions.QuestionsJson}");
+            if ( questions != null && questions.QuestionsJson != null && questions.QuestionsJson.Length > 0)
+              return new OkObjectResult(questions.QuestionsJson);
             else
               return new NotFoundResult();
         }
