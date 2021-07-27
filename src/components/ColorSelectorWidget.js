@@ -1,3 +1,5 @@
+import './ColorSelector.css';
+
 var ColorSelectorWidget = function(args) {
 
   // 1. Find a current color setting in the annotation, if any
