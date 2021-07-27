@@ -36,20 +36,40 @@ import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import NextIcon from '@material-ui/icons/ArrowRight';
 import Questions from './Questions';
+import './Questions.css';
 
 export default function Viewer2() {
 
-  var encodedId = null;
   const [images, setImages] = useState([]);
-    const [manifest, setManifest] = useState();
+  const [manifest, setManifest] = useState();
   const [imageId, setImageId] = useState();
-    const [title, setTitle] = useState();
-  const [state, setState] = React.useState({
-    question1: '',
-    question2: '',
-    question3: '',
-  });
-  const [value, setValue] = React.useState('female');
+  const [title, setTitle] = useState();
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [showProgress, setShowProgress] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [questions, setQuestions] = useState();
+  
+  const getQuestions = ({imageId}) => {
+    var encodedId = btoa(imageId);
+    fetch("/api/questions/" + encodedId, {
+            method: 'GET',
+            credentials: 'include',
+            headers: {'Access-Control-Allow-Credentials': 'true'}
+    })
+      .then((response) => response.json())
+      .then(
+	    (result) => {
+		    let questionsList = result;
+		    if (questionsList) {
+			    setQuestions(questionsList);
+			    console.log(questionsList);
+		    }
+	    },
+	    (error) => {
+		    console.log(error);
+	    }
+	    )
+  };
   
   const handleChange = (event) => {
     const name = event.target.name;
@@ -61,6 +81,15 @@ export default function Viewer2() {
   
   const handleChange2 = (event) => {
     setValue(event.target.value);
+  };
+  
+  const handleAnswerOptionClick = () => {
+    const nextQuestion = currentQuestion + 1
+    if (nextQuestion < questions.length) {
+      setCurrentQuestion(nextQuestion);
+    } else {
+      setShowProgress(true);
+    }
   };
 
     setUserInfo();
@@ -81,6 +110,7 @@ export default function Viewer2() {
     setManifest(slide.slide);
     setTitle(slide.name);
     setImageId(slide.slide.source.Image.Url);
+    getQuestions(imageId);
     console.log(imageId);
     console.log(title);
   };
@@ -160,7 +190,27 @@ export default function Viewer2() {
             {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
-          <Questions imageId={imageId}/>
+          <div className='app'>
+			{showScore ? (
+				<div className='score-section'>
+					You scored {score} out of {questions.length}
+				</div>
+			) : (
+				<>
+					<div className='question-section'>
+						<div className='question-count'>
+							<span>Question {currentQuestion + 1}</span>/{questions.length}
+						</div>
+						<div className='question-text'>{questions[currentQuestion].questionText}</div>
+					</div>
+					<div className='answer-section'>
+						{questions[currentQuestion].answerOptions.map((answerOption) => (
+							<button onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
+						))}
+					</div>
+				</>
+			)}
+		</div>
 <List>
        <div>
           {images.map((group, index) => {
