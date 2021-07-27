@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import * as Annotorious from '@recogito/annotorious-openseadragon';
 import '@recogito/annotorious-openseadragon/dist/annotorious.min.css';
 import ShapeLabelsFormatter from './ShapeLabelsFormatter.js';
-import ColorSelectorWidget from '.ColorSelectorWidget.js';
-import ColorFormatter from '.ColorFormatter.js';
+import ColorSelectorWidget from './ColorSelectorWidget.js';
+import ColorFormatter from './ColorFormatter.js';
 
 
 const OpenSeaDragonViewer = ({ image }) => {
