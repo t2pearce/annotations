@@ -38,7 +38,7 @@ var ColorSelectorWidget = function(args) {
   }
 
   var container = document.createElement('div');
-  container.className = 'helloworld-plugin';
+  container.className = 'colorselector-widget';
   
   var button1 = createButton('RED');
   var button2 = createButton('GREEN');
