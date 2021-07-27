@@ -192,9 +192,9 @@ export default function Viewer2() {
           </IconButton>
         </div>
           <div className='app'>
-			{ showScore(
+			{showScore ? (
 				<div className='score-section'>
-					You scored 1 out of {questions.length}
+					You scored {score} out of {questions.length}
 				</div>
 			) : (
 				<>
@@ -206,7 +206,7 @@ export default function Viewer2() {
 					</div>
 					<div className='answer-section'>
 						{questions[currentQuestion].answerOptions.map((answerOption) => (
-							<button onClick={() => handleAnswerOptionClick()}>{answerOption.answerText}</button>
+							<button onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
 						))}
 					</div>
 				</>
