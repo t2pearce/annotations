@@ -49,5 +49,5 @@ var ColorSelectorWidget = function(args) {
   container.appendChild(button3);
 
   return container;
-}
+};
 export default ColorSelectorWidget;
