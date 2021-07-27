@@ -7,3 +7,4 @@ var ColorFormatter = function(annotation) {
   if (highlightBody)
     return highlightBody.value;
 }
+export default ColorFormatter;
