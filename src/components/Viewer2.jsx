@@ -49,6 +49,7 @@ export default function Viewer2() {
   const [progress, setProgress] = useState(0);
   const [questions, setQuestions] = useState();
   const [state, setState] = useState();
+  const [score, setScore] = useState(0);
   
   const getQuestions = ({imageId}) => {
     var encodedId = btoa(imageId);
@@ -191,7 +192,7 @@ export default function Viewer2() {
           </IconButton>
         </div>
           <div className='app'>
-			{ (
+			{ showScore(
 				<div className='score-section'>
 					You scored 1 out of {questions.length}
 				</div>
