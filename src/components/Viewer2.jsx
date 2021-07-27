@@ -191,7 +191,7 @@ export default function Viewer2() {
           </IconButton>
         </div>
           <div className='app'>
-			{showScore ? (
+			{ (
 				<div className='score-section'>
 					You scored 1 out of {questions.length}
 				</div>
