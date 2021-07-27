@@ -82,6 +82,7 @@ export default function Viewer2() {
     setTitle(slide.name);
     setImageId(slide.slide.source.Image.Url);
     console.log(imageId);
+    console.log(title);
   };
     async function getUserInfo() {
         const response = await fetch('/.auth/me');
