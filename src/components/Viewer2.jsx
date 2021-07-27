@@ -48,6 +48,7 @@ export default function Viewer2() {
   const [showProgress, setShowProgress] = useState(false);
   const [progress, setProgress] = useState(0);
   const [questions, setQuestions] = useState();
+  const [state, setState] = React.useState({
   
   const getQuestions = ({imageId}) => {
     var encodedId = btoa(imageId);
@@ -78,10 +79,7 @@ export default function Viewer2() {
       [name]: event.target.value,
     });
   };
-  
-  const handleChange2 = (event) => {
-    setValue(event.target.value);
-  };
+
   
   const handleAnswerOptionClick = () => {
     const nextQuestion = currentQuestion + 1
@@ -97,6 +95,7 @@ export default function Viewer2() {
   useEffect(() => {
     getImages();
   }, []);
+	
   const getImages = async () => {
     const response = await fetch("/api/profile", {
                               method: 'GET',
@@ -106,6 +105,7 @@ export default function Viewer2() {
     console.log('image', image)
     setImages(image.groups)
   };
+	
   const previewImage = async (slide) => {
     setManifest(slide.slide);
     setTitle(slide.name);
@@ -193,7 +193,7 @@ export default function Viewer2() {
           <div className='app'>
 			{showScore ? (
 				<div className='score-section'>
-					You scored {score} out of {questions.length}
+					You scored 1 out of {questions.length}
 				</div>
 			) : (
 				<>
@@ -205,7 +205,7 @@ export default function Viewer2() {
 					</div>
 					<div className='answer-section'>
 						{questions[currentQuestion].answerOptions.map((answerOption) => (
-							<button onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
+							<button onClick={() => handleAnswerOptionClick()}>{answerOption.answerText}</button>
 						))}
 					</div>
 				</>
