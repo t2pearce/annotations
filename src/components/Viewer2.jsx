@@ -48,7 +48,7 @@ export default function Viewer2() {
   const [showProgress, setShowProgress] = useState(false);
   const [progress, setProgress] = useState(0);
   const [questions, setQuestions] = useState();
-  const [state, setState] = React.useState({
+  const [state, setState] = useState();
   
   const getQuestions = ({imageId}) => {
     var encodedId = btoa(imageId);
