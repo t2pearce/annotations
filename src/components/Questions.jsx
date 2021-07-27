@@ -23,14 +23,26 @@ const [currentQuestion, setCurrentQuestion] = useState(0);
 	  console.log(questions);
   }, []);
 	
-  const getQuestions = async () => {
-    const response = await fetch("/api/questions" + imageId, {
-                              method: 'GET',
-                              credentials: 'include',
-                              headers: {'Access-Control-Allow-Credentials': 'true'}}); 
-    let questionList = await response.json();
-    setQuestions(questionList);
-  };
+  const getQuestions = () => {
+    fetch("/api/questions/" + imageId, {
+            method: 'GET',
+            credentials: 'include',
+            headers: {'Access-Control-Allow-Credentials': 'true'}
+    })
+      .then((response) => response.json())
+      .then(
+	    (result) => {
+		    let questionsList = result;
+		    if (questionsList) {
+			    setQuestions(questionsList);
+			    console.log(questionsList);
+		    }
+	    },
+	    (error) => {
+		    console.log(error);
+	    }
+	    )
+  }
   
   const handleAnswerOptionClick = () => {
     const nextQuestion = currentQuestion + 1
