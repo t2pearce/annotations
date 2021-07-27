@@ -40,7 +40,7 @@ const [currentQuestion, setCurrentQuestion] = useState(0);
   }
   
   getQuestions();
-console.log(questions);
+console.log(imageId);
   
   const handleAnswerOptionClick = () => {
     const nextQuestion = currentQuestion + 1
