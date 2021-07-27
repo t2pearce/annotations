@@ -46,10 +46,10 @@ export default function Viewer2() {
   const [title, setTitle] = useState();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showProgress, setShowProgress] = useState(false);
-  const [progress, setProgress] = useState(0);
   const [questions, setQuestions] = useState();
   const [state, setState] = useState();
   const [score, setScore] = useState(0);
+  const [showScore, setShowScore] = useState(false);
   
   const getQuestions = ({imageId}) => {
     var encodedId = btoa(imageId);
@@ -87,7 +87,7 @@ export default function Viewer2() {
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
     } else {
-      setShowProgress(true);
+      setShowScore(true);
     }
   };
 
