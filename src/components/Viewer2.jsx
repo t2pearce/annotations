@@ -80,7 +80,7 @@ export default function Viewer2() {
   const previewImage = async (slide) => {
     setManifest(slide.slide);
     setTitle(slide.name);
-    setImageId(btoa(slide.slide.source.Image.Url));
+    setImageId(slide.slide.source.Image.Url);
     console.log(imageId);
   };
     async function getUserInfo() {
