@@ -18,10 +18,10 @@ const [currentQuestion, setCurrentQuestion] = useState(0);
   const [progress, setProgress] = useState(0);
   const [questions, setQuestions] = useState();
 	
-  useEffect(() => {
-	getQuestions();
-	  console.log(questions);
-  }, []);
+ 
+getQuestions();
+console.log(questions);
+
 	
   const getQuestions = () => {
     fetch("/api/questions/" + imageId, {
