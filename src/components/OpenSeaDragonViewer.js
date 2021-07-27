@@ -115,7 +115,8 @@ const OpenSeaDragonViewer = ({ image }) => {
     setViewer(initViewer);
     const config = {widgets: [
                       ColorSelectorWidget,
-                      'TAG'],
+                      'TAG',
+                      'COMMENT'],
                     formatter: [
                       ShapeLabelsFormatter,
                       ColorFormatter]};
