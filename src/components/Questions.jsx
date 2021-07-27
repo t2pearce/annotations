@@ -54,19 +54,18 @@ console.log(imageId);
 		<div className='app'>
 			{showProgress ? (
 				<div className='score-section'>
-					You scored {progress} out of 4
+					You scored  out of 4
 				</div>
 			) : (
 				<>
 					<div className='question-section'>
 						<div className='question-count'>
-							<span>Question {currentQuestion + 1}</span>/4
+							<span>Question </span>/4
 						</div>
-						<div className='question-text'>{questions[currentQuestion].questionText}</div>
+						<div className='question-text'></div>
 					</div>
 					<div className='answer-section'>
-						{questions[currentQuestion].answerOptions.map((answerOption) => (
-							<button className='question-button' onClick={() => handleAnswerOptionClick()}>{answerOption.answerText}</button>
+						
 						))}
 					</div>
 				</>
