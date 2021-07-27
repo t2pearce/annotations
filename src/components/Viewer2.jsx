@@ -81,6 +81,7 @@ export default function Viewer2() {
     setManifest(slide.slide);
     setTitle(slide.name);
     setImageId(btoa(slide.slide.source.Image.Url));
+    console.log(imageId);
   };
     async function getUserInfo() {
         const response = await fetch('/.auth/me');
