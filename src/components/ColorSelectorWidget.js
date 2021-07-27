@@ -54,3 +54,4 @@ var ColorSelectorWidget = function(args) {
 
   return container;
 }
+export default ColorSelectorWidget;
