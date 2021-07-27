@@ -5,14 +5,6 @@ var ShapeLabelsFormatter = function(annotation) {
           annotation.body : [ annotation.body ];
 
         const firstTag = bodies.find(b => b.purpose == 'tagging');
-
-        var highlightBody = annotation.bodies.find(function(b) {
-                return b.purpose == 'highlighting';
-        });
-        
-        if (highlightBody)
-        return highlightBody.value;
-        }
         
         if (firstTag) {
           const foreignObject = document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject');
