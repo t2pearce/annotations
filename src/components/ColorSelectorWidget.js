@@ -1,7 +1,7 @@
 import './ColorSelector.css';
 import React from 'react';
 
-const HelloWorldWidget = props => {
+const ColorSelectorWidget = props => {
   // We'll be using 'highlighting' as body purpose for 
   // this type of widget
   const currentHighlight = props.annotation ? 
