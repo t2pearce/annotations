@@ -19,7 +19,8 @@ const [currentQuestion, setCurrentQuestion] = useState(0);
   const [questions, setQuestions] = useState();
 		
   const getQuestions = () => {
-    fetch("/api/questions/" + imageId, {
+    var encodedId = btoa(imageId);
+    fetch("/api/questions/" + encodedId, {
             method: 'GET',
             credentials: 'include',
             headers: {'Access-Control-Allow-Credentials': 'true'}
