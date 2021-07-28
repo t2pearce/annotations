@@ -74,13 +74,6 @@ useEffect(() => {
     setImageId(image.groups[0].slides[0].slide.source.Image.Url)
   };
 	
-  const previewImage = async (slide) => {
-    setManifest(slide.slide);
-    setImageId(slide.slide.source.Image.Url);
-    //getQuestions(imageId);
-    console.log(imageId);
-    console.log(title);
-  };
     async function getUserInfo() {
         const response = await fetch('/.auth/me');
         const payload = await response.json();
@@ -96,6 +89,7 @@ useEffect(() => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
+	
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -109,6 +103,7 @@ useEffect(() => {
 	  setManifest(images[index].slide)
 	  setImageId(images[index].slide.source.Image.Url);
   };
+	
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
