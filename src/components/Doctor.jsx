@@ -70,11 +70,13 @@ function Doctor() {
           )
        }
 
+ render () {          
   return (
        <div>
         {redirectPage()}
        </div>
-    
+       )
+  } 
     
     /*<ResponsiveContainer maxWidth="lg" className={classes.container}>
     <Grid container spacing={3} alignItems="center">
@@ -93,6 +95,5 @@ function Doctor() {
     </Grid>
     </Grid>
     </ResponsiveContainer>*/
-  );
 }
 export default Doctor;
