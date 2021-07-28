@@ -55,9 +55,8 @@ export default function Viewer2() {
 
     setUserInfo();
 
-  useEffect(() => {
     getImages();
-  }, []);
+
 	
   const getImages = async () => {
     const response = await fetch("/api/profile", {
