@@ -44,7 +44,7 @@ export default function Viewer2() {
   const [title, setTitle] = useState();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [state, setState] = useState();
-  var index = 0;
+  const [index, setIndex]= useState(0);
   
   const handleChange = (event) => {
     const name = event.target.name;
@@ -104,7 +104,7 @@ useEffect(() => {
   };
 	
   const handleNext = () => {
-	  index=index+1;
+	  setIndex(index+1);
 	  setManifest(images[index].slide)
 	  setImageId(images[index].slide.source.Image.Url);
   };
