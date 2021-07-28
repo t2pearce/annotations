@@ -58,12 +58,12 @@ function Doctor() {
               for (let i=0; i < result.length; i++) {
                 if (result[i] == 'contributor') {
                   console.log(result[i]);
-                  redirectLink = "/viewer";
-                  //return redirectLink;
+                  link = "/viewer";
+                  return link;
                 } else if (result[i] == 'reader') {
                   console.log(result[i]);
-                  redirectLink = "/viewer2";
-                  //return redirectLink;
+                  link = "/viewer2";
+                  return link;
                 }
               }
             },
@@ -73,7 +73,7 @@ function Doctor() {
           )
        } 
 
-  redirectPage();
+  redirectLink = redirectPage();
   console.log(redirectLink);
    
   return (
