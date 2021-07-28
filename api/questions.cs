@@ -18,8 +18,8 @@ namespace Microsoft.Function
         public class QuestionsItem 
         {
             [JsonProperty("id")]
-            public string UserId { get; set; }
-            //[JsonProperty("questionList")]
+            public string ImageId { get; set; }
+            [JsonProperty("questionList")]
             public object[] QuestionsJson { get; set; }
         }
 
@@ -46,11 +46,11 @@ namespace Microsoft.Function
             QuestionsItem questions = null;
             try
             {
-                var response = await client.ReadDocumentAsync<QuestionsItem>(
+                var response = await client.ReadDocumentAsync(
                     UriFactory.CreateDocumentUri("medimages", "Questions", imageId),
                     new RequestOptions { PartitionKey = new Microsoft.Azure.Documents.PartitionKey(imageId) });
 
-                questions = (QuestionsItem)(dynamic)response;
+                questions = (QuestionsItem)(dynamic)response.Resource;
                 log.LogInformation($"function GetQuestions invoked {imageId} {questions}");
 
             } catch (Exception ) {
