@@ -68,6 +68,8 @@ useEffect(() => {
     console.log('image', image)
     console.log('groups', image.groups)
     console.log('slides', image.groups[0].slides)
+    setImages(image.groups[0].slides)
+    setManifest(image.groups[0].slides[0].slide)
   };
 	
   const previewImage = async (slide) => {
