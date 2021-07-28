@@ -57,7 +57,7 @@ function Doctor() {
    const getRedirectLink = () => {
       let userRole = setUserInfo();
       console.log(userRole);
-      var link = null;
+      var redirectLink = null;
       return userRole.then(
         (result) => {
               console.log(result);
