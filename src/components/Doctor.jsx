@@ -52,7 +52,7 @@ function Doctor() {
       let userRole = setUserInfo();
       console.log(userRole);
       var link = null;
-      userRole.then(
+      return userRole.then(
         (result) => {
               console.log(result);
               for (let i=0; i < result.length; i++) {
