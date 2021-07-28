@@ -56,27 +56,15 @@ export default function Viewer2() {
         getImages();
     }, []);
 	
-    const getQuestions = () => {
-    var encodedId = btoa(imageId);
-    fetch("/api/questions/" + encodedId, {
-            method: 'GET',
-            credentials: 'include',
-            headers: {'Access-Control-Allow-Credentials': 'true'}
-    })
-      .then((response) => response.json())
-      .then(
-	    (result) => {
-		    let questionsList = result;
-		    if (questionsList) {
-			    setQuestions(questionsList);
-			    console.log(questionsList);
-		    }
-	    },
-	    (error) => {
-		    console.log(error);
-	    }
-	    )
-  }
+    const getQuestions = async() => {
+       var encodedId = btoa(imageId);
+       const reponse = await fetch("/api/questions/" + encodedId, {
+		    method: 'GET',
+		    credentials: 'include',
+		    headers: {'Access-Control-Allow-Credentials': 'true'}});;
+	      let questionsList = await response.json();
+	    console.log('questions', questionsList)
+	  }
 	
   const getImages = async () => {
     const response = await fetch("/api/profile", {
@@ -201,10 +189,11 @@ export default function Viewer2() {
 						<div className='question-count'>
 							<span>Question </span>/4
 						</div>
-						<div className='question-text'></div>
+						<div className='question-text'>{questions[currentQuestion].questionText}</div>
 					</div>
 					<div className='answer-section'>
-						
+						{questions[currentQuestion].answerOptions.map((answerOption) => (
+							<button onClick={() => handleAnswerOptionClick()}>{answerOption.answerText}</button>
 						))}
 					</div>
 				</>
