@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 function Doctor() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-  //var userRole = [];
+  const [link, setLink] = useState( null);
   
    async function getUserInfo() {
         const response = await fetch('/.auth/me');
@@ -52,18 +52,18 @@ function Doctor() {
       let userRole = setUserInfo();
       console.log(userRole);
       var link = null;
-      return userRole.then(
+      userRole.then(
         (result) => {
               console.log(result);
               for (let i=0; i < result.length; i++) {
                 if (result[i] == 'contributor') {
                   console.log(result[i]);
                   link = "/viewer";
-                  return link;
+                  setLink(link);
                 } else if (result[i] == 'reader') {
                   console.log(result[i]);
                   link = "/viewer2";
-                  return link;
+                  setLink(link);
                 }
               }
             },
@@ -73,15 +73,15 @@ function Doctor() {
           )
        } 
 
-  let redirectLink = redirectPage();
-  console.log(redirectLink);
+//  let redirectLink = redirectPage();
+//  console.log(redirectLink);
    
   return (
      <Route
       render={() => (
           <Redirect
             to={{
-              pathname: "{redirectLink}",
+              pathname: "{link}",
             }}
           />
         )
