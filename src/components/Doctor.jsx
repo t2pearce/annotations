@@ -47,6 +47,7 @@ function Doctor() {
         return clientPrincipal.userRoles;
       }
   
+      userRoleList = null;
       userRole = setUserInfo();
       console.log(userRole);
       userRole.then(
