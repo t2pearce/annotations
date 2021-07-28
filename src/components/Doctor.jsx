@@ -6,7 +6,7 @@ import { ResponsiveContainer } from 'recharts';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
-import {Redirect, Route} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     transform: "translate(-50%, -50%)"
   }
 }));
+
 function Doctor() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
@@ -41,42 +42,41 @@ function Doctor() {
         const { clientPrincipal } = payload;
         return clientPrincipal;
       }
-      async function setUserInfo() {
+   async function setUserInfo() {
         let  clientPrincipal =  await getUserInfo();
         console.log(clientPrincipal);
         return clientPrincipal.userRoles;
       }
-  
+   
+   const redirectPage = () => {
       userRole = setUserInfo();
       console.log(userRole);
       userRole.then(
         (result) => {
               console.log(result);
-              redirectPage(result);
+              for (let i=0; i < userRoleList.length; i++) {
+                if (userRoleList[i] == 'contributor') {
+                  console.log(userRoleList[i]);
+                   return <Redirect to='/viewer'  />
+                } else if (userRoleList[i] == 'reader') {
+                  console.log(userRoleList[i]);
+                  return <Redirect to='/viewer2'  />
+                }
+              }
             },
         (error) => {
               console.log(error);
             }
           )
-
-  const redirectPage = (userRoleList) => {
-     for (let i=0; i < userRoleList.length; i++) {
-       if (userRoleList[i] == 'contributor') {
-        console.log(userRoleList[i]);
-        <Route exact path="/" render={() => (
-          <Redirect to="/viewer"/>
-        )}/>
-       } else if (userRoleList[i] == 'reader') {
-        console.log(userRoleList[i]);
-        <Route exact path="/" render={() => (
-          <Redirect to="/viewer2"/>
-        )}/>
-      }
-    }
-  }
+       }
 
   return (
-    <ResponsiveContainer maxWidth="lg" className={classes.container}>
+       <div>
+        {redirectPage()}
+       </div>
+    
+    
+    /*<ResponsiveContainer maxWidth="lg" className={classes.container}>
     <Grid container spacing={3} alignItems="center">
     <Grid item xs={12} md={12} lg={12}>
       <Paper className={fixedHeightPaper}>
@@ -92,7 +92,7 @@ function Doctor() {
     </Paper>
     </Grid>
     </Grid>
-    </ResponsiveContainer>
+    </ResponsiveContainer>*/
   );
 }
 export default Doctor;
