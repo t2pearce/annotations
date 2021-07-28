@@ -57,32 +57,12 @@ function Doctor() {
               for (let i=0; i < result.length; i++) {
                 if (result[i] == 'contributor') {
                   console.log(result[i]);
-                  return(
-                  <Route
-                   render={() => (
-                    <Redirect
-                        to={{
-                          pathname: "/viewer",
-                        }}
-                     />
-                    )
-                    }
-                  />  
-                 )
+                  redirectLink = "/viewer";
+                  return redirectLink;
                 } else if (result[i] == 'reader') {
                   console.log(result[i]);
-                   return(
-                   <Route
-                   render={() => (
-                    <Redirect
-                        to={{
-                          pathname: "/viewer2",
-                         }}
-                     />
-                    )
-                    }
-                  /> 
-                  )
+                  redirectLink = "/viewer2"
+                  return redirectLink;
                 }
               }
             },
@@ -92,12 +72,20 @@ function Doctor() {
           )
        } 
 
-        
+  redirectLink = redirectPage();
+   
   return (
-       <div>
-          {redirectPage()}
-       </div>
-       );
+     <Route
+      render={() => (
+          <Redirect
+            to={{
+              pathname: "{redirectLink}",
+            }}
+          />
+        )
+      }
+    />  
+   );
 /*    
     <Route
       render={() => (
