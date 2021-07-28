@@ -49,14 +49,24 @@ function Doctor() {
   
       userRole = setUserInfo();
       console.log(userRole);
+      userRole.then(
+        (result) => {
+              console.log(result);
+              userRoleList = result;
+            },
+        (error) => {
+              console.log(error);
+            }
+          )
+      
   
-      /*for (let i=0; i < userRole.length; i++) {
-        if (userRole[i] == 'contributor') {
+      for (let i=0; i < userRoleList.length; i++) {
+        if (userRoleList[i] == 'contributor') {
           return <Redirect to="/viewer" />
-        } else if (userRole[i] == 'reader') {
+        } else if (userRoleList[i] == 'reader') {
           return <Redirect to="/viewer2" />
         }
-      }*/
+      }
   
   return (
     <ResponsiveContainer maxWidth="lg" className={classes.container}>
