@@ -66,9 +66,7 @@ useEffect(() => {
                               headers: {'Access-Control-Allow-Credentials': 'true'}}); 
     let image = await response.json();
     console.log('image', image)
-    setImages(image.groups.slides)
-    setManifest(images[1])
-    console.log(image.groups.slides)
+    console.log('slides', image.groups.slides)
     console.log(manifest)
   };
 	
