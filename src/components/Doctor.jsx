@@ -70,8 +70,8 @@ function Doctor() {
       }
     }
   }
- /*
-  return (
+
+  return (/*
     <ResponsiveContainer maxWidth="lg" className={classes.container}>
     <Grid container spacing={3} alignItems="center">
     <Grid item xs={12} md={12} lg={12}>
@@ -88,8 +88,7 @@ function Doctor() {
     </Paper>
     </Grid>
     </Grid>
-    </ResponsiveContainer>
+    </ResponsiveContainer> */
   );
 }
-*/
-//export default Doctor;
+export default Doctor;
