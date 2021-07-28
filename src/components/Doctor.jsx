@@ -57,10 +57,10 @@ function Doctor() {
               for (let i=0; i < result.length; i++) {
                 if (result[i] == 'contributor') {
                   console.log(result[i]);
-                   return <Redirect to='/viewer'  />
+                   return <Link to="/viewer"  />
                 } else if (result[i] == 'reader') {
                   console.log(result[i]);
-                  return <Redirect to='/viewer2'  />
+                  return <Link to="/viewer2"  />
                 }
               }
             },
