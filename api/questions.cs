@@ -19,7 +19,7 @@ namespace Microsoft.Function
         {
             [JsonProperty("imageid")]
             public string ImageId { get; set; }
-            [JsonProperty("QuestionsJist")]
+            [JsonProperty("QuestionsJson")]
             public object[] QuestionsJson { get; set; }
         }
 
