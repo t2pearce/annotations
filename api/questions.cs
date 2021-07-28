@@ -13,8 +13,7 @@ using System.Security.Claims;
 
 namespace Microsoft.Function
 {
-    public static class Questions
-    {
+    
         public class QuestionsItem 
         {
             [JsonProperty("imageid")]
@@ -63,5 +62,5 @@ namespace Microsoft.Function
             else
               return new NotFoundResult();
         }
-    }
+    
 }
