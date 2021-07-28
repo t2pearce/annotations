@@ -6,7 +6,7 @@ import { ResponsiveContainer } from 'recharts';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
-import { Route, Redirect, Link } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,10 +57,28 @@ function Doctor() {
               for (let i=0; i < result.length; i++) {
                 if (result[i] == 'contributor') {
                   console.log(result[i]);
-                   return <Link to="/viewer"  />
+                  <Route
+                   render={() => (
+                    <Redirect
+                        to={{
+                          pathname: "/viewer",
+                        }}
+                     />
+                    )
+                    }
+                  />    
                 } else if (result[i] == 'reader') {
                   console.log(result[i]);
-                  return <Link to="/viewer2"  />
+                   <Route
+                   render={() => (
+                    <Redirect
+                        to={{
+                          pathname: "/viewer2",
+                         }}
+                     />
+                    )
+                    }
+                  />  
                 }
               }
             },
@@ -72,10 +90,10 @@ function Doctor() {
 
         
   return (
-      /* <div>
-        redirectPage();
+       <div>
+          {redirectPage()}
        </div>
-       );*/
+       );
     
     <Route
       render={() => (
