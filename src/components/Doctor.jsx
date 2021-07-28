@@ -73,7 +73,7 @@ function Doctor() {
           )
        } 
 
-  let redirectLink = await redirectPage();
+  let redirectLink = redirectPage();
   console.log(redirectLink);
    
   return (
