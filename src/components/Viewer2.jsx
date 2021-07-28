@@ -56,7 +56,7 @@ export default function Viewer2() {
         getImages();
     }, []);
 	
-    const getQuestions = async() => {
+    const getQuestions = async(imageId) => {
 	    console.log('imageId', imageId)
        var encodedId = btoa(imageId);
 	    console.log('encodedId', encodedId)
@@ -81,7 +81,7 @@ export default function Viewer2() {
     setManifest(image.groups[0].slides[0].slide)
     setImageId(image.groups[0].slides[0].slide.source.Image.Url)
     console.log('IMAGEID', image.groups[0].slides[0].slide.source.Image.Url)
-    getQuestions()
+    getQuestions(image.groups[0].slides[0].slide.source.Image.Url)
   };
 	
     async function getUserInfo() {
@@ -112,7 +112,7 @@ export default function Viewer2() {
 	  console.log('index', index)
 	  setManifest(images[index].slide)
 	  setImageId(images[index].slide.source.Image.Url);
-	  getQuestions();
+	  getQuestions(imageId);
   };
 	
   const handleAnswerOptionClick = () => {
