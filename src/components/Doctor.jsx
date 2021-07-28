@@ -92,4 +92,4 @@ function Doctor() {
   );
 }
 */
-export default Doctor;
+//export default Doctor;
