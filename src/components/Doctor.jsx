@@ -34,8 +34,8 @@ const useStyles = makeStyles((theme) => ({
 function Doctor() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-  //const [link, setLink] = useState(null);
-  var redirectLink = null;
+  const [link, setLink] = useState(null);
+ // var redirectLink = null;
   
  /* useEffect(() => {
     getRedirectLink();
@@ -64,13 +64,13 @@ function Doctor() {
               for (let i=0; i < result.length; i++) {
                 if (result[i] == 'contributor') {
                   console.log(result[i]);
-                  link = "/viewer";
+                  redirectLink = "/viewer";
                   //setLink("/viewer");
                   console.log(link);
                   return link;
                 } else if (result[i] == 'reader') {
                   console.log(result[i]);
-                  link = "/viewer2";
+                  redirectLink = "/viewer2";
                   //setLink("/viewer2");
                   return link;
                 }
@@ -83,9 +83,9 @@ function Doctor() {
        } 
 
   getRedirectLink().then( 
-    (link) => {
+    (redirectLinklink) => {
+    setLink(redirectLink);
     console.log(link);
-    redirectLink = link;
   });
 
   return (
@@ -93,7 +93,7 @@ function Doctor() {
       render={() => (
           <Redirect
             to={{
-              pathname: "{redirectLink}",
+              pathname: "{link}",
             }}
           />
         )
