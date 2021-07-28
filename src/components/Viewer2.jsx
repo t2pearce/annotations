@@ -58,7 +58,7 @@ export default function Viewer2() {
 	
     const getQuestions = async() => {
        var encodedId = btoa(imageId);
-       const reponse = await fetch("/api/questions/" + encodedId, {
+       const response = await fetch("/api/questions/" + encodedId, {
 		    method: 'GET',
 		    credentials: 'include',
 		    headers: {'Access-Control-Allow-Credentials': 'true'}});;
