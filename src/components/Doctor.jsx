@@ -52,6 +52,7 @@ function Doctor() {
    const redirectPage = () => {
       userRole = setUserInfo();
       console.log(userRole);
+      var link = null;
       userRole.then(
         (result) => {
               console.log(result);
