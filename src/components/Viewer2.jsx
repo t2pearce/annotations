@@ -182,45 +182,7 @@ export default function Viewer2() {
         </div>
           
 <List>
-	<div className='app'>
-			{showProgress ? (
-				<div className='score-section'>
-					You scored  out of 4
-				</div>
-			) : (
-				<>
-					<div className='question-section'>
-						<div className='question-count'>
-							<span>Question </span>/4
-						</div>
-				{questions.map((questions, index) => {
-				   return (
-					<div
-					   style={{
-						 display:"flex",
-						 flexDirection:'column'
-						 }}
-					       >
-						 <h3 key={index}>{questions.questionText}</h3>
-						 {questions.answerOptions.map((answer, index) => {
-						   return (
-						     <button
-						       key={index}
-						       onClick={() => {
-							 handleAnswerOptionClick()
-						       }}
-						     >
-						       {answer.answerText}
-						     </button>
-						   );
-						 })}
-					       </div>
-					     );
-					   })}
-					   </div>
-				</>
-			)}
-		</div>
+	<Typography>{questions}</Typography>
      <Button onClick={handleNext}>Next Image</ Button>  
       
 </List>
