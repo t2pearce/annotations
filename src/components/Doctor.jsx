@@ -49,7 +49,7 @@ function Doctor() {
       }
  
    const redirectPage = () => {
-      let userRole = await setUserInfo();
+      let userRole = setUserInfo();
       console.log(userRole);
       var link = null;
       userRole.then(
