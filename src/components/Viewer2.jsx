@@ -44,6 +44,7 @@ export default function Viewer2() {
   const [title, setTitle] = useState();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [state, setState] = useState();
+  var index = 0;
   
   const handleChange = (event) => {
     const name = event.target.name;
@@ -70,6 +71,7 @@ useEffect(() => {
     console.log('slides', image.groups[0].slides)
     setImages(image.groups[0].slides)
     setManifest(image.groups[0].slides[0].slide)
+    setImageId(image.groups[0].slides[0].slide.source.Image.Url)
   };
 	
   const previewImage = async (slide) => {
@@ -99,6 +101,11 @@ useEffect(() => {
   };
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+	
+  const handleNext = () => {
+	  index=index+1;
+	  setManifest(image.groups[0].slides[index].slide)
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
@@ -157,7 +164,7 @@ useEffect(() => {
         </div>
           
 <List>
-       
+     <Button onClick={handleNext}>Next Image</ Button>  
       
 </List>
       </Drawer>
