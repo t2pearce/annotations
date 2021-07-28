@@ -94,7 +94,7 @@ function Doctor() {
           {redirectPage()}
        </div>
        );
-    
+/*    
     <Route
       render={() => (
           <Redirect
@@ -106,7 +106,7 @@ function Doctor() {
       }
     />          
   ); 
-          
+ */         
           
     /*<ResponsiveContainer maxWidth="lg" className={classes.container}>
     <Grid container spacing={3} alignItems="center">
