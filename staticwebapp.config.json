@@ -26,6 +26,10 @@
       "allowedRoles": ["contributor"]
     },
     {
+      "route": "/api/questions",
+      "allowedRoles": ["contributor"]
+    },
+    {
       "route": "/login",
       "redirect": "/.auth/login/aad"
     },
