@@ -80,7 +80,8 @@ function Doctor() {
 
 //  let redirectLink = redirectPage();
   console.log(link);
-   
+ 
+ useEffect(() => {
   return (
      <Route
       render={() => (
@@ -92,21 +93,23 @@ function Doctor() {
         )
       }
     />  
-   );
-/*    
-    <Route
+   )
+  });   
+
+/*
+  return (
+     <Route
       render={() => (
           <Redirect
             to={{
-              pathname: "/viewer",
+              pathname: "{link}",
             }}
           />
         )
       }
-    />          
-  ); 
- */         
-          
+    />  
+   ); */
+              
     /*<ResponsiveContainer maxWidth="lg" className={classes.container}>
     <Grid container spacing={3} alignItems="center">
     <Grid item xs={12} md={12} lg={12}>
