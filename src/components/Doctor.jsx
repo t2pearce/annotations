@@ -54,12 +54,12 @@ function Doctor() {
       userRole.then(
         (result) => {
               console.log(result);
-              for (let i=0; i < userRoleList.length; i++) {
-                if (userRoleList[i] == 'contributor') {
-                  console.log(userRoleList[i]);
+              for (let i=0; i < result.length; i++) {
+                if (result[i] == 'contributor') {
+                  console.log(result[i]);
                    return <Redirect to='/viewer'  />
-                } else if (userRoleList[i] == 'reader') {
-                  console.log(userRoleList[i]);
+                } else if (result[i] == 'reader') {
+                  console.log(result[i]);
                   return <Redirect to='/viewer2'  />
                 }
               }
