@@ -34,10 +34,11 @@ const useStyles = makeStyles((theme) => ({
 function Doctor() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-  const [link, setLink] = useState( null);
+  const [link, setLink] = useState(null);
   
   useEffect(() => {
     getRedirectLink();
+    console.log(link);
   }, []);
   
    async function getUserInfo() {
