@@ -64,10 +64,10 @@ function Doctor() {
                 if (result[i] == 'contributor') {
                   console.log(result[i]);
                   setLink("/viewer");
+                  console.log(link);
                 } else if (result[i] == 'reader') {
                   console.log(result[i]);
                   setLink("/viewer2");
-                  console.log(link);
                 }
               }
             },
