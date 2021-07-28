@@ -63,12 +63,10 @@ function Doctor() {
               for (let i=0; i < result.length; i++) {
                 if (result[i] == 'contributor') {
                   console.log(result[i]);
-                  link = "/viewer";
-                  setLink(link);
+                  setLink("/viewer");
                 } else if (result[i] == 'reader') {
                   console.log(result[i]);
-                  link = "/viewer2";
-                  setLink(link);
+                  setLink("/viewer2");
                   console.log(link);
                 }
               }
