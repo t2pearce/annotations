@@ -83,9 +83,9 @@ function Doctor() {
        } 
 
   getRedirectLink().then( 
-    (redirectLinklink) => {
-    setLink(redirectLink);
-    console.log(link);
+    (redirectLink) => {
+     setLink(redirectLink);
+     console.log(link);
   });
 
   return (
