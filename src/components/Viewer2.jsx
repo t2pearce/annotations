@@ -156,7 +156,7 @@ export default function Viewer2() {
           
 <List>
        
-      </div>
+      
 </List>
       </Drawer>
 </div>
