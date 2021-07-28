@@ -47,7 +47,8 @@ function Doctor() {
         console.log(clientPrincipal);
         return clientPrincipal.userRoles;
       }
-   
+ 
+  /*
    const redirectPage = () => {
       userRole = setUserInfo();
       console.log(userRole);
@@ -68,12 +69,12 @@ function Doctor() {
               console.log(error);
             }
           )
-       }
+       } */
 
         
   return (
        <div>
-        {redirectPage()}
+        <Link to="/viewer" />
        </div>
        );
     
