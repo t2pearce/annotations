@@ -35,6 +35,7 @@ function Doctor() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   var userRole = [];
+  var redirectLink = null;
   
    async function getUserInfo() {
         const response = await fetch('/.auth/me');
@@ -58,11 +59,11 @@ function Doctor() {
                 if (result[i] == 'contributor') {
                   console.log(result[i]);
                   redirectLink = "/viewer";
-                  return redirectLink;
+                  //return redirectLink;
                 } else if (result[i] == 'reader') {
                   console.log(result[i]);
                   redirectLink = "/viewer2"
-                  return redirectLink;
+                  //return redirectLink;
                 }
               }
             },
@@ -72,7 +73,7 @@ function Doctor() {
           )
        } 
 
-  redirectLink = redirectPage();
+  //redirectLink = redirectPage();
    
   return (
      <Route
