@@ -201,8 +201,8 @@ export default function Viewer2() {
 						 flexDirection:'column'
 						 }}
 					       >
-						 <h3 key={index}>{group.questionText}</h3>
-						 {group.answerOptions.map((answer, index) => {
+						 <h3 key={index}>{questions.questionText}</h3>
+						 {questions.answerOptions.map((answer, index) => {
 						   return (
 						     <button
 						       key={index}
