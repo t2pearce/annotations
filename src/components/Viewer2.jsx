@@ -35,6 +35,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import NextIcon from '@material-ui/icons/ArrowRight';
+import './Questions.css';
 
 export default function Viewer2() {
 
@@ -45,20 +46,38 @@ export default function Viewer2() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [state, setState] = useState();
   const [index, setIndex]= useState(1);
-  
-  const handleChange = (event) => {
-    const name = event.target.name;
-    setState({
-      ...state,
-      [name]: event.target.value,
-    });
-  };
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [showProgress, setShowProgress] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [questions, setQuestions] = useState();
 
     setUserInfo();
 
-useEffect(() => {
-    getImages();
-}, []);
+    useEffect(() => {
+        getImages();
+    }, []);
+	
+    const getQuestions = () => {
+    var encodedId = btoa(imageId);
+    fetch("/api/questions/" + encodedId, {
+            method: 'GET',
+            credentials: 'include',
+            headers: {'Access-Control-Allow-Credentials': 'true'}
+    })
+      .then((response) => response.json())
+      .then(
+	    (result) => {
+		    let questionsList = result;
+		    if (questionsList) {
+			    setQuestions(questionsList);
+			    console.log(questionsList);
+		    }
+	    },
+	    (error) => {
+		    console.log(error);
+	    }
+	    )
+  }
 	
   const getImages = async () => {
     const response = await fetch("/api/profile", {
@@ -72,6 +91,7 @@ useEffect(() => {
     setImages(image.groups[0].slides)
     setManifest(image.groups[0].slides[0].slide)
     setImageId(image.groups[0].slides[0].slide.source.Image.Url)
+    getQuestions()
   };
 	
     async function getUserInfo() {
@@ -102,6 +122,16 @@ useEffect(() => {
 	  console.log('index', index)
 	  setManifest(images[index].slide)
 	  setImageId(images[index].slide.source.Image.Url);
+	  getQuestions();
+  };
+	
+  const handleAnswerOptionClick = () => {
+    const nextQuestion = currentQuestion + 1
+    if (nextQuestion < questions.length) {
+      setCurrentQuestion(nextQuestion);
+    } else {
+      setShowProgress(true);
+    }
   };
 	
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
@@ -161,6 +191,26 @@ useEffect(() => {
         </div>
           
 <List>
+	<div className='app'>
+			{showProgress ? (
+				<div className='score-section'>
+					You scored  out of 4
+				</div>
+			) : (
+				<>
+					<div className='question-section'>
+						<div className='question-count'>
+							<span>Question </span>/4
+						</div>
+						<div className='question-text'></div>
+					</div>
+					<div className='answer-section'>
+						
+						))}
+					</div>
+				</>
+			)}
+		</div>
      <Button onClick={handleNext}>Next Image</ Button>  
       
 </List>
