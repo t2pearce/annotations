@@ -63,10 +63,14 @@ function Doctor() {
      for (let i=0; i < userRoleList.length; i++) {
        if (userRoleList[i] == 'contributor') {
         console.log(userRoleList[i]);
-        return <Redirect to="/viewer" />
+        <Route exact path="/" render={() => (
+          <Redirect to="/viewer"/>
+        )}/>
        } else if (userRoleList[i] == 'reader') {
         console.log(userRoleList[i]);
-        return <Redirect to="/viewer2" />
+        <Route exact path="/" render={() => (
+          <Redirect to="/viewer2"/>
+        )}/>
       }
     }
   }
