@@ -47,27 +47,26 @@ function Doctor() {
         return clientPrincipal.userRoles;
       }
   
-      userRoleList = null;
+     // userRoleList = null;
       userRole = setUserInfo();
       console.log(userRole);
       userRole.then(
         (result) => {
               console.log(result);
-              userRoleList = result;
+              //userRoleList = result;
             },
         (error) => {
               console.log(error);
             }
           )
-      
   
-      for (let i=0; i < userRoleList.length; i++) {
+      /*for (let i=0; i < userRoleList.length; i++) {
         if (userRoleList[i] == 'contributor') {
           return <Redirect to="/viewer" />
         } else if (userRoleList[i] == 'reader') {
           return <Redirect to="/viewer2" />
         }
-      }
+      }*/
   
   return (
     <ResponsiveContainer maxWidth="lg" className={classes.container}>
