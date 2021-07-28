@@ -106,6 +106,7 @@ useEffect(() => {
   const handleNext = () => {
 	  index=index+1;
 	  setManifest(images[index].slide)
+	  setImageId(images[index].slide.source.Image.Url);
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
