@@ -45,33 +45,7 @@ export default function Viewer2() {
   const [imageId, setImageId] = useState();
   const [title, setTitle] = useState();
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [showProgress, setShowProgress] = useState(false);
-  const [questions, setQuestions] = useState();
   const [state, setState] = useState();
-  const [score, setScore] = useState(0);
-  const [showScore, setShowScore] = useState(false);
-  
-  const getQuestions = ({imageId}) => {
-    var encodedId = btoa(imageId);
-    fetch("/api/questions/" + encodedId, {
-            method: 'GET',
-            credentials: 'include',
-            headers: {'Access-Control-Allow-Credentials': 'true'}
-    })
-      .then((response) => response.json())
-      .then(
-	    (result) => {
-		    let questionsList = result;
-		    if (questionsList) {
-			    setQuestions(questionsList);
-			    console.log(questionsList);
-		    }
-	    },
-	    (error) => {
-		    console.log(error);
-	    }
-	    )
-  };
   
   const handleChange = (event) => {
     const name = event.target.name;
@@ -79,16 +53,6 @@ export default function Viewer2() {
       ...state,
       [name]: event.target.value,
     });
-  };
-
-  
-  const handleAnswerOptionClick = () => {
-    const nextQuestion = currentQuestion + 1
-    if (nextQuestion < questions.length) {
-      setCurrentQuestion(nextQuestion);
-    } else {
-      setShowScore(true);
-    }
   };
 
     setUserInfo();
