@@ -192,10 +192,10 @@ export default function Viewer2() {
 						<div className='question-count'>
 							<span>Question </span>/4
 						</div>
-						<div className='question-text'>{questions[currentQuestion].questionText}</div>
+						<div className='question-text'>{questionsList[currentQuestion].questionText}</div>
 					</div>
 					<div className='answer-section'>
-						{questions[currentQuestion].answerOptions.map((answerOption) => (
+						{questionsList[currentQuestion].answerOptions.map((answerOption) => (
 							<button onClick={() => handleAnswerOptionClick()}>{answerOption.answerText}</button>
 						))}
 					</div>
