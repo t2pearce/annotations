@@ -84,7 +84,6 @@ function Doctor() {
               pathname: "{redirectLink}",
             }}
           />
-          console.log(redirectLink);
         )
       }
     />  
