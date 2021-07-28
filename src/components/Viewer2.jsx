@@ -43,7 +43,6 @@ export default function Viewer2() {
   const [manifest, setManifest] = useState();
   const [imageId, setImageId] = useState();
   const [title, setTitle] = useState();
-  const [currentQuestion, setCurrentQuestion] = useState(0);
   const [state, setState] = useState();
   const [index, setIndex]= useState(1);
   const [currentQuestion, setCurrentQuestion] = useState(0);
