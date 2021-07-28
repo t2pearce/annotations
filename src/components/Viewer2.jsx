@@ -55,8 +55,9 @@ export default function Viewer2() {
 
     setUserInfo();
 
+useEffect(() => {
     getImages();
-
+}, []);
 	
   const getImages = async () => {
     const response = await fetch("/api/profile", {
@@ -66,7 +67,7 @@ export default function Viewer2() {
     let image = await response.json();
     console.log('image', image)
     setImages(image.groups.slides)
-    setManifest(image[1])
+    setManifest(images[1])
   };
 	
   const previewImage = async (slide) => {
