@@ -74,7 +74,7 @@ function Doctor() {
        } 
 
 //  let redirectLink = redirectPage();
-//  console.log(redirectLink);
+  console.log(link);
    
   return (
      <Route
