@@ -35,8 +35,6 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import NextIcon from '@material-ui/icons/ArrowRight';
-import Questions from './Questions';
-import './Questions.css';
 
 export default function Viewer2() {
 
@@ -68,14 +66,14 @@ export default function Viewer2() {
                               headers: {'Access-Control-Allow-Credentials': 'true'}}); 
     let image = await response.json();
     console.log('image', image)
-    setImages(image.groups)
+    setImages(image.groups.slides)
+    setManifest(image[1])
   };
 	
   const previewImage = async (slide) => {
     setManifest(slide.slide);
-    setTitle(slide.name);
     setImageId(slide.slide.source.Image.Url);
-    getQuestions(imageId);
+    //getQuestions(imageId);
     console.log(imageId);
     console.log(title);
   };
@@ -93,7 +91,7 @@ export default function Viewer2() {
 
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -157,39 +155,7 @@ export default function Viewer2() {
         </div>
           
 <List>
-       <div>
-          {images.map((group, index) => {
-              return (
-                <div
-                style={{
-                  display:"flex",
-                  flexDirection:'column'
-                  }}
-                >
-                  <Divider />
-                  <ListSubheader> {group.name} </ListSubheader>
-                  {group.slides.map((slide, index) => {
-                    return (
-                      <ListItem button
-                        key={index}
-                        onClick={() => {
-                          return previewImage(slide);
-                        }}
-                      >
-                        <ListItemIcon>
-                        <PhotoIcon />
-                        </ListItemIcon>
-                        <ListItemText
-                          disableTypography
-                          primary={slide.name} />
-                      </ListItem>
-                      
-                         
-                    );
-                  })}
-                </div>
-              );
-            })}
+       
       </div>
 </List>
       </Drawer>
