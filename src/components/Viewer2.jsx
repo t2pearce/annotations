@@ -182,7 +182,6 @@ export default function Viewer2() {
         </div>
           
 <List>
-	<Typography>{questions}</Typography>
      <Button onClick={handleNext}>Next Image</ Button>  
       
 </List>
