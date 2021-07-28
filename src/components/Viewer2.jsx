@@ -68,7 +68,7 @@ useEffect(() => {
     console.log('image', image)
     setImages(image.groups.slides)
     setManifest(images[1])
-    console.log(images)
+    console.log(image.groups.slides)
     console.log(manifest)
   };
 	
