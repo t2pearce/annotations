@@ -36,6 +36,10 @@ function Doctor() {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const [link, setLink] = useState( null);
   
+  useEffect(() => {
+    getRedirectLink();
+  }, []);
+  
    async function getUserInfo() {
         const response = await fetch('/.auth/me');
         const payload = await response.json();
@@ -48,7 +52,7 @@ function Doctor() {
         return clientPrincipal.userRoles;
       }
  
-   const redirectPage = () => {
+   const getRedirectLink = () => {
       let userRole = setUserInfo();
       console.log(userRole);
       var link = null;
