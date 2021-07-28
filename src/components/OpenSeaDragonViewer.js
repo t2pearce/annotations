@@ -11,84 +11,12 @@ const OpenSeaDragonViewer = ({ image }) => {
   const [viewer, setViewer] = useState( null);
   const [anno, setAnno] = useState(null);
   const [annotations, setAnnotations] = useState([]);
-  /*
-  useEffect(() => {
-    InitOpenseadragon();
-    
-    return () => {
-        viewer && viewer.destroy();
-    };
-  }, []);
-  
+
   useEffect(() => {
     if (image && viewer) {
       viewer.open(image.source);
       getRemoteAnnotations();
     }
-    if (image && anno) {
-      InitAnnotations();
-    }
-    console.log("Render");
-    
-  }, [image]);
- 
-  const InitOpenseadragon = () => {
-    viewer && viewer.destroy();
-    
-    const initViewer = OpenSeaDragon({
-        id: "openSeaDragon",
-        prefixUrl: "openseadragon-images/",
-        animationTime: 0.5,
-        blendTime: 0.1,
-        constrainDuringPan: true,
-        maxZoomPixelRatio: 2,
-        visibilityRatio: 1,
-        zoomPerScroll: 2
-      });
-
-    setViewer(initViewer);
-    const config = {formatter: ShapeLabelsFormatter};
-    const annotate = Annotorious(initViewer, config);
-    setAnno(annotate)
-  };
-  
-   const InitAnnotations = () => {
-    
-    anno.on('createAnnotation', (annotation) => {
-      console.log("creating");
-      const newAnnotations = [...annotations, annotation]
-      setAnnotations(newAnnotations);
-      console.log(newAnnotations);
-      saveRemoteAnnotation([...newAnnotations])
-    });
-
-    anno.on('updateAnnotation', (annotation, previous) => {
-      const newAnnotations = annotations.map(val => {
-          if (val.id === annotation.id) return annotation
-          return val
-      })
-      console.log(newAnnotations);
-      setAnnotations(newAnnotations);
-      saveRemoteAnnotation([...newAnnotations])
-    });
-  
-    anno.on('deleteAnnotation', (annotation) => {
-      const newAnnotations  = annotations.filter(val => val.id !== annotation.id)
-      console.log(newAnnotations);
-      setAnnotations(newAnnotations);
-      saveRemoteAnnotation([...newAnnotations])
-    });    
-  }
-*/
-  useEffect(() => {
-    if (image && viewer) {
-      viewer.open(image.source);
-      getRemoteAnnotations();
-    }
-//    if (image && anno) {
-//      InitAnnotations();
-//      console.log("Render");
-//    }
   }, [image]);
   
   useEffect(() => {
@@ -130,7 +58,6 @@ const OpenSeaDragonViewer = ({ image }) => {
       setAnnotations(newAnnotations)
       console.log(newAnnotations);
       saveRemoteAnnotation([...newAnnotations])
-      //setCheck(!check);
     });
 
     anno.on('updateAnnotation', (annotation, previous) => {
@@ -140,16 +67,12 @@ const OpenSeaDragonViewer = ({ image }) => {
       })
       setAnnotations([...newAnnotations])
       saveRemoteAnnotation([...newAnnotations])
-      //InitOpenseadragon();
-      //setCheck(!check);
     });
   
     anno.on('deleteAnnotation', (annotation) => {
       const newAnnotations  = annotations.filter(val => val.id !== annotation.id)
       setAnnotations([...newAnnotations])
       saveRemoteAnnotation([...newAnnotations])
-      //InitOpenseadragon();
-      //setCheck(!check);
     });
   }
 
