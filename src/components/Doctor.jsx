@@ -34,12 +34,13 @@ const useStyles = makeStyles((theme) => ({
 function Doctor() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-  const [link, setLink] = useState(null);
+  //const [link, setLink] = useState(null);
+  var redirectLink = null;
   
-  useEffect(() => {
+ /* useEffect(() => {
     getRedirectLink();
     console.log(link);
-  }, []);
+  }, []);*/
   
    async function getUserInfo() {
         const response = await fetch('/.auth/me');
@@ -57,17 +58,21 @@ function Doctor() {
       let userRole = setUserInfo();
       console.log(userRole);
       var link = null;
-      userRole.then(
+      return userRole.then(
         (result) => {
               console.log(result);
               for (let i=0; i < result.length; i++) {
                 if (result[i] == 'contributor') {
                   console.log(result[i]);
-                  setLink("/viewer");
+                  link = "/viewer";
+                  //setLink("/viewer");
                   console.log(link);
+                  return link;
                 } else if (result[i] == 'reader') {
                   console.log(result[i]);
-                  setLink("/viewer2");
+                  link = "/viewer2";
+                  //setLink("/viewer2");
+                  return link;
                 }
               }
             },
@@ -77,15 +82,18 @@ function Doctor() {
           )
        } 
 
-//  let redirectLink = redirectPage();
-  console.log(link);
+  getRedirectLink().then( 
+    (link) => {
+    console.log(link);
+    redirectLink = link;
+  });
 
   return (
      <Route
       render={() => (
           <Redirect
             to={{
-              pathname: "{link}",
+              pathname: "{redirectLink}",
             }}
           />
         )
