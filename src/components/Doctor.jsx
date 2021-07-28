@@ -62,7 +62,7 @@ function Doctor() {
                   //return redirectLink;
                 } else if (result[i] == 'reader') {
                   console.log(result[i]);
-                  redirectLink = "/viewer2"
+                  redirectLink = "/viewer2";
                   //return redirectLink;
                 }
               }
@@ -73,7 +73,8 @@ function Doctor() {
           )
        } 
 
-  //redirectLink = redirectPage();
+  redirectPage();
+  console.log(redirectLink);
    
   return (
      <Route
@@ -83,6 +84,7 @@ function Doctor() {
               pathname: "{redirectLink}",
             }}
           />
+          console.log(redirectLink);
         )
       }
     />  
