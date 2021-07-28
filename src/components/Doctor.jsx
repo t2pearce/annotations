@@ -34,8 +34,7 @@ const useStyles = makeStyles((theme) => ({
 function Doctor() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-  var userRole = [];
-  var redirectLink = null;
+  //var userRole = [];
   
    async function getUserInfo() {
         const response = await fetch('/.auth/me');
@@ -50,7 +49,7 @@ function Doctor() {
       }
  
    const redirectPage = () => {
-      userRole = setUserInfo();
+      let userRole = await setUserInfo();
       console.log(userRole);
       var link = null;
       userRole.then(
@@ -74,7 +73,7 @@ function Doctor() {
           )
        } 
 
-  redirectLink = redirectPage();
+  let redirectLink = await redirectPage();
   console.log(redirectLink);
    
   return (
