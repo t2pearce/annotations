@@ -105,7 +105,7 @@ useEffect(() => {
 	
   const handleNext = () => {
 	  index=index+1;
-	  setManifest(image.groups[0].slides[index].slide)
+	  setManifest(images[index].slide)
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
