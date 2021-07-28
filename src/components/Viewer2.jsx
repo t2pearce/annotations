@@ -66,6 +66,7 @@ export default function Viewer2() {
 		    headers: {'Access-Control-Allow-Credentials': 'true'}});;
 	      let questionsList = await response.json();
 	    console.log('questions', questionsList)
+	    setQuestions(questionsList);
 	  }
 	
   const getImages = async () => {
@@ -192,10 +193,10 @@ export default function Viewer2() {
 						<div className='question-count'>
 							<span>Question </span>/4
 						</div>
-						<div className='question-text'>{questionsList[currentQuestion].questionText}</div>
+						<div className='question-text'>{questions[currentQuestion].questionText}</div>
 					</div>
 					<div className='answer-section'>
-						{questionsList[currentQuestion].answerOptions.map((answerOption) => (
+						{questions[currentQuestion].answerOptions.map((answerOption) => (
 							<button onClick={() => handleAnswerOptionClick()}>{answerOption.answerText}</button>
 						))}
 					</div>
