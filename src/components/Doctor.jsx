@@ -66,13 +66,13 @@ function Doctor() {
                   console.log(result[i]);
                   redirectLink = "/viewer";
                   //setLink("/viewer");
-                  console.log(link);
-                  return link;
+                  //console.log(link);
+                  return redirectLink;
                 } else if (result[i] == 'reader') {
                   console.log(result[i]);
                   redirectLink = "/viewer2";
                   //setLink("/viewer2");
-                  return link;
+                  return redirectLink;
                 }
               }
             },
