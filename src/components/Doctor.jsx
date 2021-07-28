@@ -57,6 +57,7 @@ function Doctor() {
               for (let i=0; i < result.length; i++) {
                 if (result[i] == 'contributor') {
                   console.log(result[i]);
+                  return(
                   <Route
                    render={() => (
                     <Redirect
@@ -66,9 +67,11 @@ function Doctor() {
                      />
                     )
                     }
-                  />    
+                  />  
+                 )
                 } else if (result[i] == 'reader') {
                   console.log(result[i]);
+                   return(
                    <Route
                    render={() => (
                     <Redirect
@@ -78,7 +81,8 @@ function Doctor() {
                      />
                     )
                     }
-                  />  
+                  /> 
+                  )
                 }
               }
             },
