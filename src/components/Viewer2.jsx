@@ -44,7 +44,7 @@ export default function Viewer2() {
   const [title, setTitle] = useState();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [state, setState] = useState();
-  const [index, setIndex]= useState(0);
+  const [index, setIndex]= useState(1);
   
   const handleChange = (event) => {
     const name = event.target.name;
