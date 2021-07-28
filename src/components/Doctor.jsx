@@ -69,6 +69,7 @@ function Doctor() {
                   console.log(result[i]);
                   link = "/viewer2";
                   setLink(link);
+                  console.log(link);
                 }
               }
             },
@@ -80,23 +81,7 @@ function Doctor() {
 
 //  let redirectLink = redirectPage();
   console.log(link);
- 
- useEffect(() => {
-  return (
-     <Route
-      render={() => (
-          <Redirect
-            to={{
-              pathname: "{link}",
-            }}
-          />
-        )
-      }
-    />  
-   )
-  });   
 
-/*
   return (
      <Route
       render={() => (
@@ -108,7 +93,7 @@ function Doctor() {
         )
       }
     />  
-   ); */
+   );
               
     /*<ResponsiveContainer maxWidth="lg" className={classes.container}>
     <Grid container spacing={3} alignItems="center">
