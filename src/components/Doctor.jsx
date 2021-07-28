@@ -52,22 +52,25 @@ function Doctor() {
       userRole.then(
         (result) => {
               console.log(result);
-
-               for (let i=0; i < result.length; i++) {
-                  if (result[i] == 'contributor') {
-                    console.log(result[i]);
-                    return <Redirect to="/viewer" />
-                  } else if (result[i] == 'reader') {
-                    console.log(result[i]);
-                    return <Redirect to="/viewer2" />
-                  }
-                }
+              redirectPage(result);
             },
         (error) => {
               console.log(error);
             }
           )
-  
+
+  const redirectPage = (userRoleList) => {
+     for (let i=0; i < userRoleList.length; i++) {
+       if (userRoleList[i] == 'contributor') {
+        console.log(userRoleList[i]);
+        return <Redirect to="/viewer" />
+       } else if (userRoleList[i] == 'reader') {
+        console.log(userRoleList[i]);
+        return <Redirect to="/viewer2" />
+      }
+    }
+  }
+          
   return (
     <ResponsiveContainer maxWidth="lg" className={classes.container}>
     <Grid container spacing={3} alignItems="center">
