@@ -217,6 +217,7 @@ export default function Viewer2() {
 					       </div>
 					     );
 					   })}
+					   </div>
 				</>
 			)}
 		</div>
