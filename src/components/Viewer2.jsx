@@ -67,7 +67,7 @@ useEffect(() => {
     let image = await response.json();
     console.log('image', image)
     console.log('groups', image.groups)
-    console.log('slides', image.groups.slides)
+    console.log('slides', image.groups[0].slides)
   };
 	
   const previewImage = async (slide) => {
