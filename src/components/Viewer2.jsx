@@ -105,6 +105,7 @@ useEffect(() => {
 	
   const handleNext = () => {
 	  setIndex(index+1);
+	  console.log('index', index)
 	  setManifest(images[index].slide)
 	  setImageId(images[index].slide.source.Image.Url);
   };
