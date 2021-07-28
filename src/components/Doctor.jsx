@@ -6,7 +6,7 @@ import { ResponsiveContainer } from 'recharts';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
-import { Link } from "react-router-dom";
+import { Route, Redirect, Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,7 +48,6 @@ function Doctor() {
         return clientPrincipal.userRoles;
       }
  
-  /*
    const redirectPage = () => {
       userRole = setUserInfo();
       console.log(userRole);
@@ -69,15 +68,28 @@ function Doctor() {
               console.log(error);
             }
           )
-       } */
+       } 
 
         
   return (
-       <div>
-        <Link to="/viewer" />
+      /* <div>
+        redirectPage();
        </div>
-       );
+       );*/
     
+    <Route
+      render={() => (
+          <Redirect
+            to={{
+              pathname: "/viewer",
+            }}
+          />
+        )
+      }
+    />          
+  ); 
+          
+          
     /*<ResponsiveContainer maxWidth="lg" className={classes.container}>
     <Grid container spacing={3} alignItems="center">
     <Grid item xs={12} md={12} lg={12}>
