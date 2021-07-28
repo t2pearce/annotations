@@ -193,13 +193,30 @@ export default function Viewer2() {
 						<div className='question-count'>
 							<span>Question </span>/4
 						</div>
-						<div className='question-text'>{questions[currentQuestion].questionText}</div>
-					</div>
-					<div className='answer-section'>
-						{questions[currentQuestion].answerOptions.map((answerOption) => (
-							<button onClick={() => handleAnswerOptionClick()}>{answerOption.answerText}</button>
-						))}
-					</div>
+				{questions.map((questions, index) => {
+				   return (
+					<div
+					   style={{
+						 display:"flex",
+						 flexDirection:'column'
+						 }}
+					       >
+						 <h3 key={index}>{group.questionText}</h3>
+						 {group.answerOptions.map((answer, index) => {
+						   return (
+						     <button
+						       key={index}
+						       onClick={() => {
+							 handleAnswerOptionClick()
+						       }}
+						     >
+						       {answer.answerText}
+						     </button>
+						   );
+						 })}
+					       </div>
+					     );
+					   })}
 				</>
 			)}
 		</div>
