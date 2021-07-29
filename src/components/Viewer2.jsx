@@ -234,7 +234,7 @@ const questionList= [
         </div>
           
 <List>
-     <Button onClick={<Questions questions={questions} />}>START</Button>
+     <Button onClick={Questions(questions)}>START</Button>
      <Button onClick={handleNext}>Next Image</ Button>  
       
 </List>
