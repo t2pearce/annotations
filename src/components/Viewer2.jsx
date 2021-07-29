@@ -100,17 +100,28 @@ const questionList= [
     }, []);
 	
 	
-    const getQuestions = async(imageId) => {
-	    console.log('imageId', imageId)
+    const getQuestions = (imageId) => {
+       console.log('imageId', imageId)
        var encodedId = btoa(imageId);
-	    console.log('encodedId', encodedId)
-       const response = await fetch("/api/questions/" + encodedId, {
+       console.log('encodedId', encodedId)
+       fetch("/api/questions/" + encodedId, {
 		    method: 'GET',
 		    credentials: 'include',
-		    headers: {'Access-Control-Allow-Credentials': 'true'}});;
-	      let questionsList = await response.json();
-	    console.log('questions', questionsList)
-	    setQuestions(questionsList);
+		    headers: {'Access-Control-Allow-Credentials': 'true'}})
+	.then((response) => response.json())
+	.then(
+	       (result) => {
+		    let quesitonsList = result;
+		    if (questionsList) {
+	    		console.log('questions', questionsList)
+	    		setQuestions(questionsList);
+			console.log('setFetchQuestions', questions)
+		    }
+	       },
+	       (error) => {
+		       console.log(error)
+	       }
+	       )
 	  }
 	
   const getImages = async () => {
