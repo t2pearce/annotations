@@ -103,6 +103,7 @@ const questionList= [
 	
     useEffect(() => {
         getQuestions(imageId);
+	    console.log('NewEffectgetQuestions',questions)
     }, [imageId]);
 	
 	
