@@ -181,7 +181,7 @@ const questionList= [
   };
 	
   const handleStart= () => {
-	  setStart(true);
+	  showStart(true);
   };
 
   return (
