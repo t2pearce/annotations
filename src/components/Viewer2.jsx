@@ -111,7 +111,7 @@ const questionList= [
 	.then((response) => response.json())
 	.then(
 	       (result) => {
-		    let quesitonsList = result;
+		    let questionsList = result;
 		    if (questionsList) {
 	    		console.log('questions', questionsList)
 	    		setQuestions(questionsList);
