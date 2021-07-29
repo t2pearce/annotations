@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import * as Annotorious from '@recogito/annotorious-openseadragon';
 import '@recogito/annotorious-openseadragon/dist/annotorious.min.css';
 import ShapeLabelsFormatter from './ShapeLabelsFormatter.js';
+import ColorFormatter from './ColorFormatter.js';
 
 
 const OpenSeaDragonViewer2 = ({ image }) => {
@@ -44,8 +45,9 @@ const OpenSeaDragonViewer2 = ({ image }) => {
       });
 
     setViewer(initViewer);
-    const config = {formatter: ShapeLabelsFormatter,
-                   readOnly: true};
+    const config = {formatter: [ShapeLabelsFormatter, ColorFormatter],
+                   readOnly: true,
+                   };
     const annotate = Annotorious(initViewer, config);
     setAnno(annotate)
   };
