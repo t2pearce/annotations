@@ -6,6 +6,10 @@
       "statusCode": 200
     },
     {
+      "route": "/doctor",
+      "allowedRoles": ["contributor"]
+    },
+    {
       "route": "/viewer",
       "allowedRoles": ["contributor"]
     },
