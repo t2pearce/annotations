@@ -88,6 +88,10 @@ const questionList= [
   const [showProgress, setShowProgress] = useState(false);
   const [progress, setProgress] = useState(0);
   const [questions, setQuestions] = useState();
+  const classes = useStyles();
+  const theme = useTheme();
+  const [open, setOpen] = useState(false);
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
     setUserInfo();
 
@@ -136,10 +140,6 @@ const questionList= [
         document.getElementById("user").innerHTML = clientPrincipal.userDetails;
         console.log(clientPrincipal);
       }
-
-  const classes = useStyles();
-  const theme = useTheme();
-  const [open, setOpen] = useState(false);
 	
   const handleDrawerOpen = () => {
     setOpen(true);
