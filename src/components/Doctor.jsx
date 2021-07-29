@@ -188,5 +188,5 @@ function Doctor() {
     </Grid>
     </Grid>
     </ResponsiveContainer>*/
-/*}
-export default Doctor; */
+// }
+export default Doctor;
