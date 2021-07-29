@@ -24,13 +24,6 @@ class Doctor extends React.Component {
       redirectLink: result
     }))
   }
-  
-  componentDidUpdate() {
-    // fetch the project name, once it retrieves resolve the promise and update the state. 
-    this.getRedirectLink().then(result => this.setState({
-      redirectLink: result
-    }))
-  }
 
   async getUserInfo() {
         const response = await fetch('/.auth/me');
@@ -74,7 +67,13 @@ class Doctor extends React.Component {
 
 
   render() {
-
+    if(this.state.redirectLink == '')
+      return null;
+    
+    let images = this.state.imageSource.map((el, i) => (
+            <img key={i} className='images' src={el.path_lower} />
+        ))
+    
     return <Redirect to= "{redirectLink}"/>
   }
  }
