@@ -245,9 +245,8 @@ const questionList= [
 <List>
 	<div className='app'>
 			{showScore ? (
-				<div className='score-section'>
-					You scored {score} out of {questionList.length}
-				</div>
+				<p> </p>
+     			<Button onClick={handleNext}>Next Image</ Button>
 			) : (
 				<>
 					<div className='question-section'>
@@ -264,8 +263,7 @@ const questionList= [
 				</>
 			)}
 		</div>	  
-     <p> </p>
-     <Button onClick={handleNext}>Next Image</ Button>  
+       
       
 </List>
       </Drawer>
