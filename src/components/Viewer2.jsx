@@ -246,7 +246,7 @@ const questionList= [
 	<div className='app'>
 			{showScore ? (
 			 <div className='score-section'>
-     			<Button onClick={handleNext}>Next Image</ Button>
+     			<Button onClick={handleNext} style={{justifyContent: 'center'}}>Next Image</ Button>
 			</div>
 			) : (
 				<>
