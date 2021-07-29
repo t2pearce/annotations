@@ -103,6 +103,7 @@ export default function Viewer2() {
 	
   const handleDrawerOpen = () => {
     setOpen(true);
+	  console.log('setQuestions', questions)
   };
   const handleDrawerClose = () => {
     setOpen(false);
@@ -182,7 +183,7 @@ export default function Viewer2() {
         </div>
           
 <List>
-	<Typography>{questions[0].questionText}</Typography>
+	
 		  
 })}
      <Button onClick={handleNext}>Next Image</ Button>  
