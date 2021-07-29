@@ -56,10 +56,6 @@ export default function Viewer2() {
         getImages();
     }, []);
 	
-    useEffect(() =>{
-        getQuestions();
-    },
-    [imageId]);
 	
     const getQuestions = async(imageId) => {
 	    console.log('imageId', imageId)
@@ -87,7 +83,7 @@ export default function Viewer2() {
     setManifest(image.groups[0].slides[0].slide)
     setImageId(image.groups[0].slides[0].slide.source.Image.Url)
     console.log('IMAGEID', image.groups[0].slides[0].slide.source.Image.Url)
-    //getQuestions(image.groups[0].slides[0].slide.source.Image.Url)
+    getQuestions(image.groups[0].slides[0].slide.source.Image.Url)
   };
 	
     async function getUserInfo() {
