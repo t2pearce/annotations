@@ -22,8 +22,7 @@ class Doctor extends React.Component {
     // fetch the project name, once it retrieves resolve the promise and update the state. 
     this.getRedirectLink().then(result => this.setState({
       redirectLink: result
-    }))
-    console.log(this.state);
+    }, function() {console.log(this.state.redirectLink)}))
   }
 
   async getUserInfo() {
@@ -69,7 +68,7 @@ class Doctor extends React.Component {
 
   render() {
 
-    return <Redirect to= "/viewer"/>
+    return <Redirect to= "{redirectLink}"/>
   }
  }
 
