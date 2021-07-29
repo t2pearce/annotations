@@ -89,6 +89,7 @@ const questionList= [
   const [showProgress, setShowProgress] = useState(false);
   const [progress, setProgress] = useState(0);
   const [questions, setQuestions] = useState();
+  const [start, showStart] = useState(false);
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
@@ -178,6 +179,10 @@ const questionList= [
       setShowProgress(true);
     }
   };
+	
+  const handleStart= () => {
+	  setStart(true);
+  };
 
   return (
     <div className = {classes.root}>
@@ -234,7 +239,14 @@ const questionList= [
         </div>
           
 <List>
-     <Button onClick={Questions(questions)}>START</Button>
+		  {showStart ? (
+		   <Button onClick={handleStart}>START</Button>
+		) : (
+			<>
+			<Typography>{questions[0].questionText}</Typography>
+			</>
+		)}
+     <p> </p>
      <Button onClick={handleNext}>Next Image</ Button>  
       
 </List>
