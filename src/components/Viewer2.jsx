@@ -177,7 +177,7 @@ const questionList= [
 	
   const handleAnswerOptionClick = () => {
     const nextQuestion = currentQuestion + 1
-    if (nextQuestion < questions.length) {
+    if (nextQuestion < questionList.length) {
       setCurrentQuestion(nextQuestion);
     } else {
       setShowScore(true);
@@ -250,7 +250,7 @@ const questionList= [
 				<>
 					<div className='question-section'>
 						<div className='question-count'>
-							<span>Question {currentQuestion + 1}</span>/{questions.length}
+							<span>Question {currentQuestion + 1}</span>/{questionList.length}
 						</div>
 						<div className='question-text'>{questionList[currentQuestion].questionText}</div>
 					</div>
