@@ -18,7 +18,7 @@ class Doctor extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentDidUpdate() {
     // fetch the project name, once it retrieves resolve the promise and update the state. 
     this.getRedirectLink().then(result => this.setState({
       redirectLink: result
