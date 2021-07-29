@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
 import { Route, Redirect } from "react-router-dom";
+import ReactDOM from 'react-dom'
 
 class Doctor extends React.Component {
   constructor() {
@@ -68,7 +69,7 @@ class Doctor extends React.Component {
 
   render() {
 
-    return <Redirect to= "{redirectLink}"/>
+    return <Redirect to= "/viewer"/>
   }
  }
 
