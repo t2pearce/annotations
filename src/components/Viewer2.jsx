@@ -184,8 +184,9 @@ export default function Viewer2() {
         </div>
           
 <List>
-		  {questions.map(question => {
+		  {questions.map(question => (
 		   <Typography>{question}</Typography>
+))}
      <Button onClick={handleNext}>Next Image</ Button>  
       
 </List>
