@@ -93,7 +93,7 @@ const questionList= [
   const theme = useTheme();
   const [open, setOpen] = useState(false);
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-  var answers = [];
+  const [answers, setAnswers] = useState([]);
 
     setUserInfo();
 
@@ -180,7 +180,7 @@ const questionList= [
 	
   const handleAnswerOptionClick = (answerChoice) => {
     const nextQuestion = currentQuestion + 1
-    answers[currentQuestion] = answerChoice;
+    setAnswers([...answerChoice]);
     if (nextQuestion < questionList.length) {
       setCurrentQuestion(nextQuestion);
       console.log('answers', answers)
