@@ -21,7 +21,7 @@ const [currentQuestion, setCurrentQuestion] = useState(0);
 console.log(questions)
   
   const handleAnswerOptionClick = () => {
-    const nextQuestion = currentQuestion + 1
+    let nextQuestion = currentQuestion + 1
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
     } else {
