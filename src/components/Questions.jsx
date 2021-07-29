@@ -18,30 +18,8 @@ const [currentQuestion, setCurrentQuestion] = useState(0);
   const [progress, setProgress] = useState(0);
   const [questions, setQuestions] = useState();
 		
-  const getQuestions = () => {
-    var encodedId = btoa(imageId);
-    fetch("/api/questions/" + encodedId, {
-            method: 'GET',
-            credentials: 'include',
-            headers: {'Access-Control-Allow-Credentials': 'true'}
-    })
-      .then((response) => response.json())
-      .then(
-	    (result) => {
-		    let questionsList = result;
-		    if (questionsList) {
-			    setQuestions(questionsList);
-			    console.log(questionsList);
-		    }
-	    },
-	    (error) => {
-		    console.log(error);
-	    }
-	    )
-  }
   
-  getQuestions();
-console.log(imageId);
+
   
   const handleAnswerOptionClick = () => {
     const nextQuestion = currentQuestion + 1
