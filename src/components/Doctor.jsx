@@ -8,6 +8,71 @@ import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
 import { Route, Redirect } from "react-router-dom";
 
+class Doctor extends React.component {
+  constructor() {
+    super();
+
+    this.state = {
+      redirectLink: ''
+    }
+  }
+
+  componentDidMount() {
+    // fetch the project name, once it retrieves resolve the promise and update the state. 
+    this.getRedirectLink().then(result => this.setState({
+      redirectLink: result
+    }))
+  }
+
+  async function getUserInfo() {
+        const response = await fetch('/.auth/me');
+        const payload = await response.json();
+        const { clientPrincipal } = payload;
+        return clientPrincipal;
+      }
+  async function setUserInfo() {
+        let  clientPrincipal =  await getUserInfo();
+        console.log(clientPrincipal);
+        return clientPrincipal.userRoles;
+      }
+  
+  const getRedirectLink() => {
+      let userRole = setUserInfo();
+      console.log(userRole);
+      var link = null;
+      return userRole.then(
+        (result) => {
+              console.log(result);
+              for (let i=0; i < result.length; i++) {
+                if (result[i] == 'contributor') {
+                  console.log(result[i]);
+                  link = "/viewer";
+                  //setLink("/viewer");
+                  //console.log(link);
+                  return link;
+                } else if (result[i] == 'reader') {
+                  console.log(result[i]);
+                  link = "/viewer2";
+                  //setLink("/viewer2");
+                  return link;
+                }
+              }
+            },
+        (error) => {
+              console.log(error);
+            }
+          )
+       }
+
+
+  render() {
+
+    return <Redirect to= "{redirectLink}"/>
+  }
+ }
+
+
+/*
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -31,6 +96,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
 function Doctor() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
@@ -41,7 +107,7 @@ function Doctor() {
     getRedirectLink();
     console.log(link);
   }, []);*/
-  
+  /*
    async function getUserInfo() {
         const response = await fetch('/.auth/me');
         const payload = await response.json();
@@ -80,7 +146,7 @@ function Doctor() {
               console.log(error);
             }
           )
-       } 
+       }  */
 
  
  /* getRedirectLink().then( 
@@ -89,7 +155,7 @@ function Doctor() {
      console.log(link);
   }); */
 
-  const redirectLink = await getRedirectLink();
+/*  const redirectLink = await getRedirectLink();
   console.log(redirectLink);
    
   return (
@@ -103,7 +169,7 @@ function Doctor() {
         )
       }
     />  
-   );
+   ); */
               
     /*<ResponsiveContainer maxWidth="lg" className={classes.container}>
     <Grid container spacing={3} alignItems="center">
@@ -121,6 +187,6 @@ function Doctor() {
     </Paper>
     </Grid>
     </Grid>
-    </ResponsiveContainer>*/
-}
-export default Doctor;
+    </ResponsiveContainer>*//
+/*}
+export default Doctor; */
