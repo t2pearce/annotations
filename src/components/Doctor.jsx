@@ -24,19 +24,19 @@ class Doctor extends React.component {
     }))
   }
 
-  async function getUserInfo() {
+  async getUserInfo() {
         const response = await fetch('/.auth/me');
         const payload = await response.json();
         const { clientPrincipal } = payload;
         return clientPrincipal;
       }
-  async function setUserInfo() {
+  async setUserInfo() {
         let  clientPrincipal =  await getUserInfo();
         console.log(clientPrincipal);
         return clientPrincipal.userRoles;
       }
   
-  const getRedirectLink() => {
+  getRedirectLink() {
       let userRole = setUserInfo();
       console.log(userRole);
       var link = null;
