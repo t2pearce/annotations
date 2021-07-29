@@ -240,7 +240,7 @@ const questionList= [
         </div>
           
 <List>
-	<Typography>{questions[0].questionText}</Typography>	  
+		  
      <p> </p>
      <Button onClick={handleNext}>Next Image</ Button>  
       
