@@ -89,7 +89,6 @@ const questionList= [
   const [showProgress, setShowProgress] = useState(false);
   const [progress, setProgress] = useState(0);
   const [questions, setQuestions] = useState();
-  const [start, showStart] = useState(false);
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
@@ -101,6 +100,10 @@ const questionList= [
         getImages();
 	    console.log('EffectgetQuestions',questions)
     }, []);
+	
+    useEffect(() => {
+        getQuestions(imageId);
+    }, [imageId]);
 	
 	
     const getQuestions = (imageId) => {
@@ -140,7 +143,7 @@ const questionList= [
     setManifest(image.groups[0].slides[0].slide)
     setImageId(image.groups[0].slides[0].slide.source.Image.Url)
     console.log('IMAGEID', image.groups[0].slides[0].slide.source.Image.Url)
-    getQuestions(image.groups[0].slides[0].slide.source.Image.Url)
+    //getQuestions(image.groups[0].slides[0].slide.source.Image.Url)
   };
 	
     async function getUserInfo() {
@@ -168,7 +171,7 @@ const questionList= [
 	  console.log('index', index)
 	  setManifest(images[index].slide)
 	  setImageId(images[index].slide.source.Image.Url);
-	  getQuestions(imageId);
+	  //getQuestions(imageId);
   };
 	
   const handleAnswerOptionClick = () => {
@@ -180,9 +183,7 @@ const questionList= [
     }
   };
 	
-  const handleStart= () => {
-	  showStart(true);
-  };
+ 
 
   return (
     <div className = {classes.root}>
@@ -239,13 +240,7 @@ const questionList= [
         </div>
           
 <List>
-		  {showStart ? (
-		   <Button onClick={handleStart}>START</Button>
-		) : (
-			
-			<Typography>{questions[0].questionText}</Typography>
-			
-		)}
+	<Typography>{questions[0].questionText}</Typography>	  
      <p> </p>
      <Button onClick={handleNext}>Next Image</ Button>  
       
