@@ -184,8 +184,6 @@ export default function Viewer2() {
           
 <List>
 	
-		  
-})}
      <Button onClick={handleNext}>Next Image</ Button>  
       
 </List>
