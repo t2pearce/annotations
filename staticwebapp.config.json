@@ -7,7 +7,7 @@
     },
     {
       "route": "/doctor",
-      "allowedRoles": ["contributor"]
+      "allowedRoles": ["contributor","clinician"]
     },
     {
       "route": "/viewer",
@@ -15,23 +15,23 @@
     },
     {
       "route": "/viewer2",
-      "allowedRoles": ["contributor"]
+      "allowedRoles": ["contributor","clinician"]
     },
     {
       "route": "/api/deepzoom/*",
-      "allowedRoles": ["contributor"]
+      "allowedRoles": ["contributor","clinician"]
     },
     {
       "route": "/api/profile",
-      "allowedRoles": ["contributor"]
+      "allowedRoles": ["contributor","clinician"]
     },
     {
       "route": "/api/annotation",
-      "allowedRoles": ["contributor"]
+      "allowedRoles": ["contributor","clinician"]
     },
     {
       "route": "/api/questions",
-      "allowedRoles": ["contributor"]
+      "allowedRoles": ["contributor","clinician"]
     },
     {
       "route": "/login",
