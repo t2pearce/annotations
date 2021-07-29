@@ -97,6 +97,7 @@ const questionList= [
 
     useEffect(() => {
         getImages();
+	    console.log('EffectgetQuestions',questions)
     }, []);
 	
 	
