@@ -184,9 +184,13 @@ export default function Viewer2() {
         </div>
           
 <List>
-		  {questions.map(question => (
-		   <Typography>{question}</Typography>
-))}
+     <ul>
+		  {
+		  questions.map(function(item){
+			  return <li> {item.questionText} </li>
+		  })
+}
+</ul>
      <Button onClick={handleNext}>Next Image</ Button>  
       
 </List>
