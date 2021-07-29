@@ -178,9 +178,9 @@ const questionList= [
 	  setShowScore(false);
   };
 	
-  const handleAnswerOptionClick = (answerOption.answerText) => {
+  const handleAnswerOptionClick = (answerChoice) => {
     const nextQuestion = currentQuestion + 1
-    answers[currentQuestion] = answerOption.answerText;
+    answers[currentQuestion] = answerChoice;
     if (nextQuestion < questionList.length) {
       setCurrentQuestion(nextQuestion);
       console.log('answers', answers)
