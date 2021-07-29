@@ -44,7 +44,7 @@ class Doctor extends React.Component {
                   console.log(result[i]);
                   link = "/viewer";
                   return link;
-                } else if (result[i] == 'clinician') {
+                } else if (result[i] == 'reader') {
                   console.log(result[i]);
                   link = "/viewer2";
                   return link;
