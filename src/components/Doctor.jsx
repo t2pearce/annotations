@@ -22,7 +22,7 @@ class Doctor extends React.Component {
     this.getRedirectLink().then(result => this.setState({
       redirectLink: result
     }))
-    console.log(redirectLink);
+    console.log(this.state);
   }
 
   async getUserInfo() {
