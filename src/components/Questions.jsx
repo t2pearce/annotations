@@ -11,15 +11,14 @@
 import React, {useState, useEffect} from 'react';
 import './Questions.css';
 
-export default function Questions({imageId}) {
+export default function Questions({questions}) {
 
 const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showProgress, setShowProgress] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [questions, setQuestions] = useState();
 		
   
-
+console.log(questions)
   
   const handleAnswerOptionClick = () => {
     const nextQuestion = currentQuestion + 1
