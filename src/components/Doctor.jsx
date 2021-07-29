@@ -74,10 +74,6 @@ class Doctor extends React.Component {
     if(this.state.redirectLink == '')
       return null;
     
-    let images = this.state.imageSource.map((el, i) => (
-            <img key={i} className='images' src={el.path_lower} />
-        ))
-    
     return <Redirect to= "{redirectLink}"/>
   }
  }
