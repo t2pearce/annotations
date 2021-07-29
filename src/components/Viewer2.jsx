@@ -39,7 +39,7 @@ import './Questions.css';
 
 export default function Viewer2() {
 
-const questionList: [
+const questionList= [
         {
             questionText: 'What is the capital of France?',
             answerOptions: [
