@@ -180,7 +180,7 @@ const questionList= [
 	
   const handleAnswerOptionClick = (answerChoice) => {
     const nextQuestion = currentQuestion + 1
-    setAnswers([...{answerChoice}]);
+    setAnswers([...answers, answerChoice]);
     if (nextQuestion < questionList.length) {
       setCurrentQuestion(nextQuestion);
       console.log('answers', answers)
