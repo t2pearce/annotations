@@ -241,7 +241,27 @@ const questionList= [
         </div>
           
 <List>
-		  
+	<div className='app'>
+			{showScore ? (
+				<div className='score-section'>
+					You scored {score} out of {questionList.length}
+				</div>
+			) : (
+				<>
+					<div className='question-section'>
+						<div className='question-count'>
+							<span>Question {currentQuestion + 1}</span>/{questions.length}
+						</div>
+						<div className='question-text'>{questionList[currentQuestion].questionText}</div>
+					</div>
+					<div className='answer-section'>
+						{questionList[currentQuestion].answerOptions.map((answerOption) => (
+							<button onClick={() => handleAnswerOptionClick()}>{answerOption.answerText}</button>
+						))}
+					</div>
+				</>
+			)}
+		</div>	  
      <p> </p>
      <Button onClick={handleNext}>Next Image</ Button>  
       
