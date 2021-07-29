@@ -8,7 +8,7 @@ import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
 import { Route, Redirect } from "react-router-dom";
 
-class Doctor extends React.component {
+class Doctor extends React.Component {
   constructor() {
     super();
 
