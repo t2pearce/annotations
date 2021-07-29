@@ -75,7 +75,7 @@ class Doctor extends React.Component {
       return null;
     
     console.log(this.state.redirectLink);
-    return <Redirect to= "(this.state.redirectLink)" />
+    return <Redirect to= (this.state.redirectLink) />
   }
  }
 
