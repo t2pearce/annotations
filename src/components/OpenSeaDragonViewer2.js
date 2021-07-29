@@ -45,7 +45,7 @@ const OpenSeaDragonViewer2 = ({ image }) => {
       });
 
     setViewer(initViewer);
-    const config = {formatter: [ShapeLabelsFormatter, ColorFormatter],
+    const config = {formatter: ShapeLabelsFormatter,
                    readOnly: true,
                    };
     const annotate = Annotorious(initViewer, config);
