@@ -174,6 +174,7 @@ const questionList= [
 	  setImageId(images[index].slide.source.Image.Url);
 	  //getQuestions(imageId);
 	  setCurrentQuestion(0);
+	  setShowScore(false);
   };
 	
   const handleAnswerOptionClick = () => {
