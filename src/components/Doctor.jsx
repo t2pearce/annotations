@@ -31,13 +31,13 @@ class Doctor extends React.component {
         return clientPrincipal;
       }
   async setUserInfo() {
-        let  clientPrincipal =  await getUserInfo();
+        let  clientPrincipal =  await this.getUserInfo();
         console.log(clientPrincipal);
         return clientPrincipal.userRoles;
       }
   
   getRedirectLink() {
-      let userRole = setUserInfo();
+      let userRole = this.setUserInfo();
       console.log(userRole);
       var link = null;
       return userRole.then(
