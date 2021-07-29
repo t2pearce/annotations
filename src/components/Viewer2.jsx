@@ -36,6 +36,7 @@ import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import NextIcon from '@material-ui/icons/ArrowRight';
 import './Questions.css';
+import Questions from './Questions.jsx';
 
 export default function Viewer2() {
 
@@ -233,13 +234,7 @@ const questionList= [
         </div>
           
 <List>
-     <ul>
-		  {
-		  questionList.map(function(item){
-			  return <li> {item.questionText} </li>
-		  })
-}
-</ul>
+     <Button onClick={<Questions questions={questions} />}>START</Button>
      <Button onClick={handleNext}>Next Image</ Button>  
       
 </List>
