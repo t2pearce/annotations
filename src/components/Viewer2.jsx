@@ -173,6 +173,7 @@ const questionList= [
 	  setManifest(images[index].slide)
 	  setImageId(images[index].slide.source.Image.Url);
 	  //getQuestions(imageId);
+	  setCurrentQuestion(0);
   };
 	
   const handleAnswerOptionClick = () => {
