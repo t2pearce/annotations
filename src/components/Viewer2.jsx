@@ -182,14 +182,8 @@ export default function Viewer2() {
         </div>
           
 <List>
-		  {questions.map(question => {
-		   return (
-		   <ListItem>
-		   <ListItemText
-                          disableTypography
-                          primary={question.questionText} />
-		  </ListItem>
-);
+	<Typography>{questions[0].questionText}</Typography>
+		  
 })}
      <Button onClick={handleNext}>Next Image</ Button>  
       
