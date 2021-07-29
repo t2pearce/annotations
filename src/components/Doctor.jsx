@@ -187,6 +187,6 @@ function Doctor() {
     </Paper>
     </Grid>
     </Grid>
-    </ResponsiveContainer>*//
+    </ResponsiveContainer>*/
 /*}
 export default Doctor; */
