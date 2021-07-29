@@ -76,7 +76,7 @@ const questionList: [
                 {answerText: "7"}
             ]
         }
-    ],	
+    ]
 	
   const [images, setImages] = useState([]);
   const [manifest, setManifest] = useState();
