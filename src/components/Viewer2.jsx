@@ -86,8 +86,8 @@ const questionList= [
   const [state, setState] = useState();
   const [index, setIndex]= useState(1);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [showProgress, setShowProgress] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const [showScore, setShowScore] = useState(false);
+  const [score, setScore] = useState(0);
   const [questions, setQuestions] = useState();
   const classes = useStyles();
   const theme = useTheme();
@@ -180,7 +180,7 @@ const questionList= [
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
     } else {
-      setShowProgress(true);
+      setShowScore(true);
     }
   };
 	
