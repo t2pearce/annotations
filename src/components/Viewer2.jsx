@@ -94,7 +94,8 @@ const questionList= [
   const [open, setOpen] = useState(false);
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const [answers, setAnswers] = useState([]);
-  const [showStart, setShowStart] = useState(false);
+  const [showStart, setShowStart] = useState(true);
+  const [showNext, setShowNext] = useState(false);	
 
     setUserInfo();
 
@@ -176,11 +177,13 @@ const questionList= [
 	  setImageId(images[index].slide.source.Image.Url);
 	  //getQuestions(imageId);
 	  setCurrentQuestion(0);
-	  setShowScore(false);
+	  setShowNext(false);
+	  setShowScore(true);
   };
 	
   const handleStart = () => {
-	  setShowStart(true);
+	  setShowStart(false);
+	  setShowScore(true);
   };
 	
   const handleAnswerOptionClick = (answerChoice) => {
@@ -190,11 +193,10 @@ const questionList= [
       setCurrentQuestion(nextQuestion);
       console.log('answers', answers)
     } else {
-      setShowScore(true);
+      setShowScore(false);
+      setShowNext(true);
     }
   };
-	
- let button =<Button onClick={handleStart} variant="contained">Start</ Button>
 			
 
 
@@ -254,11 +256,11 @@ const questionList= [
           
 <List>
 	<div className='app'>
-			{showScore ? (
+			{showNext == true &&
 			 <div className='question-section'>
      			<button onClick={handleNext} variant="contained">Next Image</ button>
-			</div>
-			) : (
+			</div>}
+			{showScore == true &&
 				<>
 					<div className='question-section'>
 						<div className='question-count'>
@@ -271,8 +273,11 @@ const questionList= [
 							<button onClick={() => handleAnswerOptionClick(answerOption.answerText)}>{answerOption.answerText}</button>
 						))}
 					</div>
-				</>
-			)}
+				</>}
+			{showStart == true &&
+				<div className='question-section'>
+     			<button onClick={handleStart} variant="contained">START</ button>
+			</div>}
 		</div>	  
        
       
