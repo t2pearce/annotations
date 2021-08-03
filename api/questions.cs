@@ -20,9 +20,22 @@ namespace Microsoft.Function
             public string ImageId { get; set; }
             //[JsonProperty("QuestionsJson")]
             public object[] QuestionsJson { get; set; }
-            public object[] AnswersJson {get; set;}
         }
 
+        public class AnswersItem
+        {
+            [JsonProperty("imageid")]
+            public string ImageId {get; set; }
+            [JsonProperty("userid")]
+            public string UserId {get; set;}
+            public object[] AnswersJson {get; set;}
+        }
+        public class AsnwersProps
+        {
+            [JsonProperty("answers")]
+            public List<string> Answers {get; set;}
+        }
+    
         public static class Questions 
         {
             [FunctionName("saveAnswers")]
@@ -47,7 +60,7 @@ namespace Microsoft.Function
             string userId = principal.Identity.Name;
 
             string requestBody = new StreamReader(req.Body).ReadToEnd();
-            var input = JsonConvert.DeserializeObject<AnswersJson>(requestBody);
+            var input = JsonConvert.DeserializeObject<AnswersProps>(requestBody);
 
             document = new { userId = userId, id = imageId, AnswersJson = input }; //new object[] { requestBody } };
         }
