@@ -184,6 +184,7 @@ const questionList= [
 	  } else {
 		  setShowScore(false);
 		  setShowEnd(true);
+	  }
   };
 	
   const handleStart = () => {
