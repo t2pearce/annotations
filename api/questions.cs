@@ -61,7 +61,7 @@ namespace Microsoft.Function
             string userId = principal.Identity.Name;
 
             string requestBody = new StreamReader(req.Body).ReadToEnd();
-            var input = JsonConvert.DeserializeObject<AnswersProps>(requestBody);
+            var input = requestBody;
 
             document = new { userId = userId, id = imageId, AnswersJson = input }; //new object[] { requestBody } };
         }
