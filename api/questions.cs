@@ -20,10 +20,37 @@ namespace Microsoft.Function
             public string ImageId { get; set; }
             //[JsonProperty("QuestionsJson")]
             public object[] QuestionsJson { get; set; }
+            public object[] AnswersJson {get; set;}
         }
 
-        public static class Quuestions 
+        public static class Questions 
         {
+            [FunctionName("saveAnswers")]
+        public static  void RunSave(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "questions/{imageId}")] HttpRequest req,
+            [CosmosDB(
+                databaseName: "medimages",
+                collectionName: "Annotations",
+                ConnectionStringSetting = "CosmosDBConnection")
+            ] out dynamic document,
+            string imageId,
+            ILogger log)
+        {
+            log.LogInformation($"C# save answers for {imageId}");
+            document = null;
+
+            // Verify identity
+            ClaimsPrincipal principal = ClientPrincipal.Parse(req);
+            if (!principal.IsInRole("contributor"))
+                return;
+
+            string userId = principal.Identity.Name;
+
+            string requestBody = new StreamReader(req.Body).ReadToEnd();
+            var input = JsonConvert.DeserializeObject<AnswersJson>(requestBody);
+
+            document = new { userId = userId, id = imageId, AnswersJson = input }; //new object[] { requestBody } };
+        }
             [FunctionName("getQuestions")]
             public static async Task<IActionResult> RunGet(
                 [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "questions/{imageId}")] HttpRequest req,
