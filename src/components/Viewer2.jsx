@@ -179,13 +179,13 @@ const questionList= [
 	  setCurrentQuestion(0);
 	  setShowNext(false);
 	  setShowScore(true);
-	  setAnswers([...answers, atob(imageId)]);
+	  setAnswers([...answers, imageId]);
   };
 	
   const handleStart = () => {
 	  setShowStart(false);
 	  setShowScore(true);
-	  setAnswers([...answers, atob(imageId)]);
+	  setAnswers([...answers, imageId]);
   };
 	
   const handleAnswerOptionClick = (answerChoice) => {
