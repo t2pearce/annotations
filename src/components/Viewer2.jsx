@@ -275,9 +275,7 @@ else {
           
 <List>
 	<div className='app'>
-		<>
-		{button}
-</>
+	
 		</div>	  
        
       
