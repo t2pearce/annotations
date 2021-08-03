@@ -252,7 +252,31 @@ const questionList= [
           
 <List>
 	<div className='app'>
-			{showScore ? (
+		{
+		(()=> {
+			if(showStart == true && showScore == false)
+				return <div className='question-section'>
+     				       <button onClick={handleNext} variant="contained">Next Image</ button>
+				       </div>
+			if(showStart == false && showScore == false)
+				return <>
+					<div className='question-section'>
+						<div className='question-count'>
+							<span>Question {currentQuestion + 1}</span>/{questionList.length}
+						</div>
+						<div className='question-text'>{questionList[currentQuestion].questionText}</div>
+					</div>
+					<div className='answer-section'>
+						{questionList[currentQuestion].answerOptions.map((answerOption) => (
+							<button onClick={() => handleAnswerOptionClick(answerOption.answerText)}>{answerOption.answerText}</button>
+						))}
+					</div>
+				        </>
+			else(showStart == false && showScore == true)
+				return <div className='question-section'>
+     					<button onClick={handleNext} variant="contained">Next Image</ button>
+					</div>
+			/*{showScore ? (
 			 <div className='question-section'>
      			<button onClick={handleNext} variant="contained">Next Image</ button>
 			</div>
@@ -276,7 +300,7 @@ const questionList= [
      			<button onClick={handleStart} variant="contained">Start</ button>
 			</div>	
 			)}
-			)}
+			)}*/
 		</div>	  
        
       
