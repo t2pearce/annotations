@@ -254,11 +254,12 @@ const questionList= [
 	<div className='app'>
 		{
 		(()=> {
-			if(showStart == true && showScore == false)
+			if(showStart == true && showScore == false) {
 				return <div className='question-section'>
      				       <button onClick={handleStart} variant="contained">Start</ button>
 				       </div>
-			if(showStart == false && showScore == false)
+			}
+			if(showStart == false && showScore == false) {
 				return <div className='question-section'>
 						<div className='question-count'>
 							<span>Question {currentQuestion + 1}</span>/{questionList.length}
@@ -270,10 +271,12 @@ const questionList= [
 							<button onClick={() => handleAnswerOptionClick(answerOption.answerText)}>{answerOption.answerText}</button>
 						))}
 					</div>
-			else
+			}
+			else {
 				return <div className='question-section'>
      					<button onClick={handleNext} variant="contained">Next Image</ button>
 					</div>
+			}
 			})()
 			}
 			
