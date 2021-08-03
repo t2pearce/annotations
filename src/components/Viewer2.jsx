@@ -181,6 +181,8 @@ const questionList= [
 		  setCurrentQuestion(0);
 		  setShowNext(false);
 		  setShowScore(true);
+		  saveRemoteAnswers(answers);
+		  setAnswers([]);
 	  } else {
 		  setShowScore(false);
 		  setShowEnd(true);
