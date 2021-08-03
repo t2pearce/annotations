@@ -186,6 +186,7 @@ const questionList= [
 	  } else {
 		  setShowScore(false);
 		  setShowEnd(true);
+		  saveRemoteAnswers(answers);
 	  }
   };
 	
