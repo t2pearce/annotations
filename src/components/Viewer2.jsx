@@ -256,7 +256,7 @@ const questionList= [
 		(()=> {
 			if(showStart == true && showScore == false)
 				return <div className='question-section'>
-     				       <button onClick={handleNext} variant="contained">Next Image</ button>
+     				       <button onClick={handleStart} variant="contained">Start</ button>
 				       </div>
 			if(showStart == false && showScore == false)
 				return <>
