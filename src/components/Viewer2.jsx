@@ -94,6 +94,7 @@ const questionList= [
   const [open, setOpen] = useState(false);
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const [answers, setAnswers] = useState([]);
+  const [showStart, setShowStart] = useState(false);
 
     setUserInfo();
 
@@ -178,6 +179,10 @@ const questionList= [
 	  setShowScore(false);
   };
 	
+  const handleStart = () => {
+	  setShowStart(true);
+  };
+	
   const handleAnswerOptionClick = (answerChoice) => {
     const nextQuestion = currentQuestion + 1
     setAnswers([...answers, answerChoice]);
@@ -252,6 +257,7 @@ const questionList= [
      			<button onClick={handleNext} variant="contained">Next Image</ button>
 			</div>
 			) : (
+				{showStart ? ( 
 				<>
 					<div className='question-section'>
 						<div className='question-count'>
@@ -265,6 +271,11 @@ const questionList= [
 						))}
 					</div>
 				</>
+				) : (
+				<div className='question-section'>
+     			<button onClick={handleStart} variant="contained">Start</ button>
+			</div>	
+			)}
 			)}
 		</div>	  
        
