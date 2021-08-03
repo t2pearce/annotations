@@ -311,7 +311,7 @@ const saveRemoteAnswers =  (newAnswers) => {
 			 {showEnd == true &&
 				 <div className='question-section'>
 					 <span>END</span>
-			  </div>
+			  </div>}
 		</div>	  
        
       
