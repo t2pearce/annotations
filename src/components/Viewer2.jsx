@@ -194,30 +194,9 @@ const questionList= [
     }
   };
 	
- let button = <div className='question-section'>
-     				       <button onClick={handleStart} variant="contained">Start</ button>
-				       </div>
+ let button =<Button onClick={handleStart} variant="contained">Start</ Button>
 			
-if(showStart == false && showScore == false) {
-	button =  <div>
-		<div className='question-section'>
-						<div className='question-count'>
-							<span>Question {currentQuestion + 1}</span>/{questionList.length}
-						</div>
-						<div className='question-text'>{questionList[currentQuestion].questionText}</div>
-					</div>
-					<div className='answer-section'>
-						{questionList[currentQuestion].answerOptions.map((answerOption) => (
-							<button onClick={() => handleAnswerOptionClick(answerOption.answerText)}>{answerOption.answerText}</button>
-						))}
-					</div>
-			<div/>
-}
-else {
-	button = <div className='question-section'>
-		<button onClick={handleNext} variant="contained">Next Image</ button>
-		</div>
-}
+
 
   return (
     <div className = {classes.root}>
