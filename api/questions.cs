@@ -61,9 +61,9 @@ namespace Microsoft.Function
             string userId = principal.Identity.Name;
 
             string requestBody = new StreamReader(req.Body).ReadToEnd();
-            var input = requestBody;
+            var input = JsonConvert.SerializeObject(requestBody);
 
-            document = new { userId = userId, id = imageId, AnswersJson = input }; //new object[] { requestBody } };
+            document = new { id = userId, imageId = imageId, AnswersJson = input }; //new object[] { requestBody } };
         }
             [FunctionName("getQuestions")]
             public static async Task<IActionResult> RunGet(
