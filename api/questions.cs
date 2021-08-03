@@ -44,7 +44,7 @@ namespace Microsoft.Function
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "questions/{imageId}")] HttpRequest req,
             [CosmosDB(
                 databaseName: "medimages",
-                collectionName: "Questions",
+                collectionName: "Answers",
                 ConnectionStringSetting = "CosmosDBConnection")
             ] out dynamic document,
             string imageId,
