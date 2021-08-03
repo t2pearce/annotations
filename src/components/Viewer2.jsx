@@ -199,7 +199,8 @@ const questionList= [
 				       </div>
 			
 if(showStart == false && showScore == false) {
-	button =  <div className='question-section'>
+	button =  <div>
+		<div className='question-section'>
 						<div className='question-count'>
 							<span>Question {currentQuestion + 1}</span>/{questionList.length}
 						</div>
@@ -210,6 +211,7 @@ if(showStart == false && showScore == false) {
 							<button onClick={() => handleAnswerOptionClick(answerOption.answerText)}>{answerOption.answerText}</button>
 						))}
 					</div>
+			<div/>
 }
 else {
 	button = <div className='question-section'>
