@@ -276,6 +276,8 @@ const questionList= [
 				return <div className='question-section'>
      					<button onClick={handleNext} variant="contained">Next Image</ button>
 					</div>
+			})()
+			}
 			/*{showScore ? (
 			 <div className='question-section'>
      			<button onClick={handleNext} variant="contained">Next Image</ button>
