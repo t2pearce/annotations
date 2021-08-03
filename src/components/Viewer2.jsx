@@ -297,6 +297,9 @@ const saveRemoteAnswers =  (newAnswers) => {
 				<>
 					<div className='question-section'>
 						<div className='question-count'>
+							<span>Image {index + 1}</span>/{images.length}
+						</div>
+						<div className='question-count'>
 							<span>Question {currentQuestion + 1}</span>/{questions.length}
 						</div>
 						<div className='question-text'>{questions[currentQuestion].questionText}</div>
