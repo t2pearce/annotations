@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Microsoft.Azure.Documents.Client;
 using System.Security.Claims;
+using System.Collections.Generic;
 
 
 namespace Microsoft.Function
