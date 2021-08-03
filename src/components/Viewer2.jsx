@@ -96,7 +96,8 @@ const questionList= [
   const [answers, setAnswers] = useState([]);
   const [showStart, setShowStart] = useState(true);
   const [showNext, setShowNext] = useState(false);	
-
+  const [showEnd, setShowEnd] = useState(false);
+	
     setUserInfo();
 
     useEffect(() => {
@@ -171,21 +172,23 @@ const questionList= [
   };
 	
   const handleNext = () => {
-	  setIndex(index+1);
-	  console.log('index', index)
-	  setManifest(images[index].slide)
-	  setImageId(images[index].slide.source.Image.Url);
-	  //getQuestions(imageId);
-	  setCurrentQuestion(0);
-	  setShowNext(false);
-	  setShowScore(true);
-	  setAnswers([...answers, imageId]);
+	  if (index < images.length) {
+		  setIndex(index+1);
+		  console.log('index', index)
+		  setManifest(images[index].slide)
+		  setImageId(images[index].slide.source.Image.Url);
+		  //getQuestions(imageId);
+		  setCurrentQuestion(0);
+		  setShowNext(false);
+		  setShowScore(true);
+	  } else {
+		  setShowScore(false);
+		  setShowEnd(true);
   };
 	
   const handleStart = () => {
 	  setShowStart(false);
 	  setShowScore(true);
-	  setAnswers([...answers, imageId]);
   };
 	
   const handleAnswerOptionClick = (answerChoice) => {
@@ -200,7 +203,32 @@ const questionList= [
     }
   };
 			
+const saveRemoteAnswers =  (newAnswers) => {
+    console.log("saving");
+    if (!newAnswers)
+      return;
 
+    var json = JSON.stringify(newAnswers); 
+    var encodedId = btoa(imageId);
+    fetch("/api/questions/" + encodedId , { 
+          method: 'POST',
+          credentials: 'include',
+          headers: {'Access-Control-Allow-Credentials': 'true',
+                    'Content-Type': 'application/json'},
+          body: json } )
+      .then((response) => response.json())
+      .then(
+            (result) => {
+              console.log(result);
+            },
+            // Note: it's important to handle errors here
+            // instead of a catch() block so that we don't swallow
+            // exceptions from actual bugs in components.
+            (error) => {
+              console.log(error);
+            }
+          )
+    }
 
   return (
     <div className = {classes.root}>
@@ -280,6 +308,10 @@ const questionList= [
 				<div className='question-section'>
      			<button onClick={handleStart} variant="contained">START</ button>
 			</div>}
+			 {showEnd == true &&
+				 <div className='question-section'>
+					 <span>END</span>
+			  </div>
 		</div>	  
        
       
