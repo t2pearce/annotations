@@ -189,7 +189,7 @@ const questionList= [
   const handleAnswerOptionClick = (answerChoice) => {
     const nextQuestion = currentQuestion + 1
     setAnswers([...answers, answerChoice]);
-    if (nextQuestion < questionList.length) {
+    if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
       console.log('answers', answers)
     } else {
@@ -264,12 +264,12 @@ const questionList= [
 				<>
 					<div className='question-section'>
 						<div className='question-count'>
-							<span>Question {currentQuestion + 1}</span>/{questionList.length}
+							<span>Question {currentQuestion + 1}</span>/{questions.length}
 						</div>
-						<div className='question-text'>{questionList[currentQuestion].questionText}</div>
+						<div className='question-text'>{questions[currentQuestion].questionText}</div>
 					</div>
 					<div className='answer-section'>
-						{questionList[currentQuestion].answerOptions.map((answerOption) => (
+						{questions[currentQuestion].answerOptions.map((answerOption) => (
 							<button onClick={() => handleAnswerOptionClick(answerOption.answerText)}>{answerOption.answerText}</button>
 						))}
 					</div>
