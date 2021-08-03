@@ -31,7 +31,7 @@ namespace Microsoft.Function
             public string UserId {get; set;}
             public object[] AnswersJson {get; set;}
         }
-        public class AsnwersProps
+        public class AnswersProps
         {
             [JsonProperty("answers")]
             public List<string> Answers {get; set;}
@@ -44,7 +44,7 @@ namespace Microsoft.Function
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "questions/{imageId}")] HttpRequest req,
             [CosmosDB(
                 databaseName: "medimages",
-                collectionName: "Annotations",
+                collectionName: "Questions",
                 ConnectionStringSetting = "CosmosDBConnection")
             ] out dynamic document,
             string imageId,
