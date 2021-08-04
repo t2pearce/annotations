@@ -157,9 +157,13 @@ export default function Viewer2() {
 	  setShowScore(true);
   };
 	
-  const handleAnswerOptionClick = (answerChoice) => {
-    const nextQuestion = currentQuestion + 1
-    setAnswers([...answers, {answerChoice}]);
+  const handleAnswerOptionClick = (answerChoice, questionText) => {
+    const nextQuestion = currentQuestion + 1;
+	  let answerObj = {
+		  questionsText: questionText,
+		  answersText: answerChoice
+	  }
+    setAnswers([...answers, {answerObj}]);
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
       console.log('answers', answers)
@@ -270,7 +274,7 @@ const saveRemoteAnswers =  (newAnswers) => {
 					</div>
 					<div className='answer-section'>
 						{questions[currentQuestion].answerOptions.map((answerOption) => (
-							<button onClick={() => handleAnswerOptionClick(answerOption.answerText)}>{answerOption.answerText}</button>
+							<button onClick={() => handleAnswerOptionClick(answerOption.answerText, questions[currentQuestion].questionText)}>{answerOption.answerText}</button>
 						))}
 					</div>
 				</>}
