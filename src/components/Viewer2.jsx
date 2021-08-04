@@ -159,7 +159,7 @@ export default function Viewer2() {
 	
   const handleAnswerOptionClick = (answerChoice) => {
     const nextQuestion = currentQuestion + 1
-    setAnswers([...answers, {answerText: {answerChoice}}]);
+    setAnswers([...answers, {answerChoice}]);
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
       console.log('answers', answers)
