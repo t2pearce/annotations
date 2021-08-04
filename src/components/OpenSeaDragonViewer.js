@@ -32,6 +32,7 @@ const OpenSeaDragonViewer = ({ image }) => {
 
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
+    anno && anno.destroy();
     
     const initViewer = OpenSeaDragon({
         id: "openSeaDragon",
@@ -56,7 +57,6 @@ const OpenSeaDragonViewer = ({ image }) => {
   
   const InitAnnotations = async () => {
     
-    anno && anno.destroy();
     getRemoteAnnotations();
     
     anno.on('createAnnotation', (annotation) => {
