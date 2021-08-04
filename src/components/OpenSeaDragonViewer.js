@@ -17,11 +17,19 @@ const OpenSeaDragonViewer = ({ image }) => {
       viewer.open(image.source);
       //getRemoteAnnotations();
     }
-    if (image && anno) {
-      
-      InitAnnotations();
+    if (image && anno) {    
+      anno.destroy();
+      const config = {formatter: ColorFormatter};
+      const annotate = new Annotorious(viewer, config);
+      setAnno(annotate)
     }
   }, [image]);
+  
+  useEffect(() => {
+    if (image && anno) {    
+      InitAnnotations();
+    }
+  }, [anno]);
   
   /*useEffect(() => {
     console.log("Render annotations");
