@@ -33,6 +33,8 @@ namespace Microsoft.Function
         }
         public class AnswersProps
         {
+            [JsonProperty("questiontext")]
+            public string QuestionText {get; set;}
             [JsonProperty("answerchoice")]
             public string AnswerChoice {get; set;}
         }
