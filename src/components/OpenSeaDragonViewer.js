@@ -1,6 +1,6 @@
 import OpenSeaDragon from "openseadragon";
 import React, { useEffect, useState } from "react";
-import * as Annotorious from '@recogito/annotorious-openseadragon/src';
+import * as Annotorious from '@recogito/annotorious-openseadragon';
 import '@recogito/annotorious-openseadragon/dist/annotorious.min.css';
 import ShapeLabelsFormatter from './ShapeLabelsFormatter.js';
 import ColorSelectorWidget from './ColorSelectorWidget.js';
@@ -47,7 +47,6 @@ const OpenSeaDragonViewer = ({ image }) => {
 
     setViewer(initViewer);
     const config = {widgets: [
-                      'TAG',
                       'COMMENT',
                        ColorSelectorWidget],
                     formatter: ColorFormatter};
