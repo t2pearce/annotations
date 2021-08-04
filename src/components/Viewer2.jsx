@@ -163,7 +163,7 @@ export default function Viewer2() {
 		  questionsText: questionText,
 		  answersText: answerChoice
 	  }
-    setAnswers([...answers, answerObj]);
+    setAnswers([...answers, {answerObj}]);
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
       console.log('answers', answers)
