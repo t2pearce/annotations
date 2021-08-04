@@ -36,13 +36,13 @@ namespace Microsoft.Function
             [JsonProperty("answerObj")]
             public List<AnswersText> AnswerObj {get; set;}
         }
-        }
         public class AnswersText
         {
             [JsonProperty("questiontext")]
             public string QuestionText {get; set;}
             [JsonProperty("answerchoice")]
             public string AnswerChoice {get; set;}
+        }
     
         public static class Questions 
         {
