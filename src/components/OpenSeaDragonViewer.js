@@ -163,6 +163,7 @@ const OpenSeaDragonViewer = ({ image }) => {
 
     return () => {
         viewer && viewer.destroy();
+        anno && anno.destroy();
     };
   }, []);
 
