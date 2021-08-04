@@ -1,53 +1,29 @@
 import './ColorSelector.css';
 import React from 'react';
 
-var ColorSelectorWidget = function(args) {
+const HelloWorldWidget = props => {
+  // We'll be using 'highlighting' as body purpose for 
+  // this type of widget
+  const currentHighlight = props.annotation ? 
+    props.annotation.bodies.find(b => b.purpose === 'highlighting') : null;
 
-  var currentColorBody = args.annotation ? args.annotation.bodies.find(function(b) {
-    return b.purpose == 'highlighting';
-  }) : null;
-
-  var currentColorValue = currentColorBody ? currentColorBody.value : null;
-
-  var addTag = function(evt) {
-    if (currentColorBody) {
-      args.onUpdateBody(currentColorBody, {
-        type: 'TextualBody',
-        purpose: 'highlighting',
-        value: evt.target.dataset.tag
-      });
-    } else { 
-      args.onAppendBody({
-        type: 'TextualBody',
-        purpose: 'highlighting',
-        value: evt.target.dataset.tag
-      });
-    }
+  // This function handles body updates as the user presses buttons
+  const setHighlightBody = value => () => {
+    props.onUpsertBody(currentHighlight, { value, purpose: 'highlighting' });
   }
 
-  var createButton = function(value) {
-    var button = document.createElement('button');
+  return (
+    <div className="helloworld-widget">
+      { [ 'red', 'green', 'blue' ].map(color => 
+        <button 
+          key={color}
+          className={currentHighlight?.value === color ? 'selected' : null}
+          style={{ backgroundColor: color }}
+          onClick={setHighlightBody(color)} />
+      )}
+    </div>
+  )
 
-    if (value == currentColorValue)
-      button.className = 'selected';
+}
 
-    button.dataset.tag = value;
-    button.style.backgroundColor = value;
-    button.addEventListener('click', addTag); 
-    return button;
-  }
-
-  var container = document.createElement('div');
-  container.className = 'colorselector-widget';
-  
-  var button1 = createButton('RED');
-  var button2 = createButton('GREEN');
-  var button3 = createButton('BLUE');
-
-  container.appendChild(button1);
-  container.appendChild(button2);
-  container.appendChild(button3);
-
-  return container;
-};
-export default ColorSelectorWidget;
+export default HelloWorldWidget;
