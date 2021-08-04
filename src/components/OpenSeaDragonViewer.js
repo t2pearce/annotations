@@ -46,7 +46,9 @@ const OpenSeaDragonViewer = ({ image }) => {
       });
 
     setViewer(initViewer);
-    const config = {formatter: ColorFormatter};
+    const config = {widgets: [ColorSelectorWidget, 
+                              COMMENT],
+                    formatter: ColorFormatter};
     const annotate = Annotorious(initViewer, config);
     setAnno(annotate)
   };
