@@ -149,6 +149,9 @@ export default function Viewer() {
                   Hold the <b>[SHIFT]</b> key while clicking and dragging the mouse to create a new annotation.
                   <p></p>
                 </Typography>
+                <Typography align="left">
+                  To colour annotation add one of following colours in first TAG: [<b style="color:red">RED</b>
+              </Typography>
             <Typography align="left">
                Image: <b>{title}</b>
                 <p></p>
