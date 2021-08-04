@@ -143,10 +143,10 @@ const OpenSeaDragonViewer = ({ image }) => {
               (result) => {
                   let newAnnotations = result;     
                   if (newAnnotations) {
-                    anno.destroy();
+                   /* anno.destroy();
                     const config = {formatter: ColorFormatter};
                     const annotate = new Annotorious(viewer, config);
-                    setAnno(annotate)
+                    setAnno(annotate) */
                     anno.setAnnotations(newAnnotations);
                     //setAnnotations([...newAnnotations]);
                     console.log("getting");
