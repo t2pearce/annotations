@@ -46,9 +46,9 @@ svg.a9s-annotationlayer .a9s-annotation.PURPLE .a9s-outer {
 }
 
 svg.a9s-annotationlayer .a9s-annotation.ORANGE .a9s-outer {
-  stroke:rgb(225, 165, 0);
+  stroke:rgb(255, 140, 0);
   stroke-width:3;
-  fill:rgba(225, 165, 0, 0.3);
+  fill:rgba(255, 140, 0, 0.3);
 }
 
 svg.a9s-annotationlayer .a9s-annotation.PINK .a9s-outer {
