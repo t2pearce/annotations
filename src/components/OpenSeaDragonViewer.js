@@ -40,7 +40,6 @@ const OpenSeaDragonViewer = ({ image }) => {
 
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
-    anno && anno.destroy();
     
     const initViewer = OpenSeaDragon({
         id: "openSeaDragon",
@@ -149,10 +148,6 @@ const OpenSeaDragonViewer = ({ image }) => {
               (result) => {
                   let newAnnotations = result;     
                   if (newAnnotations) {
-                   /* anno.destroy();
-                    const config = {formatter: ColorFormatter};
-                    const annotate = new Annotorious(viewer, config);
-                    setAnno(annotate) */
                     anno.setAnnotations(newAnnotations);
                     //setAnnotations([...newAnnotations]);
                     console.log("getting");
@@ -173,7 +168,7 @@ const OpenSeaDragonViewer = ({ image }) => {
 
     return () => {
         viewer && viewer.destroy();
-        anno && anno.destroy();
+
     };
   }, []);
 
