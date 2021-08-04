@@ -18,11 +18,11 @@ const OpenSeaDragonViewer = ({ image }) => {
       //getRemoteAnnotations();
     }
     if (image && anno) {
+      InitAnnotations();
       anno.destroy();
       const config = {formatter: ColorFormatter};
       const annotate = Annotorious(viewer, config);
       setAnno(annotate)
-      InitAnnotations();
     }
   }, [image]);
   
