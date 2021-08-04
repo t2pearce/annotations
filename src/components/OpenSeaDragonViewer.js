@@ -18,7 +18,7 @@ const OpenSeaDragonViewer = ({ image }) => {
       //getRemoteAnnotations();
     }
     if (image && anno) {
-      anno.destroy();
+      //anno.destroy();
       InitAnnotations();
     }
   }, [image]);
