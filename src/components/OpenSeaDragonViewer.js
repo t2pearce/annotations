@@ -10,12 +10,10 @@ import ColorFormatter from './ColorFormatter.js';
 const OpenSeaDragonViewer = ({ image }) => {
   const [viewer, setViewer] = useState( null);
   const [anno, setAnno] = useState(null);
-  //const [annotations, setAnnotations] = useState([]);
 
   useEffect(() => {
     if (image && viewer) {
       viewer.open(image.source);
-      //getRemoteAnnotations();
     }
     if (image && anno) {    
       anno.destroy();
@@ -30,13 +28,6 @@ const OpenSeaDragonViewer = ({ image }) => {
       InitAnnotations();
     }
   }, [anno]);
-  
-  /*useEffect(() => {
-    console.log("Render annotations");
-    if (image && anno) {
-      InitAnnotations();
-    }
-  }, [annotations]);*/
 
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
@@ -66,25 +57,16 @@ const OpenSeaDragonViewer = ({ image }) => {
       console.log("creating");
       const annotationList = anno.getAnnotations();
       console.log(annotationList);
-      //annotationList = [...annotationList, annotation]
-      //setAnnotations(newAnnotations)
       saveRemoteAnnotation([...annotationList])
     });
 
     anno.on('updateAnnotation', (annotation, previous) => {
       const annotationList = anno.getAnnotations();
-     /* annotationList = annotationList.map(val => {
-          if (val.id === annotation.id) return annotation
-          return val
-      }) */
-      //setAnnotations([...newAnnotations])
       saveRemoteAnnotation([...annotationList])
     });
   
     anno.on('deleteAnnotation', (annotation) => {
       const annotationList = anno.getAnnotations();
-      //annotationList  = annotationList.filter(val => val.id !== annotation.id)
-      //setAnnotations([...newAnnotations])
       saveRemoteAnnotation([...annotationList])
     });
     
@@ -149,7 +131,6 @@ const OpenSeaDragonViewer = ({ image }) => {
                   let newAnnotations = result;     
                   if (newAnnotations) {
                     anno.setAnnotations(newAnnotations);
-                    //setAnnotations([...newAnnotations]);
                     console.log("getting");
                     console.log(newAnnotations);
                   }
