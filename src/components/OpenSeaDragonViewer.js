@@ -56,6 +56,7 @@ const OpenSeaDragonViewer = ({ image }) => {
   
   const InitAnnotations = async () => {
     
+    anno && anno.destroy();
     getRemoteAnnotations();
     
     anno.on('createAnnotation', (annotation) => {
