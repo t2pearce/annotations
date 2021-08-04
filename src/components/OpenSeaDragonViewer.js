@@ -19,6 +19,7 @@ const OpenSeaDragonViewer = ({ image }) => {
     }
     if (image && anno) {
       //anno.destroy();
+      anno.clearAnnotations();
       InitAnnotations();
     }
   }, [image]);
