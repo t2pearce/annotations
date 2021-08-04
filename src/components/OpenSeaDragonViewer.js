@@ -84,6 +84,8 @@ const OpenSeaDragonViewer = ({ image }) => {
       //setAnnotations([...newAnnotations])
       saveRemoteAnnotation([...annotationList])
     });
+    
+    anno && anno.destroy();
   }
 
     async function getUserInfo() {
