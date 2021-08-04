@@ -151,7 +151,7 @@ export default function Viewer() {
                 </Typography>
                 <Typography align="left">
                   To colour annotation add one of following colours in first TAG: <font color="red">RED</font>, <font color="darkorange">ORANGE</font>, 
-                    <font color="green">GREEN</font>, <font color="blue">BLUE</font>, <font color="indigo">PURPLE</font>, <font color="deeppink">PINK</font>
+                    <font color="green"> GREEN</font>, <font color="blue">BLUE</font>, <font color="indigo">PURPLE</font>, <font color="deeppink">PINK</font>
               </Typography>
             <Typography align="left">
                Image: <b>{title}</b>
