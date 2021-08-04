@@ -19,10 +19,6 @@ const OpenSeaDragonViewer = ({ image }) => {
     }
     if (image && anno) {
       InitAnnotations();
-      anno.destroy();
-      const config = {formatter: ColorFormatter};
-      const annotate = Annotorious(viewer, config);
-      setAnno(annotate)
     }
   }, [image]);
   
@@ -55,6 +51,11 @@ const OpenSeaDragonViewer = ({ image }) => {
   };
   
   const InitAnnotations = async () => {
+   
+    anno.destroy();
+    const config = {formatter: ColorFormatter};
+    const annotate = Annotorious(viewer, config);
+    setAnno(annotate)
     
     getRemoteAnnotations();
     
