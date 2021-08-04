@@ -58,6 +58,7 @@ const OpenSeaDragonViewer = ({ image }) => {
     
     getRemoteAnnotations();
     const annotationList = anno.getAnnotations();
+    console.log(annotationList);
     
     anno.on('createAnnotation', (annotation) => {
       console.log("creating");
