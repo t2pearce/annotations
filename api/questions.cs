@@ -36,7 +36,7 @@ namespace Microsoft.Function
             [JsonProperty("answerObj")]
             public List<AnswersText> AnswerObj {get; set;}
         }
-        public class AnswersText
+        public class AnswerText
         {
             [JsonProperty("questionstext")]
             public string QuestionsText {get; set;}
