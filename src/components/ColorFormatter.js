@@ -1,11 +1,12 @@
 import './ColorSelector.css';
 /** A matching formatter that sets the color according to the 'highlighting' body value **/
 var ColorFormatter = function(annotation) {
-  var highlightBody = annotation.bodies.find(function(b) {
-    return b.purpose == 'highlighting';
-  });
+  const bodies = Array.isArray(annotation.body) ?
+          annotation.body : [ annotation.body ];
 
-  if (highlightBody)
-    return highlightBody.value;
+        const firstTag = bodies.find(b => b.purpose == 'tagging');
+
+  if (firstTag)
+    return firstTag.value;
 }
 export default ColorFormatter;
