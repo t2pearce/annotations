@@ -34,12 +34,12 @@ namespace Microsoft.Function
         public class AnswersProps
         {
             [JsonProperty("answers")]
-            public List<AnswersChoice> Answers {get; set;}
+            public List<AnswersText> Answers {get; set;}
         }
-        public class AnswersChoice
+        public class AnswersText
         {
-            [JsonProperty("answertext")]
-            public string AnswersText {get; set;}
+            [JsonProperty("answerchoice")]
+            public string AnswerChoice {get; set;}
         }
     
         public static class Questions 
@@ -66,8 +66,8 @@ namespace Microsoft.Function
             string userId = principal.Identity.Name;
 
             string requestBody = new StreamReader(req.Body).ReadToEnd();
-            //var input = JsonConvert.SerializeObject(requestBody);
-            var input = requestBody;
+            var input = JsonConvert.SerializeObject(requestBody);
+            
 
             document = new { id = userId, imageId = imageId, AnswersJson = input }; //new object[] { requestBody } };
         }
