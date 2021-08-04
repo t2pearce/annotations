@@ -150,7 +150,7 @@ export default function Viewer() {
                   <p></p>
                 </Typography>
                 <Typography align="left">
-                  To colour annotation add one of following colours in first TAG: [<b style="color:red">RED</b>
+                  To colour annotation add one of following colours in first TAG: <font color="red">RED</font>
               </Typography>
             <Typography align="left">
                Image: <b>{title}</b>
