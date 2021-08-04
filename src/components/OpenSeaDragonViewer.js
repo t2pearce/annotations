@@ -62,7 +62,7 @@ const OpenSeaDragonViewer = ({ image }) => {
       console.log("creating");
       const annotationList = anno.getAnnotations();
       console.log(annotationList);
-      const annotationList = [...annotationList, annotation]
+      annotationList = [...annotationList, annotation]
       //setAnnotations(newAnnotations)
       console.log(annotationList);
       saveRemoteAnnotation([...annotationList])
@@ -70,7 +70,7 @@ const OpenSeaDragonViewer = ({ image }) => {
 
     anno.on('updateAnnotation', (annotation, previous) => {
       const annotationList = anno.getAnnotations();
-      const annotationList = annotationList.map(val => {
+      annotationList = annotationList.map(val => {
           if (val.id === annotation.id) return annotation
           return val
       })
@@ -80,7 +80,7 @@ const OpenSeaDragonViewer = ({ image }) => {
   
     anno.on('deleteAnnotation', (annotation) => {
       const annotationList = anno.getAnnotations();
-      const annotationList  = annotationList.filter(val => val.id !== annotation.id)
+      annotationList  = annotationList.filter(val => val.id !== annotation.id)
       //setAnnotations([...newAnnotations])
       saveRemoteAnnotation([...annotationList])
     });
