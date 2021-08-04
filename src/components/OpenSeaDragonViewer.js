@@ -10,6 +10,8 @@ import ColorFormatter from './ColorFormatter.js';
 const OpenSeaDragonViewer = ({ image }) => {
   const [viewer, setViewer] = useState( null);
   const [anno, setAnno] = useState(null);
+  const [checkDestroy, setCheckDestroy] = useState(true);
+  const [checkAnno, setCheckAnno] = useState(true);
 
   useEffect(() => {
     if (image && viewer) {
@@ -17,17 +19,23 @@ const OpenSeaDragonViewer = ({ image }) => {
     }
     if (image && anno) {    
       anno.destroy();
-      const config = {formatter: ColorFormatter};
-      const annotate = new Annotorious(viewer, config);
-      setAnno(annotate)
+      setAnno(anno);
+      setCheckDestroy(!checkDestroy);
     }
   }, [image]);
+  
+  useEffect(() => {
+     const config = {formatter: ColorFormatter};
+     const annotate = new Annotorious(viewer, config);
+     setAnno(annotate)
+     setCheckAnno(!checkAnno);
+  }, [checkDestroy]);
   
   useEffect(() => {
     if (image && anno) {    
       InitAnnotations();
     }
-  }, [anno]);
+  }, [checkAnno]);
 
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
