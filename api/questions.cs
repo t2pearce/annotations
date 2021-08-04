@@ -38,8 +38,8 @@ namespace Microsoft.Function
         }
         public class AnswersChoice
         {
-            [JsonProperty("answerchoice")]
-            public string AnswersChoice {get; set;}
+            [JsonProperty("answertext")]
+            public string AnswersText {get; set;}
         }
     
         public static class Questions 
