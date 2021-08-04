@@ -175,6 +175,7 @@ const saveRemoteAnswers =  (newAnswers) => {
       return;
 
     var json = JSON.stringify(newAnswers); 
+	console.log('json', json);
     var encodedId = btoa(imageId);
     fetch("/api/questions/" + encodedId , { 
           method: 'POST',
