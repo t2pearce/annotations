@@ -54,7 +54,6 @@ export default function Viewer2() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const [answers, setAnswers] = useState([]);
   const [showStart, setShowStart] = useState(true);
   const [showNext, setShowNext] = useState(false);	
