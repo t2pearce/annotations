@@ -57,7 +57,8 @@ export const useStyles = makeStyles((theme) => ({
     display: 'flex',
     overflow: 'auto',
     flexDirection: 'column',
-    textAlign: 'center'
+    textAlign: 'center',
+    alignItems: 'center'
   },
   fixedHeight: {
     paddingTop: 4,
