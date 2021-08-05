@@ -95,14 +95,24 @@ export default function Viewer2() {
 	       )
 	  }
     
-    const getIndex = async () => {
-	const response = await fetch("/api/progress", {
-					method: 'GET',
-					credentials: 'include',
-					headers: {'Access-Control-Allow-Credentials': 'true'}});
-	    let indices = await response.json();
-	    setIndex = indices.indexObj.imageIndex;
-	    setCurrentQuestion = indices.indexObj.questionIndex;
+    const getIndex = () => {
+	fetch("/api/progress", {
+		method: 'GET',
+		credentials: 'include',
+		headers: {'Access-Control-Allow-Credentials': 'true'}})
+	    .then((response) => response.json())
+	    .then(
+		(result) => {
+			let indices = result;
+			if (indices) {
+	    			setIndex = indices.imageIndex;
+	    			setCurrentQuestion = indices.questionIndex;
+			}
+		},
+		(error) => {
+			console.log(error)
+		}
+		)
     };
 	
    const saveIndex = (imageIndex, questionIndex) => {
