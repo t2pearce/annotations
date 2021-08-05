@@ -68,7 +68,7 @@ export const useStyles = makeStyles((theme) => ({
     paddingTop: 4,
     position: "absolute",
     top: "55%",
-    left: "25%",
+    //left: "25%",
     transform: "translate(-50%, -50%)"
   },
   paperShift: {
