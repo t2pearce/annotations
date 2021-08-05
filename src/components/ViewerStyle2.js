@@ -72,7 +72,7 @@ export const useStyles = makeStyles((theme) => ({
     transform: "translate(-50%, -50%)"
   },
   paperShift: {
-    marginRight: 175,
+    marginRight: 160,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
