@@ -79,7 +79,7 @@ namespace Microsoft.Function
                 IndexItem indices = null;
                 try
                 {
-                    var response = await client.ReadDocumentAsync(
+                    var response = await client.ReadDocumentAsync<IndexItem>(
                         UriFactory.CreateDocumentUri("medimages", "Progress", userId),
                         new RequestOptions { PartitionKey = new Microsoft.Azure.Documents.PartitionKey(userId) });
 
