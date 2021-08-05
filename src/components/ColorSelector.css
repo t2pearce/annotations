@@ -24,37 +24,31 @@
 svg.a9s-annotationlayer .a9s-annotation.RED .a9s-outer {
   stroke:red;
   stroke-width:3;
-  fill:rgba(255, 0, 0, 0.3);
 }
 
 svg.a9s-annotationlayer .a9s-annotation.GREEN .a9s-outer {
   stroke:green;
   stroke-width:3;
-  fill:rgba(0, 255, 0, 0.3);
 }
 
 svg.a9s-annotationlayer .a9s-annotation.BLUE .a9s-outer {
   stroke:blue;
   stroke-width:3;
-  fill:rgba(0, 0, 255, 0.3);
 }
 
 svg.a9s-annotationlayer .a9s-annotation.PURPLE .a9s-outer {
   stroke:rgb(75, 0, 130);
   stroke-width:3;
-  fill:rgba(75, 0, 130, 0.3);
 }
 
 svg.a9s-annotationlayer .a9s-annotation.ORANGE .a9s-outer {
   stroke:rgb(255, 140, 0);
   stroke-width:3;
-  fill:rgba(255, 140, 0, 0.3);
 }
 
 svg.a9s-annotationlayer .a9s-annotation.PINK .a9s-outer {
   stroke:rgb(225, 20, 147);
   stroke-width:3;
-  fill:rgba(225, 20, 147, 0.3);
 }
 
 svg.a9s-annotationlayer .a9s-annotation.RED .a9s-inner,
