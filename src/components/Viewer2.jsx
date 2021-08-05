@@ -53,7 +53,7 @@ export default function Viewer2() {
   const [questions, setQuestions] = useState();
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [answers, setAnswers] = useState([]);
   const [showStart, setShowStart] = useState(true);
   const [showNext, setShowNext] = useState(false);	
@@ -172,7 +172,7 @@ export default function Viewer2() {
       }
 	
   const handleDrawerOpen = () => {
-    setOpen(true);
+    setOpen(false);
 	  console.log('setQuestions', questions)
   };
   const handleDrawerClose = () => {
