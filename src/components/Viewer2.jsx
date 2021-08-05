@@ -104,6 +104,7 @@ export default function Viewer2() {
 	.then(
 	       (result) => {
 		    let indices = result;
+		       console.log('indices', indices);
 		    if (indices) {
 	    		console.log('indices', indices);
 	    		setIndex(indices.imageIndex);
