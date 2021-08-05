@@ -96,6 +96,7 @@ export default function Viewer2() {
 	  }
     
     const getIndex = () => {
+	    console.log('geting index')
 	fetch("/api/progress", {
 		method: 'GET',
 		credentials: 'include',
@@ -113,7 +114,7 @@ export default function Viewer2() {
 			console.log(error)
 		}
 		)
-    };
+    }
 	
    const saveIndex = (imageIndex, questionIndex) => {
     let indexObj = { imageIndex :imageIndex, 
@@ -123,7 +124,7 @@ export default function Viewer2() {
 
     var json = JSON.stringify(indexObj); 
 	console.log('json', json);
-    fetch("/api/progress/", { 
+    fetch("/api/progress", { 
           method: 'POST',
           credentials: 'include',
           headers: {'Access-Control-Allow-Credentials': 'true',
