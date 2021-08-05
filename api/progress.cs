@@ -91,7 +91,7 @@ namespace Microsoft.Function
                     return new NotFoundResult();
                 }
                 log.LogInformation($"Retrieved questions ");
-                if ( indices != null && indices.IndexJson != null && indices.IndexJson.Length > 0)
+                if ( indices != null && indices.IndexJson != null)
                   return new OkObjectResult(indices.IndexJson);
                 else
                   return new NotFoundResult();
