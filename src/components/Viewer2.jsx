@@ -96,6 +96,44 @@ export default function Viewer2() {
 	       }
 	       )
 	  }
+    
+    const getIndex = async () => {
+	const response = await fetch("/api/progress", {
+					method: 'GET',
+					credentials: 'include',
+					headers: {'Access-Control-Allow-Credentials': 'true'}});
+	    let indices = await response.json();
+	    setIndex = indices.imageIndex;
+	    setCurrentQuestion = indices.questionIndex;
+    };
+	
+   const saveIndex = (imageIndex, questionIndex) => {
+    let indexObj = { imageIndex :imageIndex, 
+		     questionIndex: questionIndex};
+    if (!indexObj)
+      return;
+
+    var json = JSON.stringify(indexObj); 
+	console.log('json', json);
+    fetch("/api/progress/" { 
+          method: 'POST',
+          credentials: 'include',
+          headers: {'Access-Control-Allow-Credentials': 'true',
+                    'Content-Type': 'application/json'},
+          body: json } )
+      .then((response) => response.json())
+      .then(
+            (result) => {
+              console.log(result);
+            },
+            // Note: it's important to handle errors here
+            // instead of a catch() block so that we don't swallow
+            // exceptions from actual bugs in components.
+            (error) => {
+              console.log(error);
+            }
+          )
+    }
 	
   const getImages = async () => {
     const response = await fetch("/api/profile", {
