@@ -63,6 +63,7 @@ export default function Viewer2() {
 
     useEffect(() => {
         getImages();
+	getIndex();
     }, []);
 	
     useEffect(() => {
