@@ -17,7 +17,7 @@ namespace Microsoft.Function
     
         public class IndexItem 
         {
-            [JsonProperty("userid")]
+            [JsonProperty("userId")]
             public string UserId { get; set; }
             public object[] IndexJson { get; set; }
         }
