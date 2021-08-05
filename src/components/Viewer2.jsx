@@ -172,7 +172,7 @@ export default function Viewer2() {
       }
 	
   const handleDrawerOpen = () => {
-    setOpen(false);
+    setOpen(true);
 	  console.log('setQuestions', questions)
   };
   const handleDrawerClose = () => {
