@@ -259,7 +259,7 @@ const saveRemoteAnswers =  (newAnswers) => {
       <AppBar position="absolute" 
               className={clsx(classes.appBar, open && classes.appBarShift)}>
         <Toolbar className={classes.toolbar}>
-           <Typography variant="h6" align="left">
+           <Typography variant="h6" noWrap className={classes.title} align="left">
             <b>Breast Tissue Clinical Study</b>
           </Typography>
           <Typography>
