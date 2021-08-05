@@ -10,34 +10,33 @@ import ColorFormatter from './ColorFormatter.js';
 const OpenSeaDragonViewer = ({ image }) => {
   const [viewer, setViewer] = useState( null);
   const [anno, setAnno] = useState(null);
- // const [checkDestroy, setCheckDestroy] = useState(true);
- // const [checkAnno, setCheckAnno] = useState(true);
+  //const [annotations, setAnnotations] = useState([]);
 
   useEffect(() => {
     if (image && viewer) {
       viewer.open(image.source);
+      //getRemoteAnnotations();
     }
     if (image && anno) {    
       anno.destroy();
       const config = {formatter: ColorFormatter};
       const annotate = new Annotorious(viewer, config);
-      setAnno(anno);
-      //setCheckDestroy(!checkDestroy);
+      setAnno(annotate)
     }
   }, [image]);
-  
- /* useEffect(() => {
-     const config = {formatter: ColorFormatter};
-     const annotate = new Annotorious(viewer, config);
-     setAnno(annotate)
-     setCheckAnno(!checkAnno);
-  }, [checkDestroy]); */
   
   useEffect(() => {
     if (image && anno) {    
       InitAnnotations();
     }
-  }, [anno]); 
+  }, [anno]);
+  
+  /*useEffect(() => {
+    console.log("Render annotations");
+    if (image && anno) {
+      InitAnnotations();
+    }
+  }, [annotations]);*/
 
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
@@ -67,16 +66,25 @@ const OpenSeaDragonViewer = ({ image }) => {
       console.log("creating");
       const annotationList = anno.getAnnotations();
       console.log(annotationList);
+      //annotationList = [...annotationList, annotation]
+      //setAnnotations(newAnnotations)
       saveRemoteAnnotation([...annotationList])
     });
 
     anno.on('updateAnnotation', (annotation, previous) => {
       const annotationList = anno.getAnnotations();
+     /* annotationList = annotationList.map(val => {
+          if (val.id === annotation.id) return annotation
+          return val
+      }) */
+      //setAnnotations([...newAnnotations])
       saveRemoteAnnotation([...annotationList])
     });
   
     anno.on('deleteAnnotation', (annotation) => {
       const annotationList = anno.getAnnotations();
+      //annotationList  = annotationList.filter(val => val.id !== annotation.id)
+      //setAnnotations([...newAnnotations])
       saveRemoteAnnotation([...annotationList])
     });
     
@@ -141,6 +149,7 @@ const OpenSeaDragonViewer = ({ image }) => {
                   let newAnnotations = result;     
                   if (newAnnotations) {
                     anno.setAnnotations(newAnnotations);
+                    //setAnnotations([...newAnnotations]);
                     console.log("getting");
                     console.log(newAnnotations);
                   }
