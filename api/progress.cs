@@ -68,7 +68,7 @@ namespace Microsoft.Function
                 ]  DocumentClient client,
                 ILogger log)
             {
-                log.LogInformation($"function GetQuestions {imageId}");
+                log.LogInformation($"function GetQuestions ");
 
                 // Verify identity
                 ClaimsPrincipal principal = ClientPrincipal.Parse(req);
@@ -91,7 +91,7 @@ namespace Microsoft.Function
                     return new NotFoundResult();
                 }
                 log.LogInformation($"Retrieved questions ");
-                if ( indices != null && indices.IndexJson != null && Indices.IndexJson.Length > 0)
+                if ( indices != null && indices.IndexJson != null && indices.IndexJson.Length > 0)
                   return new OkObjectResult(indices.IndexJson);
                 else
                   return new NotFoundResult();
