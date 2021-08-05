@@ -34,6 +34,10 @@
       "allowedRoles": ["contributor","reader"]
     },
     {
+      "route": "/api/progress",
+      "allowedRoles": ["contributor","reader"]
+    },
+    {
       "route": "/login",
       "redirect": "/.auth/login/aad"
     },
