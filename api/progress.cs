@@ -15,14 +15,14 @@ using System.Collections.Generic;
 namespace Microsoft.Function
 {
     
-        public class QuestionsItem 
+        public class IndexItem 
         {
             [JsonProperty("userid")]
             public string UserId { get; set; }
             public object[] IndexJson { get; set; }
         }
 
-        public class IndexItem
+        public class IndexProps
         {
             [JsonProperty("imageIndex")]
             public string ImageIndex {get; set; }
@@ -53,7 +53,7 @@ namespace Microsoft.Function
             string userId = principal.Identity.Name;
 
             string requestBody = new StreamReader(req.Body).ReadToEnd();
-            var input = JsonConvert.DeserializeObject<IndexItem>(requestBody);
+            var input = JsonConvert.DeserializeObject<IndexProps>(requestBody);
             
 
             document = new { id = userId, userId = userId, IndexJson = input }; //new object[] { requestBody } };
