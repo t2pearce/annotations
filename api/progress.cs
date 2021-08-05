@@ -26,8 +26,8 @@ namespace Microsoft.Function
         {
             [JsonProperty("imageIndex")]
             public string ImageIndex {get; set; }
-            [JsonProperty("answerIndex")]
-            public string AnswerIndex {get; set;}
+            [JsonProperty("questionIndex")]
+            public string QuestionIndex {get; set;}
         }
     
         public static class Progress 
