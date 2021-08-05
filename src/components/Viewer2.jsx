@@ -105,9 +105,9 @@ export default function Viewer2() {
 	       (result) => {
 		    let indices = result;
 		    if (indices) {
-	    		console.log('indices', indices)
-	    		setIndex = indices.imageIndex;
-			    setCurrentQuestion = indices.questionIndex;
+	    		console.log('indices', indices);
+	    		setIndex(indices.imageIndex);
+			setCurrentQuestion(indices.questionIndex);
 		    }
 	       },
 	       (error) => {
