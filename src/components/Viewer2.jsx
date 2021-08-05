@@ -146,6 +146,16 @@ export default function Viewer2() {
 	
   const getImages = async () => {
     const response = await fetch("/api/profile", {
+
+    
+          
+            
+    
+
+          
+    
+    
+  
                               method: 'GET',
                               credentials: 'include',
                               headers: {'Access-Control-Allow-Credentials': 'true'}}); 
@@ -154,7 +164,9 @@ export default function Viewer2() {
     console.log('groups', image.groups)
     console.log('slides', image.groups[0].slides)
     setImages(image.groups[0].slides)
-    console.log('IMAGEID', image.groups[0].slides[index].slide.source.Image.Url)
+    setManifest(image.groups[0].slides[0].slide)
+    setImageId(image.groups[0].slides[0].slide.source.Image.Url)
+    console.log('IMAGEID', image.groups[0].slides[0].slide.source.Image.Url)
     //getQuestions(image.groups[0].slides[0].slide.source.Image.Url)
   };
 	
@@ -190,21 +202,16 @@ export default function Viewer2() {
 		  setShowScore(true);
 		  saveRemoteAnswers(answers);
 		  setAnswers([]);
-		  saveIndex(index, currentQuestion);
 	  } else {
 		  setShowScore(false);
 		  setShowEnd(true);
 		  saveRemoteAnswers(answers);
-		  saveIndex(index, currentQuestion);
 	  }
   };
 	
   const handleStart = () => {
 	  setShowStart(false);
 	  setShowScore(true);
-	  console.log('index', index)
-	  setManifest(images[index])
-    	setImageId(images[index].slide.source.Image.Url)
   };
 	
   const handleAnswerOptionClick = (answerChoice, questionText) => {
@@ -214,7 +221,6 @@ export default function Viewer2() {
 		  answersText: answerChoice
 	  }
     setAnswers([...answers, {answerObj}]);
-	  saveIndex(index, currentQuestion);
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
       console.log('answers', answers)
@@ -228,7 +234,6 @@ const saveRemoteAnswers =  (newAnswers) => {
     console.log("saving");
     if (!newAnswers)
       return;
-
     var json = JSON.stringify(newAnswers); 
 	console.log('json', json);
     var encodedId = btoa(imageId);
@@ -251,7 +256,6 @@ const saveRemoteAnswers =  (newAnswers) => {
             }
           )
     }
-
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight, open && classes.paperShift);
 
   return (
