@@ -115,7 +115,7 @@ export default function Viewer2() {
 
     var json = JSON.stringify(indexObj); 
 	console.log('json', json);
-    fetch("/api/progress/" { 
+    fetch("/api/progress/", { 
           method: 'POST',
           credentials: 'include',
           headers: {'Access-Control-Allow-Credentials': 'true',
