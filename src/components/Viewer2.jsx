@@ -239,6 +239,8 @@ const saveRemoteAnswers =  (newAnswers) => {
           )
     }
 
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight, open && classes.paperShift);
+
   return (
     <div className = {classes.root}>
       <CssBaseline />
@@ -265,18 +267,17 @@ const saveRemoteAnswers =  (newAnswers) => {
           </IconButton>
         </Toolbar>
       </AppBar>
-        <main className={clsx(classes.content, {
-                          [classes.contentShift]:open, })}>
-             <div className={classes.drawerHeader} />
-               <Container maxWidth="lg">
-           <Grid container spacing={3} alignItems="center">
-            <Grid item xs={12} md={12} lg={12}>
-           <Paper variant="outlined" style={{width: "75vw", align:"center", justify: "center"}}>
-             <OpenSeaDragonViewer2 image={manifest} />
-               </Paper>
-</Grid>
-              </Grid>
-               </Container>
+        <main className={classes.content}>
+             <div className={classes.appBarSpacer} />
+             <Container maxWidth="lg" className={classes.container}>
+               <Grid container spacing={3} alignItems="center">
+                 <Grid item xs={12} md={12} lg={12}>
+                   <Paper className={fixedHeightPaper}>
+                     <OpenSeaDragonViewer2 image={manifest} />
+                   </Paper>
+                 </Grid>
+               </Grid>
+             </Container>
 </main>
       <Drawer
         className={classes.drawer}
