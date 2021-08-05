@@ -47,7 +47,7 @@ export default function Viewer2() {
   const [title, setTitle] = useState();
   const [state, setState] = useState();
   const [index, setIndex]= useState(1);
-  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState();
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
   const [questions, setQuestions] = useState();
@@ -64,6 +64,8 @@ export default function Viewer2() {
     useEffect(() => {
         getImages();
 	getIndex();
+	    console.log('index', index)
+	    console.log('currQues', currentQuestion)
     }, []);
 	
     useEffect(() => {
