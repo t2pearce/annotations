@@ -54,6 +54,7 @@ export default function Viewer2() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const [answers, setAnswers] = useState([]);
   const [showStart, setShowStart] = useState(true);
   const [showNext, setShowNext] = useState(false);	
@@ -63,12 +64,11 @@ export default function Viewer2() {
 
     useEffect(() => {
         getImages();
-	    console.log('EffectgetQuestions',questions)
+	getIndex();
     }, []);
 	
     useEffect(() => {
         getQuestions(imageId);
-	    console.log('NewEffectgetQuestions',questions)
     }, [imageId]);
 	
 	
@@ -144,9 +144,7 @@ export default function Viewer2() {
     console.log('groups', image.groups)
     console.log('slides', image.groups[0].slides)
     setImages(image.groups[0].slides)
-    setManifest(image.groups[0].slides[0].slide)
-    setImageId(image.groups[0].slides[0].slide.source.Image.Url)
-    console.log('IMAGEID', image.groups[0].slides[0].slide.source.Image.Url)
+    console.log('IMAGEID', image.groups[0].slides[index].slide.source.Image.Url)
     //getQuestions(image.groups[0].slides[0].slide.source.Image.Url)
   };
 	
@@ -182,16 +180,20 @@ export default function Viewer2() {
 		  setShowScore(true);
 		  saveRemoteAnswers(answers);
 		  setAnswers([]);
+		  saveIndex(index, currentQuestion);
 	  } else {
 		  setShowScore(false);
 		  setShowEnd(true);
 		  saveRemoteAnswers(answers);
+		  saveIndex(index, currentQuestion);
 	  }
   };
 	
   const handleStart = () => {
 	  setShowStart(false);
 	  setShowScore(true);
+	  setManifest(images[index])
+    	setImageId(images[index].slide.source.Image.Url)
   };
 	
   const handleAnswerOptionClick = (answerChoice, questionText) => {
@@ -201,6 +203,7 @@ export default function Viewer2() {
 		  answersText: answerChoice
 	  }
     setAnswers([...answers, {answerObj}]);
+	  saveIndex(index, currentQuestion);
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
       console.log('answers', answers)
