@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-const drawerWidth = 300;
+const drawerWidth = '20vw';
 
 export const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -67,7 +67,7 @@ export const useStyles = makeStyles((theme) => ({
     transform: "translate(-50%, -50%)"
   },
   paperShift: {
-    marginRight: 150,
+    marginRight: '10vw',
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
