@@ -14,7 +14,7 @@ export const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   toolbar: {
-    paddingRight: 24, // keep right padding when drawer closed
+    paddingLeft: 24, // keep left padding when drawer closed
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
