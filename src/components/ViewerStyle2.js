@@ -48,6 +48,31 @@ export const useStyles = makeStyles((theme) => ({
     ...theme.mixins.toolbar,
     justifyContent: 'flex-start',
   },
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+  },
+  paper: {
+    padding: theme.spacing(4),
+    display: 'flex',
+    overflow: 'auto',
+    flexDirection: 'column',
+    textAlign: 'center'
+  },
+  fixedHeight: {
+    paddingTop: 4,
+    position: "absolute",
+    top: "55%",
+    left: "50%",
+    transform: "translate(-50%, -50%)"
+  },
+  paperShift: {
+    marginLeft: 100,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
