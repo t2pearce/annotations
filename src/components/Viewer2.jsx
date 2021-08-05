@@ -63,7 +63,7 @@ export default function Viewer2() {
 
     useEffect(() => {
         getImages();
-	getIndex();
+	//getIndex();
     }, []);
 	
     useEffect(() => {
@@ -202,6 +202,7 @@ export default function Viewer2() {
   const handleStart = () => {
 	  setShowStart(false);
 	  setShowScore(true);
+	  console.log('index', index)
 	  setManifest(images[index])
     	setImageId(images[index].slide.source.Image.Url)
   };
