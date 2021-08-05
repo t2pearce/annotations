@@ -63,7 +63,6 @@ export default function Viewer2() {
 
     useEffect(() => {
         getImages();
-	setIndex(0);
     }, []);
 	
     useEffect(() => {
@@ -146,16 +145,6 @@ export default function Viewer2() {
 	
   const getImages = async () => {
     const response = await fetch("/api/profile", {
-
-    
-          
-            
-    
-
-          
-    
-    
-  
                               method: 'GET',
                               credentials: 'include',
                               headers: {'Access-Control-Allow-Credentials': 'true'}}); 
