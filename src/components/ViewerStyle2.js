@@ -62,7 +62,6 @@ export const useStyles = makeStyles((theme) => ({
     overflow: 'auto',
     flexDirection: 'column',
     textAlign: 'center',
-    alignItems: 'center'
   },
   fixedHeight: {
     paddingTop: 4,
