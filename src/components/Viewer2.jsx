@@ -277,8 +277,8 @@ const saveRemoteAnswers =  (newAnswers) => {
                <Grid container spacing={3} alignItems="center">
                  <Grid item xs={12} md={12} lg={12}>
                    <Paper className={fixedHeightPaper}>
-			   <Typography variant="h5" align="left">
-				   <b>Image {index}</b>
+			   <Typography variant="h6" align="left">
+				 <p></p> <b>Image: </b> {index} <p></p>
 				</Typography>
                      <OpenSeaDragonViewer2 image={manifest} />
                    </Paper>
