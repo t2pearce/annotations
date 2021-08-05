@@ -101,8 +101,8 @@ export default function Viewer2() {
 					credentials: 'include',
 					headers: {'Access-Control-Allow-Credentials': 'true'}});
 	    let indices = await response.json();
-	    setIndex = indices.imageIndex;
-	    setCurrentQuestion = indices.questionIndex;
+	    setIndex = indices.indexObj.imageIndex;
+	    setCurrentQuestion = indices.indexObj.questionIndex;
     };
 	
    const saveIndex = (imageIndex, questionIndex) => {
