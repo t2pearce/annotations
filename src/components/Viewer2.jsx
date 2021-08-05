@@ -63,7 +63,7 @@ export default function Viewer2() {
 
     useEffect(() => {
         getImages();
-	//getIndex();
+	setIndex(0);
     }, []);
 	
     useEffect(() => {
@@ -282,7 +282,7 @@ const saveRemoteAnswers =  (newAnswers) => {
              <div className={classes.appBarSpacer} />
              <Container maxWidth="lg" className={classes.container}>
                <Grid container spacing={3} alignItems="center">
-                 <Grid item xs={12} md={12} lg={12} alignItems="center">
+                 <Grid item xs={12} md={12} lg={12}>
                    <Paper className={fixedHeightPaper}>
                      <OpenSeaDragonViewer2 image={manifest} />
                    </Paper>
