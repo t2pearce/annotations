@@ -63,7 +63,7 @@ export default function Viewer2() {
 
     useEffect(() => {
         getImages();
-	getIndex();
+	//getIndex();
 	    console.log('index', index)
 	    console.log('currQues', currentQuestion)
     }, []);
