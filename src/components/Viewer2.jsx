@@ -37,9 +37,7 @@ import Icon from '@material-ui/core/Icon';
 import NextIcon from '@material-ui/icons/ArrowRight';
 import './Questions.css';
 import Questions from './Questions.jsx';
-
 export default function Viewer2() {
-
 	
   const [images, setImages] = useState([]);
   const [manifest, setManifest] = useState();
@@ -47,7 +45,7 @@ export default function Viewer2() {
   const [title, setTitle] = useState();
   const [state, setState] = useState();
   const [index, setIndex]= useState(1);
-  const [currentQuestion, setCurrentQuestion] = useState();
+  const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
   const [questions, setQuestions] = useState();
@@ -60,7 +58,6 @@ export default function Viewer2() {
   const [showEnd, setShowEnd] = useState(false);
 	
     setUserInfo();
-
     useEffect(() => {
         getImages();
     }, []);
@@ -95,33 +92,31 @@ export default function Viewer2() {
 	  }
     
     const getIndex = () => {
-       fetch("/api/progress", {
-		    method: 'GET',
-		    credentials: 'include',
-		    headers: {'Access-Control-Allow-Credentials': 'true'}})
-	.then((response) => response.json())
-	.then(
-	       (result) => {
-		    let indices = result;
-		       console.log('indices', indices);
-		    if (indices) {
-	    		console.log('indices', indices);
-	    		setIndex(indices.imageIndex);
-			setCurrentQuestion(indices.questionIndex);
-		    }
-	       },
-	       (error) => {
-		       console.log(error)
-	       }
-	       )
-	  }
+	    console.log('geting index')
+	fetch("/api/progress", {
+		method: 'GET',
+		credentials: 'include',
+		headers: {'Access-Control-Allow-Credentials': 'true'}})
+	    .then((response) => response.json())
+	    .then(
+		(result) => {
+			let indices = result;
+			if (indices) {
+	    			setIndex = indices.imageIndex;
+	    			setCurrentQuestion = indices.questionIndex;
+			}
+		},
+		(error) => {
+			console.log(error)
+		}
+		)
+    }
 	
    const saveIndex = (imageIndex, questionIndex) => {
     let indexObj = { imageIndex :imageIndex, 
 		     questionIndex: questionIndex};
     if (!indexObj)
       return;
-
     var json = JSON.stringify(indexObj); 
 	console.log('json', json);
     fetch("/api/progress", { 
@@ -157,7 +152,7 @@ export default function Viewer2() {
     setManifest(image.groups[0].slides[0].slide)
     setImageId(image.groups[0].slides[0].slide.source.Image.Url)
     console.log('IMAGEID', image.groups[0].slides[0].slide.source.Image.Url)
-    getQuestions(image.groups[0].slides[0].slide.source.Image.Url)
+    //getQuestions(image.groups[0].slides[0].slide.source.Image.Url)
   };
 	
     async function getUserInfo() {
@@ -247,7 +242,6 @@ const saveRemoteAnswers =  (newAnswers) => {
           )
     }
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight, open && classes.paperShift);
-
   return (
     <div className = {classes.root}>
       <CssBaseline />
@@ -279,10 +273,20 @@ const saveRemoteAnswers =  (newAnswers) => {
                  <Grid item xs={12} md={12} lg={12}>
                    <Paper className={fixedHeightPaper}>
 			   <Typography variant="h6" align="left">
-				 <p></p> <b>Image {index} </b> <p></p>
+				 <p></p> <b>Image: </b> {index} <p></p>
 				</Typography>
                      <OpenSeaDragonViewer2 image={manifest} />
                    </Paper>
+
+    
+          
+            
+    
+
+          
+    
+    
+  
                  </Grid>
                </Grid>
              </Container>
