@@ -202,6 +202,7 @@ export default function Viewer2() {
   const handleStart = () => {
 	  setShowStart(false);
 	  setShowScore(true);
+	  getQuestions(imageId)
   };
 	
   const handleAnswerOptionClick = (answerChoice, questionText) => {
