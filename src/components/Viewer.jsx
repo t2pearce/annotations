@@ -150,7 +150,7 @@ export default function Viewer() {
                   <p></p>
                 </Typography>
                 <Typography align="left">
-                  To colour the annotation add one of following colours in first TAG as shown: <font color="red">RED</font>, <font color="darkorange">ORANGE</font>, 
+                  To colour the annotation add one of following colours in first TAG as shown: <font color="red">RED</font>, <font color="darkorange">ORANGE</font>, <font color="yellow">YELLOW</font>, 
                     <font color="green"> GREEN</font>, <font color="blue">BLUE</font>, <font color="indigo">PURPLE</font>, <font color="deeppink">PINK</font>
                       <p></p>
               </Typography>
