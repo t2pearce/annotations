@@ -51,11 +51,17 @@ svg.a9s-annotationlayer .a9s-annotation.PINK .a9s-outer {
   stroke-width:3;
 }
 
+svg.a9s-annotationlayer .a9s-annotation.YELLOW .a9s-outer {
+  stroke:rgb(225, 255, 0);
+  stroke-width:3;
+}
+
 svg.a9s-annotationlayer .a9s-annotation.RED .a9s-inner,
 svg.a9s-annotationlayer .a9s-annotation.GREEN .a9s-inner,
 svg.a9s-annotationlayer .a9s-annotation.PURPLE .a9s-inner,
 svg.a9s-annotationlayer .a9s-annotation.ORANGE .a9s-inner,
 svg.a9s-annotationlayer .a9s-annotation.PINK .a9s-inner,
+svg.a9s-annotationlayer .a9s-annotation.YELLOW .a9s-inner,
 svg.a9s-annotationlayer .a9s-annotation.BLUE .a9s-inner {
   fill:transparent;
   stroke:none;
