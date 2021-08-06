@@ -149,7 +149,7 @@ export default function Viewer2() {
     console.log('groups', image.groups)
     console.log('slides', image.groups[0].slides)
     setImages(image.groups[0].slides)
-    setManifest(image.groups[0].slides[0].slide)
+    //setManifest(image.groups[0].slides[0].slide)
     setImageId(image.groups[0].slides[0].slide.source.Image.Url)
     console.log('IMAGEID', image.groups[0].slides[0].slide.source.Image.Url)
     //getQuestions(image.groups[0].slides[0].slide.source.Image.Url)
@@ -197,6 +197,7 @@ export default function Viewer2() {
   const handleStart = () => {
 	  setShowStart(false);
 	  setShowScore(true);
+	  setManifest(images[0].slide);
   };
 	
   const handleAnswerOptionClick = (answerChoice, questionText) => {
