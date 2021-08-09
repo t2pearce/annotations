@@ -248,8 +248,6 @@ const getAnswers = (imageId) => {
 			
 const saveRemoteAnswers =  (answer) => {
     console.log("saving");
-    if (!newAnswers)
-      return;
 	if(currentQuestion > 0) {
 		let answerList = getAnswers(imageId);
 		console.log('getAnswers', answerList);
