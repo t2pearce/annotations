@@ -181,8 +181,8 @@ export default function Viewer2() {
 	  if (index < images.length) {
 		  setIndex(index+1);
 		  console.log('index', index)
-		  setManifest(images[index].slide)
-		  setImageId(images[index].slide.source.Image.Url);
+		  setManifest(images[index+1].slide)
+		  setImageId(images[index+1].slide.source.Image.Url);
 		  //getQuestions(imageId);
 		  setCurrentQuestion(0);
 		  setShowNext(false);
