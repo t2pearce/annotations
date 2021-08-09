@@ -208,7 +208,7 @@ export default function Viewer2() {
 	
   const handleAnswerOptionClick = (answerChoice, questionText) => {
     const nextQuestion = currentQuestion + 1;
-	  let answerObj = {
+	  let newAnswer = {
 		  questionsText: questionText,
 		  answersText: answerChoice
 	  }
@@ -217,12 +217,12 @@ export default function Viewer2() {
       setCurrentQuestion(nextQuestion);
       console.log('answers', answers)
 	    saveIndex(index, currentQuestion+1);
-	    saveRemoteAnswers(answerObj);
+	    saveRemoteAnswers(newAnswer);
     } else {
       setShowScore(false);
       setShowNext(true);
 	    saveIndex(index, currentQuestion+1);
-	    saveRemoteAnswers(answerObj);
+	    saveRemoteAnswers(newAnswer);
     }
   };
 	
@@ -248,9 +248,9 @@ const getAnswers = (imageId) => {
 const saveRemoteAnswers =  (answer) => {
     console.log("saving");
 	if(currentQuestion == 0) {
-		var newAnswers = [answer];
+		var answerObj = [{answer}];
 	}
-    var json = JSON.stringify(newAnswers); 
+    var json = JSON.stringify(answerObj); 
 	console.log('answerjson', json);
     var encodedId = btoa(imageId);
 	
