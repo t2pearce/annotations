@@ -225,12 +225,10 @@ export default function Viewer2() {
   };
 	
 const getAnswers = (imageId) => {
-	  console.log('imgaeindex', index)
-	  console.log('currQues', currentQuestion)
-       console.log('imageId', imageId)
-       var encodedId = btoa(imageId);
-       console.log('encodedId', encodedId)
-       fetch("/api/answers/" + encodedId, {
+	console.log('imageId', imageId)
+	var encodedId = btoa(imageId);
+	console.log('encodedId', encodedId)
+	fetch("/api/answers/" + encodedId, {
 		    method: 'GET',
 		    credentials: 'include',
 		    headers: {'Access-Control-Allow-Credentials': 'true'}})
@@ -243,8 +241,8 @@ const getAnswers = (imageId) => {
 	       (error) => {
 		       console.log(error)
 	       }
-	       )
-	  }
+	 )
+}
 			
 const saveRemoteAnswers =  (newAnswers) => {
     console.log("saving");
