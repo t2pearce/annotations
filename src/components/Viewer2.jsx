@@ -227,9 +227,7 @@ export default function Viewer2() {
   };
 	
 const getAnswers = (imageId) => {
-	console.log('imageId', imageId)
 	var encodedId = btoa(imageId);
-	console.log('encodedId', encodedId)
 	fetch("/api/answers/" + encodedId, {
 		    method: 'GET',
 		    credentials: 'include',
@@ -238,6 +236,7 @@ const getAnswers = (imageId) => {
 	.then(
 	       (result) => {
 		    let answersList = result;
+		       console.log('fetchAnswers', answersList)
 		    return answersList;
 	       },
 	       (error) => {
