@@ -216,11 +216,11 @@ export default function Viewer2() {
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
       console.log('answers', answers)
-	    saveIndex(index, currentQuestion);
+	    saveIndex(index, currentQuestion+1);
     } else {
       setShowScore(false);
       setShowNext(true);
-	    saveIndex(index, currentQuestion);
+	    saveIndex(index, currentQuestion+1);
     }
   };
 			
