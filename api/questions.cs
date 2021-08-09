@@ -22,98 +22,9 @@ namespace Microsoft.Function
             //[JsonProperty("QuestionsJson")]
             public object[] QuestionsJson { get; set; }
         }
-
-        public class AnswersItem
-        {
-            [JsonProperty("imageid")]
-            public string ImageId {get; set; }
-            [JsonProperty("userid")]
-            public string UserId {get; set;}
-            public object[] AnswersJson {get; set;}
-        }
-        public class AnswersProps
-        {
-            [JsonProperty("answerObj")]
-            public AnswerText answerObj {get; set;}
-        }
-        public class AnswerText
-        {
-            [JsonProperty("questionstext")]
-            public string QuestionsText {get; set;}
-            [JsonProperty("answerstext")]
-            public string AnswersText {get; set;}
-        }
     
         public static class Questions 
         {
-            [FunctionName("saveAnswers")]
-        public static  void RunSave(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "questions/{imageId}")] HttpRequest req,
-            [CosmosDB(
-                databaseName: "medimages",
-                collectionName: "Answers",
-                ConnectionStringSetting = "CosmosDBConnection")
-            ] out dynamic document,
-            string imageId,
-            ILogger log)
-        {
-            log.LogInformation($"C# save answers for {imageId}");
-            document = null;
-
-            // Verify identity
-            ClaimsPrincipal principal = ClientPrincipal.Parse(req);
-            if (!principal.IsInRole("contributor"))
-                return;
-
-            string userId = principal.Identity.Name;
-
-            string requestBody = new StreamReader(req.Body).ReadToEnd();
-            var input = JsonConvert.DeserializeObject<List<AnswersProps>>(requestBody);
-            
-
-            document = new { id = userId, imageId = imageId, AnswersJson = input }; //new object[] { requestBody } };
-        }
-            
-            [FunctionName("getAnswers")]
-            public static async Task<IActionResult> RunGet(
-                [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "questions/{imageId}")] HttpRequest req,
-                [CosmosDB(
-                    databaseName: "medimages",
-                    collectionName: "Answers",
-                    ConnectionStringSetting = "CosmosDBConnection")
-                ]  DocumentClient client,
-                string imageId,
-                ILogger log)
-            {
-                log.LogInformation($"function GetAnswers ");
-
-                // Verify identity
-                ClaimsPrincipal principal = ClientPrincipal.Parse(req);
-                if (!principal.IsInRole("contributor"))
-                    return new UnauthorizedResult();
-
-                string userId = principal.Identity.Name;
-                AnswersItem answers = null;
-                try
-                {
-                    var response = await client.ReadDocumentAsync(
-                        UriFactory.CreateDocumentUri("medimages", "Answers", imageId),
-                        new RequestOptions { PartitionKey = new Microsoft.Azure.Documents.PartitionKey(imageId) });
-
-                    answers = (AnswersItem)(dynamic)response.Resource;
-                    log.LogInformation($"function GetQuestions invoked");
-
-                } catch (Exception ) {
-                    log.LogError($"Cant find Questions entry for  in cosmosdb");
-                    return new NotFoundResult();
-                }
-                log.LogInformation($"Retrieved questions ");
-                if ( answers != null && answers.AnswersJson != null)
-                  return new OkObjectResult(answers.AnswersJson);
-                else
-                  return new NotFoundResult();
-            }
-            
             [FunctionName("getQuestions")]
             public static async Task<IActionResult> RunGet(
                 [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "questions/{imageId}")] HttpRequest req,
