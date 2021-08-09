@@ -56,7 +56,6 @@ export default function Viewer2() {
   const [showStart, setShowStart] = useState(true);
   const [showNext, setShowNext] = useState(false);	
   const [showEnd, setShowEnd] = useState(false);
-	var newAnswers;
 	
     setUserInfo();
     useEffect(() => {
@@ -213,16 +212,17 @@ export default function Viewer2() {
 		  questionsText: questionText,
 		  answersText: answerChoice
 	  }
-	  saveRemoteAnswers(answerObj);
     //setAnswers([...answers, {answerObj}]);
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
       console.log('answers', answers)
 	    saveIndex(index, currentQuestion+1);
+	    saveRemoteAnswers(answerObj);
     } else {
       setShowScore(false);
       setShowNext(true);
 	    saveIndex(index, currentQuestion+1);
+	    saveRemoteAnswers(answerObj);
     }
   };
 	
@@ -253,10 +253,10 @@ const saveRemoteAnswers =  (answer) => {
 	if(currentQuestion > 0) {
 		let answerList = getAnswers(imageId);
 		console.log('getAnswers', answerList);
-		let newAnswers = [...answerList, {answer}]
+		var newAnswers = [...answerList, {answer}]
 	}
 	else {
-		let newAnswers = [answer];	
+		var newAnswers = [answer];	
 	}
     var json = JSON.stringify(newAnswers); 
 	console.log('json', json);
