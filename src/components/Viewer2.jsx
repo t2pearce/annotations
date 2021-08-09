@@ -69,6 +69,8 @@ export default function Viewer2() {
 	
 	
     const getQuestions = (imageId) => {
+	    	  console.log('imgaeindex', index)
+	  console.log('currQues', currentQuestion)
        console.log('imageId', imageId)
        var encodedId = btoa(imageId);
        console.log('encodedId', encodedId)
@@ -195,6 +197,8 @@ export default function Viewer2() {
   };
 	
   const handleStart = () => {
+	  console.log('imgaeindex', index)
+	  console.log('currQues', currentQuestion)
 	  setShowStart(false);
 	  setShowScore(true);
 	  setManifest(images[0].slide);
