@@ -250,10 +250,10 @@ const saveRemoteAnswers =  (answer) => {
 	if(currentQuestion > 0) {
 		getAnswers(imageId);
 		console.log('getAnswers', answers);
-		var newAnswers = [...answers, {answer}]
+		var newAnswers = [...answers, answer]
 	}
 	else {
-		var newAnswers = [{answer}];	
+		var newAnswers = [answer];	
 	}
     var json = JSON.stringify(newAnswers); 
 	console.log('json', json);
