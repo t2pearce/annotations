@@ -189,10 +189,12 @@ export default function Viewer2() {
 		  setShowScore(true);
 		  saveRemoteAnswers(answers);
 		  setAnswers([]);
+		  saveIndex(index, currentQuestion);
 	  } else {
 		  setShowScore(false);
 		  setShowEnd(true);
 		  saveRemoteAnswers(answers);
+		  saveIndex(index, currentQuestion);
 	  }
   };
 	
@@ -211,6 +213,7 @@ export default function Viewer2() {
 		  answersText: answerChoice
 	  }
     setAnswers([...answers, {answerObj}]);
+	  saveIndex(index, currentQuestion);
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
       console.log('answers', answers)
