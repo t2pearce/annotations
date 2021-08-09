@@ -244,8 +244,6 @@ const getAnswers = (imageId) => {
 	       }
 	 )
 }
-
-[...answers, {answerObj}]
 			
 const saveRemoteAnswers =  (answer) => {
     console.log("saving");
