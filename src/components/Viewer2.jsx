@@ -115,8 +115,8 @@ export default function Viewer2() {
     }
 	
    const saveIndex = (imageIndex, questionIndex) => {
-    let indexObj = [{ imageIndex :imageIndex, 
-		     questionIndex: questionIndex}];
+    let indexObj = { imageIndex :imageIndex, 
+		     questionIndex: questionIndex};
     if (!indexObj)
       return;
     var json = JSON.stringify(indexObj); 
