@@ -56,7 +56,7 @@ namespace Microsoft.Function
             var input = JsonConvert.DeserializeObject<IndexProps>(requestBody);
             
 
-            document = new { id = userId, userId = userId, IndexJson = input }; //new object[] { requestBody } };
+            document = new { id = userId, userId = userId, IndexJson = [input] }; //new object[] { requestBody } };
         }
             [FunctionName("getIndex")]
             public static async Task<IActionResult> RunGet(
