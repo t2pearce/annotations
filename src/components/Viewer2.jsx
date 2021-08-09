@@ -237,7 +237,7 @@ const getAnswers = (imageId) => {
 	       (result) => {
 		    let answersList = result;
 		       console.log('fetchAnswers', answersList)
-		    return answersList;
+		    setAnswers(answersList);
 	       },
 	       (error) => {
 		       console.log(error)
@@ -248,12 +248,12 @@ const getAnswers = (imageId) => {
 const saveRemoteAnswers =  (answer) => {
     console.log("saving");
 	if(currentQuestion > 0) {
-		let answerList = getAnswers(imageId);
-		console.log('getAnswers', answerList);
-		var newAnswers = [...answerList, {answer}]
+		getAnswers(imageId);
+		console.log('getAnswers', answers);
+		var newAnswers = [...answers, {answer}]
 	}
 	else {
-		var newAnswers = [answer];	
+		var newAnswers = [{answer}];	
 	}
     var json = JSON.stringify(newAnswers); 
 	console.log('json', json);
