@@ -248,10 +248,10 @@ const getAnswers = (imageId) => {
 const saveRemoteAnswers =  (answer) => {
     console.log("saving");
 	if(currentQuestion == 0) {
-		var newAnswers = [{answer}];
+		var newAnswers = [answer];
 	}
     var json = JSON.stringify(newAnswers); 
-	console.log('json', json);
+	console.log('answerjson', json);
     var encodedId = btoa(imageId);
 	
     fetch("/api/answers/" + encodedId , { 
