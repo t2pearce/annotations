@@ -213,13 +213,14 @@ export default function Viewer2() {
 		  answersText: answerChoice
 	  }
     setAnswers([...answers, {answerObj}]);
-	  saveIndex(index, currentQuestion);
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
       console.log('answers', answers)
+	    saveIndex(index, currentQuestion);
     } else {
       setShowScore(false);
       setShowNext(true);
+	    saveIndex(index, currentQuestion);
     }
   };
 			
