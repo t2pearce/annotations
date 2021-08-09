@@ -230,7 +230,7 @@ onst getAnswers = (imageId) => {
        console.log('imageId', imageId)
        var encodedId = btoa(imageId);
        console.log('encodedId', encodedId)
-       fetch("/api/questions/" + encodedId, {
+       fetch("/api/answers/" + encodedId, {
 		    method: 'GET',
 		    credentials: 'include',
 		    headers: {'Access-Control-Allow-Credentials': 'true'}})
@@ -257,7 +257,7 @@ const saveRemoteAnswers =  (newAnswers) => {
 		let answerList = getAnswers(imageId);
 		console.log('getAnswers', answerList);
 	}
-    fetch("/api/questions/" + encodedId , { 
+    fetch("/api/answers/" + encodedId , { 
           method: 'POST',
           credentials: 'include',
           headers: {'Access-Control-Allow-Credentials': 'true',
