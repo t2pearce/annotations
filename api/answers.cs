@@ -35,7 +35,7 @@ namespace Microsoft.Function
             public string AnswersText {get; set;}
         }
     
-        public static class Questions 
+        public static class Answers 
         {
             [FunctionName("saveAnswers")]
         public static  void RunSave(
