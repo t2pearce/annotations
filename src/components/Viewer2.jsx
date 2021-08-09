@@ -247,13 +247,8 @@ const getAnswers = (imageId) => {
 			
 const saveRemoteAnswers =  (answer) => {
     console.log("saving");
-	if(currentQuestion > 0) {
-		getAnswers(imageId);
-		console.log('getAnswers', answers);
-		var newAnswers = [...answers, answer]
-	}
-	else {
-		var newAnswers = [answer];	
+	if(currentQuestion = 0) {
+		newAnswers = [{answer}];
 	}
     var json = JSON.stringify(newAnswers); 
 	console.log('json', json);
