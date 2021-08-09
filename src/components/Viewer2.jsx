@@ -59,6 +59,7 @@ export default function Viewer2() {
 	
     setUserInfo();
     useEffect(() => {
+	getIndex();
         getImages();
     }, []);
 	
@@ -101,10 +102,9 @@ export default function Viewer2() {
 	    .then(
 		(result) => {
 			let indices = result;
-			if (indices) {
+			console.log('indices', indices)
 	    			setIndex = indices.imageIndex;
 	    			setCurrentQuestion = indices.questionIndex;
-			}
 		},
 		(error) => {
 			console.log(error)
