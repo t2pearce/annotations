@@ -18,8 +18,6 @@ namespace Microsoft.Function
         {
             [JsonProperty("imageid")]
             public string ImageId {get; set; }
-            [JsonProperty("userid")]
-            public string UserId {get; set;}
             public object[] AnswersJson {get; set;}
         }
         public class AnswersProps
