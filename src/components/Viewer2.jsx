@@ -212,7 +212,8 @@ export default function Viewer2() {
 		  questionsText: questionText,
 		  answersText: answerChoice
 	  }
-    setAnswers([...answers, {answerObj}]);
+	  saveRemoteAnswers(answerObj);
+    //setAnswers([...answers, {answerObj}]);
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
       console.log('answers', answers)
@@ -243,18 +244,25 @@ const getAnswers = (imageId) => {
 	       }
 	 )
 }
+
+[...answers, {answerObj}]
 			
-const saveRemoteAnswers =  (newAnswers) => {
+const saveRemoteAnswers =  (answer) => {
     console.log("saving");
     if (!newAnswers)
       return;
-    var json = JSON.stringify(newAnswers); 
-	console.log('json', json);
-    var encodedId = btoa(imageId);
 	if(currentQuestion > 0) {
 		let answerList = getAnswers(imageId);
 		console.log('getAnswers', answerList);
+		let newAnswers = [...answerList, {answer}]
 	}
+	else {
+		let newAnswers = [answer];	
+	}
+    var json = JSON.stringify(newAnswers); 
+	console.log('json', json);
+    var encodedId = btoa(imageId);
+	
     fetch("/api/answers/" + encodedId , { 
           method: 'POST',
           credentials: 'include',
