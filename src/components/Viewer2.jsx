@@ -201,7 +201,7 @@ export default function Viewer2() {
 	  console.log('currQues', currentQuestion)
 	  setShowStart(false);
 	  setShowScore(true);
-	  setManifest(images[0].slide);
+	  setManifest(images[index].slide);
   };
 	
   const handleAnswerOptionClick = (answerChoice, questionText) => {
@@ -311,7 +311,7 @@ const saveRemoteAnswers =  (newAnswers) => {
 				<>
 					<div className='question-section'>
 						<div className='question-count'>
-							<span>Image {index}</span>/{images.length}
+							<span>Image {index +1}</span>/{images.length}
 						</div>
 						<div className='question-count'>
 							<span>Question {currentQuestion + 1}</span>/{questions.length}
