@@ -224,7 +224,7 @@ export default function Viewer2() {
     }
   };
 	
-onst getAnswers = (imageId) => {
+const getAnswers = (imageId) => {
 	  console.log('imgaeindex', index)
 	  console.log('currQues', currentQuestion)
        console.log('imageId', imageId)
