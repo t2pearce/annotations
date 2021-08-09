@@ -38,6 +38,10 @@
       "allowedRoles": ["contributor","reader"]
     },
     {
+      "route": "/api/answers",
+      "allowedRoles": ["contributor","reader"]
+    },
+    {
       "route": "/login",
       "redirect": "/.auth/login/aad"
     },
