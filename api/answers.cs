@@ -104,5 +104,6 @@ namespace Microsoft.Function
                 else
                   return new NotFoundResult();
             }
+        }
 }
 
