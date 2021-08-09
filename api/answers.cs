@@ -16,7 +16,7 @@ namespace Microsoft.Function
 {
         public class AnswersItem
         {
-            [JsonProperty("imageid")]
+            [JsonProperty("imageId")]
             public string ImageId {get; set; }
             public object[] AnswersJson {get; set;}
         }
