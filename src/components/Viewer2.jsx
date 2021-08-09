@@ -223,6 +223,28 @@ export default function Viewer2() {
 	    saveIndex(index, currentQuestion+1);
     }
   };
+	
+onst getAnswers = (imageId) => {
+	  console.log('imgaeindex', index)
+	  console.log('currQues', currentQuestion)
+       console.log('imageId', imageId)
+       var encodedId = btoa(imageId);
+       console.log('encodedId', encodedId)
+       fetch("/api/questions/" + encodedId, {
+		    method: 'GET',
+		    credentials: 'include',
+		    headers: {'Access-Control-Allow-Credentials': 'true'}})
+	.then((response) => response.json())
+	.then(
+	       (result) => {
+		    let answersList = result;
+		    return answersList;
+	       },
+	       (error) => {
+		       console.log(error)
+	       }
+	       )
+	  }
 			
 const saveRemoteAnswers =  (newAnswers) => {
     console.log("saving");
@@ -231,6 +253,10 @@ const saveRemoteAnswers =  (newAnswers) => {
     var json = JSON.stringify(newAnswers); 
 	console.log('json', json);
     var encodedId = btoa(imageId);
+	if(currentQuestion > 0) {
+		let answerList = getAnswers(imageId);
+		console.log('getAnswers', answerList);
+	}
     fetch("/api/questions/" + encodedId , { 
           method: 'POST',
           credentials: 'include',
