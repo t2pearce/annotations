@@ -53,10 +53,10 @@ namespace Microsoft.Function
             string userId = principal.Identity.Name;
 
             string requestBody = new StreamReader(req.Body).ReadToEnd();
-            var input = JsonConvert.DeserializeObject<IndexProps>(requestBody);
+            var input = JsonConvert.DeserializeObject<List<IndexProps>>(requestBody);
             
 
-            document = new { id = userId, userId = userId, IndexJson = [input] }; //new object[] { requestBody } };
+            document = new { id = userId, userId = userId, IndexJson = input }; //new object[] { requestBody } };
         }
             [FunctionName("getIndex")]
             public static async Task<IActionResult> RunGet(
