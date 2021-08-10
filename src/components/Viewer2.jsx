@@ -58,7 +58,7 @@ export default function Viewer2() {
   const [showEnd, setShowEnd] = useState(false);
 	
     setUserInfo();
-	getIndex();
+	
     useEffect(() => {
 	getIndex();
 	getImages();
