@@ -16,34 +16,29 @@ namespace Microsoft.Function
 {
         public class AnswersItem
         {
-            [JsonProperty("imageId")]
-            public string ImageId {get; set; }
+            [JsonProperty("questionId")]
+            public string QuestionId {get; set; }
             public object[] AnswersJson {get; set;}
         }
         public class AnswersProps
         {
-            [JsonProperty("answerObj")]
-            public AnswerText answerObj {get; set;}
+            [JsonProperty("questiontext")]
+            public string questionText {get; set;}
+            [JsonProperty("answertext")]
+            public string answerText {get; set;}
         }
-        public class AnswerText
-        {
-            [JsonProperty("questionstext")]
-            public string QuestionsText {get; set;}
-            [JsonProperty("answerstext")]
-            public string AnswersText {get; set;}
-        }
-    
+        
         public static class Answers 
         {
             [FunctionName("saveAnswers")]
         public static  void RunSave(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "answers/{imageId}")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "answers/{questionId}")] HttpRequest req,
             [CosmosDB(
                 databaseName: "medimages",
                 collectionName: "Answers",
                 ConnectionStringSetting = "CosmosDBConnection")
             ] out dynamic document,
-            string imageId,
+            string questionId,
             ILogger log)
         {
             log.LogInformation($"C# save answers for {imageId}");
@@ -60,7 +55,7 @@ namespace Microsoft.Function
             var input = JsonConvert.DeserializeObject<List<AnswersProps>>(requestBody);
             
 
-            document = new { id = userId, imageId = imageId, AnswersJson = input }; //new object[] { requestBody } };
+            document = new { id = userId, questionId = questionId, AnswersJson = input }; //new object[] { requestBody } };
         }
             
             [FunctionName("getAnswers")]
