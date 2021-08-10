@@ -44,8 +44,8 @@ export default function Viewer2() {
   const [imageId, setImageId] = useState();
   const [title, setTitle] = useState();
   const [state, setState] = useState();
-  const [index, setIndex]= useState();
-  const [currentQuestion, setCurrentQuestion] = useState();
+  const [index, setIndex]= useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
   const [questions, setQuestions] = useState();
