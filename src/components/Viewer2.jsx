@@ -187,13 +187,10 @@ export default function Viewer2() {
 		  setCurrentQuestion(0);
 		  setShowNext(false);
 		  setShowScore(true);
-		  saveRemoteAnswers(answers);
-		  setAnswers([]);
 		  saveIndex(index, currentQuestion);
 	  } else {
 		  setShowScore(false);
 		  setShowEnd(true);
-		  saveRemoteAnswers(answers);
 		  saveIndex(index, currentQuestion);
 	  }
   };
