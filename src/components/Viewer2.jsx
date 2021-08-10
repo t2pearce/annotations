@@ -65,6 +65,7 @@ export default function Viewer2() {
 	
     useEffect(() => {
         getQuestions(imageId);
+	getAnswers(imageId);
     }, [imageId]);
 	
 	
@@ -250,7 +251,7 @@ const saveRemoteAnswers =  (answerObj) => {
 		var answer = [{answerObj}];
 	}
 	else {
-		getAnswers(imageId);
+		//getAnswers(imageId);
 		var answer = [...answers, {answerObj}];
 	}
     var json = JSON.stringify(answer); 
