@@ -56,8 +56,6 @@ export default function Viewer2() {
   const [showStart, setShowStart] = useState(true);
   const [showNext, setShowNext] = useState(false);	
   const [showEnd, setShowEnd] = useState(false);
-  const imageindexRef = useRef();
-  const questindexRef = useRef();
 	
     setUserInfo();
 	
@@ -105,8 +103,6 @@ export default function Viewer2() {
 				headers: {'Access-Control-Allow-Credentials': 'true'}});
 	    let indices = await response.json();
 	    console.log('fetchindices', indices)
-	    imageindexRef.current = indices.imageIndex;
-	    questindexRef.current = indices.questionIndex;
 	    setIndex(indices[0].imageIndex);
 	    setCurrentQuestion(indices[0].questionIndex);
     };
