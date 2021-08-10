@@ -41,7 +41,7 @@ namespace Microsoft.Function
             string questionId,
             ILogger log)
         {
-            log.LogInformation($"C# save answers for {imageId}");
+            log.LogInformation($"C# save answers for ");
             document = null;
 
             // Verify identity
