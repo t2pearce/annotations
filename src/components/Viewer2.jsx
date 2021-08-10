@@ -100,7 +100,7 @@ export default function Viewer2() {
 				method: 'GET',
 				credentials: 'include',
 				headers: {'Access-Control-Allow-Credentials': 'true'}});
-	    let indices = response.json();
+	    let indices = await response.json();
 	    setIndex(indices[0].imageIndex);
 	    setCurrentQuestion(indices[0].questionIndex);
     };
