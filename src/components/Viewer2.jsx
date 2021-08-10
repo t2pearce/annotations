@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -102,6 +102,7 @@ export default function Viewer2() {
 				credentials: 'include',
 				headers: {'Access-Control-Allow-Credentials': 'true'}});
 	    let indices = await response.json();
+	    console.log('fetchindices', indices)
 	    setIndex(indices[0].imageIndex);
 	    setCurrentQuestion(indices[0].questionIndex);
     };
