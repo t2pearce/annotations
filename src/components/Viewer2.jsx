@@ -60,7 +60,10 @@ export default function Viewer2() {
     setUserInfo();
     useEffect(() => {
 	getIndex();
-        getImages();
+    }, []);
+	
+    useEffect(() => {
+	getImages();
     }, []);
 	
     useEffect(() => {
