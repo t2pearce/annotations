@@ -250,6 +250,10 @@ const saveRemoteAnswers =  (answerObj) => {
 	if(currentQuestion == 0) {
 		var answer = [{answerObj}];
 	}
+	else {
+		getAnswers(imageId);
+		var answer = [...answers, {answerObj}];
+	}
     var json = JSON.stringify(answer); 
 	console.log('answerjson', json);
     var encodedId = btoa(imageId);
