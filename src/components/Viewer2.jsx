@@ -152,8 +152,8 @@ export default function Viewer2() {
     console.log('slides', image.groups[0].slides)
     setImages(image.groups[0].slides)
     //setManifest(image.groups[0].slides[0].slide)
-    setImageId(image.groups[0].slides[0].slide.source.Image.Url)
-    console.log('IMAGEID', image.groups[0].slides[0].slide.source.Image.Url)
+    setImageId(image.groups[0].slides[index].slide.source.Image.Url)
+    console.log('IMAGEID', image.groups[0].slides[index].slide.source.Image.Url)
     //getQuestions(image.groups[0].slides[0].slide.source.Image.Url)
   };
 	
