@@ -60,9 +60,6 @@ export default function Viewer2() {
     setUserInfo();
     useEffect(() => {
 	getIndex();
-    }, []);
-	
-    useEffect(() => {
 	getImages();
     }, []);
 	
@@ -97,25 +94,16 @@ export default function Viewer2() {
 	       )
 	  }
     
-    const getIndex = () => {
+    const getIndex = async () => {
 	    console.log('geting index')
-	fetch("/api/progress", {
-		method: 'GET',
-		credentials: 'include',
-		headers: {'Access-Control-Allow-Credentials': 'true'}})
-	    .then((response) => response.json())
-	    .then(
-		(result) => {
-			let indices = result;
-			console.log('indices', indices)
-	    			setIndex(indices[0].imageIndex);
-	    			setCurrentQuestion(indices[0].questionIndex);
-		},
-		(error) => {
-			console.log(error)
-		}
-		)
-    }
+	    const response = await fetch("/api/progress", {
+				method: 'GET',
+				credentials: 'include',
+				headers: {'Access-Control-Allow-Credentials': 'true'}});
+	    let indices = response.json();
+	    setIndex(indices[0].imageIndex);
+	    setCurrentQuestion(indices[0].questionIndex);
+    };
 	
    const saveIndex = (imageIndex, questionIndex) => {
     let indexObj = [{ imageIndex :imageIndex, 
