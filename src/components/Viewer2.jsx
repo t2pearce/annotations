@@ -226,7 +226,7 @@ export default function Viewer2() {
     }
   };
 	
-const getAnswers = (imageId) => {
+/*const getAnswers = (imageId) => {
 	var encodedId = btoa(imageId);
 	fetch("/api/answers/" + encodedId, {
 		    method: 'GET',
@@ -243,22 +243,17 @@ const getAnswers = (imageId) => {
 		       console.log(error)
 	       }
 	 )
-}
+}*/
 			
 const saveRemoteAnswers =  (answerObj) => {
     console.log("saving");
-	if(currentQuestion == 0) {
-		var answer = [{answerObj}];
-	}
-	else {
-		//getAnswers(imageId);
-		var answer = [...answers, {answerObj}];
-	}
+	var answer = [{answer}];
     var json = JSON.stringify(answer); 
 	console.log('answerjson', json);
     var encodedId = btoa(imageId);
+    var encodeQues = bota(answerObj.questionText);
 	
-    fetch("/api/answers/" + encodedId , { 
+    fetch("/api/answers/" + encodedId + encodeQues, { 
           method: 'POST',
           credentials: 'include',
           headers: {'Access-Control-Allow-Credentials': 'true',
