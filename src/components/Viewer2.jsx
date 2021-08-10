@@ -72,8 +72,8 @@ export default function Viewer2() {
 	
 	
     const getQuestions = (imageId) => {
-	    	  console.log('imgaeindex', index)
-	  console.log('currQues', currentQuestion)
+       console.log('imageindex', index)
+       console.log('currQues', currentQuestion)
        console.log('imageId', imageId)
        var encodedId = btoa(imageId);
        console.log('encodedId', encodedId)
@@ -149,7 +149,7 @@ export default function Viewer2() {
     console.log('slides', image.groups[0].slides)
     setImages(image.groups[0].slides)
     //setManifest(image.groups[0].slides[0].slide)
-	  console.log('refindex', imageindexRef.current)
+    console.log('imageindexinimages', index)
     setImageId(image.groups[0].slides[index].slide.source.Image.Url)
     console.log('IMAGEID', image.groups[0].slides[index].slide.source.Image.Url)
     //getQuestions(image.groups[0].slides[0].slide.source.Image.Url)
