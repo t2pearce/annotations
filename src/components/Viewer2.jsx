@@ -188,10 +188,12 @@ export default function Viewer2() {
 		  setShowNext(false);
 		  setShowScore(true);
 		  saveIndex(index, currentQuestion);
+		  setAnswers([]);
 	  } else {
 		  setShowScore(false);
 		  setShowEnd(true);
 		  saveIndex(index, currentQuestion);
+		  setAnswers([]);
 	  }
   };
 	
