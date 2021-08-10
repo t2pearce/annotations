@@ -58,7 +58,7 @@ namespace Microsoft.Function
             document = new { id = userId, questionId = questionId, AnswersJson = input }; //new object[] { requestBody } };
         }
             
-            [FunctionName("getAnswers")]
+            /*[FunctionName("getAnswers")]
             public static async Task<IActionResult> RunGet(
                 [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "answers/{imageId}")] HttpRequest req,
                 [CosmosDB(
@@ -97,6 +97,6 @@ namespace Microsoft.Function
                 else
                   return new NotFoundResult();
             }
-        }
+        }*/
 }
 
