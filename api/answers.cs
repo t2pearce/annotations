@@ -22,10 +22,15 @@ namespace Microsoft.Function
         }
         public class AnswersProps
         {
-            [JsonProperty("questiontext")]
-            public string questionText {get; set;}
-            [JsonProperty("answertext")]
-            public string answerText {get; set;}
+            [JsonProperty("answerObj")]
+            public AnswerText answerObj {get; set;}
+        }
+        public class AnswerText
+        {
+            [JsonProperty("questionstext")]
+            public string QuestionsText {get; set;}
+            [JsonProperty("answerstext")]
+            public string AnswersText {get; set;}
         }
         
         public static class Answers 
