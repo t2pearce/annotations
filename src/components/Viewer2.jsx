@@ -204,6 +204,7 @@ export default function Viewer2() {
 	  setShowStart(false);
 	  setShowScore(true);
 	  setManifest(images[index].slide);
+	  getQuestions(imageId);
   };
 	
   const handleAnswerOptionClick = (answerChoice, questionText) => {
