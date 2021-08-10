@@ -65,7 +65,6 @@ export default function Viewer2() {
 	
     useEffect(() => {
         getQuestions(imageId);
-	getAnswers(imageId);
     }, [imageId]);
 	
 	
@@ -251,7 +250,7 @@ const saveRemoteAnswers =  (answerObj) => {
     var json = JSON.stringify(answer); 
 	console.log('answerjson', json);
     var encodedId = btoa(imageId);
-    var encodeQues = bota(answerObj.questionText);
+    var encodeQues = btoa(answerObj.questionText);
 	
     fetch("/api/answers/" + encodedId + encodeQues, { 
           method: 'POST',
