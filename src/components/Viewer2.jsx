@@ -56,16 +56,15 @@ export default function Viewer2() {
   const [showStart, setShowStart] = useState(true);
   const [showNext, setShowNext] = useState(false);	
   const [showEnd, setShowEnd] = useState(false);
+  const imageindexRef = useRef();
+  const questindexRef = useRef();
 	
     setUserInfo();
 	
     useEffect(() => {
 	getIndex();
-    }, []);
-	
-    useEffect(() => {
 	getImages();
-    }, [index]);
+    }, []);
 	
     useEffect(() => {
         getQuestions(imageId);
@@ -106,6 +105,8 @@ export default function Viewer2() {
 				headers: {'Access-Control-Allow-Credentials': 'true'}});
 	    let indices = await response.json();
 	    console.log('fetchindices', indices)
+	    imageindexRef.current = indices.imageIndex;
+	    questindexRef.current = indices.questionIndex;
 	    setIndex(indices[0].imageIndex);
 	    setCurrentQuestion(indices[0].questionIndex);
     };
@@ -152,7 +153,7 @@ export default function Viewer2() {
     setImages(image.groups[0].slides)
     //setManifest(image.groups[0].slides[0].slide)
     setImageId(image.groups[0].slides[index].slide.source.Image.Url)
-    console.log('IMAGEID', image.groups[0].slides[index].slide.source.Image.Url)
+    console.log('IMAGEID', image.groups[0].slides[imageindexRef].slide.source.Image.Url)
     //getQuestions(image.groups[0].slides[0].slide.source.Image.Url)
   };
 	
