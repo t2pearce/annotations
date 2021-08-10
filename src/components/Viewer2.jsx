@@ -188,12 +188,10 @@ export default function Viewer2() {
 		  setShowNext(false);
 		  setShowScore(true);
 		  saveIndex(index, currentQuestion);
-		  setAnswers([]);
 	  } else {
 		  setShowScore(false);
 		  setShowEnd(true);
 		  saveIndex(index, currentQuestion);
-		  setAnswers([]);
 	  }
   };
 	
@@ -246,7 +244,7 @@ export default function Viewer2() {
 			
 const saveRemoteAnswers =  (answerObj) => {
     console.log("saving");
-	var answer = [{answer}];
+	var answer = [{answerObj}];
     var json = JSON.stringify(answer); 
 	console.log('answerjson', json);
     var encodedId = btoa(imageId);
