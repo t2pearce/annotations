@@ -248,9 +248,8 @@ const saveRemoteAnswers =  (answerObj) => {
     var json = JSON.stringify(answer); 
 	console.log('answerjson', json);
     var encodedId = btoa(imageId);
-    var encodeQues = btoa(answerObj.questionText);
 	
-    fetch("/api/answers/" + encodedId + encodeQues, { 
+    fetch("/api/answers/" + encodedId + currentQuestion, { 
           method: 'POST',
           credentials: 'include',
           headers: {'Access-Control-Allow-Credentials': 'true',
