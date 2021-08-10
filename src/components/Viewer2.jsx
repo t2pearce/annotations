@@ -208,7 +208,7 @@ export default function Viewer2() {
 	
   const handleAnswerOptionClick = (answerChoice, questionText) => {
     const nextQuestion = currentQuestion + 1;
-	  let newAnswerObj = {
+	  let answerObj = {
 		  questionsText: questionText,
 		  answersText: answerChoice
 	  }
@@ -217,12 +217,12 @@ export default function Viewer2() {
       setCurrentQuestion(nextQuestion);
       console.log('answers', answers)
 	    saveIndex(index, currentQuestion+1);
-	    saveRemoteAnswers(newAnswer);
+	    saveRemoteAnswers(answerObj);
     } else {
       setShowScore(false);
       setShowNext(true);
 	    saveIndex(index, currentQuestion+1);
-	    saveRemoteAnswers(newAnswer);
+	    saveRemoteAnswers(answerObj);
     }
   };
 	
