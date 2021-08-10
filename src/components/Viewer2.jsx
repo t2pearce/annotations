@@ -56,7 +56,6 @@ export default function Viewer2() {
   const [showStart, setShowStart] = useState(true);
   const [showNext, setShowNext] = useState(false);	
   const [showEnd, setShowEnd] = useState(false);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
 	
     setUserInfo();
     useEffect(() => {
@@ -205,12 +204,13 @@ export default function Viewer2() {
   };
 	
   const handleAnswerOptionClick = (answerChoice, questionText) => {
-	let answerObj = {
+    const nextQuestion = currentQuestion + 1;
+	  let answerObj = {
 		  questionsText: questionText,
 		  answersText: answerChoice
-	 }
-	setSelectedAnswer(answerObj);
-   /* if (nextQuestion < questions.length) {
+	  }
+    //setAnswers([...answers, {answerObj}]);
+    if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
       console.log('answers', answers)
 	    saveIndex(index, currentQuestion+1);
@@ -220,23 +220,8 @@ export default function Viewer2() {
       setShowNext(true);
 	    saveIndex(index, currentQuestion+1);
 	    saveRemoteAnswers(answerObj);
-    }*/
+    }
   };
-	
-const handleSubmit = () => {
- 	const nextQuestion = currentQuestion + 1;
-	 if (nextQuestion < questions.length) {
-      		setCurrentQuestion(nextQuestion);
-      		console.log('answers', answers)
-	    	saveIndex(index, currentQuestion+1);
-	    	saveRemoteAnswers(selectedAnswer);
-    	} else {
-      		setShowScore(false);
-      		setShowNext(true);
-	    	saveIndex(index, currentQuestion+1);
-	    	saveRemoteAnswers(selectedAnswer);
-    	}
-};
 	
 const getAnswers = (imageId) => {
 	var encodedId = btoa(imageId);
@@ -365,7 +350,6 @@ const saveRemoteAnswers =  (answerObj) => {
 						{questions[currentQuestion].answerOptions.map((answerOption) => (
 							<button onClick={() => handleAnswerOptionClick(answerOption.answerText, questions[currentQuestion].questionText)}>{answerOption.answerText}</button>
 						))}
-						<button onClick={() => handleSubmit()}>Submit</button>
 					</div>
 				</>}
 			{showStart == true &&
