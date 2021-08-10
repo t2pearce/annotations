@@ -244,7 +244,7 @@ export default function Viewer2() {
 			
 const saveRemoteAnswers =  (answerObj) => {
     console.log("saving");
-	var answer = {answerObj};
+	var answer = [{answerObj}];
     var json = JSON.stringify(answer); 
 	console.log('answerjson', json);
     var encodedId = btoa(imageId);
