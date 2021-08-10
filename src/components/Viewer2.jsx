@@ -61,8 +61,11 @@ export default function Viewer2() {
 	
     useEffect(() => {
 	getIndex();
-	getImages();
     }, []);
+	
+    useEffect(() => {
+	getImages();
+    }, [index]);
 	
     useEffect(() => {
         getQuestions(imageId);
@@ -135,6 +138,9 @@ export default function Viewer2() {
     }
 	
   const getImages = async () => {
+	  if(images) {
+		  return
+	  }
     const response = await fetch("/api/profile", {
                               method: 'GET',
                               credentials: 'include',
