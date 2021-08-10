@@ -208,7 +208,7 @@ export default function Viewer2() {
 	
   const handleAnswerOptionClick = (answerChoice, questionText) => {
     const nextQuestion = currentQuestion + 1;
-	  let newAnswer = {
+	  let newAnswerObj = {
 		  questionsText: questionText,
 		  answersText: answerChoice
 	  }
@@ -245,12 +245,12 @@ const getAnswers = (imageId) => {
 	 )
 }
 			
-const saveRemoteAnswers =  (answer) => {
+const saveRemoteAnswers =  (answerObj) => {
     console.log("saving");
 	if(currentQuestion == 0) {
-		var answerObj = [{answer}];
+		var answer = [{answerObj}];
 	}
-    var json = JSON.stringify(answerObj); 
+    var json = JSON.stringify(answer); 
 	console.log('answerjson', json);
     var encodedId = btoa(imageId);
 	
