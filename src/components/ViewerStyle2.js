@@ -42,7 +42,6 @@ export const useStyles = makeStyles((theme) => ({
     flexShrink: 0,
   },
   drawerPaper: {
-    position: 'relative',
     width: drawerWidth
   },
   drawerHeader: {
