@@ -37,27 +37,28 @@ import Icon from '@material-ui/core/Icon';
 import NextIcon from '@material-ui/icons/ArrowRight';
 import './Questions.css';
 import Questions from './Questions.jsx';
+import { FormControl, FormControlLabel, RadioGroup } from '@material-ui/core';
 export default function Viewer2() {
 	
-  const [images, setImages] = useState([]);
-  const [manifest, setManifest] = useState();
-  const [imageId, setImageId] = useState();
-  const [title, setTitle] = useState();
-  const [state, setState] = useState();
-  const [index, setIndex]= useState(0);
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [showScore, setShowScore] = useState(false);
-  const [score, setScore] = useState(0);
-  const [questions, setQuestions] = useState();
-  const classes = useStyles();
-  const theme = useTheme();
-  const [open, setOpen] = useState(true);
-  const [answers, setAnswers] = useState([]);
-  const [showStart, setShowStart] = useState(true);
-  const [showNext, setShowNext] = useState(false);	
-  const [showEnd, setShowEnd] = useState(false);
-  const [selectedAnswer, setSelectedAnswer] = useState();
-  var studyId = "brainTissueStudy";
+const [images, setImages] = useState([]);
+const [manifest, setManifest] = useState();
+const [imageId, setImageId] = useState();
+const [title, setTitle] = useState();
+const [state, setState] = useState();
+const [index, setIndex]= useState(0);
+const [currentQuestion, setCurrentQuestion] = useState(0);
+const [showScore, setShowScore] = useState(false);
+const [score, setScore] = useState(0);
+const [questions, setQuestions] = useState();
+const classes = useStyles();
+const theme = useTheme();
+const [open, setOpen] = useState(true);
+const [answers, setAnswers] = useState([]);
+const [showStart, setShowStart] = useState(true);
+const [showNext, setShowNext] = useState(false);	
+const [showEnd, setShowEnd] = useState(false);
+const [selectedAnswer, setSelectedAnswer] = useState();
+var studyId = "brainTissueStudy";
 	
     setUserInfo();
 	
@@ -359,13 +360,34 @@ const saveRemoteAnswers =  (answerObj) => {
 						</div>
 						<div className='question-text'>{questions[index].QuestionJson[currentQuestion].questionText}</div>
 					</div>
+
+					/*
 					<div className='answer-section'>
 						{questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
 							<button onClick={() => handleAnswerOptionClick(answerOption.answerText, questions[index].QuestionJson[currentQuestion].questionText)}>{answerOption.answerText}</button>
 						))}
 						<p/>
+						<p/>
 						<button onClick={() => handleSubmit()}>Submit</button>
+					</div> */
+
+					<div className='answer-section'>
+					<form onSubmit={handleSubmit}>
+  					  <FormControl component="fieldset" error={error} className={classes.formControl}>
+    					    <RadioGroup aria-label="quiz" name="quiz" value={value} onChange={handleAnswerOptionClick(answerOption.answerText, questions[index].QuestionJson[currentQuestion].questionText)}>
+					        {questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
+						  <FormControlLabel value="best" control={<Radio />} label="answerOption.answerText" />
+						))}
+    					    </RadioGroup>
+    					      <Button type="submit" variant="outlined" color="primary">
+      					        Submit
+    					      </Button>
+  				          </FormControl>
+				        </form>
 					</div>
+
+
+
 				</>}
 			{showStart == true &&
 				<div className='question-section'>
