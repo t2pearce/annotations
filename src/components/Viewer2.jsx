@@ -361,10 +361,14 @@ const saveRemoteAnswers =  (answerObj) => {
 					</div>
 					<div className='answer-section'>
 						{questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
-							<button onClick={() => handleAnswerOptionClick(answerOption.answerText, questions[index].QuestionJson[currentQuestion].questionText)}>{answerOption.answerText}</button>
+							    <RadioGroup onChange={handleAnswerOptionClick(answerOption.answerText, questions[index].QuestionJson[currentQuestion].questionText)}>
+      								<FormControlLabel control={<Radio />} label="answerOption.answerText" />
+							    </RadioGroup>
+							//<button onClick={() => handleAnswerOptionClick(answerOption.answerText, questions[index].QuestionJson[currentQuestion].questionText)}>{answerOption.answerText}</button>
 						))}
 						<p/>
 						<button onClick={() => handleSubmit()}>Submit</button>
+
 					</div>
 				</>}
 			{showStart == true &&
