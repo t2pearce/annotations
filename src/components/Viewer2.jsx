@@ -327,7 +327,7 @@ const saveRemoteAnswers =  (answerObj) => {
 	<div className='app'>
 			{showNext == true &&
 			 <div className='question-section'>
-     			 <Button onClick={handleNext}>Next Image</Button>
+     			 <Button variant="outlined" color="primary" className={classes.button} onClick={handleNext}>Next Image</Button>
 			</div>}
 			{showScore == true &&
 				<>
@@ -357,11 +357,11 @@ const saveRemoteAnswers =  (answerObj) => {
 				</>}
 			{showStart == true &&
 				<div className='question-section'>
-     			<button onClick={handleStart} variant="contained">START</ button>
+     			<Button variant="outlined" color="primary" className={classes.button} onClick={handleStart}>Start</Button>
 			</div>}
 			 {showEnd == true &&
 				 <div className='question-section'>
-					 <Typography variant="h1">
+					 <Typography variant="h6">
             				 <b>END</b>
 			  		 </Typography>
 			         </div>
