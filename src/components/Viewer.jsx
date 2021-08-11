@@ -84,7 +84,7 @@ export default function Viewer() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title} align="left">
-            <b>Breast Tissue Clinical Study</b>
+            <b>Brain Tissue Clinical Study</b>
           </Typography>
           <Typography>
             User:{' '}<b><span id="user"></span> </b>
