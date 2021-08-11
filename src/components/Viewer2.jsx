@@ -327,7 +327,7 @@ const saveRemoteAnswers =  (answerObj) => {
 	<div className='app'>
 			{showNext == true &&
 			 <div className='question-section'>
-     			 <Button variant="outlined" color="primary" className={classes.button} onClick={handleNext}>Next Image</Button>
+     			 <Button variant="contained" color="primary" className={classes.button} onClick={handleNext}>Next Image</Button>
 			</div>}
 			{showScore == true &&
 				<>
@@ -345,11 +345,11 @@ const saveRemoteAnswers =  (answerObj) => {
 				             <FormLabel component="legend">{questions[index].QuestionJson[currentQuestion].questionText}</FormLabel>
 					     <RadioGroup aria-label="quiz" name={index} value={value} onChange={handleAnswerOptionClick}>
 						{questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
-      						  <FormControlLabel value={answerOption.answerText} control={<Radio />} label={answerOption.answerText} />
+      						  <FormControlLabel value={answerOption.answerText} control={<Radio color="primary" />} label={answerOption.answerText} />
 						))}
 						</RadioGroup>
 						<FormHelperText>{helperText}</FormHelperText>
-						<Button type="submit" variant="outlined" color="primary" className={classes.button}>Submit Answer</Button>
+						<Button type="submit" variant="contained" color="primary" className={classes.button}>Submit Answer</Button>
 					    </FormControl>
 					    </form>
 
@@ -357,7 +357,7 @@ const saveRemoteAnswers =  (answerObj) => {
 				</>}
 			{showStart == true &&
 				<div className='question-section'>
-     			<Button variant="outlined" color="primary" className={classes.button} onClick={handleStart}>Start</Button>
+     			<Button variant="contained" color="primary" className={classes.button} onClick={handleStart}>Start</Button>
 			</div>}
 			 {showEnd == true &&
 				 <div className='question-section'>
