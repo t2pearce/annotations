@@ -36,7 +36,6 @@ import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import NextIcon from '@material-ui/icons/ArrowRight';
 import './Questions.css';
-import Questions from './Questions.jsx';
 
 export default function Viewer2() {
 	
