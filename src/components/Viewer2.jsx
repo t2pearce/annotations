@@ -327,7 +327,7 @@ const saveRemoteAnswers =  (answerObj) => {
 	<div className='app'>
 			{showNext == true &&
 			 <div className='question-section'>
-     			<button onClick={handleNext} variant="contained">Next Image</ button>
+     			 <Button variant="outlined" color="primary" className={classes.button} onClick={() => {handleNext}}>Next Image</Button>
 			</div>}
 			{showScore == true &&
 				<>
@@ -349,9 +349,7 @@ const saveRemoteAnswers =  (answerObj) => {
 						))}
 						</RadioGroup>
 						<FormHelperText>{helperText}</FormHelperText>
-						<Button type="submit" variant="outlined" color="primary" className={classes.button}>
-						  Submit Answer
-						</Button>
+						<Button type="submit" variant="outlined" color="primary" className={classes.button}>Submit Answer</Button>
 					    </FormControl>
 					    </form>
 
@@ -363,8 +361,11 @@ const saveRemoteAnswers =  (answerObj) => {
 			</div>}
 			 {showEnd == true &&
 				 <div className='question-section'>
-					 <span>END</span>
-			  </div>}
+					 <Typography variant="h2">
+            				 <b>END</b>
+			  		 </Typography>
+			         </div>
+			 }
 		</div>	  
        
       
