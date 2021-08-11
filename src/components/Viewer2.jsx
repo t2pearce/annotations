@@ -203,11 +203,11 @@ export default function Viewer2() {
 	  }
   };
 	
-  const handleAnswerOptionClick = (answerChoice, questionText) => {
+  const handleAnswerOptionClick = (event) => {
     console.log("handleAnswerOptionClick");
     let answerObj = {
-      questionsText: questionText,
-      answersText: answerChoice
+      questionsText: questions[index].QuestionJson[currentQuestion].questionText,
+      answersText: event.target.value
     }
     setSelectedAnswer(answerObj);
   };
@@ -330,7 +330,7 @@ const saveRemoteAnswers =  (answerObj) => {
 					<div className='answer-section'>
 					   <FormControl component="fieldset" className={classes.formControl}>
 						{questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
-							   <RadioGroup value={selectedAnswer} onChange={handleAnswerOptionClick(answerOption.answerText, questions[index].QuestionJson[currentQuestion].questionText)}>
+							   <RadioGroup value={selectedAnswer} onChange={handleAnswerOptionClick}>
       								<FormControlLabel value={answerOption.answerText} control={<Radio />} label={answerOption.answerText} />
 							   </RadioGroup>
 							//<button onClick={() => handleAnswerOptionClick(answerOption.answerText, questions[index].QuestionJson[currentQuestion].questionText)}>{answerOption.answerText}</button>
