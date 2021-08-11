@@ -22,6 +22,11 @@
   margin-bottom: 12px;
 }
 
+.answer-section {
+  width: 100%;
+  position: relative;
+}
+
 .timer-text {
   background: rgb(230, 153, 12);
   padding: 15px;
