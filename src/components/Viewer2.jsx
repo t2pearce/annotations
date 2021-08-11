@@ -188,7 +188,7 @@ export default function Viewer2() {
   };
 	
   const handleStart = () => {
-	  if (index > images.length) {
+	  if (index >= images.length) {
 		setShowStart(false);
 		setShowEnd(true);
 	  }
