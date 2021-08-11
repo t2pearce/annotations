@@ -42,7 +42,13 @@ export const useStyles = makeStyles((theme) => ({
     flexShrink: 0,
   },
   drawerPaper: {
-   width: drawerWidth,
+    position: 'relative',
+    whiteSpace: 'nowrap',
+    width: drawerWidth,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   },
   drawerHeader: {
     display: 'flex',
