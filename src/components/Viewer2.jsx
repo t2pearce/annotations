@@ -332,11 +332,11 @@ const saveRemoteAnswers =  (answerObj) => {
 						<div className='question-count'>
 							<span>Question {currentQuestion + 1}</span>/{questions.length}
 						</div>
-						<div className='question-text'>{questions[index].QuestionsJson[currentQuestion].questionText}</div>
+						<div className='question-text'>{questions[index].QuestionJson[currentQuestion].questionText}</div>
 					</div>
 					<div className='answer-section'>
-						{questions[index].QuestionsJson[currentQuestion].answerOptions.map((answerOption) => (
-							<button onClick={() => handleAnswerOptionClick(answerOption.answerText, questions[index].QuestionsJson[currentQuestion].questionText)}>{answerOption.answerText}</button>
+						{questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
+							<button onClick={() => handleAnswerOptionClick(answerOption.answerText, questions[index].QuestionJson[currentQuestion].questionText)}>{answerOption.answerText}</button>
 						))}
 					</div>
 				</>}
