@@ -88,13 +88,21 @@ namespace Microsoft.Function
 
                 } catch (Exception ) {
                     log.LogError($"Cant find Questions entry for  in cosmosdb");
-                    return new NotFoundResult();
+                }
+                
+                if (indices == null)
+                {
+                    var defaultResponse = await client.ReadDocumentAsync(
+                            UriFactory.CreateDocumentUri("medimages", "Questions", "DEFAULT"),
+                            new RequestOptions { PartitionKey = new Microsoft.Azure.Documents.PartitionKey("DEFAULT") });
+                    if (defaultResponse == null )
+                        return new NotFoundResult();
+
+                    indices = (IndexItem)(dynamic)defaultResponse.Resource
                 }
                 log.LogInformation($"Retrieved questions ");
-                if ( indices != null && indices.IndexJson != null)
+                
                   return new OkObjectResult(indices.IndexJson);
-                else
-                  return new NotFoundResult();
             }
         }
 }
