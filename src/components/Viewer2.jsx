@@ -318,7 +318,7 @@ const saveRemoteAnswers =  (answerObj) => {
 			</div>}
 			{showScore == true &&
 				<>
-					<div className='questionSection'>
+					<div className='question-section'>
 						<div className='question-count'>
 							<span>Image {index +1}</span>/{images.length}
 						</div>
@@ -327,7 +327,7 @@ const saveRemoteAnswers =  (answerObj) => {
 						</div>
 						<div className='question-text'>{questions[index].QuestionJson[currentQuestion].questionText}</div>
 					</div>
-					<div className='answerSction'>
+					<div className='answer-section'>
 					   <FormControl component="fieldset" className={classes.formControl}>
 					     <RadioGroup value={selectedAnswer} name={index} onChange={handleAnswerOptionClick}>
 						{questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
