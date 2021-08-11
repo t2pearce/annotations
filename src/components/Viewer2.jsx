@@ -188,6 +188,7 @@ export default function Viewer2() {
   };
 	
   const handleStart = () => {
+	  console.log("handleStart");
 	  if (index >= images.length) {
 		setShowStart(false);
 		setShowEnd(true);
@@ -203,7 +204,7 @@ export default function Viewer2() {
   };
 	
   const handleAnswerOptionClick = (answerChoice, questionText) => {
-    //const nextQuestion = currentQuestion + 1;
+    console.log("handleAnswerOptionClick");
     let answerObj = {
       questionsText: questionText,
       answersText: answerChoice
