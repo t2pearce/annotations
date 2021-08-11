@@ -98,7 +98,7 @@ namespace Microsoft.Function
                     if (defaultResponse == null )
                         return new NotFoundResult();
 
-                    indices = (IndexItem)(dynamic)defaultResponse.Resource
+                    indices = (IndexItem)(dynamic)defaultResponse.Resource;
                 }
                 log.LogInformation($"Retrieved questions ");
                 
