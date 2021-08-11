@@ -212,7 +212,7 @@ export default function Viewer2() {
     } else {
       setShowScore(false);
       setShowNext(true);
-      saveIndex(index, currentQuestion+1);
+      saveIndex(index, 0);
       saveRemoteAnswers(answerObj);
     }
   };
