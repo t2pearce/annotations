@@ -188,12 +188,18 @@ export default function Viewer2() {
   };
 	
   const handleStart = () => {
-	  console.log('imgaeindex', index)
-	  console.log('currQues', currentQuestion)
-	  setShowStart(false);
-	  setShowScore(true);
-	  setManifest(images[index].slide);
-	  getQuestions(imageId);
+	  if (index > images.length) {
+		setShowStart(false);
+		setShowEnd(true);
+	  }
+	  else {
+		  console.log('imgaeindex', index)
+		  console.log('currQues', currentQuestion)
+		  setShowStart(false);
+		  setShowScore(true);
+		  setManifest(images[index].slide);
+		  getQuestions(imageId);
+	  }
   };
 	
   const handleAnswerOptionClick = (answerChoice, questionText) => {
