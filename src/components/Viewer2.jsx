@@ -58,6 +58,7 @@ export default function Viewer2() {
   const [showNext, setShowNext] = useState(false);	
   const [showEnd, setShowEnd] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState();
+  const [value, setValue] = useState();
   var studyId = "brainTissueStudy";
 	
     setUserInfo();
@@ -210,6 +211,7 @@ export default function Viewer2() {
       questionsText: questions[index].QuestionJson[currentQuestion].questionText,
       answersText: event.target.value
     }
+    setValue(answerObj.answersText);
     setSelectedAnswer(answerObj);
   };
 	
@@ -327,13 +329,12 @@ const saveRemoteAnswers =  (answerObj) => {
 						<div className='question-count'>
 							<span>Question {currentQuestion + 1}</span>/{questions[index].QuestionJson.length}
 						</div>
-						<div className='question-text'>{questions[index].QuestionJson[currentQuestion].questionText}</div>
 					</div>
 					<div className='answer-section'>
 					   <form onSubmit={handleSubmit}>
 					   <FormControl component="fieldset" className={classes.formControl}>
-						   <FormLabel component="legend">{questions[index].QuestionJson[currentQuestion].questionText}</FormLabel>
-					     <RadioGroup aria-label="quiz" name={index} value={selectedAnswer} onChange={handleAnswerOptionClick}>
+				             <FormLabel component="legend">{questions[index].QuestionJson[currentQuestion].questionText}</FormLabel>
+					     <RadioGroup aria-label="quiz" name={index} value={value} onChange={handleAnswerOptionClick}>
 						{questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
       							<FormControlLabel value={answerOption.answerText} control={<Radio />} label={answerOption.answerText} />
 							//<button onClick={() => handleAnswerOptionClick(answerOption.answerText, questions[index].QuestionJson[currentQuestion].questionText)}>{answerOption.answerText}</button>
@@ -344,8 +345,6 @@ const saveRemoteAnswers =  (answerObj) => {
 						</Button>
 					    </FormControl>
 					    </form>
-						//<p/>
-						//<button onClick={() => handleSubmit()}>Submit</button>
 
 					</div>
 				</>}
