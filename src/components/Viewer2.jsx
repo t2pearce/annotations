@@ -56,6 +56,7 @@ export default function Viewer2() {
   const [showStart, setShowStart] = useState(true);
   const [showNext, setShowNext] = useState(false);	
   const [showEnd, setShowEnd] = useState(false);
+  string studyId = "brainTissueStudy";
 	
     setUserInfo();
 	
@@ -65,17 +66,14 @@ export default function Viewer2() {
     }, []);
 	
     useEffect(() => {
-        getQuestions(imageId);
-    }, [imageId]);
+        getQuestions(studyId);
+    }, []);
 	
 	
-    const getQuestions = (imageId) => {
+    const getQuestions = (studyId) => {
        console.log('imageindex', index)
        console.log('currQues', currentQuestion)
-       console.log('imageId', imageId)
-       var encodedId = btoa(imageId);
-       console.log('encodedId', encodedId)
-       fetch("/api/questions/" + encodedId, {
+       fetch("/api/questions/" + studyId, {
 		    method: 'GET',
 		    credentials: 'include',
 		    headers: {'Access-Control-Allow-Credentials': 'true'}})
@@ -334,11 +332,11 @@ const saveRemoteAnswers =  (answerObj) => {
 						<div className='question-count'>
 							<span>Question {currentQuestion + 1}</span>/{questions.length}
 						</div>
-						<div className='question-text'>{questions[currentQuestion].questionText}</div>
+						<div className='question-text'>{questions[index].QuestionsJson[currentQuestion].questionText}</div>
 					</div>
 					<div className='answer-section'>
-						{questions[currentQuestion].answerOptions.map((answerOption) => (
-							<button onClick={() => handleAnswerOptionClick(answerOption.answerText, questions[currentQuestion].questionText)}>{answerOption.answerText}</button>
+						{questions[index].QuestionsJson[currentQuestion].answerOptions.map((answerOption) => (
+							<button onClick={() => handleAnswerOptionClick(answerOption.answerText, questions[index].QuestionsJson[currentQuestion].questionText)}>{answerOption.answerText}</button>
 						))}
 					</div>
 				</>}
