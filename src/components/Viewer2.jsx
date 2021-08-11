@@ -170,7 +170,7 @@ export default function Viewer2() {
   };
 	
   const handleNext = () => {
-	  if (index < images[index].QuestionJson.length) {
+	  if (index < images.length) {
 		  setIndex(index+1);
 		  console.log('index', index)
 		  setManifest(images[index+1].slide)
