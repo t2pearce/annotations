@@ -185,6 +185,7 @@ export default function Viewer2() {
 	  } else {
 		  setShowScore(false);
 		  setShowEnd(true);
+		  setShowNext(false);
 		  saveIndex(index, currentQuestion);
 	  }
   };
@@ -213,8 +214,8 @@ export default function Viewer2() {
     } else {
       setShowScore(false);
       setShowNext(true);
-	    saveIndex(index, currentQuestion+1);
-	    saveRemoteAnswers(answerObj);
+      saveIndex(index, currentQuestion+1);
+      saveRemoteAnswers(answerObj);
     }
   };
 	
