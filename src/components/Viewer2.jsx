@@ -370,9 +370,22 @@ const saveRemoteAnswers =  (answerObj) => {
 						<button onClick={() => handleSubmit()}>Submit</button>
 					</div> */
 
+										
 					<div className='answer-section'>
+					    {questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
+    					      <RadioGroup aria-label="quiz" name="quiz" onChange={handleAnswerOptionClick(answerOption.answerText, questions[index].QuestionJson[currentQuestion].questionText)}>
+					    	<FormControlLabel value="best" control={<Radio />} label="answerOption.answerText" />
+					      </RadioGroup>
+					     ))}
+						<p/>
+						<p/>
+						<button onClick={() => handleSubmit()}>Submit</button>
+					</div> 
+
+
+					/*<div className='answer-section'>
 					<form onSubmit={handleSubmit}>
-  					  <FormControl component="fieldset" /*error={handleError}*/ className={classes.formControl}>
+  					  <FormControl component="fieldset" error={handleError} className={classes.formControl}>
 					    {questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
     					      <RadioGroup aria-label="quiz" name="quiz" onChange={handleAnswerOptionClick(answerOption.answerText, questions[index].QuestionJson[currentQuestion].questionText)}>
 					    	<FormControlLabel value="best" control={<Radio />} label="answerOption.answerText" />
@@ -383,7 +396,7 @@ const saveRemoteAnswers =  (answerObj) => {
     					      </Button>
   				          </FormControl>
 				        </form>
-					</div>
+					</div> */
 
 
 
