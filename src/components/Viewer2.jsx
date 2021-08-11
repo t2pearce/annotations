@@ -363,6 +363,7 @@ const saveRemoteAnswers =  (answerObj) => {
 						{questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
 							<button onClick={() => handleAnswerOptionClick(answerOption.answerText, questions[index].QuestionJson[currentQuestion].questionText)}>{answerOption.answerText}</button>
 						))}
+						<p/>
 						<button onClick={() => handleSubmit()}>Submit</button>
 					</div>
 				</>}
