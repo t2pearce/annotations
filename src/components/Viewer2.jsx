@@ -209,20 +209,6 @@ export default function Viewer2() {
       answersText: answerChoice
     }
     setSelectedAnswer(answerObj);
-    //setAnswers([...answers, {answerObj}]);
-    /*if (nextQuestion < questions[index].QuestionJson.length) {
-      setCurrentQuestion(nextQuestion);
-      console.log('answers', answers)
-	    saveIndex(index, currentQuestion+1);
-	    saveRemoteAnswers(answerObj);
-    } else {
-      setShowScore(false);
-      setShowNext(true);
-      saveIndex(index+1, 0);
-      setIndex(index+1);
-      setCurrentQuestion(0);
-      saveRemoteAnswers(answerObj);
-    }*/
   };
 	
 const handleSubmit = () => {
@@ -241,25 +227,6 @@ const handleSubmit = () => {
     saveRemoteAnswers(selectedAnswer);
   }
 };
-	
-/*const getAnswers = (imageId) => {
-	var encodedId = btoa(imageId);
-	fetch("/api/answers/" + encodedId, {
-		    method: 'GET',
-		    credentials: 'include',
-		    headers: {'Access-Control-Allow-Credentials': 'true'}})
-	.then((response) => response.json())
-	.then(
-	       (result) => {
-		    let answersList = result;
-		       console.log('fetchAnswers', answersList)
-		    setAnswers(answersList);
-	       },
-	       (error) => {
-		       console.log(error)
-	       }
-	 )
-}*/
 			
 const saveRemoteAnswers =  (answerObj) => {
     console.log("saving");
@@ -295,7 +262,7 @@ const saveRemoteAnswers =  (answerObj) => {
               className={clsx(classes.appBar, open && classes.appBarShift)}>
         <Toolbar className={classes.toolbar}>
            <Typography variant="h6" noWrap className={classes.title} align="left">
-            <b>Breast Tissue Clinical Study</b>
+            <b>Brain Tissue Clinical Study</b>
           </Typography>
           <Typography>
             User:{' '}<b><span id="user"></span> </b>
@@ -361,8 +328,8 @@ const saveRemoteAnswers =  (answerObj) => {
 					</div>
 					<div className='answer-section'>
 						{questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
-							   <RadioGroup onChange={handleAnswerOptionClick(answerOption.answerText, questions[index].QuestionJson[currentQuestion].questionText)}>
-      								<FormControlLabel control={<Radio />} label={answerOption.answerText} />
+							   <RadioGroup value="test" onChange={handleAnswerOptionClick(answerOption.answerText, questions[index].QuestionJson[currentQuestion].questionText)}>
+      								<FormControlLabel value={answerOption.answerText} control={<Radio />} label={answerOption.answerText} />
 							   </RadioGroup>
 							//<button onClick={() => handleAnswerOptionClick(answerOption.answerText, questions[index].QuestionJson[currentQuestion].questionText)}>{answerOption.answerText}</button>
 						))}
