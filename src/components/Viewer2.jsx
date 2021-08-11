@@ -350,7 +350,7 @@ const saveRemoteAnswers =  (answerObj) => {
 						</RadioGroup>
 						<FormHelperText>{helperText}</FormHelperText>
 						<Button type="submit" variant="outlined" color="primary" className={classes.button}>
-						  Submit
+						  Submit Answer
 						</Button>
 					    </FormControl>
 					    </form>
