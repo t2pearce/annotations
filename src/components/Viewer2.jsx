@@ -37,6 +37,7 @@ import Icon from '@material-ui/core/Icon';
 import NextIcon from '@material-ui/icons/ArrowRight';
 import './Questions.css';
 import Questions from './Questions.jsx';
+
 export default function Viewer2() {
 	
   const [images, setImages] = useState([]);
@@ -212,7 +213,8 @@ export default function Viewer2() {
     setSelectedAnswer(answerObj);
   };
 	
-const handleSubmit = () => {
+const handleSubmit = (event) => {
+  event.preventDefault();
   const nextQuestion = currentQuestion + 1;
   if (nextQuestion < questions[index].QuestionJson.length) {
     setCurrentQuestion(nextQuestion);
@@ -328,6 +330,7 @@ const saveRemoteAnswers =  (answerObj) => {
 						<div className='question-text'>{questions[index].QuestionJson[currentQuestion].questionText}</div>
 					</div>
 					<div className='answer-section'>
+					   <form onSubmit={handleSubmit}>
 					   <FormControl component="fieldset" className={classes.formControl}>
 					     <RadioGroup aria-label="quiz" name={index} value={selectedAnswer} onChange={handleAnswerOptionClick}>
 						{questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
@@ -335,9 +338,13 @@ const saveRemoteAnswers =  (answerObj) => {
 							//<button onClick={() => handleAnswerOptionClick(answerOption.answerText, questions[index].QuestionJson[currentQuestion].questionText)}>{answerOption.answerText}</button>
 						))}
 						</RadioGroup>
+						<Button type="submit" variant="outlined" color="primary" className={classes.button}>
+						  Submit
+						</Button>
 					    </FormControl>
-						<p/>
-						<button onClick={() => handleSubmit()}>Submit</button>
+					    </form>
+						//<p/>
+						//<button onClick={() => handleSubmit()}>Submit</button>
 
 					</div>
 				</>}
