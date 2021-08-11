@@ -309,7 +309,7 @@ const saveRemoteAnswers =  (answerObj) => {
 </main>
       <Drawer
         className={classes.drawer}
-        variant="persistent"
+        variant="permanent"
         anchor="right"
         classes={{
           paper: classes.drawerPaper,
