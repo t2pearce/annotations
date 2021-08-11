@@ -56,6 +56,7 @@ export default function Viewer2() {
   const [showStart, setShowStart] = useState(true);
   const [showNext, setShowNext] = useState(false);	
   const [showEnd, setShowEnd] = useState(false);
+  const [selectedAnswer, setSelectedAnswer] = useState();
   var studyId = "brainTissueStudy";
 	
     setUserInfo();
@@ -196,13 +197,14 @@ export default function Viewer2() {
   };
 	
   const handleAnswerOptionClick = (answerChoice, questionText) => {
-    const nextQuestion = currentQuestion + 1;
-	  let answerObj = {
-		  questionsText: questionText,
-		  answersText: answerChoice
-	  }
+    //const nextQuestion = currentQuestion + 1;
+    let answerObj = {
+      questionsText: questionText,
+      answersText: answerChoice
+    }
+    setSelectedAnswer(answerObj);
     //setAnswers([...answers, {answerObj}]);
-    if (nextQuestion < questions[index].QuestionJson.length) {
+    /*if (nextQuestion < questions[index].QuestionJson.length) {
       setCurrentQuestion(nextQuestion);
       console.log('answers', answers)
 	    saveIndex(index, currentQuestion+1);
@@ -214,8 +216,25 @@ export default function Viewer2() {
       setIndex(index+1);
       setCurrentQuestion(0);
       saveRemoteAnswers(answerObj);
-    }
+    }*/
   };
+	
+const handleSubmit = () => {
+  const nextQuestion = currentQuestion + 1;
+  if (nextQuestion < questions[index].QuestionJson.length) {
+    setCurrentQuestion(nextQuestion);
+    console.log('answers', answers)
+    saveIndex(index, currentQuestion+1);
+    saveRemoteAnswers(selectedAnswer);
+  } else {
+    setShowScore(false);
+    setShowNext(true);
+    saveIndex(index+1, 0);
+    setIndex(index+1);
+    setCurrentQuestion(0);
+    saveRemoteAnswers(selectedAnswer);
+  }
+};
 	
 /*const getAnswers = (imageId) => {
 	var encodedId = btoa(imageId);
@@ -338,6 +357,7 @@ const saveRemoteAnswers =  (answerObj) => {
 						{questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
 							<button onClick={() => handleAnswerOptionClick(answerOption.answerText, questions[index].QuestionJson[currentQuestion].questionText)}>{answerOption.answerText}</button>
 						))}
+						<button onClick={() => handleSubmit()}>Submit</button>
 					</div>
 				</>}
 			{showStart == true &&
