@@ -170,21 +170,19 @@ export default function Viewer2() {
   };
 	
   const handleNext = () => {
-	  if (index+1 < images.length) {
-		  setIndex(index+1);
+	  if (index < images.length) {
 		  console.log('index', index)
-		  setManifest(images[index+1].slide)
-		  setImageId(images[index+1].slide.source.Image.Url);
+		  setManifest(images[index].slide)
+		  setImageId(images[index].slide.source.Image.Url);
 		  //getQuestions(imageId);
-		  setCurrentQuestion(0);
 		  setShowNext(false);
 		  setShowScore(true);
-		  saveIndex(index, currentQuestion);
+		  //saveIndex(index, currentQuestion);
 	  } else {
 		  setShowScore(false);
 		  setShowEnd(true);
 		  setShowNext(false);
-		  saveIndex(index, currentQuestion);
+		  //saveIndex(index, currentQuestion);
 	  }
   };
 	
@@ -212,7 +210,9 @@ export default function Viewer2() {
     } else {
       setShowScore(false);
       setShowNext(true);
-      saveIndex(index, 0);
+      saveIndex(index+1, 0);
+      setIndex(index+1);
+      setCurrentQuestion(0);
       saveRemoteAnswers(answerObj);
     }
   };
