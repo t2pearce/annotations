@@ -56,7 +56,7 @@ export default function Viewer2() {
   const [showStart, setShowStart] = useState(true);
   const [showNext, setShowNext] = useState(false);	
   const [showEnd, setShowEnd] = useState(false);
-  string studyId = "brainTissueStudy";
+  var studyId = "brainTissueStudy";
 	
     setUserInfo();
 	
