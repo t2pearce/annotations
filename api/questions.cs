@@ -36,7 +36,7 @@ namespace Microsoft.Function
                 string studyId,
                 ILogger log)
             {
-                log.LogInformation($"function GetQuestions {imageId}");
+                log.LogInformation($"function GetQuestions ");
 
                 // Verify identity
                 ClaimsPrincipal principal = ClientPrincipal.Parse(req);
@@ -55,10 +55,10 @@ namespace Microsoft.Function
                     log.LogInformation($"function GetQuestions invoked ");
 
                 } catch (Exception ) {
-                    log.LogError($"Cant find Questions entry for {imageId} in cosmosdb");
+                    log.LogError($"Cant find Questions entry for in cosmosdb");
                     return new NotFoundResult();
                 }
-                log.LogInformation($"Retrieved questions {questions.QuestionsJson}");
+                log.LogInformation($"Retrieved questions ");
                 if ( questions != null && questions.ImageJson != null && questions.ImageJson.Length > 0)
                   return new OkObjectResult(questions.ImageJson);
                 else
