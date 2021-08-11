@@ -327,7 +327,7 @@ const saveRemoteAnswers =  (answerObj) => {
 	<div className='app'>
 			{showNext == true &&
 			 <div className='question-section'>
-     			 <Button onClick={() => {handleNext}}>Next Image</Button>
+     			 <Button onClick={handleNext}>Next Image</Button>
 			</div>}
 			{showScore == true &&
 				<>
