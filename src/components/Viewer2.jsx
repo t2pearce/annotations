@@ -360,7 +360,7 @@ const saveRemoteAnswers =  (answerObj) => {
 						<div className='question-text'>{questions[index].QuestionJson[currentQuestion].questionText}</div>
 					</div>
 
-					/*
+					
 					<div className='answer-section'>
 						{questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
 							<button onClick={() => handleAnswerOptionClick(answerOption.answerText, questions[index].QuestionJson[currentQuestion].questionText)}>{answerOption.answerText}</button>
@@ -368,19 +368,19 @@ const saveRemoteAnswers =  (answerObj) => {
 						<p/>
 						<p/>
 						<button onClick={() => handleSubmit()}>Submit</button>
-					</div> */
+					</div>
 
-										
+					/*				
 					<div className='answer-section'>
 					    {questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
-    					      <RadioGroup aria-label="quiz" name="quiz" onChange={handleAnswerOptionClick(answerOption.answerText, questions[index].QuestionJson[currentQuestion].questionText)}>
-					    	<FormControlLabel value="best" control={<Radio />} label="answerOption.answerText" />
+    					      <RadioGroup onChange={handleAnswerOptionClick(answerOption.answerText, questions[index].QuestionJson[currentQuestion].questionText)}>
+					    	<FormControlLabel control={<Radio />} label="answerOption.answerText" />
 					      </RadioGroup>
 					     ))}
 						<p/>
 						<p/>
 						<button onClick={() => handleSubmit()}>Submit</button>
-					</div> 
+					</div> */
 
 
 					/*<div className='answer-section'>
