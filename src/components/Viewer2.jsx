@@ -170,7 +170,7 @@ export default function Viewer2() {
   };
 	
   const handleNext = () => {
-	  if (index < images.length) {
+	  if (index < images[index].QuestionsJson.length) {
 		  setIndex(index+1);
 		  console.log('index', index)
 		  setManifest(images[index+1].slide)
@@ -204,7 +204,7 @@ export default function Viewer2() {
 		  answersText: answerChoice
 	  }
     //setAnswers([...answers, {answerObj}]);
-    if (nextQuestion < questions.length) {
+    if (nextQuestion < questions[index].QuestionsJson.length) {
       setCurrentQuestion(nextQuestion);
       console.log('answers', answers)
 	    saveIndex(index, currentQuestion+1);
@@ -330,7 +330,7 @@ const saveRemoteAnswers =  (answerObj) => {
 							<span>Image {index +1}</span>/{images.length}
 						</div>
 						<div className='question-count'>
-							<span>Question {currentQuestion + 1}</span>/{questions.length}
+							<span>Question {currentQuestion + 1}</span>/{questions[index].QuestionsJson.length}
 						</div>
 						<div className='question-text'>{questions[index].QuestionJson[currentQuestion].questionText}</div>
 					</div>
