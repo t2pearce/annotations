@@ -59,6 +59,8 @@ export default function Viewer2() {
   const [showEnd, setShowEnd] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState();
   const [value, setValue] = useState();
+  const [error, setError] = React.useState(false);
+  const [helperText, setHelperText] = React.useState('');
   var studyId = "brainTissueStudy";
 	
     setUserInfo();
@@ -218,18 +220,25 @@ export default function Viewer2() {
 const handleSubmit = (event) => {
   event.preventDefault();
   const nextQuestion = currentQuestion + 1;
-  if (nextQuestion < questions[index].QuestionJson.length) {
-    setCurrentQuestion(nextQuestion);
-    console.log('answers', answers)
-    saveIndex(index, currentQuestion+1);
-    saveRemoteAnswers(selectedAnswer);
+  if (value == null) {
+	  setHelperText('Please select an answer.');
+	  setError(true);
   } else {
-    setShowScore(false);
-    setShowNext(true);
-    saveIndex(index+1, 0);
-    setIndex(index+1);
-    setCurrentQuestion(0);
-    saveRemoteAnswers(selectedAnswer);
+	  setHelperText('');
+	  setError(false);
+	  saveRemoteAnswers(selectedAnswer);
+	  setValue(null);
+	  if (nextQuestion < questions[index].QuestionJson.length) {
+	    setCurrentQuestion(nextQuestion);
+	    console.log('answers', answers)
+	    saveIndex(index, currentQuestion+1);
+	  } else {
+	    setShowScore(false);
+	    setShowNext(true);
+	    saveIndex(index+1, 0);
+	    setIndex(index+1);
+	    setCurrentQuestion(0);
+	  }
   }
 };
 			
@@ -332,14 +341,14 @@ const saveRemoteAnswers =  (answerObj) => {
 					</div>
 					<div className='answer-section'>
 					   <form onSubmit={handleSubmit}>
-					   <FormControl component="fieldset" className={classes.formControl}>
+					   <FormControl component="fieldset" error={error} className={classes.formControl}>
 				             <FormLabel component="legend">{questions[index].QuestionJson[currentQuestion].questionText}</FormLabel>
 					     <RadioGroup aria-label="quiz" name={index} value={value} onChange={handleAnswerOptionClick}>
 						{questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
-      							<FormControlLabel value={answerOption.answerText} control={<Radio />} label={answerOption.answerText} />
-							//<button onClick={() => handleAnswerOptionClick(answerOption.answerText, questions[index].QuestionJson[currentQuestion].questionText)}>{answerOption.answerText}</button>
+      						  <FormControlLabel value={answerOption.answerText} control={<Radio />} label={answerOption.answerText} />
 						))}
 						</RadioGroup>
+						<FormHelperText>{helperText}</FormHelperText>
 						<Button type="submit" variant="outlined" color="primary" className={classes.button}>
 						  Submit
 						</Button>
