@@ -21,9 +21,9 @@ var ColorFormatter = function(annotation) {
               ${firstComment.value}
             </div>`;
 
-          return {
+          return 
             firstTag.value;
-          };
+     
         }
 }
 export default ColorFormatter;
