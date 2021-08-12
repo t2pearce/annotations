@@ -22,7 +22,7 @@ var ColorFormatter = function(annotation) {
             </div>`;
 
           return {
-            firstTag.value;
+            firstTag.value,
             element: foreignObject,
             className: firstComment.value
           };
