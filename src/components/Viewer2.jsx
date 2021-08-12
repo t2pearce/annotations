@@ -60,7 +60,6 @@ export default function Viewer2() {
   const [value, setValue] = useState();
   const [error, setError] = React.useState(false);
   const [helperText, setHelperText] = React.useState('');
-  var studyId = "brainTissueStudy";
 	
     setUserInfo();
 	
@@ -74,10 +73,10 @@ export default function Viewer2() {
     }, []);
 	
 	
-    const getQuestions = (studyId) => {
+    const getQuestions = () => {
        console.log('imageindex', index)
        console.log('currQues', currentQuestion)
-       fetch("/api/questions/" + studyId, {
+       fetch("/api/questions", {
 		    method: 'GET',
 		    credentials: 'include',
 		    headers: {'Access-Control-Allow-Credentials': 'true'}})
