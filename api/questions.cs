@@ -17,8 +17,8 @@ namespace Microsoft.Function
     
         public class QuestionsItem 
         {
-            [JsonProperty("studyId")]
-            public string StudyId { get; set; }
+            [JsonProperty("userId")]
+            public string UserId { get; set; }
             //[JsonProperty("QuestionsJson")]
             public object[] ImageJson { get; set; }
         }
@@ -27,13 +27,12 @@ namespace Microsoft.Function
         {
             [FunctionName("getQuestions")]
             public static async Task<IActionResult> RunGet(
-                [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "questions/{studyId}")] HttpRequest req,
+                [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "questions")] HttpRequest req,
                 [CosmosDB(
                     databaseName: "medimages",
                     collectionName: "Questions",
                     ConnectionStringSetting = "CosmosDBConnection")
                 ]  DocumentClient client,
-                string studyId,
                 ILogger log)
             {
                 log.LogInformation($"function GetQuestions ");
@@ -48,21 +47,26 @@ namespace Microsoft.Function
                 try
                 {
                     var response = await client.ReadDocumentAsync(
-                        UriFactory.CreateDocumentUri("medimages", "Questions", "questionList"),
-                        new RequestOptions { PartitionKey = new Microsoft.Azure.Documents.PartitionKey(studyId) });
+                        UriFactory.CreateDocumentUri("medimages", "Questions", "userId"),
+                        new RequestOptions { PartitionKey = new Microsoft.Azure.Documents.PartitionKey(userId) });
 
                     questions = (QuestionsItem)(dynamic)response.Resource;
                     log.LogInformation($"function GetQuestions invoked ");
 
                 } catch (Exception ) {
                     log.LogError($"Cant find Questions entry for in cosmosdb");
-                    return new NotFoundResult();
                 }
-                log.LogInformation($"Retrieved questions ");
-                if ( questions != null && questions.ImageJson != null && questions.ImageJson.Length > 0)
+                if (questions == null)
+                {
+                    var defaultResponse = await client.ReadDocumentAsync(
+                            UriFactory.CreateDocumentUri("medimages", "Questions", "DEFAULT"),
+                            new RequestOptions { PartitionKey = new Microsoft.Azure.Documents.PartitionKey("DEFAULT") });
+                    if (defaultResponse == null )
+                        return new NotFoundResult();
+
+                    profileItem = (ProfileItem)(dynamic)defaultResponse.Resource;
+                }
                   return new OkObjectResult(questions.ImageJson);
-                else
-                  return new NotFoundResult();
             }
         }
 }
