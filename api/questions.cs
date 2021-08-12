@@ -64,7 +64,7 @@ namespace Microsoft.Function
                     if (defaultResponse == null )
                         return new NotFoundResult();
 
-                    profileItem = (ProfileItem)(dynamic)defaultResponse.Resource;
+                    questions = (QuestionsItem)(dynamic)defaultResponse.Resource;
                 }
                   return new OkObjectResult(questions.ImageJson);
             }
