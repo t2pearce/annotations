@@ -231,11 +231,12 @@ const handleSubmit = (event) => {
 	    setCurrentQuestion(nextQuestion);
 	    console.log('answers', answers)
 	    saveIndex(index, currentQuestion+1);
-	  } else if (index == images.length) {
+	  } else if (index == images.length-1) {
 	    console.log('end')
 	    setShowNext(true);
 	    setShowScore(false);
 	  } else {
+	    console.log('new image');
 	    setShowScore(false);
 	    setShowNext(true);
 	    saveIndex(index+1, 0);
