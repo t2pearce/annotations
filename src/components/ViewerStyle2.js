@@ -74,7 +74,7 @@ export const useStyles = makeStyles((theme) => ({
     position: "absolute",
     top: "55%",
     left: "50%",
-    transform: "translate(100%, -50%)"
+    transform: "translate(-25%, -50%)"
   },
   paperShift: {
     marginRight: 145,
