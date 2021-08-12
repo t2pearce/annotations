@@ -230,6 +230,10 @@ const handleSubmit = (event) => {
 	    setCurrentQuestion(nextQuestion);
 	    console.log('answers', answers)
 	    saveIndex(index, currentQuestion+1);
+	  } else if (index == images.length) {
+	    console.log('end')
+	    setShowNext(true);
+	    setShowScore(false);
 	  } else {
 	    setShowScore(false);
 	    setShowNext(true);
