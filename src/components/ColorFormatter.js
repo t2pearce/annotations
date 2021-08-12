@@ -1,5 +1,5 @@
 import './ColorSelector.css';
-import './ShabeLabels.css';
+import './ShapeLabels.css';
 /** A matching formatter that sets the color according to the 'highlighting' body value **/
 var ColorFormatter = function(annotation) {
   const bodies = Array.isArray(annotation.body) ?
