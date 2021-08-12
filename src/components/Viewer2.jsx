@@ -147,7 +147,7 @@ export default function Viewer2() {
     setImages(image.groups[0].slides)
     //setManifest(image.groups[0].slides[0].slide)
     console.log('imageindexinimages', index)
-    setImageId(image.groups[0].slides[index].slide.source.Image.Url)
+    
     console.log('IMAGEID', image.groups[0].slides[index].slide.source.Image.Url)
     //getQuestions(image.groups[0].slides[0].slide.source.Image.Url)
   };
@@ -198,6 +198,7 @@ export default function Viewer2() {
 	  else {
 		  console.log('imgaeindex', index)
 		  console.log('currQues', currentQuestion)
+		  setImageId(image.groups[0].slides[index].slide.source.Image.Url)
 		  setShowStart(false);
 		  setShowScore(true);
 		  setManifest(images[index].slide);
