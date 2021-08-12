@@ -69,7 +69,7 @@ export default function Viewer2() {
     }, []);
 	
     useEffect(() => {
-        getQuestions(studyId);
+        getQuestions();
     }, []);
 	
 	
