@@ -198,7 +198,7 @@ export default function Viewer2() {
 	  else {
 		  console.log('imgaeindex', index)
 		  console.log('currQues', currentQuestion)
-		  setImageId(image.groups[0].slides[index].slide.source.Image.Url)
+		  setImageId(images[index].slide.source.Image.Url)
 		  setShowStart(false);
 		  setShowScore(true);
 		  setManifest(images[index].slide);
