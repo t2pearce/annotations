@@ -16,7 +16,7 @@ const OpenSeaDragonViewer2 = ({ image }) => {
     }
     if (image && anno) {    
       anno.destroy();
-      const config = {formatter: {ColorFormatter, ShapeLabelsFormatter},
+      const config = {formatter: ColorFormatter,
                        disableEditor: true, 
                        readOnly: true
                       };
@@ -46,7 +46,7 @@ const OpenSeaDragonViewer2 = ({ image }) => {
       });
 
     setViewer(initViewer);
-    const config = {formatter: {ColorFormatter, ShapeLabelsFormatter},
+    const config = {formatter: ColorFormatter, 
                     disableEditor: true, 
                     readOnly: true
                    };
