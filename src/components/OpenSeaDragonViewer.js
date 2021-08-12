@@ -16,7 +16,7 @@ const OpenSeaDragonViewer = ({ image }) => {
     }
     if (image && anno) {    
       anno.destroy();
-      const config = {formatter: {ColorFormatter, ShapeLabelsFormatter}};
+      const config = {formatter: ColorFormatter};
       const annotate = new Annotorious(viewer, config);
       setAnno(annotate)
     }
@@ -43,7 +43,7 @@ const OpenSeaDragonViewer = ({ image }) => {
       });
 
     setViewer(initViewer);
-    const config = {formatter: {ColorFormatter, ShapeLabelsFormatter},};
+    const config = {formatter: ColorFormatter};
     const annotate = new Annotorious(initViewer, config);
     setAnno(annotate)
   };
