@@ -16,7 +16,10 @@ const OpenSeaDragonViewer2 = ({ image }) => {
     }
     if (image && anno) {    
       anno.destroy();
-      const config = {formatter: ColorFormatter};
+      const config = {formatter: ColorFormatter
+                       disableEditor: true, 
+                       readOnly: true
+                      };
       const annotate = new Annotorious(viewer, config);
       setAnno(annotate)
     }
