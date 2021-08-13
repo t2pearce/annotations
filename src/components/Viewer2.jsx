@@ -282,6 +282,7 @@ const handleSubmit = (event) => {
 	    console.log('answers', answers)
 	    saveIndex(index, currentQuestion+1);
 	  } else {
+	    setManifest(null);
 	    console.log('new image',index);
 	    setShowScore(false);
 	    setShowNext(true);
@@ -291,7 +292,6 @@ const handleSubmit = (event) => {
 	    if (index < images.length-1) {
 	    	setDisplayIndex(displayIndex+1);
 	    }
-	    setManifest(null);
 	    setCurrentQuestion(0);
 	  }
   }
