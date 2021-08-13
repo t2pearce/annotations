@@ -291,7 +291,7 @@ const handleSubmit = (event) => {
 	    if (index < images.length-1) {
 	    	setDisplayIndex(displayIndex+1);
 	    }
-	    setManifest(images[images.length+1].slide);
+	    setManifest(null);
 	    setCurrentQuestion(0);
 	  }
   }
