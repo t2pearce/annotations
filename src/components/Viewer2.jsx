@@ -66,8 +66,8 @@ export default function Viewer2() {
     setUserInfo();
 	
     useEffect(() => {
-	getImages();
 	getIndex();
+	getImages();
     }, []);
 	
     useEffect(() => {
@@ -75,6 +75,8 @@ export default function Viewer2() {
     }, []);
 	
     useEffect(() => {
+	console.log(index);
+	console.log(images);
 	setManifest(images[index].slide)
     }, [index]);
 
