@@ -23,6 +23,9 @@ const OpenSeaDragonViewer2 = ({ image }) => {
       const annotate = new Annotorious(viewer, config);
       setAnno(annotate)
     }
+    if (!image && viewer) {
+      viewer.destroy();
+    }
   }, [image]);
   
   useEffect(() => {
