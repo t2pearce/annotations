@@ -27,6 +27,7 @@ const OpenSeaDragonViewer2 = ({ image }) => {
     }
     if (!image && viewer) {
       viewer.world.removeAll();
+      anno.clearAnnotations();
     }
   }, [image]);
   
