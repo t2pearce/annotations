@@ -186,7 +186,6 @@ export default function Viewer2() {
 		  setShowScore(false);
 		  setShowEnd(true);
 		  setShowNext(false);
-		  setManifest(images[index].slide)
 		  //saveIndex(index, currentQuestion);
 	  }
   };
@@ -240,6 +239,8 @@ const handleSubmit = (event) => {
 	    saveIndex(index+1, 0);
 	    setIndex(index+1);
 	    if (index < images.length-1) {
+		console.log(index)
+		console.log(images.length)
 	    	setDisplayIndex(displayIndex+1);
 	    }	 
 	    setCurrentQuestion(0);
