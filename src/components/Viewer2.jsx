@@ -117,8 +117,9 @@ export default function Viewer2() {
                     setAnnotations(newAnnotations);
                     console.log("getting");
                     console.log('annotations', newAnnotations);
+	            var anno1 = new Array();
 		    for (let i=0; i < newAnnotations.length ; i++) {
-		    let splitAnno[i] = newAnnotations[i].body[0].value.split("/n");
+		    anno1[i] = newAnnotations[i].body[0].value.split("/n");
 		    }
 		    console.log('splitAnno', splitAnno);
                   }
