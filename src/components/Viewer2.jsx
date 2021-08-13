@@ -61,6 +61,7 @@ export default function Viewer2() {
   const [error, setError] = useState(false);
   const [helperText, setHelperText] = useState('');
   const [displayIndex, setDisplayIndex] = useState(1);
+  const [annotations, setAnnotations] = useState([]);
 	
     setUserInfo();
 	
@@ -72,6 +73,10 @@ export default function Viewer2() {
     useEffect(() => {
         getQuestions();
     }, []);
+	
+	useEffect(() => {
+        getRemoteAnnotations(imageId);
+    }, [imageId]);
 	
 	
     const getQuestions = () => {
@@ -96,6 +101,36 @@ export default function Viewer2() {
 	       }
 	       )
 	  }
+    
+    const getRemoteAnnotations =  (imageId) => {
+    var encodedId = btoa(imageId);
+        fetch("/api/annotation/" + encodedId , { 
+                method: 'GET',
+                credentials: 'include',
+                headers: {'Access-Control-Allow-Credentials': 'true'}
+              })
+        .then((response) => response.json())
+        .then(
+              (result) => {
+                  let newAnnotations = result;     
+                  if (newAnnotations) {
+                    setAnnotations(newAnnotations);
+                    console.log("getting");
+                    console.log('annotations', newAnnotations);
+		    for (let i=0; i < newAnnotations.length ; i++) {
+		    newAnnotations[i].body[0].value.split("/n")
+		    }
+		    console.log('splitAnno', newAnnotations);
+                  }
+              },
+              // Note: it's important to handle errors here
+              // instead of a catch() block so that we don't swallow
+              // exceptions from actual bugs in components.
+              (error) => {
+                console.log(error);
+              }
+            )
+    }
     
     const getIndex = async () => {
 	    console.log('geting index')
@@ -203,7 +238,7 @@ export default function Viewer2() {
 		  setShowStart(false);
 		  setShowScore(true);
 		  setManifest(images[index].slide);
-		  getQuestions(imageId);
+		  getQuestions();
 	  }
   };
 	
