@@ -397,9 +397,9 @@ const saveRemoteAnswers =  (answerObj) => {
 					</div>
 					<div className='answer-section'>
 					   <form onSubmit={handleSubmit}>
-					   <FormControl component="fieldset" error={error}>
+					   <FormControl component="fieldset" error={error} align="left">
 				             <FormLabel component="legend">{questions[index].QuestionJson[currentQuestion].questionText}</FormLabel>
-					       <RadioGroup aria-label="quiz" name={index} value={value} onChange={handleAnswerOptionClick} align="left">
+					       <RadioGroup aria-label="quiz" name={index} value={value} onChange={handleAnswerOptionClick}>
 					         {questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
       						   <FormControlLabel value={answerOption.answerText} control={<Radio color="primary" />} label={answerOption.answerText} />
 						 ))}
