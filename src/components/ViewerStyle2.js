@@ -70,7 +70,7 @@ export const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
   },
   fixedHeight: {
-    paddingTop: 4,
+    paddingTop: 2,
     position: "absolute",
     top: "55%",
     right: "50%",
