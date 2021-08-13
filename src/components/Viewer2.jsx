@@ -363,7 +363,7 @@ const saveRemoteAnswers =  (answerObj) => {
                  </Grid>
                </Grid>
              </Container>
-</main>
+	   </main>
       <Drawer
         className={classes.drawer}
         variant="persistent"
@@ -399,7 +399,7 @@ const saveRemoteAnswers =  (answerObj) => {
 					   <form onSubmit={handleSubmit}>
 					   <FormControl component="fieldset" error={error}>
 				             <FormLabel component="legend">{questions[index].QuestionJson[currentQuestion].questionText}</FormLabel>
-					       <Grid container justify="flex-start">
+					       <Grid container alignItems="left">
 					       <RadioGroup aria-label="quiz" name={index} value={value} onChange={handleAnswerOptionClick}>
 					         {questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
       						   <FormControlLabel value={answerOption.answerText} control={<Radio color="primary" />} label={answerOption.answerText} />
