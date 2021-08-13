@@ -406,7 +406,6 @@ const saveRemoteAnswers =  (answerObj) => {
       						   <FormControlLabel value={answerOption.answerText} control={<Radio color="primary" />} label={answerOption.answerText} />
 						 ))}
 					       </RadioGroup>
-					       </Grid>
 						<FormHelperText>{helperText}</FormHelperText>
 						<Grid container alignItems="center">
 						<Button type="submit" variant="contained" color="primary" className={classes.button}>Submit Answer</Button>
