@@ -225,7 +225,7 @@ export default function Viewer2() {
   const handleNext = () => {
 	  if (index < images.length) {
 		  console.log('index', index)
-		  setManifest(images[index].slide)
+		  //setManifest(images[index].slide)
 		  setImageId(images[index].slide.source.Image.Url);
 		  //getQuestions(imageId);
 		  setShowNext(false);
@@ -282,7 +282,7 @@ const handleSubmit = (event) => {
 	    console.log('answers', answers)
 	    saveIndex(index, currentQuestion+1);
 	  } else {
-	    setManifest(null);
+	    setManifest(images[index+1].slide);
 	    console.log('new image',index);
 	    setShowScore(false);
 	    setShowNext(true);
