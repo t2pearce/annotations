@@ -225,7 +225,7 @@ export default function Viewer2() {
   const handleNext = () => {
 	  if (index < images.length) {
 		  console.log('index', index)
-		  //setManifest(images[index].slide)
+		  setManifest(images[index].slide)
 		  setImageId(images[index].slide.source.Image.Url);
 		  //getQuestions(imageId);
 		  setShowNext(false);
