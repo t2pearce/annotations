@@ -253,7 +253,7 @@ export default function Viewer2() {
 		  setShowScore(true);
 		  setManifest(images[index].slide);
 		  getQuestions();
-		  setDisplayIndex(index);
+		  setDisplayIndex(index+1);
 	  }
   };
 	
