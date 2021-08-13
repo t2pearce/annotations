@@ -241,12 +241,9 @@ const handleSubmit = (event) => {
 	    console.log(displayIndex);
 	    if (index < images.length-1) {
 		console.log(index)
-		console.log(images.length)
 	    	setDisplayIndex(displayIndex+1);
-	    } else {
-		console.log('Do not update display index');
-		setDisplayIndex(displayIndex-1);
 	    }
+	    setManifest(images[images.length].slide);
 	    setCurrentQuestion(0);
 	  }
   }
@@ -310,7 +307,7 @@ const saveRemoteAnswers =  (answerObj) => {
                  <Grid item xs={12} md={12} lg={12}>
                    <Paper className={fixedHeightPaper}>
 			   <Typography variant="h6" align="left">
-				 <p></p> <b>Image {index +1} </b>  <p></p>
+				 <p></p> <b>Image {displayIndex} </b>  <p></p>
 				</Typography>
                      <OpenSeaDragonViewer2 image={manifest} />
                    </Paper>
@@ -343,7 +340,7 @@ const saveRemoteAnswers =  (answerObj) => {
 				<>
 					<div className='question-section'>
 						<div className='question-count'>
-							<span>Image {displayIndex}</span>/{images.length}
+							<span>Image {index+1}</span>/{images.length}
 						</div>
 						<div className='question-count'>
 							<span>Question {currentQuestion + 1}</span>/{questions[index].QuestionJson.length}
