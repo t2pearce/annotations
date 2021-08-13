@@ -173,7 +173,7 @@ export default function Viewer2() {
   };
 	
   const handleNext = () => {
-	  if (index < images.length-1) {
+	  if (index <= images.length-1) {
 		  console.log('index', index)
 		  setManifest(images[index].slide)
 		  setImageId(images[index].slide.source.Image.Url);
