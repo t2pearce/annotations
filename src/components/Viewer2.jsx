@@ -395,9 +395,9 @@ const saveRemoteAnswers =  (answerObj) => {
 							<span>Question {currentQuestion + 1}</span>/{questions[index].QuestionJson.length}
 						</div>
 					</div>
-					<div className='answer-section'>
+					<div className='answer-section' align="left">
 					   <form onSubmit={handleSubmit}>
-					   <FormControl component="fieldset" error={error} align="left">
+					   <FormControl component="fieldset" error={error} align="center">
 				             <FormLabel component="legend">{questions[index].QuestionJson[currentQuestion].questionText}</FormLabel>
 					       <RadioGroup aria-label="quiz" name={index} value={value} onChange={handleAnswerOptionClick}>
 					         {questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
