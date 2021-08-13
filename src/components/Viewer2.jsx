@@ -36,7 +36,6 @@ import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import NextIcon from '@material-ui/icons/ArrowRight';
 import './Questions.css';
-import Box from '@material-ui/core/Box';
 
 export default function Viewer2() {
 	
@@ -400,13 +399,13 @@ const saveRemoteAnswers =  (answerObj) => {
 					   <form onSubmit={handleSubmit}>
 					   <FormControl component="fieldset" error={error}>
 				             <FormLabel component="legend">{questions[index].QuestionJson[currentQuestion].questionText}</FormLabel>
-					       <Box align="left">
+					       <Grid container justify="flex-start">
 					       <RadioGroup aria-label="quiz" name={index} value={value} onChange={handleAnswerOptionClick}>
 					         {questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
       						   <FormControlLabel value={answerOption.answerText} control={<Radio color="primary" />} label={answerOption.answerText} />
 						 ))}
 					       </RadioGroup>
-					       </Box>
+					       </Grid>
 						<FormHelperText>{helperText}</FormHelperText>
 						<Button type="submit" variant="contained" color="primary" className={classes.button}>Submit Answer</Button>
 					    </FormControl>
