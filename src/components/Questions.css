@@ -35,6 +35,9 @@
 /* ANSWERS/RIGHT SECTION */
 .answer-section {
   min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .question-button {
