@@ -243,7 +243,6 @@ const handleSubmit = (event) => {
 		console.log(index)
 	    	setDisplayIndex(displayIndex+1);
 	    }
-	    setManifest(images[images.length].slide);
 	    setCurrentQuestion(0);
 	  }
   }
