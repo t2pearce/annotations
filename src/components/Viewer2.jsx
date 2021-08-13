@@ -118,9 +118,9 @@ export default function Viewer2() {
                     console.log("getting");
                     console.log('annotations', newAnnotations);
 		    for (let i=0; i < newAnnotations.length ; i++) {
-		    newAnnotations[i].body[0].value.split("/n")
+		    var splitAnno[i] = newAnnotations[i].body[0].value.split("/n")
 		    }
-		    console.log('splitAnno', newAnnotations);
+		    console.log('splitAnno', splitAnno);
                   }
               },
               // Note: it's important to handle errors here
