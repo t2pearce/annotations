@@ -66,18 +66,23 @@ export default function Viewer2() {
     setUserInfo();
 	
     useEffect(() => {
-	getIndex();
 	getImages();
+	getIndex();
     }, []);
 	
     useEffect(() => {
         getQuestions();
     }, []);
 	
-	useEffect(() => {
+    useEffect(() => {
+	setManifest(images[index].slide)
+    }, [index]);
+
+/*
+    useEffect(() => {
         getRemoteAnnotations(imageId);
     }, [imageId]);
-	
+*/
 	
     const getQuestions = () => {
        console.log('imageindex', index)
@@ -101,7 +106,8 @@ export default function Viewer2() {
 	       }
 	       )
 	  }
-    
+
+/*
     const getRemoteAnnotations =  (imageId) => {
     var encodedId = btoa(imageId);
         fetch("/api/annotation/" + encodedId , { 
@@ -134,6 +140,7 @@ export default function Viewer2() {
               }
             )
     }
+*/
     
     const getIndex = async () => {
 	    console.log('geting index')
@@ -214,7 +221,7 @@ export default function Viewer2() {
   const handleNext = () => {
 	  if (index < images.length) {
 		  console.log('index', index)
-		  setManifest(images[index].slide)
+		  //setManifest(images[index].slide)
 		  setImageId(images[index].slide.source.Image.Url);
 		  //getQuestions(imageId);
 		  setShowNext(false);
@@ -278,7 +285,6 @@ const handleSubmit = (event) => {
 	    setIndex(index+1);
 	    console.log(displayIndex);
 	    if (index < images.length-1) {
-		console.log(index)
 	    	setDisplayIndex(displayIndex+1);
 	    }
 	    setCurrentQuestion(0);
