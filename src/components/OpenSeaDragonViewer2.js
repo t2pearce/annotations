@@ -24,7 +24,7 @@ const OpenSeaDragonViewer2 = ({ image }) => {
       setAnno(annotate)
     }
     if (!image && viewer) {
-      viewer.destroy();
+      viewer && viewer.destroy();
     }
   }, [image]);
   
