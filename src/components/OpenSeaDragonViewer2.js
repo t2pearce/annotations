@@ -9,8 +9,10 @@ import ColorFormatter from './ColorFormatter.js';
 const OpenSeaDragonViewer2 = ({ image }) => {
   const [viewer, setViewer] = useState( null);
   const [anno, setAnno] = useState(null);
+  const [oldImage, setOldImage] = useState();
 
   useEffect(() => {
+    setOldImage(image);
     if (image && viewer) {
       viewer.open(image.source);
     }
@@ -24,13 +26,14 @@ const OpenSeaDragonViewer2 = ({ image }) => {
       setAnno(annotate)
     }
     if (!image && viewer) {
-      viewer.world.resetItems()
+      viewer.world.removeItem(oldImage);
     }
   }, [image]);
   
   useEffect(() => {
     if (image && anno) {    
       InitAnnotations();
+      setOldImage(image);
     }
   }, [anno]);
 
