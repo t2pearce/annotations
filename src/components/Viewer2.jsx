@@ -356,7 +356,7 @@ const saveRemoteAnswers =  (answerObj) => {
                  <Grid item xs={12} md={12} lg={12}>
                    <Paper className={fixedHeightPaper}>
 			   <Typography variant="h6" align="left">
-				 <p></p> <b>Image {displayIndex} </b>  <p></p>
+				 <p></p> <b>Image {displayIndex}/{images.length}</b>  <p></p>
 				</Typography>
                      <OpenSeaDragonViewer2 image={manifest} />
                    </Paper>
