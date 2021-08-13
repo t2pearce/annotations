@@ -282,7 +282,7 @@ const handleSubmit = (event) => {
 	    console.log('answers', answers)
 	    saveIndex(index, currentQuestion+1);
 	  } else {
-	    setManifest(images[index+1].slide);
+	    setManifest();
 	    console.log('new image',index);
 	    setShowScore(false);
 	    setShowNext(true);
@@ -394,15 +394,17 @@ const saveRemoteAnswers =  (answerObj) => {
 							<span>Question {currentQuestion + 1}</span>/{questions[index].QuestionJson.length}
 						</div>
 					</div>
-					<div className='answer-section' align='left'>
+					<div className='answer-section'>
 					   <form onSubmit={handleSubmit}>
 					   <FormControl component="fieldset" error={error} className={classes.formControl}>
 				             <FormLabel component="legend">{questions[index].QuestionJson[currentQuestion].questionText}</FormLabel>
-					     <RadioGroup aria-label="quiz" name={index} value={value} onChange={handleAnswerOptionClick}>
-						{questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
-      						  <FormControlLabel value={answerOption.answerText} control={<Radio color="primary" />} label={answerOption.answerText} />
-						))}
-						</RadioGroup>
+					     <div align='left'>
+					       <RadioGroup aria-label="quiz" name={index} value={value} onChange={handleAnswerOptionClick}>
+					         {questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
+      						   <FormControlLabel value={answerOption.answerText} control={<Radio color="primary" />} label={answerOption.answerText} />
+						 ))}
+					       </RadioGroup>
+					     </div>
 						<FormHelperText>{helperText}</FormHelperText>
 						<Button type="submit" variant="contained" color="primary" className={classes.button}>Submit Answer</Button>
 					    </FormControl>
