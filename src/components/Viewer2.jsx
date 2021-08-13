@@ -58,8 +58,9 @@ export default function Viewer2() {
   const [showEnd, setShowEnd] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState();
   const [value, setValue] = useState();
-  const [error, setError] = React.useState(false);
-  const [helperText, setHelperText] = React.useState('');
+  const [error, setError] = useState(false);
+  const [helperText, setHelperText] = useState('');
+  const [displayIndex, setDisplayIndex] = useState(1);
 	
     setUserInfo();
 	
@@ -173,7 +174,7 @@ export default function Viewer2() {
   };
 	
   const handleNext = () => {
-	  if (index <= images.length-1) {
+	  if (index < images.length) {
 		  console.log('index', index)
 		  setManifest(images[index].slide)
 		  setImageId(images[index].slide.source.Image.Url);
@@ -231,16 +232,15 @@ const handleSubmit = (event) => {
 	    setCurrentQuestion(nextQuestion);
 	    console.log('answers', answers)
 	    saveIndex(index, currentQuestion+1);
-	  } else if (index == images.length-1) {
-	    console.log('end')
-	    setShowNext(true);
-	    setShowScore(false);
 	  } else {
-	    console.log('new image');
+	    console.log('new image',index);
 	    setShowScore(false);
 	    setShowNext(true);
 	    saveIndex(index+1, 0);
 	    setIndex(index+1);
+	    if (index < images.length) {
+	    	setDisplayIndex(displayIndex+1);
+	    }	 
 	    setCurrentQuestion(0);
 	  }
   }
@@ -337,7 +337,7 @@ const saveRemoteAnswers =  (answerObj) => {
 				<>
 					<div className='question-section'>
 						<div className='question-count'>
-							<span>Image {index +1}</span>/{images.length}
+							<span>Image {displayIndex}</span>/{images.length}
 						</div>
 						<div className='question-count'>
 							<span>Question {currentQuestion + 1}</span>/{questions[index].QuestionJson.length}
@@ -367,6 +367,8 @@ const saveRemoteAnswers =  (answerObj) => {
 				 <div className='question-section'>
 					 <Typography variant="h6">
             				 <b>END</b>
+			  		 <p>Your answers have been saved.</p>
+					 <p>Please close the browser window to log out.</p>
 			  		 </Typography>
 			         </div>
 			 }
