@@ -238,11 +238,15 @@ const handleSubmit = (event) => {
 	    setShowNext(true);
 	    saveIndex(index+1, 0);
 	    setIndex(index+1);
+	    console.log(displayIndex);
 	    if (index < images.length-1) {
 		console.log(index)
 		console.log(images.length)
 	    	setDisplayIndex(displayIndex+1);
-	    }	 
+	    } else {
+		console.log('Do not update display index');
+		setDisplayIndex(displayIndex-1);
+	    }
 	    setCurrentQuestion(0);
 	  }
   }
