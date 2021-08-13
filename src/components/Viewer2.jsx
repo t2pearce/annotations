@@ -73,12 +73,14 @@ export default function Viewer2() {
     useEffect(() => {
         getQuestions();
     }, []);
-	
+
+/*
     useEffect(() => {
 	console.log(index);
 	console.log(images);
 	setManifest(images[index].slide)
     }, [index]);
+*/
 
 /*
     useEffect(() => {
@@ -223,7 +225,7 @@ export default function Viewer2() {
   const handleNext = () => {
 	  if (index < images.length) {
 		  console.log('index', index)
-		  //setManifest(images[index].slide)
+		  setManifest(images[index].slide)
 		  setImageId(images[index].slide.source.Image.Url);
 		  //getQuestions(imageId);
 		  setShowNext(false);
@@ -289,6 +291,7 @@ const handleSubmit = (event) => {
 	    if (index < images.length-1) {
 	    	setDisplayIndex(displayIndex+1);
 	    }
+	    setManifest(images[images.length+1].slide);
 	    setCurrentQuestion(0);
 	  }
   }
