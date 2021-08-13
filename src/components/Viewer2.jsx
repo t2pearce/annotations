@@ -282,7 +282,7 @@ const handleSubmit = (event) => {
 	    console.log('answers', answers)
 	    saveIndex(index, currentQuestion+1);
 	  } else {
-	    setManifest();
+	    setManifest(null);
 	    console.log('new image',index);
 	    setShowScore(false);
 	    setShowNext(true);
