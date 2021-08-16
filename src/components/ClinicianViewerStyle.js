@@ -13,8 +13,9 @@ export const useStyles = makeStyles((theme) => ({
     marginBottom: 20
   },
 
-  'question-count span': {
-    fontSize: 28
+  'question-count': {
+     span: {
+      fontSize: 28}
   },
 
   'question-text': {
