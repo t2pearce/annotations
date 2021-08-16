@@ -27,11 +27,11 @@ export const useStyles = makeStyles((theme) => ({
 },
 
 'timer-text': {
-  background: rgb(230, 153, 12),
+  background: 'rgb(230, 153, 12)',
   padding: 15,
   marginTop: 20,
   marginRight: 20,
-  border: 5px solid rgb(255, 189, 67),
+  border: '5px solid rgb(255, 189, 67)',
   borderRadius: 15,
   textAlign: "center"
 },
@@ -44,7 +44,7 @@ export const useStyles = makeStyles((theme) => ({
   justifyContent: "space-between"
 },
 
-''question-button': {
+'question-button': {
   width: "100%",
   fontSize: 16,
   color: "#ffffff",
@@ -54,7 +54,7 @@ export const useStyles = makeStyles((theme) => ({
   padding: 5,
   justifyContent: "flex-start",
   alignItems: "center",
-  border: 5px solid #234668;
+  border: '5px solid #234668',
   cursor: "pointer"
 },
 
