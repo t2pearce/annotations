@@ -19,7 +19,7 @@ import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { ClinicianOpenSeaDragonViewer } from './ClinicianOpenSeaDragonViewer'
+import { ClinicianOSDViewer } from './ClinicianOSDViewer'
 import PhotoIcon from '@material-ui/icons/Photo';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import {useStyles} from './ClinicianViewerStyle.js';
@@ -358,7 +358,7 @@ const saveRemoteAnswers =  (answerObj) => {
 			   <Typography variant="h6" align="left">
 				 <p></p> <b>Image {displayIndex}/{images.length}</b>  <p></p>
 				</Typography>
-                     <ClinicianOpenSeaDragonViewer image={manifest} />
+                     <ClinicianOSDViewer image={manifest} />
                    </Paper>
                  </Grid>
                </Grid>
