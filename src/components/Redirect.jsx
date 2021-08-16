@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-class Doctor extends React.Component {
+class Redirect extends React.Component {
   constructor() {
     super();
 
@@ -66,4 +66,4 @@ class Doctor extends React.Component {
     return <Redirect to= {this.state.redirectLink} />
   }
  }
-export default Doctor;
+export default Redirect;
