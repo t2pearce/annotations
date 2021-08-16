@@ -19,7 +19,7 @@ import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { OpenSeaDragonViewer2 } from './OpenSeaDragonViewer2'
+import { ClinicianOpenSeaDragonViewer } from './ClinicianOpenSeaDragonViewer'
 import PhotoIcon from '@material-ui/icons/Photo';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import {useStyles} from './ClinicianViewerStyle.js';
