@@ -4,8 +4,8 @@ const drawerWidth = 300;
 export const useStyles = makeStyles((theme) => ({
   'score-section': {
   display: 'flex',
-  font-size: 24,
-  align-items: 'center'
+  fontSize: 24,
+  alignItems: 'center'
 }
 
 /* QUESTION/TIMER/LEFT SECTION */
@@ -15,59 +15,59 @@ export const useStyles = makeStyles((theme) => ({
 },
 
 'question-count': {
-  margin-bottom: 20
+  marginBottom: 20
 },
 
 'question-count span': {
-  font-size: 28
+  fontSize: 28
 },
 
 'question-text': {
-  margin-bottom: 12
+  marginBottom: 12
 },
 
-timer-text: {
+'timer-text': {
   background: rgb(230, 153, 12),
   padding: 15,
-  margin-top: 20,
-  margin-right: 20,
+  marginTop: 20,
+  marginRight: 20,
   border: 5px solid rgb(255, 189, 67),
-  border-radius: 15,
-  text-align: "center"
+  borderRadius: 15,
+  textAlign: "center"
 },
 
 /* ANSWERS/RIGHT SECTION */
-answer-section: {
+'answer-section': {
   width: "100%",
   display: "flex",
-  flex-direction: "column",
-  justify-content: "space-between"
+  flexDirection: "column",
+  justifyContent: "space-between"
 },
 
-question-button: {
+''question-button': {
   width: "100%",
-  font-size: 16,
+  fontSize: 16,
   color: "#ffffff",
-  background-color: "#252d4a",
-  border-radius: 15,
+  backgroundColor: "#252d4a",
+  borderRadius: 15,
   display: "flex",
   padding: 5,
-  justify-content: "flex-start",
-  align-items: "center",
+  justifyContent: "flex-start",
+  alignItems: "center",
   border: 5px solid #234668;
   cursor: "pointer"
 },
 
 correct: {
-  background-color: "#2f922f"
+  backgroundColor: "#2f922f"
 },
 
 incorrect: {
-  background-color: "#ff3333"
+  backgroundColor: "#ff3333"
 },
 
 button:hover {
-  background-color: "#555e7d"
+  backgroundColor: "#555e7d"
 },
 
 button:focus {
