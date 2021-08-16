@@ -23,7 +23,7 @@ import PhotoIcon from '@material-ui/icons/Photo';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import {useStyles} from './ViewerStyle.js';
 
-export default function Viewer() {
+export default function OperatorViewer() {
 
   const [images, setImages] = useState([]);
     const [manifest, setManifest] = useState();
@@ -158,7 +158,7 @@ export default function Viewer() {
                Image: <b>{title}</b>
                 <p></p>
              </Typography>
-            <OpenSeaDragonViewer image={manifest} />
+            <OperatorOpenSeaDragonViewer image={manifest} />
               </Paper>
               </Grid>
               </Grid>
