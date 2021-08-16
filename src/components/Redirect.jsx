@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-class Redirect extends React.Component {
+class RedirectPage extends React.Component {
   constructor() {
     super();
 
@@ -66,4 +66,4 @@ class Redirect extends React.Component {
     return <Redirect to= {this.state.redirectLink} />
   }
  }
-export default Redirect;
+export default RedirectPage;
