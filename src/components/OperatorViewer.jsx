@@ -21,7 +21,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { OpenSeaDragonViewer } from './OpenSeaDragonViewer'
 import PhotoIcon from '@material-ui/icons/Photo';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import {useStyles} from './ViewerStyle.js';
+import {useStyles} from './OperatorViewerStyle.js';
 
 export default function OperatorViewer() {
 
