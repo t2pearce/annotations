@@ -358,7 +358,7 @@ const saveRemoteAnswers =  (answerObj) => {
 			   <Typography variant="h6" align="left">
 				 <p></p> <b>Image {displayIndex}/{images.length}</b>  <p></p>
 				</Typography>
-                     <OpenSeaDragonViewer2 image={manifest} />
+                     <ClinicianOpenSeaDragonViewer image={manifest} />
                    </Paper>
                  </Grid>
                </Grid>
