@@ -6,7 +6,7 @@
       "statusCode": 200
     },
     {
-      "route": "/doctor",
+      "route": "/redirect",
       "allowedRoles": ["contributor","reader"]
     },
     {
