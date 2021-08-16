@@ -1,5 +1,5 @@
 import React from "react";
-import './Home.css';
+import './Login.css';
 import { Button, Grid, Paper } from "@material-ui/core";
 import logo from './login.png';
 import { ResponsiveContainer } from 'recharts';
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function Home() {
+function Login() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   return (
@@ -58,4 +58,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Login;
