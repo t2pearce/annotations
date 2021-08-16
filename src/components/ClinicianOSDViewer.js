@@ -9,10 +9,8 @@ import ColorFormatter from './ColorFormatter.js';
 const ClinicianOSDViewer = ({ image }) => {
   const [viewer, setViewer] = useState( null);
   const [anno, setAnno] = useState(null);
-  const [oldImage, setOldImage] = useState();
 
   useEffect(() => {
-    setOldImage(image);
     if (image && viewer) {
       viewer.open(image.source);
     }
@@ -34,7 +32,6 @@ const ClinicianOSDViewer = ({ image }) => {
   useEffect(() => {
     if (image && anno) {    
       InitAnnotations();
-      setOldImage(image);
     }
   }, [anno]);
 
