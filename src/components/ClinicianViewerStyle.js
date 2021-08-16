@@ -66,8 +66,9 @@ incorrect: {
   backgroundColor: "#ff3333"
 },
 
-button:hover {
-  backgroundColor: "#555e7d"
+button: {
+  hover: {
+  backgroundColor: "#555e7d"}
 },
 
 button:focus {
