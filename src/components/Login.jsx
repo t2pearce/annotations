@@ -20,10 +20,10 @@ function Login() {
       <p></p>
       <p><b>Please Login to Your Microsoft Azure Account Below:</b></p>
       <p></p>
-      <img className="photo" src={logo} />
+      <img className={classes.photo} src={logo} />
         <p> </p>
         <p>
-    <Button variant="contained" href="/.auth/login/aad?post_login_redirect_uri=https://black-flower-0f7508210.azurestaticapps.net/redirectpage">Login</Button>
+    <Button variant={classes.contained} href="/.auth/login/aad?post_login_redirect_uri=https://black-flower-0f7508210.azurestaticapps.net/redirectpage">Login</Button>
           <p></p>
           <p>Try to open this <a href="/viewer2">View OpenSeaDragon</a></p>
             </p>
