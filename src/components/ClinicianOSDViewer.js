@@ -6,7 +6,7 @@ import ShapeLabelsFormatter from './ShapeLabelsFormatter.js';
 import ColorFormatter from './ColorFormatter.js';
 
 
-const ClinicianOpenSeaDragonViewer = ({ image }) => {
+const ClinicianOSDViewer = ({ image }) => {
   const [viewer, setViewer] = useState( null);
   const [anno, setAnno] = useState(null);
   const [oldImage, setOldImage] = useState();
@@ -110,4 +110,4 @@ const ClinicianOpenSeaDragonViewer = ({ image }) => {
   );
 };
 
-export { ClinicianOpenSeaDragonViewer };
+export { ClinicianOSDViewer };
