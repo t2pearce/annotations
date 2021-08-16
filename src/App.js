@@ -7,7 +7,7 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" exact component={() => <Login />} />
-          <Route path="/viewer" exact component={() => <OperatorViewer />} />
+          <Route path="/operatorviewer" exact component={() => <OperatorViewer />} />
           <Route path="/clinicianviewer" exact component={() => <ClinicianViewer />} />
           <Route path="/redirectpage" exact component={() => <RedirectPage />} />
         </Switch>
