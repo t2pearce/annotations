@@ -419,7 +419,7 @@ const saveRemoteAnswers =  (answerObj) => {
 					 <Typography variant="h6">
             				 <b>END</b>
 			  		 <p>Your answers have been saved.</p>
-					 <p>Please close the browser window.</p>
+					 <p>Please close your browser window.</p>
 			  		 </Typography>
 			         </div>
 			 }
