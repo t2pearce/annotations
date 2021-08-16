@@ -8,7 +8,7 @@ import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
 
 function Login() {
-  classes = useStyles();
+  const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   return (
     <ResponsiveContainer maxWidth="lg" className={classes.container}>
