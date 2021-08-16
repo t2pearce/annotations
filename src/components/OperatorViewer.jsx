@@ -18,7 +18,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import { OperatorOpenSeaDragonViewer } from './OperatorOpenSeaDragonViewer'
+import { OperatorOSDViewer } from './OperatorOSDViewer'
 import PhotoIcon from '@material-ui/icons/Photo';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import {useStyles} from './OperatorViewerStyle.js';
@@ -158,7 +158,7 @@ export default function OperatorViewer() {
                Image: <b>{title}</b>
                 <p></p>
              </Typography>
-            <OperatorOpenSeaDragonViewer image={manifest} />
+            <OperatorOSDViewer image={manifest} />
               </Paper>
               </Grid>
               </Grid>
