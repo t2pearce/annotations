@@ -9,7 +9,7 @@ function App() {
           <Route path="/" exact component={() => <Login />} />
           <Route path="/viewer" exact component={() => <OperatorViewer />} />
           <Route path="/clinicianviewer" exact component={() => <ClinicianViewer />} />
-          <Route path="/redirect" exact component={() => <RedirectPage />} />
+          <Route path="/redirectpage" exact component={() => <RedirectPage />} />
         </Switch>
       </Router>
     </div>
