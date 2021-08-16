@@ -2,7 +2,7 @@
   "routes": [
     {
       "route": "/",
-      "serve": "/home",
+      "serve": "/login",
       "statusCode": 200
     },
     {
@@ -10,7 +10,7 @@
       "allowedRoles": ["contributor","reader"]
     },
     {
-      "route": "/viewer",
+      "route": "/operatorviewer",
       "allowedRoles": ["contributor"]
     },
     {
