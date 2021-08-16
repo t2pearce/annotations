@@ -6,7 +6,7 @@
       "statusCode": 200
     },
     {
-      "route": "/redirect",
+      "route": "/redirectpage",
       "allowedRoles": ["contributor","reader"]
     },
     {
