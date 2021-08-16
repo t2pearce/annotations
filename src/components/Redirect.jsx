@@ -42,11 +42,11 @@ class Redirect extends React.Component {
               for (let i=0; i < result.length; i++) {
                 if (result[i] == 'contributor') {
                   console.log(result[i]);
-                  link = "/viewer";
+                  link = "/operatorviewer";
                   return link;
                 } else if (result[i] == 'reader') {
                   console.log(result[i]);
-                  link = "/viewer2";
+                  link = "/clinicianviewer";
                   return link;
                 }
               }
