@@ -6,7 +6,7 @@ export const useStyles = makeStyles((theme) => ({
   display: 'flex',
   fontSize: 24,
   alignItems: 'center'
-}
+},
 
 /* QUESTION/TIMER/LEFT SECTION */
 'question-section': {
