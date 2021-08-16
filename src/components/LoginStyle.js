@@ -1,10 +1,10 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
-photo {
+photo: {
     height: '50px';
     width: '50px';
-}
+},
 root: {
     display: 'flex',
   },
