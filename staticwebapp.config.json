@@ -14,7 +14,7 @@
       "allowedRoles": ["contributor"]
     },
     {
-      "route": "/viewer2",
+      "route": "/clinicianviewer",
       "allowedRoles": ["contributor","reader"]
     },
     {
