@@ -2,11 +2,6 @@ import { makeStyles } from '@material-ui/core/styles';
 const drawerWidth = 300;
 
 export const useStyles = makeStyles((theme) => ({
-  'score-section': {
-  display: 'flex',
-  fontSize: 24,
-  alignItems: 'center'
-  },
 
   /* QUESTION/TIMER/LEFT SECTION */
   'question-section': {
