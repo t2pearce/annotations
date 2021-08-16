@@ -6,7 +6,7 @@ import ShapeLabelsFormatter from './ShapeLabelsFormatter.js';
 import ColorFormatter from './ColorFormatter.js';
 
 
-const OperatorOpenSeaDragonViewer = ({ image }) => {
+const OperatorOSDViewer = ({ image }) => {
   const [viewer, setViewer] = useState( null);
   const [anno, setAnno] = useState(null);
 
@@ -164,4 +164,4 @@ const OperatorOpenSeaDragonViewer = ({ image }) => {
   );
 };
 
-export { OperatorOpenSeaDragonViewer };
+export { OperatorOSDViewer };
