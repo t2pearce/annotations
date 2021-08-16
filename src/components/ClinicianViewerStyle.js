@@ -2,6 +2,81 @@ import { makeStyles } from '@material-ui/core/styles';
 const drawerWidth = 300;
 
 export const useStyles = makeStyles((theme) => ({
+  score-section: {
+  display: 'flex',
+  font-size: 24,
+  align-items: 'center'
+}
+
+/* QUESTION/TIMER/LEFT SECTION */
+question-section: {
+  width: "100%",
+  position: "relative"
+},
+
+question-count: {
+  margin-bottom: 20
+},
+
+question-count span {
+  font-size: 28
+},
+
+question-text: {
+  margin-bottom: 12
+},
+
+timer-text: {
+  background: rgb(230, 153, 12),
+  padding: 15,
+  margin-top: 20,
+  margin-right: 20,
+  border: 5px solid rgb(255, 189, 67),
+  border-radius: 15,
+  text-align: "center"
+},
+
+/* ANSWERS/RIGHT SECTION */
+answer-section: {
+  width: "100%",
+  display: "flex",
+  flex-direction: "column",
+  justify-content: "space-between"
+},
+
+question-button: {
+  width: "100%",
+  font-size: 16,
+  color: "#ffffff",
+  background-color: "#252d4a",
+  border-radius: 15,
+  display: "flex",
+  padding: 5,
+  justify-content: "flex-start",
+  align-items: "center",
+  border: 5px solid #234668;
+  cursor: "pointer"
+},
+
+correct: {
+  background-color: "#2f922f"
+},
+
+incorrect: {
+  background-color: "#ff3333"
+},
+
+button:hover {
+  background-color: "#555e7d"
+},
+
+button:focus {
+  outline: "none"
+},
+
+button svg {
+  margin-right: 5
+},
   formControl: {
     margin: theme.spacing(5),
     minWidth: 120,
