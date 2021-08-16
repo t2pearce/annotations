@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Login, OperatorViewer, ClinicianViewer, Redirect } from "./components";
+import { Login, OperatorViewer, ClinicianViewer, RedirectPage } from "./components";
 function App() {
   return (
     <div className="App">
@@ -9,7 +9,7 @@ function App() {
           <Route path="/" exact component={() => <Login />} />
           <Route path="/viewer" exact component={() => <OperatorViewer />} />
           <Route path="/clinicianviewer" exact component={() => <ClinicianViewer />} />
-          <Route path="/redirect" exact component={() => <Redirect />} />
+          <Route path="/redirect" exact component={() => <RedirectPage />} />
         </Switch>
       </Router>
     </div>
