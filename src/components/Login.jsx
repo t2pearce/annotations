@@ -1,13 +1,11 @@
 import React from "react";
 import {useStyles} from './LoginStyle.js';
-import { Button, Grid, Paper } from "@material-ui/core";
+import { Button, Grid, Paper, Typography, makeStyles } from "@material-ui/core";
 import logo from './login.png';
 import { ResponsiveContainer } from 'recharts';
-import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
-import Typography from '@material-ui/core/Typography';
 
-function Login() {
+export default function Login() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   return (
@@ -34,5 +32,3 @@ function Login() {
     </ResponsiveContainer>
   );
 }
-
-export default Login;
