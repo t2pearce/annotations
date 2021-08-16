@@ -6,78 +6,80 @@ export const useStyles = makeStyles((theme) => ({
   display: 'flex',
   fontSize: 24,
   alignItems: 'center'
-},
+  },
 
-/* QUESTION/TIMER/LEFT SECTION */
-'question-section': {
-  width: "100%",
-  position: "relative"
-},
+  /* QUESTION/TIMER/LEFT SECTION */
+  'question-section': {
+    width: "100%",
+    position: "relative"
+  },
 
-'question-count': {
-  marginBottom: 20
-},
+  'question-count': {
+    marginBottom: 20
+  },
 
-'question-count span': {
-  fontSize: 28
-},
+  'question-count span': {
+    fontSize: 28
+  },
 
-'question-text': {
-  marginBottom: 12
-},
+  'question-text': {
+    marginBottom: 12
+  },
 
-'timer-text': {
-  background: 'rgb(230, 153, 12)',
-  padding: 15,
-  marginTop: 20,
-  marginRight: 20,
-  border: '5px solid rgb(255, 189, 67)',
-  borderRadius: 15,
-  textAlign: "center"
-},
+  'timer-text': {
+    background: 'rgb(230, 153, 12)',
+    padding: 15,
+    marginTop: 20,
+    marginRight: 20,
+    border: '5px solid rgb(255, 189, 67)',
+    borderRadius: 15,
+    textAlign: "center"
+  },
 
-/* ANSWERS/RIGHT SECTION */
-'answer-section': {
-  width: "100%",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "space-between"
-},
+  /* ANSWERS/RIGHT SECTION */
+  'answer-section': {
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between"
+  },
 
-'question-button': {
-  width: "100%",
-  fontSize: 16,
-  color: "#ffffff",
-  backgroundColor: "#252d4a",
-  borderRadius: 15,
-  display: "flex",
-  padding: 5,
-  justifyContent: "flex-start",
-  alignItems: "center",
-  border: '5px solid #234668',
-  cursor: "pointer"
-},
+  'question-button': {
+    width: "100%",
+    fontSize: 16,
+    color: "#ffffff",
+    backgroundColor: "#252d4a",
+    borderRadius: 15,
+    display: "flex",
+    padding: 5,
+    justifyContent: "flex-start",
+    alignItems: "center",
+    border: '5px solid #234668',
+    cursor: "pointer"
+  },
 
-correct: {
-  backgroundColor: "#2f922f"
-},
+  correct: {
+    backgroundColor: "#2f922f"
+  },
 
-incorrect: {
-  backgroundColor: "#ff3333"
-},
+  incorrect: {
+    backgroundColor: "#ff3333"
+  },
 
-button: {
-  hover: {
-  backgroundColor: "#555e7d"}
-},
+  button: {
+    hover: {
+    backgroundColor: "#555e7d"}
+  },
 
-button:focus {
-  outline: "none"
-},
+  button: {
+    focus: {
+    outline: "none"}
+  },
 
-button svg {
-  margin-right: 5
-},
+  button: {
+    svg: {
+    marginRight: 5}
+  },
   formControl: {
     margin: theme.spacing(5),
     minWidth: 120,
