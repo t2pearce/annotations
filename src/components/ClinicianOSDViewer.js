@@ -31,7 +31,7 @@ const ClinicianOSDViewer = ({ image }) => {
   
   useEffect(() => {
     if (image && anno) {    
-      InitAnnotations();
+      getRemoteAnnotations();
     }
   }, [anno]);
 
@@ -57,10 +57,6 @@ const ClinicianOSDViewer = ({ image }) => {
     const annotate = Annotorious(initViewer, config);
     setAnno(annotate)
   };
-  
-  const InitAnnotations = async () => {
-      getRemoteAnnotations();
-  }
   
   const getRemoteAnnotations =  () => {
     var encodedId = btoa(image.source.Image.Url);
