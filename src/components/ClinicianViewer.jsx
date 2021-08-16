@@ -1,41 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { makeStyles, useTheme} from '@material-ui/core/styles';
+import { CssBaseline, Drawer, AppbBar, Toolbar, List, Typography, IconButton, Container, Grid, Paper, MenuIcon, ChevronLeftIcon, ChevronRightIcon } from '@material-ui/core';
+import { FormHelperText, FormControl, Radio, RadioGroup, FormControlLabel, FormLabel, Button } from '@material-ui/core';
+import { ClinicianOSDViewer } from './ClinicianOSDViewer'
+import {useStyles} from './ClinicianViewerStyle.js';
+import './Questions.css';
 import './App.css';
 import clsx from 'clsx';
-import { makeStyles, useTheme} from '@material-ui/core/styles';
-import {CssBaseline, Drawer, AppbBar} from '@material-ui/core';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { ClinicianOSDViewer } from './ClinicianOSDViewer'
-import PhotoIcon from '@material-ui/icons/Photo';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import {useStyles} from './ClinicianViewerStyle.js';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import NativeSelect from '@material-ui/core/NativeSelect';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormLabel from '@material-ui/core/FormLabel';
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
-import NextIcon from '@material-ui/icons/ArrowRight';
-import './Questions.css';
 
 export default function ClinicianViewer() {
 	
