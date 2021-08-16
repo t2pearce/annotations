@@ -22,7 +22,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { OpenSeaDragonViewer2 } from './OpenSeaDragonViewer2'
 import PhotoIcon from '@material-ui/icons/Photo';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import {useStyles} from './ViewerStyle2.js';
+import {useStyles} from './ClinicianViewerStyle.js';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
