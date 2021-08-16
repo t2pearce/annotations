@@ -1,5 +1,5 @@
 import React from "react";
-import './Login.css';
+import './LoginStyle.js';
 import { Button, Grid, Paper } from "@material-ui/core";
 import logo from './login.png';
 import { ResponsiveContainer } from 'recharts';
