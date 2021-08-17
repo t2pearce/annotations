@@ -1,27 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import { makeStyles, CssBaseLine, Drawer, AppBar, Toolbar, List, ListItem, ListItemText, ListSubheader, Typography, Divider, IconButton, Container, Grid, Paper, ListItemIcon } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import { OperatorOSDViewer } from './OperatorOSDViewer'
 import PhotoIcon from '@material-ui/icons/Photo';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
+import { OperatorOSDViewer } from './OperatorOSDViewer'
 import {useStyles} from './OperatorViewerStyle.js';
+import './App.css';
 
 export default function OperatorViewer() {
 
