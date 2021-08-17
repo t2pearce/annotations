@@ -200,7 +200,6 @@ export default function ClinicianViewer() {
 	  setValue(null);
 	  if (nextQuestion < questions[index].QuestionJson.length) {
 	    setCurrentQuestion(nextQuestion);
-	    console.log('answers', answers)
 	    saveIndex(index, currentQuestion+1);
 	  } else {
 	    setManifest(null);
