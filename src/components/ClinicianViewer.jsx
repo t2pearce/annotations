@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles, useTheme} from '@material-ui/core/styles';
-import { CssBaseline, Drawer, AppbBar, Toolbar, List, Typography, IconButton, Container, Grid, Paper, MenuIcon, ChevronLeftIcon, ChevronRightIcon } from '@material-ui/core';
+import { CssBaseline, Drawer, AppbBar, Toolbar, List, Typography, IconButton, Container, Grid, Paper } from '@material-ui/core';
 import { FormHelperText, FormControl, Radio, RadioGroup, FormControlLabel, FormLabel, Button } from '@material-ui/core';
+import { MenuIcon, ChevronLeftIcon, ChevronRightIcon  } from '@material-ui/icons';
 import { ClinicianOSDViewer } from './ClinicianOSDViewer'
 import {useStyles} from './ClinicianViewerStyle.js';
 import './Questions.css';
