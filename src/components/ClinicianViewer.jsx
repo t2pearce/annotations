@@ -20,7 +20,6 @@ export default function ClinicianViewer() {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [questions, setQuestions] = useState();
 	const [open, setOpen] = useState(true);
-	const [answers, setAnswers] = useState([]);
 	const [showStart, setShowStart] = useState(true);
 	const [showQuestions, setShowQuestions] = useState(false);
 	const [showNext, setShowNext] = useState(false);	
