@@ -13,59 +13,41 @@ import clsx from 'clsx';
 
 export default function ClinicianViewer() {
 	
-  const [images, setImages] = useState([]);
-  const [manifest, setManifest] = useState();
-  const [imageId, setImageId] = useState();
-  const [title, setTitle] = useState();
-  const [state, setState] = useState();
-  const [index, setIndex]= useState(0);
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [showScore, setShowScore] = useState(false);
-  const [score, setScore] = useState(0);
-  const [questions, setQuestions] = useState();
-  const classes = useStyles();
-  const theme = useTheme();
-  const [open, setOpen] = useState(true);
-  const [answers, setAnswers] = useState([]);
-  const [showStart, setShowStart] = useState(true);
-  const [showNext, setShowNext] = useState(false);	
-  const [showEnd, setShowEnd] = useState(false);
-  const [selectedAnswer, setSelectedAnswer] = useState();
-  const [value, setValue] = useState();
-  const [error, setError] = useState(false);
-  const [helperText, setHelperText] = useState('');
-  const [displayIndex, setDisplayIndex] = useState(1);
-  const [annotations, setAnnotations] = useState([]);
-	
-    setUserInfo();
-	
-    useEffect(() => {
+	const [images, setImages] = useState([]);
+	const [manifest, setManifest] = useState();
+	const [imageId, setImageId] = useState();
+	const [index, setIndex]= useState(0);
+	const [currentQuestion, setCurrentQuestion] = useState(0);
+	const [questions, setQuestions] = useState();
+	const [open, setOpen] = useState(true);
+	const [answers, setAnswers] = useState([]);
+	const [showStart, setShowStart] = useState(true);
+	const [showQuestions, setShowQuestions] = useState(false);
+	const [showNext, setShowNext] = useState(false);	
+	const [showEnd, setShowEnd] = useState(false);
+	const [selectedAnswer, setSelectedAnswer] = useState();
+	const [value, setValue] = useState();
+	const [error, setError] = useState(false);
+	const [helperText, setHelperText] = useState('');
+	const [displayIndex, setDisplayIndex] = useState(1);
+	const classes = useStyles();
+	const theme = useTheme();
+
+	setUserInfo();
+
+	useEffect(() => {
 	getIndex();
 	getImages();
-    }, []);
-	
-    useEffect(() => {
-        getQuestions();
-    }, []);
+	}, []);
 
-/*
-    useEffect(() => {
-	console.log(index);
-	console.log(images);
-	setManifest(images[index].slide)
-    }, [index]);
-*/
+	useEffect(() => {
+	getQuestions();
+	}, []);
 
-/*
-    useEffect(() => {
-        getRemoteAnnotations(imageId);
-    }, [imageId]);
-*/
-	
-    const getQuestions = () => {
-       console.log('imageindex', index)
-       console.log('currQues', currentQuestion)
-       fetch("/api/questions", {
+	const getQuestions = () => {
+	console.log('imageindex', index)
+	console.log('currQues', currentQuestion)
+	fetch("/api/questions", {
 		    method: 'GET',
 		    credentials: 'include',
 		    headers: {'Access-Control-Allow-Credentials': 'true'}})
@@ -74,8 +56,8 @@ export default function ClinicianViewer() {
 	       (result) => {
 		    let questionsList = result;
 		    if (questionsList) {
-	    		console.log('questions', questionsList)
-	    		setQuestions(questionsList);
+			console.log('questions', questionsList)
+			setQuestions(questionsList);
 			console.log('setFetchQuestions', questions)
 		    }
 	       },
@@ -85,42 +67,7 @@ export default function ClinicianViewer() {
 	       )
 	  }
 
-/*
-    const getRemoteAnnotations =  (imageId) => {
-    var encodedId = btoa(imageId);
-        fetch("/api/annotation/" + encodedId , { 
-                method: 'GET',
-                credentials: 'include',
-                headers: {'Access-Control-Allow-Credentials': 'true'}
-              })
-        .then((response) => response.json())
-        .then(
-              (result) => {
-                  let newAnnotations = result;     
-                  if (newAnnotations) {
-                    setAnnotations(newAnnotations);
-                    console.log("getting");
-                    console.log('annotations', newAnnotations);
-	            var anno1 = new Array();
-		    var anno2 = new Array();
-		    for (let i=0; i < newAnnotations.length ; i++) {
-		    	anno1[i] = newAnnotations[i].body[0].value;
-			anno2[i] = anno1[i].split("\n");
-		    }
-		    console.log('splitAnno', anno2);
-                  }
-              },
-              // Note: it's important to handle errors here
-              // instead of a catch() block so that we don't swallow
-              // exceptions from actual bugs in components.
-              (error) => {
-                console.log(error);
-              }
-            )
-    }
-*/
-    
-    const getIndex = async () => {
+	const getIndex = async () => {
 	    console.log('geting index')
 	    const response = await fetch("/api/progress", {
 				method: 'GET',
@@ -130,90 +77,73 @@ export default function ClinicianViewer() {
 	    console.log('fetchindices', indices)
 	    setIndex(indices[0].imageIndex);
 	    setCurrentQuestion(indices[0].questionIndex);
-    };
-	
-   const saveIndex = (imageIndex, questionIndex) => {
-    let indexObj = [{ imageIndex :imageIndex, 
+	};
+
+	const saveIndex = (imageIndex, questionIndex) => {
+	let indexObj = [{ imageIndex :imageIndex, 
 		     questionIndex: questionIndex}];
-    if (!indexObj)
-      return;
-    var json = JSON.stringify(indexObj); 
+	if (!indexObj)
+	return;
+	var json = JSON.stringify(indexObj); 
 	console.log('json', json);
-    fetch("/api/progress", { 
-          method: 'POST',
-          credentials: 'include',
-          headers: {'Access-Control-Allow-Credentials': 'true',
-                    'Content-Type': 'application/json'},
-          body: json } )
-      .then((response) => response.json())
-      .then(
-            (result) => {
-              console.log(result);
-            },
-            // Note: it's important to handle errors here
-            // instead of a catch() block so that we don't swallow
-            // exceptions from actual bugs in components.
-            (error) => {
-              console.log(error);
-            }
-          )
-    }
-	
-  const getImages = async () => {
-    const response = await fetch("/api/profile", {
-                              method: 'GET',
-                              credentials: 'include',
-                              headers: {'Access-Control-Allow-Credentials': 'true'}}); 
-    let image = await response.json();
-    console.log('image', image)
-    console.log('groups', image.groups)
-    console.log('slides', image.groups[0].slides)
-    setImages(image.groups[0].slides)
-    //setManifest(image.groups[0].slides[0].slide)
-    console.log('imageindexinimages', index)
-    
-    console.log('IMAGEID', image.groups[0].slides[index].slide.source.Image.Url)
-    //getQuestions(image.groups[0].slides[0].slide.source.Image.Url)
-  };
-	
-    async function getUserInfo() {
-        const response = await fetch('/.auth/me');
-        const payload = await response.json();
-        const { clientPrincipal } = payload;
-        return clientPrincipal;
-      }
-      async function setUserInfo() {
-        let  clientPrincipal =  await getUserInfo();
-        document.getElementById("user").innerHTML = clientPrincipal.userDetails;
-        console.log(clientPrincipal);
-      }
-	
-  const handleDrawerOpen = () => {
-    setOpen(true);
+	fetch("/api/progress", { 
+	  method: 'POST',
+	  credentials: 'include',
+	  headers: {'Access-Control-Allow-Credentials': 'true',
+		    'Content-Type': 'application/json'},
+	  body: json } )
+	.then((response) => response.json())
+	.then(
+	    (result) => {
+	      console.log(result);
+	    },
+	    // Note: it's important to handle errors here
+	    // instead of a catch() block so that we don't swallow
+	    // exceptions from actual bugs in components.
+	    (error) => {
+	      console.log(error);
+	    }
+	  )
+	}
+
+	const getImages = async () => {
+	const response = await fetch("/api/profile", {
+			      method: 'GET',
+			      credentials: 'include',
+			      headers: {'Access-Control-Allow-Credentials': 'true'}}); 
+	let image = await response.json();
+	console.log('image', image)
+	console.log('groups', image.groups)
+	console.log('slides', image.groups[0].slides)
+	setImages(image.groups[0].slides)
+	//setManifest(image.groups[0].slides[0].slide)
+	console.log('imageindexinimages', index)
+
+	console.log('IMAGEID', image.groups[0].slides[index].slide.source.Image.Url)
+	//getQuestions(image.groups[0].slides[0].slide.source.Image.Url)
+	};
+
+	async function getUserInfo() {
+	const response = await fetch('/.auth/me');
+	const payload = await response.json();
+	const { clientPrincipal } = payload;
+	return clientPrincipal;
+	}
+	async function setUserInfo() {
+	let  clientPrincipal =  await getUserInfo();
+	document.getElementById("user").innerHTML = clientPrincipal.userDetails;
+	console.log(clientPrincipal);
+	}
+
+	const handleDrawerOpen = () => {
+	setOpen(true);
 	  console.log('setQuestions', questions)
-  };
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-	
-  const handleNext = () => {
-	  if (index < images.length) {
-		  console.log('index', index)
-		  setManifest(images[index].slide)
-		  setImageId(images[index].slide.source.Image.Url);
-		  //getQuestions(imageId);
-		  setShowNext(false);
-		  setShowScore(true);
-		  //saveIndex(index, currentQuestion);
-	  } else {
-		  setShowScore(false);
-		  setShowEnd(true);
-		  setShowNext(false);
-		  //saveIndex(index, currentQuestion);
-	  }
-  };
-	
-  const handleStart = () => {
+	};
+	const handleDrawerClose = () => {
+	setOpen(false);
+	};
+
+	const handleStart = () => {
 	  console.log("handleStart");
 	  if (index >= images.length) {
 		setShowStart(false);
@@ -224,30 +154,47 @@ export default function ClinicianViewer() {
 		  console.log('currQues', currentQuestion)
 		  setImageId(images[index].slide.source.Image.Url)
 		  setShowStart(false);
-		  setShowScore(true);
+		  setShowQuestions(true);
 		  setManifest(images[index].slide);
 		  getQuestions();
 		  setDisplayIndex(index+1);
 	  }
-  };
-	
-  const handleAnswerOptionClick = (event) => {
-    console.log("handleAnswerOptionClick");
-    let answerObj = {
-      questionsText: questions[index].QuestionJson[currentQuestion].questionText,
-      answersText: event.target.value
-    }
-    setValue(answerObj.answersText);
-    setSelectedAnswer(answerObj);
-  };
-	
-const handleSubmit = (event) => {
-  event.preventDefault();
-  const nextQuestion = currentQuestion + 1;
-  if (value == null) {
+	};
+
+	const handleNext = () => {
+	  if (index < images.length) {
+		  console.log('index', index)
+		  setManifest(images[index].slide)
+		  setImageId(images[index].slide.source.Image.Url);
+		  //getQuestions(imageId);
+		  setShowNext(false);
+		  setShowQuestions(true);
+		  //saveIndex(index, currentQuestion);
+	  } else {
+		  setShowQuestions(false);
+		  setShowEnd(true);
+		  setShowNext(false);
+		  //saveIndex(index, currentQuestion);
+	  }
+	};
+
+	const handleAnswerOptionClick = (event) => {
+	console.log("handleAnswerOptionClick");
+	let answerObj = {
+	questionsText: questions[index].QuestionJson[currentQuestion].questionText,
+	answersText: event.target.value
+	}
+	setValue(answerObj.answersText);
+	setSelectedAnswer(answerObj);
+	};
+
+	const handleSubmit = (event) => {
+	event.preventDefault();
+	const nextQuestion = currentQuestion + 1;
+	if (value == null) {
 	  setHelperText('Please select an answer.');
 	  setError(true);
-  } else {
+	} else {
 	  setHelperText('');
 	  setError(false);
 	  saveRemoteAnswers(selectedAnswer);
@@ -259,107 +206,102 @@ const handleSubmit = (event) => {
 	  } else {
 	    setManifest(null);
 	    console.log('new image',index);
-	    setShowScore(false);
+	    setShowQuestions(false);
 	    setShowNext(true);
 	    saveIndex(index+1, 0);
 	    setIndex(index+1);
 	    console.log(displayIndex);
 	    if (index < images.length-1) {
-	    	setDisplayIndex(displayIndex+1);
+		setDisplayIndex(displayIndex+1);
 	    }
 	    setCurrentQuestion(0);
 	  }
-  }
-};
-			
-const saveRemoteAnswers =  (answerObj) => {
-    console.log("saving");
+	}
+	};
+
+	const saveRemoteAnswers =  (answerObj) => {
+	console.log("saving");
 	var answer = [{answerObj}];
-    var json = JSON.stringify(answer); 
+	var json = JSON.stringify(answer); 
 	console.log('answerjson', json);
-    var encodedId = btoa(imageId);
+	var encodedId = btoa(imageId);
+
+	fetch("/api/answers/" + encodedId + currentQuestion, { 
+	  method: 'POST',
+	  credentials: 'include',
+	  headers: {'Access-Control-Allow-Credentials': 'true',
+		    'Content-Type': 'application/json'},
+	  body: json } )
+	.then((response) => response.json())
+	.then(
+	    (result) => {
+	      console.log(result);
+	    },
+	    // Note: it's important to handle errors here
+	    // instead of a catch() block so that we don't swallow
+	    // exceptions from actual bugs in components.
+	    (error) => {
+	      console.log(error);
+	    }
+	  )
+	}
+	const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight, open && classes.paperShift);
 	
-    fetch("/api/answers/" + encodedId + currentQuestion, { 
-          method: 'POST',
-          credentials: 'include',
-          headers: {'Access-Control-Allow-Credentials': 'true',
-                    'Content-Type': 'application/json'},
-          body: json } )
-      .then((response) => response.json())
-      .then(
-            (result) => {
-              console.log(result);
-            },
-            // Note: it's important to handle errors here
-            // instead of a catch() block so that we don't swallow
-            // exceptions from actual bugs in components.
-            (error) => {
-              console.log(error);
-            }
-          )
-    }
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight, open && classes.paperShift);
-  return (
-    <div className = {classes.root}>
-      <CssBaseline />
-      <AppBar position="absolute" 
-              className={clsx(classes.appBar, open && classes.appBarShift)}>
-        <Toolbar className={classes.toolbar}>
-           <Typography variant="h6" noWrap className={classes.title} align="left">
-            <b>Brain Tissue Clinical Study</b>
-          </Typography>
-          <Typography>
-            User:{' '}<b><span id="user"></span> </b>
-            <span id='consolelog'></span>
-            </Typography>
-          <IconButton
-            edge="end"
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            className={clsx(open && classes.hide)}
-          >
-            <MenuIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-        <main className={classes.content}>
-             <div className={classes.appBarSpacer} />
-             <Container maxWidth="lg" className={classes.container}>
-               <Grid container spacing={3} alignItems="center">
-                 <Grid item xs={12} md={12} lg={12}>
-                   <Paper className={fixedHeightPaper}>
+	return (
+	<div className = {classes.root}>
+	<CssBaseline />
+	<AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+		<Toolbar className={classes.toolbar}>
+	   		<Typography variant="h6" noWrap className={classes.title} align="left">
+	    		<b>Brain Tissue Clinical Study</b>
+	  		</Typography>
+	  		<Typography>
+	    		User:{' '}<b><span id="user"></span> </b>
+	    		<span id='consolelog'></span>
+	    		</Typography>
+	  			<IconButton edge="end" color="inherit" aria-label="open drawer" onClick={handleDrawerOpen}
+	    			className={clsx(open && classes.hide)}>
+	    			<MenuIcon />
+	  			</IconButton>
+		</Toolbar>
+	</AppBar>
+	<main className={classes.content}>
+	     <div className={classes.appBarSpacer} />
+	     <Container maxWidth="lg" className={classes.container}>
+	       <Grid container spacing={3} alignItems="center">
+		 <Grid item xs={12} md={12} lg={12}>
+		   <Paper className={fixedHeightPaper}>
 			   <Typography variant="h6" align="left">
 				 <p></p> <b>Image {displayIndex}/{images.length}</b>  <p></p>
 				</Typography>
-                     <ClinicianOSDViewer image={manifest} />
-                   </Paper>
-                 </Grid>
-               </Grid>
-             </Container>
+		     <ClinicianOSDViewer image={manifest} />
+		   </Paper>
+		 </Grid>
+	       </Grid>
+	     </Container>
 	   </main>
-      <Drawer
-        className={classes.drawer}
-        variant="persistent"
+	<Drawer
+	className={classes.drawer}
+	variant="persistent"
 	anchor="right"
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-        open={open}
-      >
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-        </div>
-          
-<List>
+	classes={{
+	  paper: classes.drawerPaper,
+	}}
+	open={open}
+	>
+	<div className={classes.drawerHeader}>
+	  <IconButton onClick={handleDrawerClose}>
+	    {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+	  </IconButton>
+	</div>
+
+	<List>
 	<div className='app'>
 			{showNext == true &&
 			 <div className='question-section'>
-     			 <Button variant="contained" color="primary" className={classes.button} onClick={handleNext}>Next Image</Button>
+			 <Button variant="contained" color="primary" className={classes.button} onClick={handleNext}>Next Image</Button>
 			</div>}
-			{showScore == true &&
+			{showQuestions == true &&
 				<>
 					<div className='question-section'>
 						<div className='question-count'>
@@ -372,10 +314,10 @@ const saveRemoteAnswers =  (answerObj) => {
 					<div className="answer-section">
 					   <form onSubmit={handleSubmit}>
 					   <FormControl component="fieldset" error={error}>
-				             <FormLabel component="legend">{questions[index].QuestionJson[currentQuestion].questionText}</FormLabel>
+					     <FormLabel component="legend">{questions[index].QuestionJson[currentQuestion].questionText}</FormLabel>
 					       <RadioGroup style={{width:'290px', paddingLeft:'5px'}} aria-label="quiz" name={index} value={value} onChange={handleAnswerOptionClick}>
-					         {questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
-      						   <FormControlLabel value={answerOption.answerText} control={<Radio color="primary" />} label={answerOption.answerText} />
+						 {questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
+						   <FormControlLabel value={answerOption.answerText} control={<Radio color="primary" />} label={answerOption.answerText} />
 						 ))}
 					       </RadioGroup>
 						<FormHelperText>{helperText}</FormHelperText>
@@ -387,22 +329,22 @@ const saveRemoteAnswers =  (answerObj) => {
 				</>}
 			{showStart == true &&
 				<div className='question-section'>
-     			<Button variant="contained" color="primary" className={classes.button} onClick={handleStart}>Start</Button>
+			<Button variant="contained" color="primary" className={classes.button} onClick={handleStart}>Start</Button>
 			</div>}
 			 {showEnd == true &&
 				 <div className='question-section'>
 					 <Typography variant="h6">
-            				 <b>END</b>
-			  		 <p>Your answers have been saved.</p>
+					 <b>END</b>
+					 <p>Your answers have been saved.</p>
 					 <p>Please close your browser window.</p>
-			  		 </Typography>
-			         </div>
+					 </Typography>
+				 </div>
 			 }
 		</div>	  
-       
-      
-</List>
-      </Drawer>
-</div>
+
+
+	</List>
+	</Drawer>
+	</div>
 );
 }
