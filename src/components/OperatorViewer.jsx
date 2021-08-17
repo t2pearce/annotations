@@ -26,14 +26,16 @@ import {useStyles} from './OperatorViewerStyle.js';
 export default function OperatorViewer() {
 
   const [images, setImages] = useState([]);
-    const [manifest, setManifest] = useState();
-    const [title, setTitle] = useState();
+  const [manifest, setManifest] = useState();
+  const [title, setTitle] = useState();
+  const [open, setOpen] = useState(true);
 
-    setUserInfo();
+  setUserInfo();
 
   useEffect(() => {
     getImages();
   }, []);
+  
   const getImages = async () => {
     const response = await fetch("/api/profile", {
                               method: 'GET',
@@ -43,30 +45,35 @@ export default function OperatorViewer() {
     console.log('image', image)
     setImages(image.groups)
   };
+  
   const previewImage = async (slide) => {
     setManifest(slide.slide);
     setTitle(slide.name);
   };
-    async function getUserInfo() {
-        const response = await fetch('/.auth/me');
-        const payload = await response.json();
-        const { clientPrincipal } = payload;
-        return clientPrincipal;
-      }
-      async function setUserInfo() {
-        let  clientPrincipal =  await getUserInfo();
-        document.getElementById("user").innerHTML = clientPrincipal.userDetails;
-        console.log(clientPrincipal);
-      }
+  
+  async function getUserInfo() {
+    const response = await fetch('/.auth/me');
+    const payload = await response.json();
+    const { clientPrincipal } = payload;
+    return clientPrincipal;
+  }
+  
+  async function setUserInfo() {
+    let  clientPrincipal =  await getUserInfo();
+    document.getElementById("user").innerHTML = clientPrincipal.userDetails;
+    console.log(clientPrincipal);
+  }
 
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  
   const handleDrawerOpen = () => {
     setOpen(true);
   };
+  
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight, open && classes.paperShift);
 
   return (
@@ -81,7 +88,7 @@ export default function OperatorViewer() {
             onClick={handleDrawerOpen}
             className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
           >
-            <MenuIcon />
+          <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title} align="left">
             <b>Brain Tissue Clinical Study</b>
@@ -89,7 +96,7 @@ export default function OperatorViewer() {
           <Typography>
             User:{' '}<b><span id="user"></span> </b>
             <span id='consolelog'></span>
-            </Typography>
+          </Typography>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -104,17 +111,17 @@ export default function OperatorViewer() {
             <ChevronLeftIcon />
           </IconButton>
         </div>
-<List>
-       <div>
-          {images.map((group, index) => {
+        <List>
+          <div>
+            {images.map((group, index) => {
               return (
                 <div
-                style={{
-                  display:"flex",
-                  flexDirection:'column'
+                  style={{
+                    display:"flex",
+                    flexDirection:'column'
                   }}
                 >
-                  <Divider />
+                <Divider />
                   <ListSubheader> {group.name} </ListSubheader>
                   {group.slides.map((slide, index) => {
                     return (
@@ -125,11 +132,12 @@ export default function OperatorViewer() {
                         }}
                       >
                         <ListItemIcon>
-                        <PhotoIcon />
+                          <PhotoIcon />
                         </ListItemIcon>
                         <ListItemText
                           disableTypography
-                          primary={slide.name} />
+                          primary={slide.name} 
+                        />
                       </ListItem>
                     );
                   })}
