@@ -266,43 +266,34 @@ export default function ClinicianViewer() {
 		</Toolbar>
 	</AppBar>
 	<main className={classes.content}>
-	     <div className={classes.appBarSpacer} />
-	     <Container maxWidth="lg" className={classes.container}>
-	       <Grid container spacing={3} alignItems="center">
-		 <Grid item xs={12} md={12} lg={12}>
-		   <Paper className={fixedHeightPaper}>
-			   <Typography variant="h6" align="left">
-				 <p></p> <b>Image {displayIndex}/{images.length}</b>  <p></p>
-				</Typography>
-		     <ClinicianOSDViewer image={manifest} />
-		   </Paper>
-		 </Grid>
-	       </Grid>
-	     </Container>
-	   </main>
-	<Drawer
-	className={classes.drawer}
-	variant="persistent"
-	anchor="right"
-	classes={{
-	  paper: classes.drawerPaper,
-	}}
-	open={open}
-	>
-	<div className={classes.drawerHeader}>
-	  <IconButton onClick={handleDrawerClose}>
-	    {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-	  </IconButton>
-	</div>
-
-	<List>
-	<div className='app'>
-			{showNext == true &&
-			 <div className='question-section'>
-			 <Button variant="contained" color="primary" className={classes.button} onClick={handleNext}>Next Image</Button>
-			</div>}
-			{showQuestions == true &&
-				<>
+		<div className={classes.appBarSpacer} />
+			<Container maxWidth="lg" className={classes.container}>
+				<Grid container spacing={3} alignItems="center">
+					<Grid item xs={12} md={12} lg={12}>
+						<Paper className={fixedHeightPaper}>
+							<Typography variant="h6" align="left">
+				 			<p></p> <b>Image {displayIndex}/{images.length}</b>  <p></p>
+							</Typography>
+		     					<ClinicianOSDViewer image={manifest} />
+		   				</Paper>
+		 			</Grid>
+	       			</Grid>
+	     		</Container>
+	</main>
+	<Drawer className={classes.drawer} variant="persistent" anchor="right" classes={{paper: classes.drawerPaper}} open={open}>
+		<div className={classes.drawerHeader}>
+	  		<IconButton onClick={handleDrawerClose}>
+	    			{theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+	  		</IconButton>
+		</div>
+		<List>
+			<div className='app'>
+				{showNext == true &&
+			 		<div className='question-section'>
+			 			<Button variant="contained" color="primary" className={classes.button} onClick={handleNext}>Next Image</Button>
+				</div>}
+				{showQuestions == true &&
+					<>
 					<div className='question-section'>
 						<div className='question-count'>
 							<span>Image {index+1}</span>/{images.length}
@@ -312,38 +303,37 @@ export default function ClinicianViewer() {
 						</div>
 					</div>
 					<div className="answer-section">
-					   <form onSubmit={handleSubmit}>
-					   <FormControl component="fieldset" error={error}>
-					     <FormLabel component="legend">{questions[index].QuestionJson[currentQuestion].questionText}</FormLabel>
-					       <RadioGroup style={{width:'290px', paddingLeft:'5px'}} aria-label="quiz" name={index} value={value} onChange={handleAnswerOptionClick}>
-						 {questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
-						   <FormControlLabel value={answerOption.answerText} control={<Radio color="primary" />} label={answerOption.answerText} />
-						 ))}
-					       </RadioGroup>
-						<FormHelperText>{helperText}</FormHelperText>
-						<Button style={{width:'290px', paddingLeft:'5px'}} type="submit" variant="contained" color="primary" className={classes.button}>Submit Answer</Button>
-					    </FormControl>
-					    </form>
+						<form onSubmit={handleSubmit}>
+							<FormControl component="fieldset" error={error}>
+								<FormLabel component="legend">{questions[index].QuestionJson[currentQuestion].questionText}</FormLabel>
+									<RadioGroup style={{width:'290px', paddingLeft:'5px'}} aria-label="quiz" name={index} value={value} onChange={handleAnswerOptionClick}>
+						 			{questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
+										<FormControlLabel value={answerOption.answerText} control={<Radio color="primary" />} label={answerOption.answerText} />
+						 			))}
+					       				</RadioGroup>
+								<FormHelperText>{helperText}</FormHelperText>
+									<Button style={{width:'290px', paddingLeft:'5px'}} type="submit" variant="contained" color="primary" className={classes.button}>Submit Answer</Button>
+					    		</FormControl>
+					    	</form>
 
 					</div>
-				</>}
-			{showStart == true &&
-				<div className='question-section'>
-			<Button variant="contained" color="primary" className={classes.button} onClick={handleStart}>Start</Button>
-			</div>}
-			 {showEnd == true &&
-				 <div className='question-section'>
-					 <Typography variant="h6">
-					 <b>END</b>
-					 <p>Your answers have been saved.</p>
-					 <p>Please close your browser window.</p>
-					 </Typography>
-				 </div>
-			 }
-		</div>	  
+					</>}
+				{showStart == true &&
+					<div className='question-section'>
+						<Button variant="contained" color="primary" className={classes.button} onClick={handleStart}>Start</Button>
+					</div>}
+			 	{showEnd == true &&
+				 	<div className='question-section'>
+					 	<Typography variant="h6">
+					 	<b>END</b>
+					 	<p>Your answers have been saved.</p>
+					 	<p>Please close your browser window.</p>
+					 	</Typography>
+				 	</div>}
+			</div>	  
 
 
-	</List>
+		</List>
 	</Drawer>
 	</div>
 );
