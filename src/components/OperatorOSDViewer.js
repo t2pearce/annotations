@@ -70,7 +70,7 @@ const OperatorOSDViewer = ({ image }) => {
     });
     
   }
-
+/*
     async function getUserInfo() {
       const response = await fetch('./auth/me');
       const payload = await response.json();
@@ -87,7 +87,7 @@ const OperatorOSDViewer = ({ image }) => {
           });
 
           console.log(clientPrincipal);
-    }
+    } */
   
   const saveRemoteAnnotation =  (newAnnotations) => {
     console.log("saving");
