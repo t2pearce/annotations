@@ -77,6 +77,18 @@ export default function ClinicianViewer() {
 	    setIndex(indices[0].imageIndex);
 	    setCurrentQuestion(indices[0].questionIndex);
 	};
+	
+	const getImages = async () => {
+	const response = await fetch("/api/profile", {
+			      method: 'GET',
+			      credentials: 'include',
+			      headers: {'Access-Control-Allow-Credentials': 'true'}}); 
+	let image = await response.json();
+	console.log('image', image)
+	console.log('groups', image.groups)
+	console.log('slides', image.groups[0].slides)
+	setImages(image.groups[0].slides)
+	};
 
 	const saveIndex = (imageIndex, questionIndex) => {
 	let indexObj = [{ imageIndex :imageIndex, 
@@ -104,18 +116,32 @@ export default function ClinicianViewer() {
 	    }
 	  )
 	}
+	
+	const saveRemoteAnswers =  (answerObj) => {
+	console.log("saving");
+	var answer = [{answerObj}];
+	var json = JSON.stringify(answer); 
+	console.log('answerjson', json);
 
-	const getImages = async () => {
-	const response = await fetch("/api/profile", {
-			      method: 'GET',
-			      credentials: 'include',
-			      headers: {'Access-Control-Allow-Credentials': 'true'}}); 
-	let image = await response.json();
-	console.log('image', image)
-	console.log('groups', image.groups)
-	console.log('slides', image.groups[0].slides)
-	setImages(image.groups[0].slides)
-	};
+	fetch("/api/answers/" + encodedId + currentQuestion, { 
+	  method: 'POST',
+	  credentials: 'include',
+	  headers: {'Access-Control-Allow-Credentials': 'true',
+		    'Content-Type': 'application/json'},
+	  body: json } )
+	.then((response) => response.json())
+	.then(
+	    (result) => {
+	      console.log(result);
+	    },
+	    // Note: it's important to handle errors here
+	    // instead of a catch() block so that we don't swallow
+	    // exceptions from actual bugs in components.
+	    (error) => {
+	      console.log(error);
+	    }
+	  )
+	}
 
 	async function getUserInfo() {
 	const response = await fetch('/.auth/me');
@@ -210,31 +236,6 @@ export default function ClinicianViewer() {
 	}
 	};
 
-	const saveRemoteAnswers =  (answerObj) => {
-	console.log("saving");
-	var answer = [{answerObj}];
-	var json = JSON.stringify(answer); 
-	console.log('answerjson', json);
-
-	fetch("/api/answers/" + encodedId + currentQuestion, { 
-	  method: 'POST',
-	  credentials: 'include',
-	  headers: {'Access-Control-Allow-Credentials': 'true',
-		    'Content-Type': 'application/json'},
-	  body: json } )
-	.then((response) => response.json())
-	.then(
-	    (result) => {
-	      console.log(result);
-	    },
-	    // Note: it's important to handle errors here
-	    // instead of a catch() block so that we don't swallow
-	    // exceptions from actual bugs in components.
-	    (error) => {
-	      console.log(error);
-	    }
-	  )
-	}
 	const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight, open && classes.paperShift);
 	
 	return (
