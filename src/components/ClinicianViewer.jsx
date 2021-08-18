@@ -299,7 +299,7 @@ export default function ClinicianViewer() {
 								<FormLabel component="legend">{questions[index].QuestionJson[currentQuestion].questionText}</FormLabel>
 									<RadioGroup style={{width:'290px', paddingLeft:'5px'}} aria-label="quiz" name={index} value={value} onChange={handleAnswerOptionClick}>
 						 			{questions[index].QuestionJson[currentQuestion].answerOptions.map((answerOption) => (
-										<FormControlLabel value={answerOption.answerText} control={<Radio color="primary" />} label={answerOption.answerText} />
+										<FormControlLabel value={answerOption.answerText} control={<Radio color="primary"/>} label={answerOption.answerText} />
 						 			))}
 					       				</RadioGroup>
 								<FormHelperText>{helperText}</FormHelperText>
@@ -322,8 +322,6 @@ export default function ClinicianViewer() {
 					 	</Typography>
 				 	</div>}
 			</div>	  
-
-
 		</List>
 	</Drawer>
 	</div>
