@@ -29,6 +29,7 @@ export default function ClinicianViewer() {
 	const [error, setError] = useState(false);
 	const [helperText, setHelperText] = useState('');
 	const [displayIndex, setDisplayIndex] = useState(1);
+	const [title, setTitle] = useState();
 	const classes = useStyles();
 	const theme = useTheme();
 
@@ -152,6 +153,7 @@ export default function ClinicianViewer() {
 		  console.log('imgaeindex', index)
 		  console.log('currQues', currentQuestion)
 		  setImageId(images[index].slide.source.Image.Url)
+		  setTitle(images[index].name);
 		  setShowStart(false);
 		  setShowQuestions(true);
 		  setManifest(images[index].slide);
@@ -165,6 +167,7 @@ export default function ClinicianViewer() {
 		  console.log('index', index)
 		  setManifest(images[index].slide)
 		  setImageId(images[index].slide.source.Image.Url);
+		  setTitle(images[index].name);
 		  //getQuestions(imageId);
 		  setShowNext(false);
 		  setShowQuestions(true);
@@ -180,6 +183,7 @@ export default function ClinicianViewer() {
 	const handleAnswerOptionClick = (event) => {
 	console.log("handleAnswerOptionClick");
 	let answerObj = {
+	imageTitle: title,
 	questionsText: questions[index].QuestionJson[currentQuestion].questionText,
 	answersText: event.target.value
 	}
