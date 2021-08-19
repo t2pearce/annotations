@@ -1,3 +1,7 @@
+/*
+Image list format was modified slightly from an online tutorial found here: https://medium.com/wesionary-team/getting-started-with-openseadragon-in-react-9461ec3bf841
+Page layout with header bar and drawer came from free template from Material-UI: https://github.com/mui-org/material-ui/tree/master/docs/src/pages/getting-started/templates/dashboard
+*/
 import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
