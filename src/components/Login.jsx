@@ -24,8 +24,6 @@ export default function Login() {
         <p> </p>
         <p>
     <Button variant="contained" href="/.auth/login/aad?post_login_redirect_uri=https://black-flower-0f7508210.azurestaticapps.net/redirectpage">Login</Button>
-          <p></p>
-          <p>Try to open this <a href="/viewer2">View OpenSeaDragon</a></p>
             </p>
     </Typography>
     </Paper>
