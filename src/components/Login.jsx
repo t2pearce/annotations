@@ -20,11 +20,9 @@ export default function Login() {
       <p></p>
       <p><b>Please Login to Your Microsoft Azure Account Below:</b></p>
       <p></p>
-      <img className={classes.photo} src={logo} />
-        <p> </p>
-        <p>
-    <Button variant="contained" href="/.auth/login/aad?post_login_redirect_uri=https://black-flower-0f7508210.azurestaticapps.net/redirectpage">Login</Button>
-            </p>
+      <p>
+        <Button variant="contained" href="/.auth/login/aad?post_login_redirect_uri=https://black-flower-0f7508210.azurestaticapps.net/redirectpage">Login</Button>
+      </p>
     </Typography>
     </Paper>
     </Grid>
