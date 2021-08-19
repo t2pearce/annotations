@@ -22,7 +22,7 @@ const ClinicianOSDViewer = ({ image }) => {
                         {widget: ColorWidget, force: 'React'},
                         'COMMENT',
                         'TAG'
-                        ]
+                        ],
                        disableEditor: true, 
                        readOnly: true
                       };
