@@ -4,6 +4,7 @@ import * as Annotorious from '@recogito/annotorious-openseadragon';
 import '@recogito/annotorious-openseadragon/dist/annotorious.min.css';
 import ShapeLabelsFormatter from './ShapeLabelsFormatter.js';
 import ColorFormatter from './ColorFormatter.js';
+import ColorWidget from './ColourWidget.jsx';
 
 
 const ClinicianOSDViewer = ({ image }) => {
@@ -21,6 +22,7 @@ const ClinicianOSDViewer = ({ image }) => {
                        readOnly: true
                       };
       const annotate = new Annotorious(viewer, config);
+      anno.widgets = [ColorWidget];
       setAnno(annotate)
     }
     if (!image && viewer) {
