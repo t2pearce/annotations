@@ -15,6 +15,7 @@ export default function ClinicianViewer() {
 	
 	const [images, setImages] = useState([]);
 	const [manifest, setManifest] = useState();
+	const [imageId, setimageId] = useState();
 	const [index, setIndex]= useState(0);
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [questions, setQuestions] = useState();
