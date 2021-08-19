@@ -312,7 +312,7 @@ export default function ClinicianViewer() {
 						 			))}
 					       				</RadioGroup>
 								<FormHelperText>{helperText}</FormHelperText>
-									<Button style={{width:'300px'}} type="submit" variant="contained" color="primary" className={classes.button}>Submit Answer</Button>
+									<Button style={{width:'299px'}} type="submit" variant="contained" color="primary" className={classes.button}>Submit Answer</Button>
 					    		</FormControl>
 					    	</form>
 
