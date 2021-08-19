@@ -4,6 +4,7 @@ import * as Annotorious from '@recogito/annotorious-openseadragon';
 import '@recogito/annotorious-openseadragon/dist/annotorious.min.css';
 import ShapeLabelsFormatter from './ShapeLabelsFormatter.js';
 import ColorFormatter from './ColorFormatter.js';
+import HelloWorldWidget from './ColourWidget.jsx';
 
 
 const OperatorOSDViewer = ({ image }) => {
@@ -16,7 +17,13 @@ const OperatorOSDViewer = ({ image }) => {
     }
     if (image && anno) {    
       anno.destroy();
-      const config = {formatter: ColorFormatter};
+      const config = {formatter: ColorFormatter,
+                      widgets: [
+                        {widget: HelloWorldWidget, force: 'React'},
+                        'COMMENT',
+                        'TAG'
+                        ],
+                     };
       const annotate = new Annotorious(viewer, config);
       setAnno(annotate)
     }
