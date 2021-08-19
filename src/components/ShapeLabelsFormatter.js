@@ -1,3 +1,6 @@
+/*
+Code from plug-in of Annotorious open source project: https://github.com/recogito/recogito-client-plugins/tree/main/packages/annotorious-shape-labels
+*/
 import './ShapeLabels.css';
 
 var ShapeLabelsFormatter = function(annotation) {
