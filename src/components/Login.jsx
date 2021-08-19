@@ -4,6 +4,7 @@ import { Button, Grid, Paper, Typography, makeStyles } from "@material-ui/core";
 import logo from './login.png';
 import { ResponsiveContainer } from 'recharts';
 import clsx from 'clsx';
+import logo2 from './illumisonics.png';
 
 export default function Login() {
   const classes = useStyles();
@@ -14,6 +15,7 @@ export default function Login() {
     <Grid item xs={12} md={12} lg={12}>
       <Paper className={fixedHeightPaper}>
         <Typography align="center">
+      <img src={logo2} />
       <p> [INSERT TEXT HERE] </p>
       <p></p>
       <p><b>Please Login to Your Microsoft Azure Account Below:</b></p>
