@@ -16,7 +16,7 @@ export default function Login() {
       <Paper className={fixedHeightPaper}>
         <Typography align="center">
       <img src={logo2} />
-      <p> [INSERT TEXT HERE] </p>
+      <p> Clinical Validation Study </p>
       <p></p>
       <p><b>Please Login to Your Microsoft Azure Account Below:</b></p>
       <p></p>
