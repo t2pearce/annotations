@@ -15,7 +15,7 @@ export default function ClinicianViewer() {
 	
 	const [images, setImages] = useState([]);
 	const [manifest, setManifest] = useState();
-	const [imageId, setimageId] = useState();
+	const [imageId, setImageId] = useState();
 	const [index, setIndex]= useState(0);
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [questions, setQuestions] = useState();
@@ -123,6 +123,7 @@ export default function ClinicianViewer() {
 	var answer = [{answerObj}];
 	var json = JSON.stringify(answer); 
 	console.log('answerjson', json);
+	var encodedId = btoa(imageId);
 
 	fetch("/api/answers/" + encodedId + currentQuestion, { 
 	  method: 'POST',
@@ -173,6 +174,7 @@ export default function ClinicianViewer() {
 	  else {
 		  console.log('imgaeindex', index)
 		  console.log('currQues', currentQuestion)
+		  setImageId(images[index].slide.source.Image.Url);
 		  setTitle(images[index].name);
 		  setShowStart(false);
 		  setShowQuestions(true);
@@ -185,7 +187,8 @@ export default function ClinicianViewer() {
 	const handleNext = () => {
 	  if (index < images.length) {
 		  console.log('index', index)
-		  setManifest(images[index].slide)
+		  setManifest(images[index].slide);
+		  setImageId(images[index].slide.source.Image.Url);
 		  setTitle(images[index].name);
 		  setShowNext(false);
 		  setShowQuestions(true);
