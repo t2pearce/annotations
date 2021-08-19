@@ -20,9 +20,8 @@ export default function OperatorViewer() {
 	const [title, setTitle] = useState();
 	const [open, setOpen] = useState(true);
 
-	setUserInfo();
-
 	useEffect(() => {
+	  setUserInfo();
 	  getImages();
 	}, []);
 
