@@ -4,8 +4,6 @@ import * as Annotorious from '@recogito/annotorious-openseadragon';
 import '@recogito/annotorious-openseadragon/dist/annotorious.min.css';
 import ShapeLabelsFormatter from './ShapeLabelsFormatter.js';
 import ColorFormatter from './ColorFormatter.js';
-import HelloWorldWidget from './ColourWidget.jsx';
-
 
 const ClinicianOSDViewer = ({ image }) => {
   const [viewer, setViewer] = useState( null);
@@ -18,11 +16,6 @@ const ClinicianOSDViewer = ({ image }) => {
     if (image && anno) {    
       anno.destroy();
       const config = {formatter: ColorFormatter,
-                      widgets: [
-                        {widget: HelloWorldWidget, force: 'React'},
-                        'COMMENT',
-                        'TAG'
-                        ],
                        disableEditor: true, 
                        readOnly: true
                       };
