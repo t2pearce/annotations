@@ -18,11 +18,15 @@ const ClinicianOSDViewer = ({ image }) => {
     if (image && anno) {    
       anno.destroy();
       const config = {formatter: ColorFormatter,
+                      widgets: [
+                        {widget: ColorWidget, force: 'React'},
+                        'COMMENT',
+                        'TAG'
+                        ]
                        disableEditor: true, 
                        readOnly: true
                       };
       const annotate = new Annotorious(viewer, config);
-      anno.widgets = [ColorWidget];
       setAnno(annotate)
     }
     if (!image && viewer) {
