@@ -1,3 +1,6 @@
+/*
+Code modified from the open source Annotorious ColorFormatter plug-in https://recogito.github.io/guides/editor-widgets/
+*/
 svg.a9s-annotationlayer .a9s-annotation.RED .a9s-outer {
   stroke:red;
   stroke-width:3;
