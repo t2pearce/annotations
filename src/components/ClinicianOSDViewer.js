@@ -4,7 +4,7 @@ import * as Annotorious from '@recogito/annotorious-openseadragon';
 import '@recogito/annotorious-openseadragon/dist/annotorious.min.css';
 import ShapeLabelsFormatter from './ShapeLabelsFormatter.js';
 import ColorFormatter from './ColorFormatter.js';
-import ColorWidget from './ColourWidget.jsx';
+import ColorWidget from './ColourWidget.js';
 
 
 const ClinicianOSDViewer = ({ image }) => {
