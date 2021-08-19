@@ -1,3 +1,8 @@
+/*
+Questions set-up code was modified from an online tutorialfound here: https://www.freecodecamp.org/news/how-to-build-a-quiz-app-using-react/
+Radio button set-up with error message was modified from the Show Error example from Material-UI open source website: https://material-ui.com/components/radio-buttons/
+Page layout with header bar and drawer came from free template from Material-UI: https://github.com/mui-org/material-ui/tree/master/docs/src/pages/getting-started/templates/dashboard
+*/
 import React, { useState, useEffect } from 'react';
 import { makeStyles, useTheme} from '@material-ui/core/styles';
 import { CssBaseline, Drawer, AppBar, Toolbar, List, Typography, IconButton, Container, Grid, Paper } from '@material-ui/core';
